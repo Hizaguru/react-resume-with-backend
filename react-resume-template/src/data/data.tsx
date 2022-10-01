@@ -1,20 +1,15 @@
 import {
   AcademicCapIcon,
-  CalendarIcon,
-  DownloadIcon,
-  FlagIcon,
-  MapIcon,
-  OfficeBuildingIcon,
-  SparklesIcon,
+  CalendarIcon, MapIcon,
+  OfficeBuildingIcon
 } from '@heroicons/react/outline';
 
 import GithubIcon from '../components/Icon/GithubIcon';
-import InstagramIcon from '../components/Icon/InstagramIcon';
 import LinkedInIcon from '../components/Icon/LinkedInIcon';
-import StackOverflowIcon from '../components/Icon/StackOverflowIcon';
-import TwitterIcon from '../components/Icon/TwitterIcon';
-import heroImage from '../images/header-background.webp';
+import heroImage from '../images/header.webp';
 import porfolioImage1 from '../images/portfolio/portfolio-1.jpg';
+import porfolioImage10 from '../images/portfolio/portfolio-10.jpg';
+import porfolioImage11 from '../images/portfolio/portfolio-11.jpg';
 import porfolioImage2 from '../images/portfolio/portfolio-2.jpg';
 import porfolioImage3 from '../images/portfolio/portfolio-3.jpg';
 import porfolioImage4 from '../images/portfolio/portfolio-4.jpg';
@@ -23,9 +18,7 @@ import porfolioImage6 from '../images/portfolio/portfolio-6.jpg';
 import porfolioImage7 from '../images/portfolio/portfolio-7.jpg';
 import porfolioImage8 from '../images/portfolio/portfolio-8.jpg';
 import porfolioImage9 from '../images/portfolio/portfolio-9.jpg';
-import porfolioImage10 from '../images/portfolio/portfolio-10.jpg';
-import porfolioImage11 from '../images/portfolio/portfolio-11.jpg';
-import profilepic from '../images/profilepic.jpg';
+import profilepic from '../images/profile.webp';
 import testimonialImage from '../images/testimonial.webp';
 import {
   About,
@@ -37,15 +30,15 @@ import {
   SkillGroup,
   Social,
   TestimonialSection,
-  TimelineItem,
+  TimelineItem
 } from './dataDef';
 
 /**
  * Page meta data
  */
 export const homePageMeta: HomepageMeta = {
-  title: 'React Resume Template',
-  description: "Example site built with Tim Baker's react resume template",
+  title: "Jukkis' portfolio",
+  description: "Portfolio build with React typescript",
 };
 
 /**
@@ -69,7 +62,7 @@ export type SectionId = typeof SectionId[keyof typeof SectionId];
  */
 export const heroData: Hero = {
   imageSrc: heroImage,
-  name: `I'm Tim Baker.`,
+  name: `I'm Jukka - Pekka Lappalainen.`,
   description: (
     <>
       <p className="prose-sm text-stone-200 sm:prose-base lg:prose-lg">
@@ -79,12 +72,6 @@ export const heroData: Hero = {
     </>
   ),
   actions: [
-    {
-      href: '/assets/resume.pdf',
-      text: 'Resume',
-      primary: true,
-      Icon: DownloadIcon,
-    },
     {
       href: `#${SectionId.Contact}`,
       text: 'Contact',
@@ -98,16 +85,16 @@ export const heroData: Hero = {
  */
 export const aboutData: About = {
   profileImageSrc: profilepic,
-  description: `Use this bio section as your way of describing yourself and saying what you do, what technologies you like
-  to use or feel most comfortable with, describing your personality, or whatever else you feel like throwing
-  in.`,
+  description: `I’m an Information and Communications Technology student at Metropolia University of Applied Science. 
+  To compliment my formal studies, I teach myself programming in my spare time by working on my own programming-related projects 
+  and keep up to date with what is happening in the world of technology. In addition to programming, I have been a sound engineer 
+  for many years which has given me different exposure to software and hardware, as well as a disciplined approach to troubleshooting 
+  and problem solving. `,
   aboutItems: [
-    {label: 'Location', text: 'Victoria, BC', Icon: MapIcon},
-    {label: 'Age', text: '29', Icon: CalendarIcon},
-    {label: 'Nationality', text: 'Canadian / Irish', Icon: FlagIcon},
-    {label: 'Interests', text: 'Motorcycles, Muay Thai, Banjos', Icon: SparklesIcon},
-    {label: 'Study', text: 'University of Victoria', Icon: AcademicCapIcon},
-    {label: 'Employment', text: 'Instant Domains, inc.', Icon: OfficeBuildingIcon},
+    {label: 'Location', text: 'Helsinki', Icon: MapIcon},
+    {label: 'Age', text: '34', Icon: CalendarIcon},
+    {label: 'Study', text: 'Applied University of Metropolia', Icon: AcademicCapIcon},
+    {label: 'Employment', text: 'Sanoma Media Finland', Icon: OfficeBuildingIcon},
   ],
 };
 
@@ -360,8 +347,5 @@ export const contact: ContactSection = {
  */
 export const socialLinks: Social[] = [
   {label: 'Github', Icon: GithubIcon, href: 'https://github.com/tbakerx'},
-  {label: 'Stack Overflow', Icon: StackOverflowIcon, href: 'https://stackoverflow.com/users/8553186/tim-baker'},
   {label: 'LinkedIn', Icon: LinkedInIcon, href: 'https://www.linkedin.com/in/timbakerx/'},
-  {label: 'Instagram', Icon: InstagramIcon, href: 'https://www.instagram.com/tbakerx/'},
-  {label: 'Twitter', Icon: TwitterIcon, href: 'https://twitter.com/TimBakerx'},
 ];
