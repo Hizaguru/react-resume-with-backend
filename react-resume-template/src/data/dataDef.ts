@@ -15,13 +15,25 @@ export interface HomepageMeta {
   twitterUrl?: string;
   twitterDescription?: string;
   twitterImageUrl?: string;
+  children?: any,
+}
+
+export interface SanityImage {
+  _id: string;
+  _createdAt: string;
+  name:  string;
+  imgUrl: {
+      asset: {
+          url: string;
+      }
+  }
 }
 
 /**
  * Hero section
  */
 export interface Hero {
-  imageSrc: string;
+  imageSrc: string | SanityImage[];
   name: string;
   description: JSX.Element;
   actions: HeroActionItem[];
