@@ -33,7 +33,7 @@ export interface SanityImage {
  * Hero section
  */
 export interface Hero {
-  imageSrc: string | SanityImage[];
+  imageSrc?: string | SanityImage[];
   name: string;
   description: JSX.Element;
   actions: HeroActionItem[];
