@@ -57,6 +57,7 @@ export const SectionId = {
 
 export type SectionId = typeof SectionId[keyof typeof SectionId];
 
+
 /**
  * Hero section
  */
