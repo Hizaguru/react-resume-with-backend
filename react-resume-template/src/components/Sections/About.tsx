@@ -8,7 +8,7 @@ import { SanityImage } from '../../data/dataDef';
 import Section from '../Layout/Section';
 
 const About: FC = memo(() => {
-  const {profileImageSrc, description, aboutItems} = aboutData;
+  const {description, aboutItems} = aboutData;
 
   const [profileImg, setProfileImg] = useState<SanityImage[]>([])
   useEffect(() => {
@@ -28,7 +28,7 @@ const About: FC = memo(() => {
                 <Image alt="about-me-image" layout="fill" objectFit="cover" src={urlFor(image.imgUrl).url()} />   
             </div>
           </div>
-        <div className={classNames('col-span-1 flex flex-col gap-y-6', {'md:col-span-3': !!profileImageSrc})}>
+        <div className={classNames('col-span-1 flex flex-col gap-y-6', {'md:col-span-3': !!image})}>
           <div className="flex flex-col gap-y-2">
             <h2 className="text-2xl font-bold text-white">About me</h2>
             <p className="prose prose-sm text-gray-300 sm:prose-base">{description}</p>

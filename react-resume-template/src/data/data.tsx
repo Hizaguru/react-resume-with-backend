@@ -17,7 +17,6 @@ import porfolioImage6 from '../images/portfolio/portfolio-6.jpg';
 import porfolioImage7 from '../images/portfolio/portfolio-7.jpg';
 import porfolioImage8 from '../images/portfolio/portfolio-8.jpg';
 import porfolioImage9 from '../images/portfolio/portfolio-9.jpg';
-import profilepic from '../images/profile.webp';
 import testimonialImage from '../images/testimonial.webp';
 import {
   About,
@@ -83,7 +82,7 @@ export const heroData: Hero = {
  * About section
  */
 export const aboutData: About = {
-  profileImageSrc: profilepic,
+
   description: `I’m an Information and Communications Technology student at Metropolia University of Applied Science. 
   To compliment my formal studies, I teach myself programming in my spare time by working on my own programming-related projects 
   and keep up to date with what is happening in the world of technology. In addition to programming, I have been a sound engineer 
@@ -329,14 +328,9 @@ export const contact: ContactSection = {
       href: 'https://www.google.ca/maps/place/Victoria,+BC/@48.4262362,-123.376775,14z',
     },
     {
-      type: ContactType.Instagram,
-      text: '@tbakerx',
-      href: 'https://www.instagram.com/tbakerx/',
-    },
-    {
       type: ContactType.Github,
       text: 'tbakerx',
-      href: 'https://github.com/tbakerx',
+      href: 'https://github.com/Hizaguru',
     },
   ],
 };
@@ -345,6 +339,6 @@ export const contact: ContactSection = {
  * Social items
  */
 export const socialLinks: Social[] = [
-  {label: 'Github', Icon: GithubIcon, href: 'https://github.com/tbakerx'},
-  {label: 'LinkedIn', Icon: LinkedInIcon, href: 'https://www.linkedin.com/in/timbakerx/'},
+  {label: 'Github', Icon: GithubIcon, href: 'https://github.com/Hizaguru'},
+  {label: 'LinkedIn', Icon: LinkedInIcon, href: 'https://www.linkedin.com/in/jukka-pekka-lappalainen-0365001a7/'},
 ];
