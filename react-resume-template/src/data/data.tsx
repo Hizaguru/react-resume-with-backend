@@ -319,17 +319,17 @@ export const contact: ContactSection = {
   items: [
     {
       type: ContactType.Email,
-      text: 'reachout@timbaker.me',
+      text: 'jukka-pekka.lappalainen@jukkis.org',
       href: 'mailto:reachout@timbaker.me',
     },
     {
       type: ContactType.Location,
-      text: 'Victoria BC, Canada',
-      href: 'https://www.google.ca/maps/place/Victoria,+BC/@48.4262362,-123.376775,14z',
+      text: 'Helsinki, Finland',
+      href: 'https://goo.gl/maps/9quNchR878t73zDN9',
     },
     {
       type: ContactType.Github,
-      text: 'tbakerx',
+      text: 'Hizaguru',
       href: 'https://github.com/Hizaguru',
     },
   ],
