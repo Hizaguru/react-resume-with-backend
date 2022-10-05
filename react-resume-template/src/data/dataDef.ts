@@ -50,7 +50,7 @@ interface HeroActionItem {
  * About section
  */
 export interface About {
-  profileImageSrc: SanityImage[];
+  profileImageSrc?: string|SanityImage[];
   description: string;
   aboutItems: AboutItem[];
 }
