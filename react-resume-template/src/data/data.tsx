@@ -89,10 +89,10 @@ export const aboutData: About = {
   for many years which has given me different exposure to software and hardware, as well as a disciplined approach to troubleshooting 
   and problem solving. `,
   aboutItems: [
-    {label: 'Location', text: 'Helsinki', Icon: MapIcon},
-    {label: 'Age', text: '34', Icon: CalendarIcon},
-    {label: 'Study', text: 'Applied University of Metropolia', Icon: AcademicCapIcon},
-    {label: 'Employment', text: 'Sanoma Media Finland', Icon: OfficeBuildingIcon},
+    { label: 'Location', text: 'Helsinki', Icon: MapIcon },
+    { label: 'Age', text: '34', Icon: CalendarIcon },
+    { label: 'Study', text: 'Applied University of Metropolia', Icon: AcademicCapIcon },
+    { label: 'Employment', text: 'Sanoma Media Finland', Icon: OfficeBuildingIcon },
   ],
 };
 
@@ -113,57 +113,6 @@ export const skills: SkillGroup[] = [
       },
       {
         name: 'Spanish',
-        level: 3,
-      },
-    ],
-  },
-  {
-    name: 'Frontend development',
-    skills: [
-      {
-        name: 'React',
-        level: 9,
-      },
-      {
-        name: 'Typescript',
-        level: 7,
-      },
-      {
-        name: 'GraphQL',
-        level: 6,
-      },
-    ],
-  },
-  {
-    name: 'Backend development',
-    skills: [
-      {
-        name: 'Node.js',
-        level: 8,
-      },
-      {
-        name: 'Rust',
-        level: 5,
-      },
-      {
-        name: 'Golang',
-        level: 4,
-      },
-    ],
-  },
-  {
-    name: 'Mobile development',
-    skills: [
-      {
-        name: 'React Native',
-        level: 9,
-      },
-      {
-        name: 'Flutter',
-        level: 4,
-      },
-      {
-        name: 'Swift',
         level: 3,
       },
     ],
@@ -339,6 +288,6 @@ export const contact: ContactSection = {
  * Social items
  */
 export const socialLinks: Social[] = [
-  {label: 'Github', Icon: GithubIcon, href: 'https://github.com/Hizaguru'},
-  {label: 'LinkedIn', Icon: LinkedInIcon, href: 'https://www.linkedin.com/in/jukka-pekka-lappalainen-0365001a7/'},
+  { label: 'Github', Icon: GithubIcon, href: 'https://github.com/Hizaguru' },
+  { label: 'LinkedIn', Icon: LinkedInIcon, href: 'https://www.linkedin.com/in/jukka-pekka-lappalainen-0365001a7/' },
 ];
