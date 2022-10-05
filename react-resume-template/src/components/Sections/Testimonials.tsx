@@ -1,9 +1,9 @@
 import classNames from 'classnames';
-import {FC, memo, UIEventHandler, useCallback, useEffect, useMemo, useRef, useState} from 'react';
+import { FC, memo, UIEventHandler, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 
-import {isApple, isMobile} from '../../config';
-import {SectionId, testimonial} from '../../data/data';
-import {Testimonial} from '../../data/dataDef';
+import { isApple, isMobile } from '../../config';
+import { SectionId, testimonial } from '../../data/data';
+import { Testimonial } from '../../data/dataDef';
 import useInterval from '../../hooks/useInterval';
 import useWindow from '../../hooks/useWindow';
 import QuoteIcon from '../Icon/QuoteIcon';
@@ -17,9 +17,9 @@ const Testimonials: FC = memo(() => {
   const itemWidth = useRef(0);
   const scrollContainer = useRef<HTMLDivElement>(null);
 
-  const {width} = useWindow();
+  const { width } = useWindow();
 
-  const {imageSrc, testimonials} = testimonial;
+  const { imageSrc, testimonials } = testimonial;
 
   const resolveSrc = useMemo(() => {
     if (!imageSrc) return undefined;
@@ -75,9 +75,9 @@ const Testimonials: FC = memo(() => {
         className={classNames(
           'flex w-full items-center justify-center bg-cover bg-center px-4 py-16 md:py-24 lg:px-8',
           parallaxEnabled && 'bg-fixed',
-          {'bg-neutral-700': !imageSrc},
+          { 'bg-neutral-700': !imageSrc },
         )}
-        style={imageSrc ? {backgroundImage: `url(${resolveSrc}`} : undefined}>
+        style={imageSrc ? { backgroundImage: `url(${resolveSrc}` } : undefined}>
         <div className="z-10 w-full max-w-screen-md px-4 lg:px-0">
           <div className="flex flex-col items-center gap-y-6 rounded-xl bg-gray-800/60 p-6 shadow-lg">
             <div
@@ -113,8 +113,8 @@ const Testimonials: FC = memo(() => {
   );
 });
 
-const Testimonial: FC<{testimonial: Testimonial; isActive: boolean}> = memo(
-  ({testimonial: {text, name, image}, isActive}) => (
+const Testimonial: FC<{ testimonial: Testimonial; isActive: boolean }> = memo(
+  ({ testimonial: { text, name, image }, isActive }) => (
     <div
       className={classNames(
         'flex w-full shrink-0 snap-start snap-always flex-col items-start gap-y-4 p-2 transition-opacity duration-1000 sm:flex-row sm:gap-x-6',
