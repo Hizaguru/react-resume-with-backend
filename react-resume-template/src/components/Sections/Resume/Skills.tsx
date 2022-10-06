@@ -1,5 +1,5 @@
 import { FC, memo, PropsWithChildren } from 'react';
-
+import Carousel from 'react-multi-carousel';
 import { Skill as SkillType, SkillGroup as SkillGroupType } from '../../../data/dataDef';
 
 export const SkillGroup: FC<PropsWithChildren<{ skillGroup: SkillGroupType }>> = memo(({ skillGroup }) => {
