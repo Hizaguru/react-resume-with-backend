@@ -1,31 +1,13 @@
 import { FC, memo } from 'react';
 
 
-import { SectionId } from '../../../data/data';
+import { SectionId, skills } from '../../../data/data';
 import Section from '../../Layout/Section';
 import ResumeSection from './ResumeSection';
 
 
-
 const Resume: FC = memo(() => {
-  const skills = [
-    {
-      // eslint-disable-next-line
-      skillname: "Coding (React, Typescript, Python)",
-    },
-    {
-      skillname: "Game Development (Unity, Unreal Engine)",
-    },
-    {
-      skillname: "Operating Systems (Ubuntu, Kali, Windows)",
-    },
-    {
-      skillname: "Audio Designing & Mixing (Ableton live 10)",
-    },
-    {
-      skillname: "Graphic Designing (Blender)",
-    },
-  ]
+
 
 
 

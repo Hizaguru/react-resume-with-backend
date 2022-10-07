@@ -1,7 +1,7 @@
-import {StaticImageData} from 'next/image';
-import {FC, SVGProps} from 'react';
+import { StaticImageData } from 'next/image';
+import { FC, SVGProps } from 'react';
 
-import {IconProps} from '../components/Icon/Icon';
+import { IconProps } from '../components/Icon/Icon';
 
 export interface HomepageMeta {
   title: string;
@@ -21,11 +21,11 @@ export interface HomepageMeta {
 export interface SanityImage {
   _id: string;
   _createdAt: string;
-  name:  string;
+  name: string;
   imgUrl: {
-      asset: {
-          url: string;
-      }
+    asset: {
+      url: string;
+    }
   }
 }
 
@@ -50,7 +50,7 @@ interface HeroActionItem {
  * About section
  */
 export interface About {
-  profileImageSrc?: string|SanityImage[];
+  profileImageSrc?: string | SanityImage[];
   description: string;
   aboutItems: AboutItem[];
 }
@@ -93,6 +93,10 @@ export interface PortfolioItem {
   description: string;
   url: string;
   image: string | StaticImageData;
+}
+
+export interface Skills {
+  skillname: string;
 }
 
 /**

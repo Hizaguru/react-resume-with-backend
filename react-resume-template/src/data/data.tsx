@@ -25,7 +25,9 @@ import {
   Hero,
   HomepageMeta,
   PortfolioItem,
+  Skill,
   SkillGroup,
+  Skills,
   Social,
   TestimonialSection,
   TimelineItem
@@ -99,25 +101,24 @@ export const aboutData: About = {
 /**
  * Skills section
  */
-export const skills: SkillGroup[] = [
+export const skills: Skills[] = [
   {
-    name: 'Spoken languages',
-    skills: [
-      {
-        name: 'English',
-        level: 10,
-      },
-      {
-        name: 'French',
-        level: 4,
-      },
-      {
-        name: 'Spanish',
-        level: 3,
-      },
-    ],
+    // eslint-disable-next-line
+    skillname: "Coding (React, Typescript, Python)",
   },
-];
+  {
+    skillname: "Game Development (Unity, Unreal Engine)",
+  },
+  {
+    skillname: "Operating Systems (Ubuntu, Kali, Windows)",
+  },
+  {
+    skillname: "Audio Designing & Mixing (Ableton live 10)",
+  },
+  {
+    skillname: "Graphic Designing (Blender)",
+  },
+]
 
 /**
  * Portfolio section
