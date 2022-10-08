@@ -123,14 +123,14 @@ export const portfolioItems: PortfolioItem[] = [
     image: porfolioImage1,
   },
   {
-    title: 'Project title 2',
-    description: 'Give a short description of your project here.',
+    title: 'Graphics',
+    description: 'One of my favorite free time hobbies is playing with Blender and different game engines, such as Unreal Engine or Unity. I build my projects around the tutorials from YouTube, Google and Udemy Academy which I have found to be very useful resources for feeding my interests in graphic design. The gallery itself is coded with ReactJS.',
     url: 'https://timbaker.me',
     image: porfolioImage2,
   },
   {
-    title: 'Music (Ableton Live 10)',
-    description: 'I have a burning passion for music and audio worlds. My latest act in the music scene was Endocrine which released two singles.The latest, A.O.E was published in December 2020 and Red Glow year before that.',
+    title: 'Mr Whobuntu',
+    description: 'Mr Whobuntu is for those who seeks to find their real soulmate on this busy world...There is no heart for me like yours',
     url: 'https://timbaker.me',
     image: porfolioImage3,
   },
