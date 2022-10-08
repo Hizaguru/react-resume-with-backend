@@ -91,8 +91,11 @@ export interface SkillGroup {
 export interface PortfolioItem {
   title: string;
   description: string;
-  url: string;
+  url?: string;
+  gitUrl?: string;
   image: string | StaticImageData;
+  hasGitUrl?: boolean
+
 }
 
 export interface Skills {

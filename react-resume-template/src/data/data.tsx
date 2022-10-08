@@ -121,31 +121,39 @@ export const portfolioItems: PortfolioItem[] = [
     title: 'Music (Ableton Live 10)',
     description: 'I have a burning passion for music and audio worlds. My latest act in the music scene was Endocrine which released two singles.The latest, A.O.E was published in December 2020 and Red Glow year before that.',
     url: 'https://timbaker.me',
+    gitUrl: "https://www.github.com",
     image: porfolioImage1,
+    hasGitUrl: true
   },
   {
     title: 'Graphics',
-    description: 'One of my favorite free time hobbies is playing with Blender and different game engines, such as Unreal Engine or Unity. I build my projects around the tutorials from YouTube, Google and Udemy Academy which I have found to be very useful resources for feeding my interests in graphic design. The gallery itself is coded with ReactJS.',
+    description: "Here is some screenshots of my Blender and Unreal Engine sessions. The gallery itself is made with ReactJs",
     url: 'https://timbaker.me',
+    gitUrl: "https://www.github.com",
     image: porfolioImage2,
+    hasGitUrl: true
   },
   {
     title: 'Mr Whobuntu',
     description: 'Mr Whobuntu is for those who seeks to find their real soulmate on this busy world...There is no heart for me like yours',
-    url: 'https://github.com/Hizaguru/Mr-Whobuntu',
+    url: 'https://timbaker.me',
+    gitUrl: 'https://github.com/Hizaguru/Mr-Whobuntu',
     image: porfolioImage3,
   },
   {
     title: 'Fin3Ans',
     description: 'Here is a tool for calculating the returns of your portfolio.',
     url: 'https://github.com/Hizaguru/finance/blob/main/simplereturn/main.py',
+    gitUrl: "https://www.github.com",
     image: porfolioImage4,
+
   },
   {
     title: 'Stealing Time',
     description: '“Stealing Time” gameproject was created in Itcho Gamejam. My part in the project was level designing, audio designing, graphics desining and music.',
     url: 'https://jonnboy91.itch.io/stealing-time',
     image: porfolioImage5,
+    hasGitUrl: false
   },
   {
     title: 'Endocrine - Red Glow (Official music video)',
