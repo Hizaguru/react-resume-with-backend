@@ -14,6 +14,7 @@ import porfolioImage4 from '../images/portfolio/portfolio-4.webp';
 import porfolioImage5 from '../images/portfolio/portfolio-5.webp';
 import porfolioImage6 from '../images/portfolio/portfolio-6.webp';
 import testimonialImage from '../images/testimonial.webp';
+
 import {
   About,
   ContactSection,
@@ -131,27 +132,28 @@ export const portfolioItems: PortfolioItem[] = [
   {
     title: 'Mr Whobuntu',
     description: 'Mr Whobuntu is for those who seeks to find their real soulmate on this busy world...There is no heart for me like yours',
-    url: 'https://timbaker.me',
+    url: 'https://github.com/Hizaguru/Mr-Whobuntu',
     image: porfolioImage3,
   },
   {
-    title: 'Project title 2',
-    description: 'Give a short description of your project here.',
-    url: 'https://timbaker.me',
+    title: 'Fin3Ans',
+    description: 'Here is a tool for calculating the returns of your portfolio.',
+    url: 'https://github.com/Hizaguru/finance/blob/main/simplereturn/main.py',
     image: porfolioImage4,
   },
   {
-    title: 'Music (Ableton Live 10)',
-    description: 'I have a burning passion for music and audio worlds. My latest act in the music scene was Endocrine which released two singles.The latest, A.O.E was published in December 2020 and Red Glow year before that.',
-    url: 'https://timbaker.me',
+    title: 'Stealing Time',
+    description: '“Stealing Time” gameproject was created in Itcho Gamejam. My part in the project was level designing, audio designing, graphics desining and music.',
+    url: 'https://jonnboy91.itch.io/stealing-time',
     image: porfolioImage5,
   },
   {
-    title: 'Project title 2',
-    description: 'Give a short description of your project here.',
-    url: 'https://timbaker.me',
+    title: 'Endocrine - Red Glow (Official music video)',
+    description: 'I have a burning passion for music and audio worlds. My latest act in the music scene was Endocrine which released two singles.The latest, A.O.E was published in December 2020 and Red Glow year before that.',
+    url: 'https://www.youtube.com/watch?v=IonL5jBIxbk',
     image: porfolioImage6,
-  }
+  },
+
 ];
 
 /**
@@ -161,19 +163,23 @@ export const testimonial: TestimonialSection = {
   imageSrc: testimonialImage,
   testimonials: [
     {
-      name: 'John Doe',
-      text: 'Use this as an opportunity to promote what it is like to work with you. High value testimonials include ones from current or past co-workers, managers, or from happy clients.',
-      image: 'https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/169.jpg',
+      name: 'Steve Jobs',
+      text: "Your work is going to fill a large part of your life, and the only way to be truly satisfied is to do what you believe is great work. And the only way to do great work is to love what you do. If you haven't found it yet, keep looking. Don't settle. As with all matters of the heart, you'll know when you find it.",
+
     },
     {
-      name: 'Jane Doe',
-      text: 'Here you should write some nice things that someone has said about you. Encourage them to be specific and include important details (notes about a project you were on together, impressive quality produced, etc).',
-      image: 'https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/14.jpg',
+      name: "Emo Philips",
+      text: "A computer once beat me at chess, but it was no match for me at kick boxing."
+
     },
     {
-      name: 'Someone else',
-      text: 'Add several of these, and keep them as fresh as possible, but be sure to focus on quality testimonials with strong highlights of your skills/work ethic.',
-      image: 'https://cloudflare-ipfs.com/ipfs/Qmd3W5DuhgHirLHGVixi6V76LhCkZUz6pnFt5AJBiyvHye/avatar/69.jpg',
+      name: 'Craig Bruce',
+      text: "It’s hardware that makes a machine fast. It’s software that makes a fast machine slow."
+
+    },
+    {
+      name: 'Homer Simpson, in response to the message, “Press any key”',
+      text: "Where is the ‘any’ key?"
     },
   ],
 };
@@ -184,12 +190,11 @@ export const testimonial: TestimonialSection = {
 
 export const contact: ContactSection = {
   headerText: 'Get in touch.',
-  description: 'Here is a good spot for a message to your readers to let them know how best to reach out to you.',
   items: [
     {
       type: ContactType.Email,
       text: 'jukka-pekka.lappalainen@jukkis.org',
-      href: 'mailto:reachout@timbaker.me',
+      href: 'mailto:jukka-pekka.lappalainen@jukkis.org',
     },
     {
       type: ContactType.Location,

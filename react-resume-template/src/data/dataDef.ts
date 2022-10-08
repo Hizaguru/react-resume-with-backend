@@ -118,7 +118,6 @@ export interface TestimonialSection {
 }
 
 export interface Testimonial {
-  image?: string;
   name: string;
   text: string;
 }
@@ -128,7 +127,6 @@ export interface Testimonial {
  */
 export interface ContactSection {
   headerText?: string;
-  description: string;
   items: ContactItem[];
 }
 
