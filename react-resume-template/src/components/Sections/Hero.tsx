@@ -1,9 +1,9 @@
-import {ChevronDownIcon} from '@heroicons/react/outline';
+import { ChevronDownIcon } from '@heroicons/react/outline';
 import classNames from 'classnames';
 import Image from 'next/image';
-import {FC, memo, useEffect, useState} from 'react';
+import { FC, memo, useEffect, useState } from 'react';
 
-import {heroData, SectionId} from '../../data/data';
+import { heroData, SectionId } from '../../data/data';
 import { client, urlFor } from '../../client';
 import Section from '../Layout/Section';
 import Socials from '../Socials';
@@ -14,8 +14,8 @@ import { SanityImage } from '../../data/dataDef';
 
 
 const Hero: FC = memo(() => {
-  const { name, description, actions} = heroData;
-  
+  const { name, description, actions } = heroData;
+
   const [header, setHeader] = useState<SanityImage[]>([])
   useEffect(() => {
     const query = '*[_type == "header"]';
@@ -27,9 +27,10 @@ const Hero: FC = memo(() => {
   return (
     <Section noPadding sectionId={SectionId.Hero}>
       <div className="relative flex h-screen w-screen items-center justify-center">
-          {header.map((item) => {
-            return(
-              <Image
+        {header.map((item) => {
+          return (
+            <Image
+              key={item._id}
               alt={`${name}-image`}
               className="absolute z-0"
               layout="fill"
@@ -37,8 +38,8 @@ const Hero: FC = memo(() => {
               priority
               src={urlFor(item.imgUrl).url()}
             />
-            )
-          })}
+          )
+        })}
         <div className="z-10  max-w-screen-lg px-4 lg:px-0">
           <div className="flex flex-col items-center gap-y-6 rounded-xl bg-gray-800/40 p-6 text-center shadow-lg backdrop-blur-sm">
             <h1 className="text-4xl font-bold text-white sm:text-5xl lg:text-7xl">{name}</h1>
@@ -47,7 +48,7 @@ const Hero: FC = memo(() => {
               <Socials />
             </div>
             <div className="flex w-full justify-center gap-x-4">
-              {actions.map(({href, text, primary, Icon}) => (
+              {actions.map(({ href, text, primary, Icon }) => (
                 <a
                   className={classNames(
                     'flex gap-x-2 rounded-full border-2 bg-none py-2 px-4 text-sm font-medium text-white ring-offset-gray-700/80 hover:bg-gray-700/80 focus:outline-none focus:ring-2 focus:ring-offset-2 sm:text-base',
