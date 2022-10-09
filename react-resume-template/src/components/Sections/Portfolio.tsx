@@ -1,4 +1,3 @@
-import { ExternalLinkIcon } from '@heroicons/react/outline';
 import classNames from 'classnames';
 import Image from 'next/image';
 import { FC, memo, MouseEvent, useCallback, useEffect, useRef, useState } from 'react';
@@ -14,7 +13,7 @@ const Portfolio: FC = memo(() => {
     <Section className="bg-neutral-800" sectionId={SectionId.Portfolio}>
       <div className="flex flex-col gap-y-8">
         <h2 className="self-center text-xl font-bold text-white">Check out some of my work</h2>
-        <div className="w-full columns-2 md:columns-3 lg:columns-3">
+        <div className="w-full columns-1 text-2xl md:columns-2 lg:columns-3">
           {portfolioItems.map((item, index) => {
             const { title, image } = item;
             return (
@@ -72,7 +71,7 @@ const ItemOverlay: FC<{ item: PortfolioItem }> = memo(({ item: { url, title, des
       <div className="relative h-full w-full p-4">
         <div className="flex h-full w-full flex-col gap-y-2 overflow-y-scroll">
           <h2 className="text-center font-bold text-white opacity-100">{title}</h2>
-          <p className="text-xs text-white opacity-100 sm:text-sm">{description}</p>
+          <p className="text-xl text-white opacity-100 sm:text-sm">{description}</p>
         </div>
         <div>
           <div className="absolute bottom-2 left-10 h-24 w-4 shrink-0 text-white sm:bottom-2 sm:right-2">
