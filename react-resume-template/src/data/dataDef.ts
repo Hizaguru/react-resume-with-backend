@@ -94,7 +94,6 @@ export interface PortfolioItem {
   url?: string;
   gitUrl?: string;
   image: string | StaticImageData;
-  hasGitUrl?: boolean
 
 }
 
