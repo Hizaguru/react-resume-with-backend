@@ -13,6 +13,7 @@ import porfolioImage3 from '../images/portfolio/portfolio-3.webp';
 import porfolioImage4 from '../images/portfolio/portfolio-4.webp';
 import porfolioImage5 from '../images/portfolio/portfolio-5.webp';
 import porfolioImage6 from '../images/portfolio/portfolio-6.webp';
+import taskManageImg from '../images/portfolio/portfolio-6.webp';
 import testimonialImage from '../images/testimonial.webp';
 
 import {
@@ -111,6 +112,15 @@ export const skills: Skills[] = [
   {
     skillname: "Graphic Designing (Blender)",
   },
+]
+
+export const modalItem: PortfolioItem[] = [
+  {
+    title: "Taskhub",
+    description: "Task Hub offers an easy solution for the busy world. Say farewell to the pencils and paper because my team gives the freedom to the people to share their sticky notes in the cloud!",
+    image: taskManageImg,
+    url: "https://github.com/Hizaguru/TaskHub"
+  }
 ]
 
 /**

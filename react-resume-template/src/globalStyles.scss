@@ -71,15 +71,39 @@ th {
   transform: scale(0.4);
 }
 
+
 .modal-content {
-  width: 70%;
-  height: 70%;
+  width: 694px;
+  height: 343px;
   background-color: #282c34;
   color: #fff;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 2rem;
+}
+
+@media only screen and (max-width: 600px) {
+  .modal-content {
+    width: 321px;
+    height: 191px;
+    margin: 2px;
+
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+  .modal-content {
+    width: 600px;
+    height: 300px;
+  }
+}
+
+@media only screen and (max-width: 1600px) {
+  .modal-content {
+    width: 643px;
+    height: 347px;
+  }
 }
 
 .modal-enter-done {
