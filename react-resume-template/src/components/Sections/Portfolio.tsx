@@ -83,11 +83,14 @@ const ItemOverlay: FC<{ item: PortfolioItem }> = memo(({ item: { url, title, des
           <p className="text-xs text-white opacity-100 sm:text-sm">{description}</p>
         </div>
         <ExternalLinkIcon className="absolute bottom-1 right-1 h-4 w-4 shrink-0 text-white sm:bottom-2 sm:right-2" />
-
         <Modal handleClose={() => setIsOpen(false)} isOpen={isOpen}>
+          <div className='modal-stuff'>
+            <h1 className="modal-stuff-header">modla</h1>
+            <p>hhafjhafkjh asffasfs</p>
+          </div>
         </Modal>
 
-      </div>
-    </a>
+      </div >
+    </a >
   );
 });
