@@ -3,7 +3,6 @@
 @tailwind utilities;
 
 @layer utilities {
-
   /* Chrome, Safari and Opera */
   .no-scrollbar::-webkit-scrollbar {
     display: none;
@@ -29,8 +28,6 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-
-
 html {
   -webkit-tap-highlight-color: transparent;
   scroll-behavior: smooth;
@@ -41,7 +38,7 @@ body {
   position: relative;
   width: 100%;
   color: #444444;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Ubuntu, 'Helvetica Neue', sans-serif;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Ubuntu, "Helvetica Neue", sans-serif;
   background-color: #fafafa;
 }
 
