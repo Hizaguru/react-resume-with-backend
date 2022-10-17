@@ -1,13 +1,14 @@
-import {ExternalLinkIcon} from '@heroicons/react/outline';
+import { ExternalLinkIcon } from '@heroicons/react/outline';
 import classNames from 'classnames';
 import Image from 'next/image';
-import {FC, memo, MouseEvent, useCallback, useEffect, useRef, useState} from 'react';
+import { FC, memo, MouseEvent, useCallback, useEffect, useRef, useState } from 'react';
 
-import {isMobile} from '../../config';
-import {portfolioItems, SectionId} from '../../data/data';
-import {PortfolioItem} from '../../data/dataDef';
+import { isMobile } from '../../config';
+import { portfolioItems, SectionId } from '../../data/data';
+import { PortfolioItem } from '../../data/dataDef';
 import useDetectOutsideClick from '../../hooks/useDetectOutsideClick';
 import Section from '../Layout/Section';
+import Modal from '../Modal/Modal';
 
 
 const Portfolio: FC = memo(() => {
@@ -17,7 +18,7 @@ const Portfolio: FC = memo(() => {
         <h2 className="self-center text-xl font-bold text-white">Check out some of my work</h2>
         <div className=" w-full columns-2 lg:columns-3">
           {portfolioItems.map((item, index) => {
-            const {title, image} = item;
+            const { title, image } = item;
             return (
               <div className="pb-6" key={`${title}-${index}`}>
                 <div
@@ -39,11 +40,12 @@ const Portfolio: FC = memo(() => {
 Portfolio.displayName = 'Portfolio';
 export default Portfolio;
 
-const ItemOverlay: FC<{item: PortfolioItem}> = memo(({item: {url, title, description}}) => {
+const ItemOverlay: FC<{ item: PortfolioItem }> = memo(({ item: { url, title, description } }) => {
   const [mobile, setMobile] = useState(false);
   const [showOverlay, setShowOverlay] = useState(false);
+  const [isOpen, setIsOpen] = useState(false)
   const linkRef = useRef<HTMLAnchorElement>(null);
-  
+
 
   useEffect(() => {
     // Avoid hydration styling errors by setting mobile in useEffect
@@ -55,19 +57,18 @@ const ItemOverlay: FC<{item: PortfolioItem}> = memo(({item: {url, title, descrip
 
   const handleItemClick = useCallback(
     (event: MouseEvent<HTMLElement>) => {
-      if (mobile && !showOverlay) {
-        event.preventDefault();
-        setShowOverlay(!showOverlay);
-      }
+      event.preventDefault();
+      setIsOpen(true)
+
     },
-    [mobile, showOverlay],
+    [isOpen],
   );
 
   return (
     <a
       className={classNames(
         'absolute inset-0 h-full w-full  bg-gray-900 transition-all duration-300',
-        {'opacity-0 hover:opacity-80': !mobile},
+        { 'opacity-0 hover:opacity-80': !mobile },
         showOverlay ? 'opacity-80' : 'opacity-0',
       )}
       href={url}
@@ -80,6 +81,9 @@ const ItemOverlay: FC<{item: PortfolioItem}> = memo(({item: {url, title, descrip
           <p className="text-xs text-white opacity-100 sm:text-sm">{description}</p>
         </div>
         <ExternalLinkIcon className="absolute bottom-1 right-1 h-4 w-4 shrink-0 text-white sm:bottom-2 sm:right-2" />
+        <Modal handleClose={() => setIsOpen(false)} isOpen={isOpen}>
+          This is Modal Content!
+        </Modal>
       </div>
     </a>
   );
