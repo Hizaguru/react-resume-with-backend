@@ -83,15 +83,6 @@ th {
   font-size: 2rem;
 }
 
-@media only screen and (max-width: 600px) {
-  .modal-content {
-    width: 321px;
-    height: 191px;
-    margin: 2px;
-
-  }
-}
-
 @media only screen and (max-width: 1200px) {
   .modal-content {
     width: 600px;
@@ -99,12 +90,6 @@ th {
   }
 }
 
-@media only screen and (max-width: 1600px) {
-  .modal-content {
-    width: 643px;
-    height: 347px;
-  }
-}
 
 .modal-enter-done {
   opacity: 1;
