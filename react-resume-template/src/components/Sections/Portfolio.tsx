@@ -57,9 +57,10 @@ const ItemOverlay: FC<{ item: PortfolioItem }> = memo(({ item: { url, title, des
 
   const handleItemClick = useCallback(
     (event: MouseEvent<HTMLElement>) => {
-      event.preventDefault();
-      setIsOpen(true)
-
+      if (!isOpen) {
+        event.preventDefault();
+        setIsOpen(true)
+      }
     },
     [isOpen],
   );
@@ -71,7 +72,7 @@ const ItemOverlay: FC<{ item: PortfolioItem }> = memo(({ item: { url, title, des
         { 'opacity-0 hover:opacity-80': !mobile },
         showOverlay ? 'opacity-80' : 'opacity-0',
       )}
-      href={url}
+
       onClick={handleItemClick}
       ref={linkRef}
       target="_blank">

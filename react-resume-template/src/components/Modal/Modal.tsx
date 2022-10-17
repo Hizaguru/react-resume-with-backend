@@ -1,8 +1,6 @@
-
 import React, { useEffect, useRef } from 'react'
 import ReactPortal from './ReactPortal';
 import { CSSTransition } from "react-transition-group";
-
 
 type Props = {
   isOpen: boolean;
@@ -11,19 +9,24 @@ type Props = {
 }
 
 
+
 const Modal: React.FC<Props> = (props: Props) => {
   const nodeRef = useRef(null);
+
+
   useEffect(() => {
     const closeOnEscape = (e: KeyboardEvent) => (e.key === "Escape" ? props.handleClose() : null);
     document.body.addEventListener("keydown", closeOnEscape);
 
     return () => {
       document.body.removeEventListener("keydown", closeOnEscape);
-      props.handleClose()
+
     };
-  }, []);
+  }, [props.handleClose]);
+
 
   return (
+
     <ReactPortal wrapperId='react-portal-container'>
       <div className='modals-background'>
         <CSSTransition
