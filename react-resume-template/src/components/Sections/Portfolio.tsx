@@ -12,6 +12,7 @@ import Modal from '../Modal/Modal';
 
 
 
+
 const Portfolio: FC = memo(() => {
   return (
     <Section className="bg-neutral-800" sectionId={SectionId.Portfolio}>
@@ -41,7 +42,7 @@ const Portfolio: FC = memo(() => {
 Portfolio.displayName = 'Portfolio';
 export default Portfolio;
 
-const ItemOverlay: FC<{ item: PortfolioItem }> = memo(({ item: { url, title, description } }) => {
+const ItemOverlay: FC<{ item: PortfolioItem }> = memo(({ item: { title, description, modalTitle, modalDescription, modalImage } }) => {
   const [mobile, setMobile] = useState(false);
   const [showOverlay, setShowOverlay] = useState(false);
   const [isOpen, setIsOpen] = useState(false)
@@ -84,9 +85,16 @@ const ItemOverlay: FC<{ item: PortfolioItem }> = memo(({ item: { url, title, des
         </div>
         <ExternalLinkIcon className="absolute bottom-1 right-1 h-4 w-4 shrink-0 text-white sm:bottom-2 sm:right-2" />
         <Modal handleClose={() => setIsOpen(false)} isOpen={isOpen}>
-          <div className='modal-stuff'>
-            <h1 className="modal-stuff-header">modla</h1>
-            <p>hhafjhafkjh asffasfs</p>
+          <div>
+            <div className='modal-objects'>
+              <Image alt={title} height="300px" layout="responsive" placeholder="blur" src={modalImage!} />
+              <h1 className="modal-header">{modalTitle}</h1>
+              <p className='modal-description'>{modalDescription}</p>
+            </div>
+            <div className='modal-links'>
+              <a className='modal-link-left' href='https://www.google.fi'>Code</a>
+              <a className='modal-link-right' href='https:www.github.com'>Project</a>
+            </div>
           </div>
         </Modal>
 
