@@ -42,7 +42,7 @@ const Portfolio: FC = memo(() => {
 Portfolio.displayName = 'Portfolio';
 export default Portfolio;
 
-const ItemOverlay: FC<{ item: PortfolioItem }> = memo(({ item: { title, description, modalTitle, modalDescription, modalImage } }) => {
+const ItemOverlay: FC<{ item: PortfolioItem }> = memo(({ item: { title, description, modalTitle, modalDescription, modalImage, gitUrl, url } }) => {
   const [mobile, setMobile] = useState(false);
   const [showOverlay, setShowOverlay] = useState(false);
   const [isOpen, setIsOpen] = useState(false)
@@ -88,13 +88,20 @@ const ItemOverlay: FC<{ item: PortfolioItem }> = memo(({ item: { title, descript
           <div>
             <div className='modal-objects'>
               <Image alt={title} height="300px" layout="responsive" placeholder="blur" src={modalImage!} />
-              <h1 className="modal-header">{modalTitle}</h1>
+              <h1 className="modal-header"><b>{modalTitle}</b></h1>
               <p className='modal-description'>{modalDescription}</p>
             </div>
-            <div className='modal-links'>
-              <a className='modal-link-left' onClick={() => window.open("http://www.google.fi")} href='https://www.google.fi' target="_blank">Code</a>
-              <a className='modal-link-right' onClick={() => window.open("http://www.google.fi")} href='https://www.google.fi' target="_blank">Project</a>
-            </div>
+            {gitUrl !== undefined ? (
+              <div className='modal-links'>
+                <a className='modal-link-left' onClick={() => window.open(gitUrl)} href={gitUrl} target="_blank"><b>Code</b></a>
+                <a className='modal-link-right' onClick={() => window.open(url)} href={url} target="_blank"><b>Project</b></a>
+              </div>
+            ) : (
+              <div className='modal-links'>
+                <a className='modal-link-right' onClick={() => window.open(url)} href={url} target="_blank">Project</a>
+              </div>
+            )}
+
           </div>
         </Modal>
 

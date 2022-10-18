@@ -14,6 +14,7 @@ import porfolioImage4 from '../images/portfolio/portfolio-4.webp';
 import porfolioImage5 from '../images/portfolio/portfolio-5.webp';
 import porfolioImage6 from '../images/portfolio/portfolio-6.webp';
 import taskManageImg from '../images/taskmanagerbig.png';
+import mixingBoard from '../images/mixing-board.webp';
 import testimonialImage from '../images/testimonial.webp';
 
 import {
@@ -114,14 +115,6 @@ export const skills: Skills[] = [
   },
 ]
 
-// export const modalItem: PortfolioItem[] = [
-//   {
-//     title: "Taskhub",
-//     description: "Task Hub offers an easy solution for the busy world. Say farewell to the pencils and paper because my team gives the freedom to the people to share their sticky notes in the cloud!",
-//     image: taskManageImg,
-//     url: "https://github.com/Hizaguru/TaskHub"
-//   }
-// ]
 
 /**
  * Portfolio section
@@ -132,18 +125,20 @@ export const portfolioItems: PortfolioItem[] = [
     description: 'I have a burning passion for music and audio worlds. My latest act in the music scene was Endocrine which released two singles.The latest, A.O.E was published in December 2020 and Red Glow year before that.',
     url: 'https://timbaker.me',
     image: porfolioImage1,
-    modalTitle: "Taskhub",
-    modalDescription: "Task Hub offers an easy solution for the busy world. Say farewell to the pencils and paper because my team gives the freedom to the people to share their sticky notes in the cloud!",
-    modalImage: taskManageImg,
-
+    modalTitle: "Mixing",
+    modalDescription: "I've got a burning passion for music and audio worlds. I've been playing in dozens of bands with different genres. My latest act in the music scene was Endocrine which released two singles. The latest, A.O.E was published in December 2020 and Red Glow year before that. Now I'm recording demos for my one man band Stomak.",
+    modalImage: mixingBoard,
+    gitUrl: "https://github.com/Hizaguru/img-carousel-with-backend/tree/implement-the-backend"
   },
   {
     title: 'Graphics',
-    description: 'One of my favorite free time hobbies is playing with Blender and different game engines, such as Unreal Engine or Unity. I build my projects around the tutorials from YouTube, Google and Udemy Academy which I have found to be very useful resources for feeding my interests in graphic design. The gallery itself is coded with ReactJS.',
-    url: 'https://timbaker.me',
+    description: "One of my favorite free time hobbies is playing with Blender and different game engines, such as Unreal Engine or Unity. I build my projects around the tutorials from YouTube, Google and Udemy Academy which I've found to be very useful resources for feeding my interests in graphic design. The gallery itself is coded with ReactJS.",
+    url: 'https://www.jukkis.org/gallery/',
     image: porfolioImage2,
     modalTitle: "Taskhub2",
-    modalDescription: "jafklj"
+    modalDescription: "jafklj",
+    modalImage: mixingBoard,
+
 
   },
   {
