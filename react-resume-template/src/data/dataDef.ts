@@ -94,7 +94,9 @@ export interface PortfolioItem {
   url?: string;
   gitUrl?: string;
   image: string | StaticImageData;
-
+  modalTitle: string;
+  modalDescription?: string;
+  modalImage?: string | StaticImageData;
 }
 
 export interface Skills {

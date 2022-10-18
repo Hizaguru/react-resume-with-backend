@@ -29,8 +29,6 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-
-
 html {
   -webkit-tap-highlight-color: transparent;
   scroll-behavior: smooth;
@@ -41,7 +39,7 @@ body {
   position: relative;
   width: 100%;
   color: #444444;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Ubuntu, 'Helvetica Neue', sans-serif;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Ubuntu, "Helvetica Neue", sans-serif;
   background-color: #fafafa;
 }
 
@@ -53,4 +51,119 @@ th {
 
 th {
   font-weight: 600;
+}
+
+.modal {
+  position: fixed;
+  inset: 0;
+  /* inset sets all 4 values (top right bottom left) much like how we set padding, margin etc., */
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease-in-out;
+  overflow: hidden;
+  z-index: 999;
+  padding: 40px 20px 20px;
+  opacity: 0;
+  pointer-events: none;
+  transform: scale(0.4);
+}
+
+.modal-content {
+  width: 694px;
+  height: 450px;
+  background-color: #282c34;
+  border-radius: 25px;
+  color: #fff;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+}
+
+@media only screen and (max-width: 1400px) {
+  .modal-content {
+    width: 600px;
+    height: 400px;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .modal-content {
+    width: 450px;
+    height: 350px;
+  }
+}
+
+.modal-enter-done {
+  opacity: 1;
+  pointer-events: auto;
+  transform: scale(1);
+}
+
+.modal-exit {
+  opacity: 0;
+  transform: scale(0.4);
+}
+
+
+.modal-objects {
+  text-align: center;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+
+.modal-header {
+  font-size: 1.2rem;
+  padding-top: 10px;
+  padding-bottom: 20px;
+}
+
+.modal-description {
+  font-size: .7rem;
+  padding-left: 5%;
+  padding-right: 5%;
+}
+
+@media only screen and (min-width: 1400px) {
+  .modal-links {
+    padding-left: 70%;
+    padding-top: 5%;
+  }
+}
+
+@media only screen and (max-width: 1400px) {
+  .modal-links {
+    padding-left: 70%;
+    padding-bottom: 5%;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .modal-links {
+    padding-left: 60%;
+    padding-bottom: 5%;
+  }
+}
+
+.modal-link-left:hover {
+  text-decoration: underline 0.15em rgb(255, 255, 255);
+  text-underline-offset: 0.3em;
+  transition: text-decoration-color 300ms, text-underline-offset 300ms;
+}
+
+.modal-link-right:hover {
+  text-decoration: underline 0.15em rgb(255, 255, 255);
+  text-underline-offset: 0.3em;
+  transition: text-decoration-color 300ms, text-underline-offset 300ms;
+}
+
+.modal-link-left {
+  padding: 20px;
+}
+
+a:hover {
+  cursor: pointer;
 }
