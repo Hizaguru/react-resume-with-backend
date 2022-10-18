@@ -135,21 +135,18 @@ export const portfolioItems: PortfolioItem[] = [
     description: "Blender/Unreal Engine/Unity",
     url: 'https://www.jukkis.org/gallery/',
     image: porfolioImage2,
-    modalTitle: "Taskhub2",
-    modalDescription: "One of my favorite free time hobbies is playing with Blender and different game engines, such as Unreal Engine or Unity. I build my projects around the tutorials from YouTube, Google and Udemy Academy which I've found to be very useful resources for feeding my interests in graphic design. The gallery itself is coded with ReactJS.",
+    modalTitle: "Graphic Designing",
+    modalDescription: "One of my favorite free time hobbies is playing with Blender and different game engines, such as Unreal Engine or Unity. I build my projects around the tutorials from YouTube, Google and Udemy Academy which I've found to be very useful resources for feeding my interests in graphic design. The gallery itself is built with ReactJS.",
     modalImage: designImg,
-
-
   },
   {
     title: 'Mr Whobuntu',
-    description: 'Mr Whobuntu is for those who seeks to find their real soulmate on this busy world...There is no heart for me like yours',
+    description: "Blender/Unreal Engine/Unity",
     url: 'https://github.com/Hizaguru/Mr-Whobuntu',
-    gitUrl: 'https://github.com/Hizaguru/Mr-Whobuntu',
     image: porfolioImage3,
-    modalTitle: "Taskhub3",
-    modalDescription: "lkjafljl"
-
+    modalTitle: "Mr Whobuntu",
+    modalDescription: "Mr Whobuntu is for those who seeks to find their real soulmate on this busy world...There is no heart for me like yours.",
+    modalImage: designImg,
   },
   {
     title: 'Fin3Ans',
