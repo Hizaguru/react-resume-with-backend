@@ -13,7 +13,6 @@ type Props = {
 const Modal: React.FC<Props> = (props: Props) => {
   const nodeRef = useRef(null);
 
-
   useEffect(() => {
     const closeOnEscape = (e: KeyboardEvent) => (e.key === "Escape" ? props.handleClose() : null);
     document.body.addEventListener("keydown", closeOnEscape);

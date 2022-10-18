@@ -1,6 +1,6 @@
 import React, { useLayoutEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
-
+React.useLayoutEffect = React.useEffect
 
 type Props = {
   wrapperId: string;
