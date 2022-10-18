@@ -57,7 +57,7 @@ export interface About {
 
 export interface AboutItem {
   label: string;
-  text: string;
+  text: string | number;
   Icon?: (props: SVGProps<SVGSVGElement>) => JSX.Element;
 }
 

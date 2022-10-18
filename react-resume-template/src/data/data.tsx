@@ -3,7 +3,7 @@ import {
   CalendarIcon, MapIcon,
   OfficeBuildingIcon
 } from '@heroicons/react/outline';
-
+import getAge from '../functions/calculateMyAge'
 import GithubIcon from '../components/Icon/GithubIcon';
 import LinkedInIcon from '../components/Icon/LinkedInIcon';
 
@@ -18,6 +18,8 @@ import mixingBoard from '../images/mixing-board.webp';
 import testimonialImage from '../images/testimonial.webp';
 import loveImage from '../images/love.webp';
 import richImage from '../images/rich.webp';
+import gameJamImage from '../images/Gamejam.webp';
+import musicVideoImage from '../images/music-video.webp';
 
 import {
   About,
@@ -89,7 +91,7 @@ export const aboutData: About = {
   and problem solving. `,
   aboutItems: [
     { label: 'Location', text: 'Helsinki', Icon: MapIcon },
-    { label: 'Age', text: '34', Icon: CalendarIcon },
+    { label: 'Age', text: getAge("05/25/1988"), Icon: CalendarIcon },
     { label: 'Study', text: 'Applied University of Metropolia', Icon: AcademicCapIcon },
     { label: 'Employment', text: 'Sanoma Media Finland', Icon: OfficeBuildingIcon },
   ],
@@ -157,24 +159,26 @@ export const portfolioItems: PortfolioItem[] = [
     url: 'https://github.com/Hizaguru/finance/blob/main/simplereturn/main.py',
     image: porfolioImage4,
     modalTitle: "F1n3Ans",
-    modalDescription: "Here's a tool for calculating the returns of your portfolio. Check the source code from the Details button.",
+    modalDescription: "A tool for calculating the returns of your portfolio. ",
     modalImage: richImage,
   },
   {
     title: 'Stealing Time',
-    description: '“Stealing Time” gameproject was created in Itcho Gamejam. My part in the project was level designing, audio designing, graphics desining and music.',
+    description: 'Unity',
     url: 'https://jonnboy91.itch.io/stealing-time',
     image: porfolioImage5,
-    modalTitle: "Taskhub5",
-    modalDescription: "jljalksjflk"
+    modalTitle: "Stealing Time",
+    modalDescription: '“Stealing Time” gameproject was created in Itcho Gamejam. My part in the project was level designing, audio designing, graphics desining and music.',
+    modalImage: gameJamImage,
   },
   {
     title: 'Endocrine - Red Glow (Official music video)',
-    description: 'I have a burning passion for music and audio worlds. My latest act in the music scene was Endocrine which released two singles.The latest, A.O.E was published in December 2020 and Red Glow year before that.',
+    description: 'Adobe Premiere',
     url: 'https://www.youtube.com/watch?v=IonL5jBIxbk',
     image: porfolioImage6,
     modalTitle: "Taskhub6",
-    modalDescription: "klajsflkj"
+    modalDescription: "I have a burning passion for music and audio worlds. My latest act in the music scene was Endocrine which released two singles.The latest, A.O.E was published in December 2020 and Red Glow year before that.",
+    modalImage: musicVideoImage,
   },
 
 ];
