@@ -79,9 +79,9 @@ const ItemOverlay: FC<{ item: PortfolioItem }> = memo(({ item: { title, descript
       ref={linkRef}
       target="_blank">
       <div className="relative h-full w-full p-4">
-        <div className="flex h-full w-full flex-col gap-y-2 overflow-y-scroll">
-          <h2 className="text-center font-bold text-white opacity-100">{title}</h2>
-          <p className="text-xs text-white opacity-100 sm:text-sm">{description}</p>
+        <div className="text-center flex h-full w-full flex-col gap-y-2 overflow-y-scroll">
+          <h2 className="text-4xl lg:text-2xl font-bold text-white opacity-100">{title}</h2>
+          <p className="text-4xl lg:text-2xl lg:py-24 py-36 text-white opacity-100">{description}</p>
         </div>
         <ExternalLinkIcon className="absolute bottom-1 right-1 h-4 w-4 shrink-0 text-white sm:bottom-2 sm:right-2" />
         <Modal handleClose={() => setIsOpen(false)} isOpen={isOpen}>

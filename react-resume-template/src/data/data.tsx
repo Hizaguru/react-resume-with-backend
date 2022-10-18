@@ -13,7 +13,7 @@ import porfolioImage3 from '../images/portfolio/portfolio-3.webp';
 import porfolioImage4 from '../images/portfolio/portfolio-4.webp';
 import porfolioImage5 from '../images/portfolio/portfolio-5.webp';
 import porfolioImage6 from '../images/portfolio/portfolio-6.webp';
-import taskManageImg from '../images/taskmanagerbig.png';
+import designImg from '../images/designing.webp';
 import mixingBoard from '../images/mixing-board.webp';
 import testimonialImage from '../images/testimonial.webp';
 
@@ -121,8 +121,8 @@ export const skills: Skills[] = [
  */
 export const portfolioItems: PortfolioItem[] = [
   {
-    title: 'Music (Ableton Live 10)',
-    description: 'I have a burning passion for music and audio worlds. My latest act in the music scene was Endocrine which released two singles.The latest, A.O.E was published in December 2020 and Red Glow year before that.',
+    title: 'Music/Mixing',
+    description: 'Ableton Live 10',
     url: 'https://timbaker.me',
     image: porfolioImage1,
     modalTitle: "Mixing",
@@ -131,13 +131,13 @@ export const portfolioItems: PortfolioItem[] = [
     gitUrl: "https://github.com/Hizaguru/img-carousel-with-backend/tree/implement-the-backend"
   },
   {
-    title: 'Graphics',
-    description: "One of my favorite free time hobbies is playing with Blender and different game engines, such as Unreal Engine or Unity. I build my projects around the tutorials from YouTube, Google and Udemy Academy which I've found to be very useful resources for feeding my interests in graphic design. The gallery itself is coded with ReactJS.",
+    title: 'Graphic Designing',
+    description: "Blender/Unreal Engine/Unity",
     url: 'https://www.jukkis.org/gallery/',
     image: porfolioImage2,
     modalTitle: "Taskhub2",
-    modalDescription: "jafklj",
-    modalImage: mixingBoard,
+    modalDescription: "One of my favorite free time hobbies is playing with Blender and different game engines, such as Unreal Engine or Unity. I build my projects around the tutorials from YouTube, Google and Udemy Academy which I've found to be very useful resources for feeding my interests in graphic design. The gallery itself is coded with ReactJS.",
+    modalImage: designImg,
 
 
   },
