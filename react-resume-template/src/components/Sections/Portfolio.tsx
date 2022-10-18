@@ -92,8 +92,8 @@ const ItemOverlay: FC<{ item: PortfolioItem }> = memo(({ item: { title, descript
               <p className='modal-description'>{modalDescription}</p>
             </div>
             <div className='modal-links'>
-              <a className='modal-link-left' href='https://www.google.fi'>Code</a>
-              <a className='modal-link-right' href='https:www.github.com'>Project</a>
+              <a className='modal-link-left' onClick={() => window.open("http://www.google.fi")} href='https://www.google.fi' target="_blank">Code</a>
+              <a className='modal-link-right' onClick={() => window.open("http://www.google.fi")} href='https://www.google.fi' target="_blank">Project</a>
             </div>
           </div>
         </Modal>
