@@ -16,6 +16,8 @@ import porfolioImage6 from '../images/portfolio/portfolio-6.webp';
 import designImg from '../images/designing.webp';
 import mixingBoard from '../images/mixing-board.webp';
 import testimonialImage from '../images/testimonial.webp';
+import loveImage from '../images/love.webp';
+import richImage from '../images/rich.webp';
 
 import {
   About,
@@ -123,7 +125,7 @@ export const portfolioItems: PortfolioItem[] = [
   {
     title: 'Music/Mixing',
     description: 'Ableton Live 10',
-    url: 'https://timbaker.me',
+    url: 'https://jukkis.org/index2.html',
     image: porfolioImage1,
     modalTitle: "Mixing",
     modalDescription: "I've got a burning passion for music and audio worlds. I've been playing in dozens of bands with different genres. My latest act in the music scene was Endocrine which released two singles. The latest, A.O.E was published in December 2020 and Red Glow year before that. Now I'm recording demos for my one man band Stomak.",
@@ -132,29 +134,31 @@ export const portfolioItems: PortfolioItem[] = [
   },
   {
     title: 'Graphic Designing',
-    description: "Blender/Unreal Engine/Unity",
+    description: "Blender | Unreal Engine | Unity",
     url: 'https://www.jukkis.org/gallery/',
     image: porfolioImage2,
     modalTitle: "Graphic Designing",
     modalDescription: "One of my favorite free time hobbies is playing with Blender and different game engines, such as Unreal Engine or Unity. I build my projects around the tutorials from YouTube, Google and Udemy Academy which I've found to be very useful resources for feeding my interests in graphic design. The gallery itself is built with ReactJS.",
     modalImage: designImg,
+    gitUrl: "https://github.com/Hizaguru/img-carousel-with-backend/tree/implement-the-backend"
   },
   {
     title: 'Mr Whobuntu',
-    description: "Blender/Unreal Engine/Unity",
+    description: "Python",
     url: 'https://github.com/Hizaguru/Mr-Whobuntu',
     image: porfolioImage3,
     modalTitle: "Mr Whobuntu",
-    modalDescription: "Mr Whobuntu is for those who seeks to find their real soulmate on this busy world...There is no heart for me like yours.",
-    modalImage: designImg,
+    modalDescription: "Mr Whobuntu is for those who seeks to find their real soulmate in this busy world... The project never got finished, but it was a good start to get known into automation and machine learning. 'There is no heart for me like yours'",
+    modalImage: loveImage,
   },
   {
     title: 'Fin3Ans',
-    description: 'Here is a tool for calculating the returns of your portfolio.',
+    description: 'Python',
     url: 'https://github.com/Hizaguru/finance/blob/main/simplereturn/main.py',
     image: porfolioImage4,
-    modalTitle: "Taskhub4",
-    modalDescription: "kljalfjskl"
+    modalTitle: "F1n3Ans",
+    modalDescription: "Here's a tool for calculating the returns of your portfolio. Check the source code from the Details button.",
+    modalImage: richImage,
   },
   {
     title: 'Stealing Time',
