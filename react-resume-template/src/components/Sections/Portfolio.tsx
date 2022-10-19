@@ -6,7 +6,7 @@ import { client } from '../../client';
 
 import { isMobile } from '../../config';
 import { portfolioItems, SectionId } from '../../data/data';
-import { PortfolioItem } from '../../data/dataDef';
+import { PortfolioItem, SanityImage } from '../../data/dataDef';
 import useDetectOutsideClick from '../../hooks/useDetectOutsideClick';
 import Section from '../Layout/Section';
 import Modal from '../Modal/Modal';
@@ -15,6 +15,18 @@ import Modal from '../Modal/Modal';
 
 
 const Portfolio: FC = memo(() => {
+
+  
+  const [portfolioItems2, setProfileImg2] = useState<SanityImage[]>([])
+  useEffect(() => {
+    const query = '*[_type == "portfolioItems"]';
+    client.fetch(query).then((data) => {
+      setProfileImg2(data);
+    });
+  }, []);
+  console.log('portfolioItems', portfolioItems2);
+
+
   return (
     <Section className="bg-neutral-800" sectionId={SectionId.Portfolio}>
       <div className="flex flex-col gap-y-8">
@@ -50,14 +62,7 @@ const ItemOverlay: FC<{ item: PortfolioItem }> = memo(({ item: { title, descript
   const linkRef = useRef<HTMLAnchorElement>(null);
 
 
-  const [portfolioItems, setProfileImg] = useState([])
-  useEffect(() => {
-    const query = '*[_type == "portfolioItems"]';
-    client.fetch(query).then((data) => {
-      setProfileImg(data);
-    });
-  }, []);
-  console.log('portfolioItems', portfolioItems);
+
 
   useEffect(() => {
     // Avoid hydration styling errors by setting mobile in useEffect
