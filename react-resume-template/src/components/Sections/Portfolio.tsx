@@ -2,6 +2,7 @@ import { ExternalLinkIcon } from '@heroicons/react/outline';
 import classNames from 'classnames';
 import Image from 'next/image';
 import { FC, memo, MouseEvent, useCallback, useEffect, useRef, useState } from 'react';
+import { client } from '../../client';
 
 import { isMobile } from '../../config';
 import { portfolioItems, SectionId } from '../../data/data';
@@ -48,6 +49,15 @@ const ItemOverlay: FC<{ item: PortfolioItem }> = memo(({ item: { title, descript
   const [isOpen, setIsOpen] = useState(false)
   const linkRef = useRef<HTMLAnchorElement>(null);
 
+
+  const [portfolioItems, setProfileImg] = useState([])
+  useEffect(() => {
+    const query = '*[_type == "portfolioItems"]';
+    client.fetch(query).then((data) => {
+      setProfileImg(data);
+    });
+  }, []);
+  console.log('portfolioItems', portfolioItems);
 
   useEffect(() => {
     // Avoid hydration styling errors by setting mobile in useEffect
