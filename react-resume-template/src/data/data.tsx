@@ -13,6 +13,7 @@ import porfolioImage3 from '../images/portfolio/portfolio-3.webp';
 import porfolioImage4 from '../images/portfolio/portfolio-4.webp';
 import porfolioImage5 from '../images/portfolio/portfolio-5.webp';
 import porfolioImage6 from '../images/portfolio/portfolio-6.webp';
+import porfolioImage7 from '../images/portfolio/portfolio-7.webp';
 import designImg from '../images/designing.webp';
 import mixingBoard from '../images/mixing-board.webp';
 import testimonialImage from '../images/testimonial.webp';
@@ -20,6 +21,7 @@ import loveImage from '../images/love.webp';
 import richImage from '../images/rich.webp';
 import gameJamImage from '../images/Gamejam.webp';
 import musicVideoImage from '../images/music-video.webp';
+import flaskImage from '../images/flask.webp';
 
 import {
   About,
@@ -125,6 +127,15 @@ export const skills: Skills[] = [
  */
 export const portfolioItems: PortfolioItem[] = [
   {
+    title: 'PyEnd',
+    description: 'Python Flask',
+    url: 'https://github.com/Hizaguru/PyEnd',
+    image: porfolioImage7,
+    modalTitle: "PyEnd",
+    modalDescription: "Here's the backend for handling the images on your webapp. Just install the MySql database, follow the instructions and fire it up.",
+    modalImage: flaskImage,
+  },
+  {
     title: 'Music/Mixing',
     description: 'Ableton Live 10',
     url: 'https://jukkis.org/index2.html',
@@ -140,7 +151,7 @@ export const portfolioItems: PortfolioItem[] = [
     url: 'https://www.jukkis.org/gallery/',
     image: porfolioImage2,
     modalTitle: "Graphic Designing",
-    modalDescription: "One of my favorite free time hobbies is playing with Blender and different game engines, such as Unreal Engine or Unity. I build my projects around the tutorials from YouTube, Google and Udemy Academy which I've found to be very useful resources for feeding my interests in graphic design. The gallery itself is built with ReactJS.",
+    modalDescription: "One of my favorite free time hobbies is playing with Blender and different game engines, such as Unreal Engine or Unity. The gallery itself is built with ReactJS.",
     modalImage: designImg,
     gitUrl: "https://github.com/Hizaguru/img-carousel-with-backend/tree/implement-the-backend"
   },
@@ -150,7 +161,7 @@ export const portfolioItems: PortfolioItem[] = [
     url: 'https://github.com/Hizaguru/Mr-Whobuntu',
     image: porfolioImage3,
     modalTitle: "Mr Whobuntu",
-    modalDescription: "Mr Whobuntu is for those who seeks to find their real soulmate in this busy world... The project never got finished, but it was a good start to get known into automation and machine learning. 'There is no heart for me like yours'",
+    modalDescription: "Mr Whobuntu is for those who seeks to find their real soulmate in this busy world... The project never got finished, but it was a good start to get known into automation and machine learning.",
     modalImage: loveImage,
   },
   {
@@ -172,12 +183,12 @@ export const portfolioItems: PortfolioItem[] = [
     modalImage: gameJamImage,
   },
   {
-    title: 'Endocrine - Red Glow (Official music video)',
+    title: 'Endocrine - Red Glow (Music video)',
     description: 'Adobe Premiere',
     url: 'https://www.youtube.com/watch?v=IonL5jBIxbk',
     image: porfolioImage6,
-    modalTitle: "Taskhub6",
-    modalDescription: "I have a burning passion for music and audio worlds. My latest act in the music scene was Endocrine which released two singles.The latest, A.O.E was published in December 2020 and Red Glow year before that.",
+    modalTitle: "Endocrine - Red Glow (Official music video)",
+    modalDescription: "One of my favourite music projects of all time. Endocrine released two singles and one music video. I was primarily responsible for directing, producing, songwriting, mixing and editing.",
     modalImage: musicVideoImage,
   },
 
