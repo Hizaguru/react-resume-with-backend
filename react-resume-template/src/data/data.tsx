@@ -65,7 +65,7 @@ export const heroData: Hero = {
   description: (
     <>
       <p className="prose-sm text-stone-200 sm:prose-base lg:prose-lg">
-        I'm a Finland based <strong className="text-stone-100">Full Stack Software Engineer, audio </strong>and
+        A Finland based <strong className="text-stone-100">Full Stack Software Engineer, audio </strong>and
         <strong className="text-stone-100"> graphic designer</strong> creating all kinds of projects that come to mind.
       </p>
     </>
@@ -130,7 +130,7 @@ export const portfolioItems: PortfolioItem[] = [
     url: 'https://jukkis.org/index2.html',
     image: porfolioImage1,
     modalTitle: "Mixing",
-    modalDescription: "I've got a burning passion for music and audio worlds. I've been playing in dozens of bands with different genres. My latest act in the music scene was Endocrine which released two singles. The latest, A.O.E was published in December 2020 and Red Glow year before that. Now I'm recording demos for my one man band Stomak.",
+    modalDescription: "I've got a burning passion for music and audio worlds. I've been playing in dozens of bands with different genres. My latest act in the music scene was Endocrine which released two singles.",
     modalImage: mixingBoard,
     gitUrl: "https://github.com/Hizaguru/img-carousel-with-backend/tree/implement-the-backend"
   },
@@ -159,7 +159,7 @@ export const portfolioItems: PortfolioItem[] = [
     url: 'https://github.com/Hizaguru/finance/blob/main/simplereturn/main.py',
     image: porfolioImage4,
     modalTitle: "F1n3Ans",
-    modalDescription: "A tool for calculating the returns of your portfolio. ",
+    modalDescription: "A tool for calculating the returns of your portfolio. The project was made with Python's Numby, Pandas and Scumby libraries and is still in progress.",
     modalImage: richImage,
   },
   {
@@ -168,7 +168,7 @@ export const portfolioItems: PortfolioItem[] = [
     url: 'https://jonnboy91.itch.io/stealing-time',
     image: porfolioImage5,
     modalTitle: "Stealing Time",
-    modalDescription: '“Stealing Time” gameproject was created in Itcho Gamejam. My part in the project was level designing, audio designing, graphics desining and music.',
+    modalDescription: '“Stealing Time” gameproject was created in Itcho Gamejam. My part in the project was level designing, audio designing, graphics desining and music. You can try the game from the button below. Enjoy!',
     modalImage: gameJamImage,
   },
   {

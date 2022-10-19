@@ -101,7 +101,6 @@ const ItemOverlay: FC<{ item: PortfolioItem }> = memo(({ item: { title, descript
                 <a className='modal-link-right' onClick={() => window.open(url)} href={url} target="_blank">Project</a>
               </div>
             )}
-
           </div>
         </Modal>
 
