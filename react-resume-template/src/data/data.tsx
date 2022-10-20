@@ -3,7 +3,7 @@ import {
   CalendarIcon, MapIcon,
   OfficeBuildingIcon
 } from '@heroicons/react/outline';
-
+import getAge from '../functions/calculateMyAge'
 import GithubIcon from '../components/Icon/GithubIcon';
 import LinkedInIcon from '../components/Icon/LinkedInIcon';
 
@@ -13,9 +13,15 @@ import porfolioImage3 from '../images/portfolio/portfolio-3.webp';
 import porfolioImage4 from '../images/portfolio/portfolio-4.webp';
 import porfolioImage5 from '../images/portfolio/portfolio-5.webp';
 import porfolioImage6 from '../images/portfolio/portfolio-6.webp';
+import porfolioImage7 from '../images/portfolio/portfolio-7.webp';
 import designImg from '../images/designing.webp';
 import mixingBoard from '../images/mixing-board.webp';
 import testimonialImage from '../images/testimonial.webp';
+import loveImage from '../images/love.webp';
+import richImage from '../images/rich.webp';
+import gameJamImage from '../images/Gamejam.webp';
+import musicVideoImage from '../images/music-video.webp';
+import flaskImage from '../images/flask.webp';
 
 import {
   About,
@@ -61,7 +67,7 @@ export const heroData: Hero = {
   description: (
     <>
       <p className="prose-sm text-stone-200 sm:prose-base lg:prose-lg">
-        I'm a Finland based <strong className="text-stone-100">Full Stack Software Engineer, audio </strong>and
+        A Finland based <strong className="text-stone-100">Full Stack Software Engineer, audio </strong>and
         <strong className="text-stone-100"> graphic designer</strong> creating all kinds of projects that come to mind.
       </p>
     </>
@@ -87,7 +93,7 @@ export const aboutData: About = {
   and problem solving. `,
   aboutItems: [
     { label: 'Location', text: 'Helsinki', Icon: MapIcon },
-    { label: 'Age', text: '34', Icon: CalendarIcon },
+    { label: 'Age', text: getAge("05/25/1988"), Icon: CalendarIcon },
     { label: 'Study', text: 'Applied University of Metropolia', Icon: AcademicCapIcon },
     { label: 'Employment', text: 'Sanoma Media Finland', Icon: OfficeBuildingIcon },
   ],
@@ -120,58 +126,71 @@ export const skills: Skills[] = [
  * Portfolio section
  */
 export const portfolioItems: PortfolioItem[] = [
-  {
-    title: 'Music/Mixing',
-    description: 'Ableton Live 10',
-    url: 'https://timbaker.me',
-    image: porfolioImage1,
-    modalTitle: "Mixing",
-    modalDescription: "I've got a burning passion for music and audio worlds. I've been playing in dozens of bands with different genres. My latest act in the music scene was Endocrine which released two singles. The latest, A.O.E was published in December 2020 and Red Glow year before that. Now I'm recording demos for my one man band Stomak.",
-    modalImage: mixingBoard,
-    gitUrl: "https://github.com/Hizaguru/img-carousel-with-backend/tree/implement-the-backend"
-  },
-  {
-    title: 'Graphic Designing',
-    description: "Blender/Unreal Engine/Unity",
-    url: 'https://www.jukkis.org/gallery/',
-    image: porfolioImage2,
-    modalTitle: "Graphic Designing",
-    modalDescription: "One of my favorite free time hobbies is playing with Blender and different game engines, such as Unreal Engine or Unity. I build my projects around the tutorials from YouTube, Google and Udemy Academy which I've found to be very useful resources for feeding my interests in graphic design. The gallery itself is built with ReactJS.",
-    modalImage: designImg,
-  },
-  {
-    title: 'Mr Whobuntu',
-    description: "Blender/Unreal Engine/Unity",
-    url: 'https://github.com/Hizaguru/Mr-Whobuntu',
-    image: porfolioImage3,
-    modalTitle: "Mr Whobuntu",
-    modalDescription: "Mr Whobuntu is for those who seeks to find their real soulmate on this busy world...There is no heart for me like yours.",
-    modalImage: designImg,
-  },
-  {
-    title: 'Fin3Ans',
-    description: 'Here is a tool for calculating the returns of your portfolio.',
-    url: 'https://github.com/Hizaguru/finance/blob/main/simplereturn/main.py',
-    image: porfolioImage4,
-    modalTitle: "Taskhub4",
-    modalDescription: "kljalfjskl"
-  },
-  {
-    title: 'Stealing Time',
-    description: '“Stealing Time” gameproject was created in Itcho Gamejam. My part in the project was level designing, audio designing, graphics desining and music.',
-    url: 'https://jonnboy91.itch.io/stealing-time',
-    image: porfolioImage5,
-    modalTitle: "Taskhub5",
-    modalDescription: "jljalksjflk"
-  },
-  {
-    title: 'Endocrine - Red Glow (Official music video)',
-    description: 'I have a burning passion for music and audio worlds. My latest act in the music scene was Endocrine which released two singles.The latest, A.O.E was published in December 2020 and Red Glow year before that.',
-    url: 'https://www.youtube.com/watch?v=IonL5jBIxbk',
-    image: porfolioImage6,
-    modalTitle: "Taskhub6",
-    modalDescription: "klajsflkj"
-  },
+  // {
+  //   title: 'PyEnd',
+  //   description: 'Python Flask',
+  //   url: 'https://github.com/Hizaguru/PyEnd',
+  //   imgUrl: porfolioImage7,
+  //   modalTitle: "PyEnd",
+  //   modalDescription: "Here's the backend for handling the images on your webapp. Just install the MySql database, follow the instructions and fire it up.",
+  //   modalImgUrl: flaskImage,
+  // },
+  // {
+  //   title: 'Music/Mixing',
+  //   description: 'Ableton Live 10',
+  //   url: 'https://jukkis.org/index2.html',
+  //   imgUrl: porfolioImage1,
+  //   modalTitle: "Mixing",
+  //   modalDescription: "I've got a burning passion for music and audio worlds. I've been playing in dozens of bands with different genres. My latest act in the music scene was Endocrine which released two singles.",
+  //   modalImgUrl: mixingBoard,
+  //   gitUrl: "https://github.com/Hizaguru/img-carousel-with-backend/tree/implement-the-backend"
+  // },
+  // {
+  //   title: 'Graphic Designing',
+  //   description: "Blender | Unreal Engine | Unity",
+  //   url: 'https://www.jukkis.org/gallery/',
+  //   imgUrl: porfolioImage2,
+  //   modalTitle: "Graphic Designing",
+  //   modalDescription: "One of my favorite free time hobbies is playing with Blender and different game engines, such as Unreal Engine or Unity. The gallery itself is built with ReactJS.",
+  //   modalImgUrl: designImg,
+  //   gitUrl: "https://github.com/Hizaguru/img-carousel-with-backend/tree/implement-the-backend"
+  // },
+  // {
+  //   title: 'Mr Whobuntu',
+  //   description: "Python",
+  //   url: 'https://github.com/Hizaguru/Mr-Whobuntu',
+  //   imgUrl: porfolioImage3,
+  //   modalTitle: "Mr Whobuntu",
+  //   modalDescription: "Mr Whobuntu is for those who seeks to find their real soulmate in this busy world... The project never got finished, but it was a good start to get known into automation and machine learning.",
+  //   modalImgUrl: loveImage,
+  // },
+  // {
+  //   title: 'Fin3Ans',
+  //   description: 'Python',
+  //   url: 'https://github.com/Hizaguru/finance/blob/main/simplereturn/main.py',
+  //   imgUrl: porfolioImage4,
+  //   modalTitle: "F1n3Ans",
+  //   modalDescription: "A tool for calculating the returns of your portfolio. The project was made with Python's Numby, Pandas and Scumby libraries and is still in progress.",
+  //   modalImgUrl: richImage,
+  // },
+  // {
+  //   title: 'Stealing Time',
+  //   description: 'Unity',
+  //   url: 'https://jonnboy91.itch.io/stealing-time',
+  //   imgUrl: porfolioImage5,
+  //   modalTitle: "Stealing Time",
+  //   modalDescription: '“Stealing Time” gameproject was created in Itcho Gamejam. My part in the project was level designing, audio designing, graphics desining and music. You can try the game from the button below. Enjoy!',
+  //   modalImgUrl: gameJamImage,
+  // },
+  // {
+  //   title: 'Endocrine - Red Glow (Music video)',
+  //   description: 'Adobe Premiere',
+  //   url: 'https://www.youtube.com/watch?v=IonL5jBIxbk',
+  //   imgUrl: porfolioImage6,
+  //   modalTitle: "Endocrine - Red Glow (Official music video)",
+  //   modalDescription: "One of my favourite music projects of all time. Endocrine released two singles and one music video. I was primarily responsible for directing, producing, songwriting, mixing and editing.",
+  //   modalImgUrl: musicVideoImage,
+  // },
 
 ];
 

@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from 'react'
 import ReactPortal from './ReactPortal';
 import { CSSTransition } from "react-transition-group";
 
+
 type Props = {
   isOpen: boolean;
   children: React.ReactNode;

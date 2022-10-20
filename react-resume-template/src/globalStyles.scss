@@ -13,6 +13,7 @@
     -ms-overflow-style: none;
     /* IE and Edge */
     scrollbar-width: none;
+
     /* Firefox */
   }
 }
@@ -22,6 +23,12 @@
     height: -webkit-fill-available;
   }
 }
+
+body {
+  overflow-x: hidden;
+}
+
+.nextJsImage {}
 
 /* Global styles */
 * {
@@ -62,7 +69,7 @@ th {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  transition: all 0.3s ease-in-out;
+  transition: all 2s ease-in-out;
   overflow: hidden;
   z-index: 999;
   padding: 40px 20px 20px;
@@ -72,8 +79,8 @@ th {
 }
 
 .modal-content {
-  width: 694px;
-  height: 450px;
+  width: 600px;
+  height: 400px;
   background-color: #282c34;
   border-radius: 25px;
   color: #fff;
@@ -122,6 +129,7 @@ th {
 }
 
 .modal-description {
+
   font-size: .7rem;
   padding-left: 5%;
   padding-right: 5%;
@@ -137,7 +145,7 @@ th {
 @media only screen and (max-width: 1400px) {
   .modal-links {
     padding-left: 70%;
-    padding-bottom: 5%;
+    padding-top: 5%;
   }
 }
 
@@ -145,7 +153,7 @@ th {
   .modal-links {
     padding-left: 60%;
     padding-top: 5px;
-    padding-bottom: 5%;
+    padding-top: 5%;
   }
 }
 
@@ -167,4 +175,9 @@ th {
 
 a:hover {
   cursor: pointer;
+}
+
+.nextJsImage {
+
+  overflow-y: scroll
 }

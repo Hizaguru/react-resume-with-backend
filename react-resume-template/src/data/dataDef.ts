@@ -57,7 +57,7 @@ export interface About {
 
 export interface AboutItem {
   label: string;
-  text: string;
+  text: string | number;
   Icon?: (props: SVGProps<SVGSVGElement>) => JSX.Element;
 }
 
@@ -93,10 +93,10 @@ export interface PortfolioItem {
   description: string;
   url?: string;
   gitUrl?: string;
-  image: string | StaticImageData;
+  imgUrl: string | StaticImageData | SanityImage[];
   modalTitle: string;
   modalDescription?: string;
-  modalImage?: string | StaticImageData;
+  modalImgUrl?: string | StaticImageData | SanityImage[];
 }
 
 export interface Skills {

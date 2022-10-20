@@ -24,10 +24,6 @@ function createWrapperAndAppendToBody(wrapperId: string) {
   return wrapperElement;
 }
 
-
-
-
-
 const ReactPortal: React.FC<Props> = (props: Props) => {
   const [wrapperElement, setWrapperElement] = useState(null);
   const { wrapperIds } = defaultProp;
