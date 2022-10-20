@@ -33,9 +33,7 @@ const Portfolio: FC = memo(() => {
         <div className="w-full sm:columns-1 md:columns-2 lg:columns-2">
           {portfolioItems.map((item, index) => {
             const { title, imgUrl } = item;
-            console.log(title, imgUrl, item)
             return (
-
               <div className="pb-6" key={`${title}-${index}`}>
                 <div
                   className={classNames(
