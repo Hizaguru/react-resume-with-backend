@@ -28,7 +28,6 @@ body {
   overflow-x: hidden;
 }
 
-.nextJsImage {}
 
 /* Global styles */
 * {
@@ -69,7 +68,8 @@ th {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  transition: all 2s ease-in-out;
+  transition: all 2s ease-in;
+  transition: all .5s ease-out;
   overflow: hidden;
   z-index: 999;
   padding: 40px 20px 20px;
