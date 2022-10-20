@@ -3,33 +3,18 @@ import {
   CalendarIcon, MapIcon,
   OfficeBuildingIcon
 } from '@heroicons/react/outline';
-import getAge from '../functions/calculateMyAge'
 import GithubIcon from '../components/Icon/GithubIcon';
 import LinkedInIcon from '../components/Icon/LinkedInIcon';
+import getAge from '../functions/calculateMyAge';
 
-import porfolioImage1 from '../images/portfolio/portfolio-1.webp';
-import porfolioImage2 from '../images/portfolio/portfolio-2.webp';
-import porfolioImage3 from '../images/portfolio/portfolio-3.webp';
-import porfolioImage4 from '../images/portfolio/portfolio-4.webp';
-import porfolioImage5 from '../images/portfolio/portfolio-5.webp';
-import porfolioImage6 from '../images/portfolio/portfolio-6.webp';
-import porfolioImage7 from '../images/portfolio/portfolio-7.webp';
-import designImg from '../images/designing.webp';
-import mixingBoard from '../images/mixing-board.webp';
 import testimonialImage from '../images/testimonial.webp';
-import loveImage from '../images/love.webp';
-import richImage from '../images/rich.webp';
-import gameJamImage from '../images/Gamejam.webp';
-import musicVideoImage from '../images/music-video.webp';
-import flaskImage from '../images/flask.webp';
 
 import {
   About,
   ContactSection,
   ContactType,
   Hero,
-  HomepageMeta,
-  PortfolioItem, Skills,
+  HomepageMeta, Skills,
   Social,
   TestimonialSection
 } from './dataDef';
@@ -125,74 +110,74 @@ export const skills: Skills[] = [
 /**
  * Portfolio section
  */
-export const portfolioItems: PortfolioItem[] = [
-  {
-    title: 'PyEnd',
-    description: 'Python Flask',
-    url: 'https://github.com/Hizaguru/PyEnd',
-    imgUrl: porfolioImage7,
-    modalTitle: "PyEnd",
-    modalDescription: "Here's the backend for handling the images on your webapp. Just install the MySql database, follow the instructions and fire it up.",
-    modalImgUrl: flaskImage,
-  },
-  {
-    title: 'Music/Mixing',
-    description: 'Ableton Live 10',
-    url: 'https://jukkis.org/index2.html',
-    imgUrl: porfolioImage1,
-    modalTitle: "Mixing",
-    modalDescription: "I've got a burning passion for music and audio worlds. I've been playing in dozens of bands with different genres. My latest act in the music scene was Endocrine which released two singles.",
-    modalImgUrl: mixingBoard,
-    gitUrl: "https://github.com/Hizaguru/img-carousel-with-backend/tree/implement-the-backend"
-  },
-  {
-    title: 'Graphic Designing',
-    description: "Blender | Unreal Engine | Unity",
-    url: 'https://www.jukkis.org/gallery/',
-    imgUrl: porfolioImage2,
-    modalTitle: "Graphic Designing",
-    modalDescription: "One of my favorite free time hobbies is playing with Blender and different game engines, such as Unreal Engine or Unity. The gallery itself is built with ReactJS.",
-    modalImgUrl: designImg,
-    gitUrl: "https://github.com/Hizaguru/img-carousel-with-backend/tree/implement-the-backend"
-  },
-  {
-    title: 'Mr Whobuntu',
-    description: "Python",
-    url: 'https://github.com/Hizaguru/Mr-Whobuntu',
-    imgUrl: porfolioImage3,
-    modalTitle: "Mr Whobuntu",
-    modalDescription: "Mr Whobuntu is for those who seeks to find their real soulmate in this busy world... The project never got finished, but it was a good start to get known into automation and machine learning.",
-    modalImgUrl: loveImage,
-  },
-  {
-    title: 'Fin3Ans',
-    description: 'Python',
-    url: 'https://github.com/Hizaguru/finance/blob/main/simplereturn/main.py',
-    imgUrl: porfolioImage4,
-    modalTitle: "F1n3Ans",
-    modalDescription: "A tool for calculating the returns of your portfolio. The project was made with Python's Numby, Pandas and Scumby libraries and is still in progress.",
-    modalImgUrl: richImage,
-  },
-  {
-    title: 'Stealing Time',
-    description: 'Unity',
-    url: 'https://jonnboy91.itch.io/stealing-time',
-    imgUrl: porfolioImage5,
-    modalTitle: "Stealing Time",
-    modalDescription: '“Stealing Time” gameproject was created in Itcho Gamejam. My part in the project was level designing, audio designing, graphics desining and music. You can try the game from the button below. Enjoy!',
-    modalImgUrl: gameJamImage,
-  },
-  {
-    title: 'Endocrine - Red Glow (Music video)',
-    description: 'Adobe Premiere',
-    url: 'https://www.youtube.com/watch?v=IonL5jBIxbk',
-    imgUrl: porfolioImage6,
-    modalTitle: "Endocrine - Red Glow (Official music video)",
-    modalDescription: "One of my favourite music projects of all time. Endocrine released two singles and one music video. I was primarily responsible for directing, producing, songwriting, mixing and editing.",
-    modalImgUrl: musicVideoImage,
-  },
+// export const portfolioItems: PortfolioItem[] = [
+//   {
+//     title: 'PyEnd',
+//     description: 'Python Flask',
+//     url: 'https://github.com/Hizaguru/PyEnd',
+//     imgUrl: porfolioImage7,
+//     modalTitle: "PyEnd",
+//     modalDescription: "Here's the backend for handling the images on your webapp. Just install the MySql database, follow the instructions and fire it up.",
+//     modalImgUrl: flaskImage,
+//   },
+//   {
+//     title: 'Music/Mixing',
+//     description: 'Ableton Live 10',
+//     url: 'https://jukkis.org/index2.html',
+//     imgUrl: porfolioImage1,
+//     modalTitle: "Mixing",
+//     modalDescription: "I've got a burning passion for music and audio worlds. I've been playing in dozens of bands with different genres. My latest act in the music scene was Endocrine which released two singles.",
+//     modalImgUrl: mixingBoard,
+//     gitUrl: "https://github.com/Hizaguru/img-carousel-with-backend/tree/implement-the-backend"
+//   },
+//   {
+//     title: 'Graphic Designing',
+//     description: "Blender | Unreal Engine | Unity",
+//     url: 'https://www.jukkis.org/gallery/',
+//     imgUrl: porfolioImage2,
+//     modalTitle: "Graphic Designing",
+//     modalDescription: "One of my favorite free time hobbies is playing with Blender and different game engines, such as Unreal Engine or Unity. The gallery itself is built with ReactJS.",
+//     modalImgUrl: designImg,
+//     gitUrl: "https://github.com/Hizaguru/img-carousel-with-backend/tree/implement-the-backend"
+//   },
+//   {
+//     title: 'Mr Whobuntu',
+//     description: "Python",
+//     url: 'https://github.com/Hizaguru/Mr-Whobuntu',
+//     imgUrl: porfolioImage3,
+//     modalTitle: "Mr Whobuntu",
+//     modalDescription: "Mr Whobuntu is for those who seeks to find their real soulmate in this busy world... The project never got finished, but it was a good start to get known into automation and machine learning.",
+//     modalImgUrl: loveImage,
+//   },
+//   {
+//     title: 'Fin3Ans',
+//     description: 'Python',
+//     url: 'https://github.com/Hizaguru/finance/blob/main/simplereturn/main.py',
+//     imgUrl: porfolioImage4,
+//     modalTitle: "F1n3Ans",
+//     modalDescription: "A tool for calculating the returns of your portfolio. The project was made with Python's Numby, Pandas and Scumby libraries and is still in progress.",
+//     modalImgUrl: richImage,
+//   },
+//   {
+//     title: 'Stealing Time',
+//     description: 'Unity',
+//     url: 'https://jonnboy91.itch.io/stealing-time',
+//     imgUrl: porfolioImage5,
+//     modalTitle: "Stealing Time",
+//     modalDescription: '“Stealing Time” gameproject was created in Itcho Gamejam. My part in the project was level designing, audio designing, graphics desining and music. You can try the game from the button below. Enjoy!',
+//     modalImgUrl: gameJamImage,
+//   },
+//   {
+//     title: 'Endocrine - Red Glow (Music video)',
+//     description: 'Adobe Premiere',
+//     url: 'https://www.youtube.com/watch?v=IonL5jBIxbk',
+//     imgUrl: porfolioImage6,
+//     modalTitle: "Endocrine - Red Glow (Official music video)",
+//     modalDescription: "One of my favourite music projects of all time. Endocrine released two singles and one music video. I was primarily responsible for directing, producing, songwriting, mixing and editing.",
+//     modalImgUrl: musicVideoImage,
+//   },
 
-];
+// ];
 
 /**
  * Testimonial section
