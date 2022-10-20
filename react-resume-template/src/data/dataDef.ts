@@ -93,10 +93,10 @@ export interface PortfolioItem {
   description: string;
   url?: string;
   gitUrl?: string;
-  image: string | StaticImageData;
+  imgUrl: string | StaticImageData | SanityImage[];
   modalTitle: string;
   modalDescription?: string;
-  modalImage?: string | StaticImageData;
+  modalImgUrl?: string | StaticImageData | SanityImage[];
 }
 
 export interface Skills {
