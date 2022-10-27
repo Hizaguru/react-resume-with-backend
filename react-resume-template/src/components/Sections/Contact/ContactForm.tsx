@@ -1,10 +1,15 @@
 import { FC, memo, useCallback, useMemo, useState } from 'react';
+import emailJs from 'emailjs-com';
 
 interface FormData {
   name: string;
   email: string;
   message: string;
 }
+
+const SERVICE_ID = process.env.NEXT_PUBLIC_SERVICE_ID;
+const TEMPLATE_ID = process.env.NEXT_PUBLIC_TEMPLATE_ID;
+const USER_ID = process.env.NEXT_PUBLIC_USER_ID;
 
 const ContactForm: FC = memo(() => {
   const defaultData = useMemo(
@@ -17,7 +22,8 @@ const ContactForm: FC = memo(() => {
   );
 
   const [data, setData] = useState<FormData>(defaultData);
-
+  const [isFormSubmitted, setIsFormSubmitted] = useState(false);
+  const [error, setError] = useState(false);
   const onChange = useCallback(
     <T extends HTMLInputElement | HTMLTextAreaElement>(event: React.ChangeEvent<T>): void => {
       const { name, value } = event.target;
@@ -32,9 +38,17 @@ const ContactForm: FC = memo(() => {
   const handleSendMessage = useCallback(
     async (event: React.FormEvent<HTMLFormElement>) => {
       event.preventDefault();
-      /**
-       * This is a good starting point to wire up your form submission logic
-       * */
+    emailJs.sendForm(SERVICE_ID, TEMPLATE_ID, event.currentTarget, USER_ID).then(
+      (result:any) => {
+        console.log(result.text);
+      },
+      (error:any) => {
+        setError(true);
+        console.log(error.text);
+      }
+    );
+    event.currentTarget.reset();
+    setIsFormSubmitted(true);
     },
     [data],
   );
