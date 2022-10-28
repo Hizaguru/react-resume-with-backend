@@ -35,16 +35,19 @@ const ContactForm: FC = memo(() => {
     [data],
   );
 
+  console.log('error', error);
+
   const handleSendMessage = useCallback(
     async (event: React.FormEvent<HTMLFormElement>) => {
       event.preventDefault();
-    emailJs.sendForm(SERVICE_ID, TEMPLATE_ID, event.currentTarget, USER_ID).then(
+    emailJs.sendForm(SERVICE_ID!, TEMPLATE_ID!, event.currentTarget, USER_ID).then(
       (result:any) => {
         console.log(result.text);
       },
       (error:any) => {
         setError(true);
         console.log(error.text);
+        
       }
     );
     event.currentTarget.reset();
@@ -83,6 +86,9 @@ const ContactForm: FC = memo(() => {
         type="submit">
         Send Message
       </button>
+      {isFormSubmitted ??(
+        <p>Hey!</p>
+      )}
     </form>
   );
 });
