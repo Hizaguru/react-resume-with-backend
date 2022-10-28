@@ -1,15 +1,15 @@
-import { FC, memo, useCallback, useMemo, useState } from 'react';
-import emailJs from 'emailjs-com';
-
+import { FC, memo, useCallback, useMemo, useState } from 'react'
+import emailJs from 'emailjs-com'
+import {contact} from '../../../data/data'
 interface FormData {
   name: string;
   email: string;
   message: string;
 }
 
-const SERVICE_ID = process.env.NEXT_PUBLIC_SERVICE_ID;
-const TEMPLATE_ID = process.env.NEXT_PUBLIC_TEMPLATE_ID;
-const USER_ID = process.env.NEXT_PUBLIC_USER_ID;
+const SERVICE_ID = process.env.NEXT_PUBLIC_SERVICE_ID
+const TEMPLATE_ID = process.env.NEXT_PUBLIC_TEMPLATE_ID
+const USER_ID = process.env.NEXT_PUBLIC_USER_ID
 
 const ContactForm: FC = memo(() => {
   const defaultData = useMemo(
@@ -19,45 +19,42 @@ const ContactForm: FC = memo(() => {
       message: '',
     }),
     [],
-  );
-
-  const [data, setData] = useState<FormData>(defaultData);
-  const [isFormSubmitted, setIsFormSubmitted] = useState(false);
-  const [error, setError] = useState(false);
+  )
+  const { alert } = contact
+  const [data, setData] = useState<FormData>(defaultData)
+  const [isFormSubmitted, setIsFormSubmitted] = useState(false)
+  const [error, setError] = useState(false)
   const onChange = useCallback(
     <T extends HTMLInputElement | HTMLTextAreaElement>(event: React.ChangeEvent<T>): void => {
-      const { name, value } = event.target;
+      const { name, value } = event.target
 
-      const fieldData: Partial<FormData> = { [name]: value };
+      const fieldData: Partial<FormData> = { [name]: value }
 
-      setData({ ...data, ...fieldData });
+      setData({ ...data, ...fieldData })
     },
     [data],
-  );
-
-  console.log('error', error);
-
+  )
   const handleSendMessage = useCallback(
     async (event: React.FormEvent<HTMLFormElement>) => {
-      event.preventDefault();
+      event.preventDefault()
     emailJs.sendForm(SERVICE_ID!, TEMPLATE_ID!, event.currentTarget, USER_ID).then(
       (result:any) => {
-        console.log(result.text);
+        console.log(result.text)
       },
       (error:any) => {
-        setError(true);
-        console.log(error.text);
-        
+        setError(true)
+        console.log(error.text)
+
       }
-    );
-    event.currentTarget.reset();
-    setIsFormSubmitted(true);
+    )
+    event.currentTarget.reset()
+    setIsFormSubmitted(true)
     },
     [data],
-  );
+  )
 
   const inputClasses =
-    'bg-neutral-700 border-0 focus:border-0 focus:outline-none focus:ring-1 focus:ring-orange-600 rounded-md placeholder:text-neutral-400 placeholder:text-sm text-neutral-200 text-sm';
+    'bg-neutral-700 border-0 focus:border-0 focus:outline-none focus:ring-1 focus:ring-orange-600 rounded-md placeholder:text-neutral-400 placeholder:text-sm text-neutral-200 text-sm'
 
   return (
     <form className="grid min-h-[320px] grid-cols-1 gap-y-4" method="POST" onSubmit={handleSendMessage}>
@@ -86,12 +83,20 @@ const ContactForm: FC = memo(() => {
         type="submit">
         Send Message
       </button>
-      {isFormSubmitted ??(
-        <p>Hey!</p>
+      {error ?? 
+      (
+        <div id="message-success">
+          <i className="fa fa-check" />
+          {alert}
+          </div>
+
+      )}
+      {isFormSubmitted ?? (
+        <p>Jo</p>
       )}
     </form>
-  );
-});
+  )
+})
 
-ContactForm.displayName = 'ContactForm';
-export default ContactForm;
+ContactForm.displayName = 'ContactForm'
+export default ContactForm

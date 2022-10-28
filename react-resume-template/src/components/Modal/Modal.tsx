@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react'
-import ReactPortal from './ReactPortal';
-import { CSSTransition } from "react-transition-group";
+import ReactPortal from './ReactPortal'
+import { CSSTransition } from 'react-transition-group'
 
 
 type Props = {
@@ -12,17 +12,17 @@ type Props = {
 
 
 const Modal: React.FC<Props> = (props: Props) => {
-  const nodeRef = useRef(null);
+  const nodeRef = useRef(null)
 
   useEffect(() => {
-    const closeOnEscape = (e: KeyboardEvent) => (e.key === "Escape" ? props.handleClose() : null);
-    document.body.addEventListener("keydown", closeOnEscape);
+    const closeOnEscape = (e: KeyboardEvent) => (e.key === 'Escape' ? props.handleClose() : null)
+    document.body.addEventListener('keydown', closeOnEscape)
 
     return () => {
-      document.body.removeEventListener("keydown", closeOnEscape);
+      document.body.removeEventListener('keydown', closeOnEscape)
 
-    };
-  }, [props.handleClose]);
+    }
+  }, [props.handleClose])
 
 
   return (
@@ -45,8 +45,8 @@ const Modal: React.FC<Props> = (props: Props) => {
         </CSSTransition>
       </div>
     </ReactPortal>
-  );
+  )
 
 
 }
-export default Modal;
+export default Modal

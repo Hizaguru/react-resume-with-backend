@@ -1,4 +1,4 @@
-import { FC, memo, PropsWithChildren } from 'react';
+import { FC, memo, PropsWithChildren } from 'react'
 
 const ResumeSection: FC<PropsWithChildren<{ title: string }>> = memo(({ title, children }) => {
   return (
@@ -11,8 +11,8 @@ const ResumeSection: FC<PropsWithChildren<{ title: string }>> = memo(({ title, c
       </div>
       <div className="col-span-1 flex flex-col md:col-span-3">{children}</div>
     </div>
-  );
-});
+  )
+})
 
-ResumeSection.displayName = 'ResumeSection';
-export default ResumeSection;
+ResumeSection.displayName = 'ResumeSection'
+export default ResumeSection

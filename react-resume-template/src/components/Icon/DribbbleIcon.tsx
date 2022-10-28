@@ -1,6 +1,6 @@
-import {FC, memo} from 'react';
+import {FC, memo} from 'react'
 
-import Icon, {IconProps} from './Icon';
+import Icon, {IconProps} from './Icon'
 
 const DribbbleIcon: FC<IconProps> = memo(props => (
   <Icon {...props}>
@@ -33,6 +33,6 @@ const DribbbleIcon: FC<IconProps> = memo(props => (
       fill="currentColor"
     />
   </Icon>
-));
+))
 
-export default DribbbleIcon;
+export default DribbbleIcon

@@ -1,15 +1,15 @@
-import { ExternalLinkIcon } from '@heroicons/react/outline';
-import classNames from 'classnames';
-import Image from 'next/image';
-import { FC, memo, MouseEvent, useCallback, useEffect, useRef, useState } from 'react';
-import { client, urlFor } from '../../client';
+import { ExternalLinkIcon } from '@heroicons/react/outline'
+import classNames from 'classnames'
+import Image from 'next/image'
+import { FC, memo, MouseEvent, useCallback, useEffect, useRef, useState } from 'react'
+import { client, urlFor } from '../../client'
 
-import { isMobile } from '../../config';
-import { SectionId } from '../../data/data';
-import { PortfolioItem } from '../../data/dataDef';
-import useDetectOutsideClick from '../../hooks/useDetectOutsideClick';
-import Section from '../Layout/Section';
-import Modal from '../Modal/Modal';
+import { isMobile } from '../../config'
+import { SectionId } from '../../data/data'
+import { PortfolioItem } from '../../data/dataDef'
+import useDetectOutsideClick from '../../hooks/useDetectOutsideClick'
+import Section from '../Layout/Section'
+import Modal from '../Modal/Modal'
 
 
 
@@ -19,11 +19,11 @@ const Portfolio: FC = memo(() => {
 
   const [portfolioItems, setPortfolioItems] = useState<PortfolioItem[]>([])
   useEffect(() => {
-    const query = '*[_type == "portfolioItems"]';
+    const query = '*[_type == "portfolioItems"]'
     client.fetch(query).then((data) => {
-      setPortfolioItems(data);
-    });
-  }, []);
+      setPortfolioItems(data)
+    })
+  }, [])
 
 
   return (
@@ -32,34 +32,34 @@ const Portfolio: FC = memo(() => {
         <h2 className="self-center text-xl font-bold text-white">Check out some of my work</h2>
         <div className="w-full sm:columns-1 md:columns-2 lg:columns-2">
           {portfolioItems.map((item, index) => {
-            const { title, imgUrl } = item;
+            const { title, imgUrl } = item
             return (
               <div className="pb-6" key={`${title}-${index}`}>
                 <div
                   className={classNames(
                     'relative h-max w-full overflow-hidden rounded-lg shadow-lg shadow-black/30 lg:shadow-xl',
                   )}>
-                  <Image alt={title} layout="responsive" width={"600px"} height={"600px"} src={urlFor(imgUrl).url()} />
+                  <Image alt={title} layout="responsive" width={'600px'} height={'600px'} src={urlFor(imgUrl).url()} />
                   <ItemOverlay item={portfolioItems[index]} />
                 </div>
               </div>
 
-            );
+            )
           })}
         </div>
       </div>
     </Section>
-  );
-});
+  )
+})
 
-Portfolio.displayName = 'Portfolio';
-export default Portfolio;
+Portfolio.displayName = 'Portfolio'
+export default Portfolio
 
 const ItemOverlay: FC<{ item: PortfolioItem }> = memo(({ item: { title, description, modalTitle, modalDescription, modalImgUrl: modalImage, gitUrl, url } }) => {
-  const [mobile, setMobile] = useState(false);
-  const [showOverlay, setShowOverlay] = useState(false);
+  const [mobile, setMobile] = useState(false)
+  const [showOverlay, setShowOverlay] = useState(false)
   const [isOpen, setIsOpen] = useState(false)
-  const linkRef = useRef<HTMLAnchorElement>(null);
+  const linkRef = useRef<HTMLAnchorElement>(null)
 
 
 
@@ -67,20 +67,20 @@ const ItemOverlay: FC<{ item: PortfolioItem }> = memo(({ item: { title, descript
   useEffect(() => {
     // Avoid hydration styling errors by setting mobile in useEffect
     if (isMobile) {
-      setMobile(true);
+      setMobile(true)
     }
-  }, []);
-  useDetectOutsideClick(linkRef, () => setShowOverlay(false));
+  }, [])
+  useDetectOutsideClick(linkRef, () => setShowOverlay(false))
 
   const handleItemClick = useCallback(
     (event: MouseEvent<HTMLElement>) => {
-      event.preventDefault();
+      event.preventDefault()
       if (!isOpen) {
         setIsOpen(true)
       }
     },
     [isOpen],
-  );
+  )
 
   return (
     <a
@@ -121,5 +121,5 @@ const ItemOverlay: FC<{ item: PortfolioItem }> = memo(({ item: { title, descript
 
       </div >
     </a >
-  );
-});
+  )
+})

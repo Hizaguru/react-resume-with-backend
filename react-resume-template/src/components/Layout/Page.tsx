@@ -1,12 +1,12 @@
-import { NextPage } from 'next';
-import Head from 'next/head';
-import { useRouter } from 'next/router';
-import { memo } from 'react';
+import { NextPage } from 'next'
+import Head from 'next/head'
+import { useRouter } from 'next/router'
+import { memo } from 'react'
 
-import { HomepageMeta } from '../../data/dataDef';
+import { HomepageMeta } from '../../data/dataDef'
 
 const Page: NextPage<HomepageMeta> = memo(({ children, title, description }) => {
-  const { asPath: pathname } = useRouter();
+  const { asPath: pathname } = useRouter()
 
   return (
     <>
@@ -17,7 +17,7 @@ const Page: NextPage<HomepageMeta> = memo(({ children, title, description }) => 
         {/* several domains list the same content, make sure google knows we mean this one. */}
         <link href={`https://reactresume.com${pathname}`} key="canonical" rel="canonical" />
         <link rel="shortcut icon" href="/images/tabs.png" />
-        <link href="/site.webmanifest" rel="manifest" key={"siteManifest"} />
+        <link href="/site.webmanifest" rel="manifest" key={'siteManifest'} />
 
         {/* Open Graph : https://ogp.me/ */}
         <meta content={title} property="og:title" />
@@ -30,8 +30,8 @@ const Page: NextPage<HomepageMeta> = memo(({ children, title, description }) => 
       </Head>
       {children}
     </>
-  );
-});
+  )
+})
 
-Page.displayName = 'Page';
-export default Page;
+Page.displayName = 'Page'
+export default Page

@@ -1,28 +1,28 @@
-import { ChevronDownIcon } from '@heroicons/react/outline';
-import classNames from 'classnames';
-import Image from 'next/image';
-import { FC, memo, useEffect, useState } from 'react';
+import { ChevronDownIcon } from '@heroicons/react/outline'
+import classNames from 'classnames'
+import Image from 'next/image'
+import { FC, memo, useEffect, useState } from 'react'
 
-import { heroData, SectionId } from '../../data/data';
-import { client, urlFor } from '../../client';
-import Section from '../Layout/Section';
-import Socials from '../Socials';
+import { heroData, SectionId } from '../../data/data'
+import { client, urlFor } from '../../client'
+import Section from '../Layout/Section'
+import Socials from '../Socials'
 
-import { SanityImage } from '../../data/dataDef';
+import { SanityImage } from '../../data/dataDef'
 
 
 
 
 const Hero: FC = memo(() => {
-  const { name, description, actions } = heroData;
+  const { name, description, actions } = heroData
 
   const [header, setHeader] = useState<SanityImage[]>([])
   useEffect(() => {
-    const query = '*[_type == "header"]';
+    const query = '*[_type == "header"]'
     client.fetch(query).then((data) => {
-      setHeader(data);
-    });
-  }, []);
+      setHeader(data)
+    })
+  }, [])
 
   return (
     <Section noPadding sectionId={SectionId.Hero}>
@@ -72,8 +72,8 @@ const Hero: FC = memo(() => {
         </div>
       </div>
     </Section>
-  );
-});
+  )
+})
 
-Hero.displayName = 'Hero';
-export default Hero;
+Hero.displayName = 'Hero'
+export default Hero

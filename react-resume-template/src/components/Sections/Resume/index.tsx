@@ -1,9 +1,9 @@
-import { FC, memo } from 'react';
+import { FC, memo } from 'react'
 
 
-import { SectionId, skills } from '../../../data/data';
-import Section from '../../Layout/Section';
-import ResumeSection from './ResumeSection';
+import { SectionId, skills } from '../../../data/data'
+import Section from '../../Layout/Section'
+import ResumeSection from './ResumeSection'
 
 
 const Resume: FC = memo(() => {
@@ -21,14 +21,14 @@ const Resume: FC = memo(() => {
                     <em>{item.skillname}</em>
                     <hr className=' md:w-1/2 lg:w-3/5 mt-6' />
                   </li>
-                );
+                )
               })}
           </ul>
         </ResumeSection>
       </div >
     </Section >
-  );
-});
+  )
+})
 
-Resume.displayName = 'Resume';
-export default Resume;
+Resume.displayName = 'Resume'
+export default Resume
