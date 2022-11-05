@@ -2,26 +2,26 @@ import {
   AcademicCapIcon,
   CalendarIcon, MapIcon,
   OfficeBuildingIcon
-} from '@heroicons/react/outline'
-import getAge from '../functions/calculateMyAge'
-import GithubIcon from '../components/Icon/GithubIcon'
-import LinkedInIcon from '../components/Icon/LinkedInIcon'
+} from '@heroicons/react/outline';
+import getAge from '../functions/calculateMyAge';
+import GithubIcon from '../components/Icon/GithubIcon';
+import LinkedInIcon from '../components/Icon/LinkedInIcon';
 
-import porfolioImage1 from '../images/portfolio/portfolio-1.webp'
-import porfolioImage2 from '../images/portfolio/portfolio-2.webp'
-import porfolioImage3 from '../images/portfolio/portfolio-3.webp'
-import porfolioImage4 from '../images/portfolio/portfolio-4.webp'
-import porfolioImage5 from '../images/portfolio/portfolio-5.webp'
-import porfolioImage6 from '../images/portfolio/portfolio-6.webp'
-import porfolioImage7 from '../images/portfolio/portfolio-7.webp'
-import designImg from '../images/designing.webp'
-import mixingBoard from '../images/mixing-board.webp'
-import testimonialImage from '../images/testimonial.webp'
-import loveImage from '../images/love.webp'
-import richImage from '../images/rich.webp'
-import gameJamImage from '../images/Gamejam.webp'
-import musicVideoImage from '../images/music-video.webp'
-import flaskImage from '../images/flask.webp'
+import porfolioImage1 from '../images/portfolio/portfolio-1.webp';
+import porfolioImage2 from '../images/portfolio/portfolio-2.webp';
+import porfolioImage3 from '../images/portfolio/portfolio-3.webp';
+import porfolioImage4 from '../images/portfolio/portfolio-4.webp';
+import porfolioImage5 from '../images/portfolio/portfolio-5.webp';
+import porfolioImage6 from '../images/portfolio/portfolio-6.webp';
+import porfolioImage7 from '../images/portfolio/portfolio-7.webp';
+import designImg from '../images/designing.webp';
+import mixingBoard from '../images/mixing-board.webp';
+import testimonialImage from '../images/testimonial.webp';
+import loveImage from '../images/love.webp';
+import richImage from '../images/rich.webp';
+import gameJamImage from '../images/Gamejam.webp';
+import musicVideoImage from '../images/music-video.webp';
+import flaskImage from '../images/flask.webp';
 
 import {
   About,
@@ -32,7 +32,7 @@ import {
   PortfolioItem, Skills,
   Social,
   TestimonialSection
-} from './dataDef'
+} from './dataDef';
 
 /**
  * Page meta data
@@ -40,7 +40,7 @@ import {
 export const homePageMeta: HomepageMeta = {
   title: 'Jukkis\' portfolio',
   description: 'Portfolio build with React typescript',
-}
+};
 
 /**
  * Section definition
@@ -54,7 +54,7 @@ export const SectionId = {
   Skills: 'skills',
   Stats: 'stats',
   Testimonials: 'testimonials',
-} as const
+} as const;
 
 export type SectionId = typeof SectionId[keyof typeof SectionId];
 
@@ -79,7 +79,7 @@ export const heroData: Hero = {
       primary: false,
     },
   ],
-}
+};
 
 /**
  * About section
@@ -97,7 +97,7 @@ export const aboutData: About = {
     { label: 'Study', text: 'Applied University of Metropolia', Icon: AcademicCapIcon },
     { label: 'Employment', text: 'Sanoma Media Finland', Icon: OfficeBuildingIcon },
   ],
-}
+};
 
 /**
  * Skills section
@@ -119,7 +119,7 @@ export const skills: Skills[] = [
   {
     skillname: 'Graphic Designing (Blender)',
   },
-]
+];
 
 
 /**
@@ -192,7 +192,7 @@ export const portfolioItems: PortfolioItem[] = [
     modalImgUrl: musicVideoImage,
   },
 
-]
+];
 
 /**
  * Testimonial section
@@ -220,7 +220,7 @@ export const testimonial: TestimonialSection = {
       text: 'Where is the ‘any’ key?'
     },
   ],
-}
+};
 
 /**
  * Contact section
@@ -247,7 +247,7 @@ export const contact: ContactSection = {
       href: 'https://github.com/Hizaguru',
     },
   ],
-}
+};
 
 /**
  * Social items
@@ -255,4 +255,4 @@ export const contact: ContactSection = {
 export const socialLinks: Social[] = [
   { label: 'Github', Icon: GithubIcon, href: 'https://github.com/Hizaguru' },
   { label: 'LinkedIn', Icon: LinkedInIcon, href: 'https://www.linkedin.com/in/jukka-pekka-lappalainen-0365001a7/' },
-]
+];

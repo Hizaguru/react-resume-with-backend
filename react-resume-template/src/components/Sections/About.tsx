@@ -1,22 +1,22 @@
-import classNames from 'classnames'
-import Image from 'next/image'
-import { FC, memo, useEffect, useState } from 'react'
-import { client, urlFor } from '../../client'
+import classNames from 'classnames';
+import Image from 'next/image';
+import { FC, memo, useEffect, useState } from 'react';
+import { client, urlFor } from '../../client';
 
-import { aboutData, SectionId } from '../../data/data'
-import { SanityImage } from '../../data/dataDef'
-import Section from '../Layout/Section'
+import { aboutData, SectionId } from '../../data/data';
+import { SanityImage } from '../../data/dataDef';
+import Section from '../Layout/Section';
 
 const About: FC = memo(() => {
-  const { description, aboutItems } = aboutData
+  const { description, aboutItems } = aboutData;
 
-  const [profileImg, setProfileImg] = useState<SanityImage[]>([])
+  const [profileImg, setProfileImg] = useState<SanityImage[]>([]);
   useEffect(() => {
-    const query = '*[_type == "profile"]'
+    const query = '*[_type == "profile"]';
     client.fetch(query).then((data) => {
-      setProfileImg(data)
-    })
-  }, [])
+      setProfileImg(data);
+    });
+  }, []);
 
   return (
     <Section className="bg-neutral-800" sectionId={SectionId.About}>
@@ -44,11 +44,11 @@ const About: FC = memo(() => {
               </ul>
             </div>
           </div>
-        )
+        );
       })}
     </Section>
-  )
-})
+  );
+});
 
-About.displayName = 'About'
-export default About
+About.displayName = 'About';
+export default About;

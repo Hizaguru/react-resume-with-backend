@@ -1,72 +1,72 @@
-import classNames from 'classnames'
-import { FC, memo, UIEventHandler, useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import classNames from 'classnames';
+import { FC, memo, UIEventHandler, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 
-import { isApple, isMobile } from '../../config'
-import { SectionId, testimonial } from '../../data/data'
-import { Testimonial } from '../../data/dataDef'
-import useInterval from '../../hooks/useInterval'
-import useWindow from '../../hooks/useWindow'
-import QuoteIcon from '../Icon/QuoteIcon'
-import Section from '../Layout/Section'
+import { isApple, isMobile } from '../../config';
+import { SectionId, testimonial } from '../../data/data';
+import { Testimonial } from '../../data/dataDef';
+import useInterval from '../../hooks/useInterval';
+import useWindow from '../../hooks/useWindow';
+import QuoteIcon from '../Icon/QuoteIcon';
+import Section from '../Layout/Section';
 
 const Testimonials: FC = memo(() => {
-  const [activeIndex, setActiveIndex] = useState<number>(0)
-  const [scrollValue, setScrollValue] = useState(0)
-  const [parallaxEnabled, setParallaxEnabled] = useState(false)
+  const [activeIndex, setActiveIndex] = useState<number>(0);
+  const [scrollValue, setScrollValue] = useState(0);
+  const [parallaxEnabled, setParallaxEnabled] = useState(false);
 
-  const itemWidth = useRef(0)
-  const scrollContainer = useRef<HTMLDivElement>(null)
+  const itemWidth = useRef(0);
+  const scrollContainer = useRef<HTMLDivElement>(null);
 
-  const { width } = useWindow()
+  const { width } = useWindow();
 
-  const { imageSrc, testimonials } = testimonial
+  const { imageSrc, testimonials } = testimonial;
 
   const resolveSrc = useMemo(() => {
-    if (!imageSrc) return undefined
-    return typeof imageSrc === 'string' ? imageSrc : imageSrc.src
-  }, [imageSrc])
+    if (!imageSrc) return undefined;
+    return typeof imageSrc === 'string' ? imageSrc : imageSrc.src;
+  }, [imageSrc]);
 
   // Mobile iOS doesn't allow background-fixed elements
   useEffect(() => {
-    setParallaxEnabled(!(isMobile && isApple))
-  }, [])
+    setParallaxEnabled(!(isMobile && isApple));
+  }, []);
 
   useEffect(() => {
-    itemWidth.current = scrollContainer.current ? scrollContainer.current.offsetWidth : 0
-  }, [width])
+    itemWidth.current = scrollContainer.current ? scrollContainer.current.offsetWidth : 0;
+  }, [width]);
 
   useEffect(() => {
     if (scrollContainer.current) {
-      const newIndex = Math.round(scrollContainer.current.scrollLeft / itemWidth.current)
-      setActiveIndex(newIndex)
+      const newIndex = Math.round(scrollContainer.current.scrollLeft / itemWidth.current);
+      setActiveIndex(newIndex);
     }
-  }, [itemWidth, scrollValue])
+  }, [itemWidth, scrollValue]);
 
   const setTestimonial = useCallback(
     (index: number) => () => {
       if (scrollContainer !== null && scrollContainer.current !== null) {
-        scrollContainer.current.scrollLeft = itemWidth.current * index
+        scrollContainer.current.scrollLeft = itemWidth.current * index;
       }
     },
     [],
-  )
+  );
   const next = useCallback(() => {
     if (activeIndex + 1 === testimonials.length) {
-      setTestimonial(0)()
+      setTestimonial(0)();
     } else {
-      setTestimonial(activeIndex + 1)()
+      setTestimonial(activeIndex + 1)();
     }
-  }, [activeIndex, setTestimonial, testimonials.length])
+  }, [activeIndex, setTestimonial, testimonials.length]);
 
   const handleScroll = useCallback<UIEventHandler<HTMLDivElement>>(event => {
-    setScrollValue(event.currentTarget.scrollLeft)
-  }, [])
+    setScrollValue(event.currentTarget.scrollLeft);
+  }, []);
 
-  useInterval(next, 10000)
+  useInterval(next, 10000);
 
   // If no testimonials, don't render the section
   if (!testimonials.length) {
-    return null
+    return null;
   }
 
   return (
@@ -85,15 +85,15 @@ const Testimonials: FC = memo(() => {
               onScroll={handleScroll}
               ref={scrollContainer}>
               {testimonials.map((testimonial, index) => {
-                const isActive = index === activeIndex
+                const isActive = index === activeIndex;
                 return (
                   <Testimonial isActive={isActive} key={`${testimonial.name}-${index}`} testimonial={testimonial} />
-                )
+                );
               })}
             </div>
             <div className="flex gap-x-4">
               {[...Array(testimonials.length)].map((_, index) => {
-                const isActive = index === activeIndex
+                const isActive = index === activeIndex;
                 return (
                   <button
                     className={classNames(
@@ -103,15 +103,15 @@ const Testimonials: FC = memo(() => {
                     disabled={isActive}
                     key={`select-button-${index}`}
                     onClick={setTestimonial(index)}></button>
-                )
+                );
               })}
             </div>
           </div>
         </div>
       </div>
     </Section>
-  )
-})
+  );
+});
 
 const Testimonial: FC<{ testimonial: Testimonial; isActive: boolean }> = memo(
   ({ testimonial: { text, name }, isActive }) => (
@@ -127,6 +127,6 @@ const Testimonial: FC<{ testimonial: Testimonial; isActive: boolean }> = memo(
       </div>
     </div>
   ),
-)
+);
 
-export default Testimonials
+export default Testimonials;
