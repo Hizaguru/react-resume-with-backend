@@ -26,7 +26,6 @@ const Modal: React.FC<Props> = (props: Props) => {
 
 
   return (
-
     <ReactPortal wrapperId='react-portal-container'>
       <div className='modals-background'>
         <CSSTransition
@@ -46,7 +45,5 @@ const Modal: React.FC<Props> = (props: Props) => {
       </div>
     </ReactPortal>
   )
-
-
 }
 export default Modal
