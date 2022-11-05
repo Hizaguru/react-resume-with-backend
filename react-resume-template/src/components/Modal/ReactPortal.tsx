@@ -1,6 +1,6 @@
 import React, { useLayoutEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
-React.useLayoutEffect = React.useEffect
+React.useLayoutEffect = React.useEffect;
 
 type Props = {
   wrapperId: string;
@@ -14,12 +14,12 @@ interface WrapperProperty {
 }
 
 const defaultProp: WrapperProperty = {
-  wrapperIds: "react-portal-wrapper",
-}
+  wrapperIds: 'react-portal-wrapper',
+};
 
 function createWrapperAndAppendToBody(wrapperId: string) {
-  const wrapperElement = document.createElement("div");
-  wrapperElement.setAttribute("id", wrapperId);
+  const wrapperElement = document.createElement('div');
+  wrapperElement.setAttribute('id', wrapperId);
   document.body.appendChild(wrapperElement);
   return wrapperElement;
 }
@@ -51,5 +51,5 @@ const ReactPortal: React.FC<Props> = (props: Props) => {
 
   return createPortal(props.children, wrapperElement);
 
-}
+};
 export default ReactPortal;

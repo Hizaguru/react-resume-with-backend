@@ -3,7 +3,6 @@
 @tailwind utilities;
 
 @layer utilities {
-
   /* Chrome, Safari and Opera */
   .no-scrollbar::-webkit-scrollbar {
     display: none;
@@ -27,7 +26,6 @@
 body {
   overflow-x: hidden;
 }
-
 
 /* Global styles */
 * {
@@ -69,7 +67,7 @@ th {
   align-items: center;
   justify-content: center;
   transition: all 2s ease-in;
-  transition: all .6s ease-out;
+  transition: all 0.6s ease-out;
   overflow: hidden;
   z-index: 999;
   padding: 40px 20px 20px;
@@ -121,13 +119,11 @@ th {
   transform: scale(0.4);
 }
 
-
 .modal-objects {
   text-align: center;
   border-radius: 10px;
   overflow: hidden;
 }
-
 
 .modal-header {
   font-size: 1.2rem;
@@ -136,8 +132,7 @@ th {
 }
 
 .modal-description {
-
-  font-size: .7rem;
+  font-size: 0.7rem;
   padding-left: 5%;
   padding-right: 5%;
 }
@@ -185,6 +180,56 @@ a:hover {
 }
 
 .nextJsImage {
+  overflow-y: scroll;
+}
 
-  overflow-y: scroll
+//Animation loading spinner
+@keyframes spinner {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.loading-spinner {
+  width: 50px;
+  height: 50px;
+  border: 10px solid #f3f3f3;
+  border-top: 10px solid #383636;
+  /* Black */
+  border-radius: 50%;
+  animation: spinner 1.5s linear infinite;
+}
+
+//Success and allert messages
+#message-warning,
+#message-success {
+  border-radius: 15px;
+  background: #0f0f0f;
+  padding: 24px 24px;
+  margin-bottom: 36px;
+  width: 65%;
+  margin-left: 26%;
+}
+
+#message-warning {
+  color: #d72828;
+}
+
+#message-success {
+  color: #11abb0;
+}
+
+#message-warning i,
+#message-success i {
+  margin-right: 10px;
+}
+
+#message-warning,
+#message-success {
+  width: 100%;
+  margin-left: 0;
 }

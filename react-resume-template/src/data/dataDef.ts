@@ -132,6 +132,8 @@ export interface Testimonial {
 export interface ContactSection {
   headerText?: string;
   items: ContactItem[];
+  alert?: string;
+  messageSent?: string;
 }
 
 export const ContactType = {

@@ -7,6 +7,6 @@ const getAge = (dateString: string) => {
         age--;
     }
     return age;
-}
+};
 
-export default getAge
+export default getAge;

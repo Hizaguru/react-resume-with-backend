@@ -55,6 +55,6 @@ export const useNavObserver = (selectors: string, handler: (section: SectionId |
     return () => {
       observer.disconnect();
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+
   }, []); // Dependency here is the post content.
 };

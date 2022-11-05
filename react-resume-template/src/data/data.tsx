@@ -3,7 +3,7 @@ import {
   CalendarIcon, MapIcon,
   OfficeBuildingIcon
 } from '@heroicons/react/outline';
-import getAge from '../functions/calculateMyAge'
+import getAge from '../functions/calculateMyAge';
 import GithubIcon from '../components/Icon/GithubIcon';
 import LinkedInIcon from '../components/Icon/LinkedInIcon';
 
@@ -38,8 +38,8 @@ import {
  * Page meta data
  */
 export const homePageMeta: HomepageMeta = {
-  title: "Jukkis' portfolio",
-  description: "Portfolio build with React typescript",
+  title: 'Jukkis\' portfolio',
+  description: 'Portfolio build with React typescript',
 };
 
 /**
@@ -63,7 +63,7 @@ export type SectionId = typeof SectionId[keyof typeof SectionId];
  * Hero section
  */
 export const heroData: Hero = {
-  name: `I'm Jukka - Pekka Lappalainen.`,
+  name: 'I\'m Jukka - Pekka Lappalainen.',
   description: (
     <>
       <p className="prose-sm text-stone-200 sm:prose-base lg:prose-lg">
@@ -93,7 +93,7 @@ export const aboutData: About = {
   and problem solving. `,
   aboutItems: [
     { label: 'Location', text: 'Helsinki', Icon: MapIcon },
-    { label: 'Age', text: getAge("05/25/1988"), Icon: CalendarIcon },
+    { label: 'Age', text: getAge('05/25/1988'), Icon: CalendarIcon },
     { label: 'Study', text: 'Applied University of Metropolia', Icon: AcademicCapIcon },
     { label: 'Employment', text: 'Sanoma Media Finland', Icon: OfficeBuildingIcon },
   ],
@@ -108,18 +108,18 @@ export const skills: Skills[] = [
     skillname: "Coding (React, Typescript, Python)",
   },
   {
-    skillname: "Game Development (Unity, Unreal Engine)",
+    skillname: 'Game Development (Unity, Unreal Engine)',
   },
   {
-    skillname: "Operating Systems (Ubuntu, Kali, Windows)",
+    skillname: 'Operating Systems (Ubuntu, Kali, Windows)',
   },
   {
-    skillname: "Audio Designing & Mixing (Ableton live 10)",
+    skillname: 'Audio Designing & Mixing (Ableton live 10)',
   },
   {
-    skillname: "Graphic Designing (Blender)",
+    skillname: 'Graphic Designing (Blender)',
   },
-]
+];
 
 
 /**
@@ -131,8 +131,8 @@ export const portfolioItems: PortfolioItem[] = [
     description: 'Python Flask',
     url: 'https://github.com/Hizaguru/PyEnd',
     imgUrl: porfolioImage7,
-    modalTitle: "PyEnd",
-    modalDescription: "Here's the backend for handling the images on your webapp. Just install the MySql database, follow the instructions and fire it up.",
+    modalTitle: 'PyEnd',
+    modalDescription: 'Here\'s the backend for handling the images on your webapp. Just install the MySql database, follow the instructions and fire it up.',
     modalImgUrl: flaskImage,
   },
   {
@@ -140,28 +140,28 @@ export const portfolioItems: PortfolioItem[] = [
     description: 'Ableton Live 10',
     url: 'https://jukkis.org/index2.html',
     imgUrl: porfolioImage1,
-    modalTitle: "Mixing",
-    modalDescription: "I've got a burning passion for music and audio worlds. I've been playing in dozens of bands with different genres. My latest act in the music scene was Endocrine which released two singles.",
+    modalTitle: 'Mixing',
+    modalDescription: 'I\'ve got a burning passion for music and audio worlds. I\'ve been playing in dozens of bands with different genres. My latest act in the music scene was Endocrine which released two singles.',
     modalImgUrl: mixingBoard,
-    gitUrl: "https://github.com/Hizaguru/img-carousel-with-backend/tree/implement-the-backend"
+    gitUrl: 'https://github.com/Hizaguru/img-carousel-with-backend/tree/implement-the-backend'
   },
   {
     title: 'Graphic Designing',
-    description: "Blender | Unreal Engine | Unity",
+    description: 'Blender | Unreal Engine | Unity',
     url: 'https://www.jukkis.org/gallery/',
     imgUrl: porfolioImage2,
-    modalTitle: "Graphic Designing",
-    modalDescription: "One of my favorite free time hobbies is playing with Blender and different game engines, such as Unreal Engine or Unity. The gallery itself is built with ReactJS.",
+    modalTitle: 'Graphic Designing',
+    modalDescription: 'One of my favorite free time hobbies is playing with Blender and different game engines, such as Unreal Engine or Unity. The gallery itself is built with ReactJS.',
     modalImgUrl: designImg,
-    gitUrl: "https://github.com/Hizaguru/img-carousel-with-backend/tree/implement-the-backend"
+    gitUrl: 'https://github.com/Hizaguru/img-carousel-with-backend/tree/implement-the-backend'
   },
   {
     title: 'Mr Whobuntu',
-    description: "Python",
+    description: 'Python',
     url: 'https://github.com/Hizaguru/Mr-Whobuntu',
     imgUrl: porfolioImage3,
-    modalTitle: "Mr Whobuntu",
-    modalDescription: "Mr Whobuntu is for those who seeks to find their real soulmate in this busy world... The project never got finished, but it was a good start to get known into automation and machine learning.",
+    modalTitle: 'Mr Whobuntu',
+    modalDescription: 'Mr Whobuntu is for those who seeks to find their real soulmate in this busy world... The project never got finished, but it was a good start to get known into automation and machine learning.',
     modalImgUrl: loveImage,
   },
   {
@@ -169,8 +169,8 @@ export const portfolioItems: PortfolioItem[] = [
     description: 'Python',
     url: 'https://github.com/Hizaguru/finance/blob/main/simplereturn/main.py',
     imgUrl: porfolioImage4,
-    modalTitle: "F1n3Ans",
-    modalDescription: "A tool for calculating the returns of your portfolio. The project was made with Python's Numby, Pandas and Scumby libraries and is still in progress.",
+    modalTitle: 'F1n3Ans',
+    modalDescription: 'A tool for calculating the returns of your portfolio. The project was made with Python\'s Numby, Pandas and Scumby libraries and is still in progress.',
     modalImgUrl: richImage,
   },
   {
@@ -178,7 +178,7 @@ export const portfolioItems: PortfolioItem[] = [
     description: 'Unity',
     url: 'https://jonnboy91.itch.io/stealing-time',
     imgUrl: porfolioImage5,
-    modalTitle: "Stealing Time",
+    modalTitle: 'Stealing Time',
     modalDescription: '“Stealing Time” gameproject was created in Itcho Gamejam. My part in the project was level designing, audio designing, graphics desining and music. You can try the game from the button below. Enjoy!',
     modalImgUrl: gameJamImage,
   },
@@ -187,8 +187,8 @@ export const portfolioItems: PortfolioItem[] = [
     description: 'Adobe Premiere',
     url: 'https://www.youtube.com/watch?v=IonL5jBIxbk',
     imgUrl: porfolioImage6,
-    modalTitle: "Endocrine - Red Glow (Official music video)",
-    modalDescription: "One of my favourite music projects of all time. Endocrine released two singles and one music video. I was primarily responsible for directing, producing, songwriting, mixing and editing.",
+    modalTitle: 'Endocrine - Red Glow (Official music video)',
+    modalDescription: 'One of my favourite music projects of all time. Endocrine released two singles and one music video. I was primarily responsible for directing, producing, songwriting, mixing and editing.',
     modalImgUrl: musicVideoImage,
   },
 
@@ -202,22 +202,22 @@ export const testimonial: TestimonialSection = {
   testimonials: [
     {
       name: 'Steve Jobs',
-      text: "Your work is going to fill a large part of your life, and the only way to be truly satisfied is to do what you believe is great work. And the only way to do great work is to love what you do. If you haven't found it yet, keep looking. Don't settle. As with all matters of the heart, you'll know when you find it.",
+      text: 'Your work is going to fill a large part of your life, and the only way to be truly satisfied is to do what you believe is great work. And the only way to do great work is to love what you do. If you haven\'t found it yet, keep looking. Don\'t settle. As with all matters of the heart, you\'ll know when you find it.',
 
     },
     {
-      name: "Emo Philips",
-      text: "A computer once beat me at chess, but it was no match for me at kick boxing."
+      name: 'Emo Philips',
+      text: 'A computer once beat me at chess, but it was no match for me at kick boxing.'
 
     },
     {
       name: 'Craig Bruce',
-      text: "It’s hardware that makes a machine fast. It’s software that makes a fast machine slow."
+      text: 'It’s hardware that makes a machine fast. It’s software that makes a fast machine slow.'
 
     },
     {
       name: 'Homer Simpson, in response to the message, “Press any key”',
-      text: "Where is the ‘any’ key?"
+      text: 'Where is the ‘any’ key?'
     },
   ],
 };
@@ -228,6 +228,8 @@ export const testimonial: TestimonialSection = {
 
 export const contact: ContactSection = {
   headerText: 'Get in touch.',
+  alert: 'Error occured, please try again later',
+  messageSent: 'Thank you for your message. I will get back to you!',
   items: [
     {
       type: ContactType.Email,

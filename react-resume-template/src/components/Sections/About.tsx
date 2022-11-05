@@ -10,7 +10,7 @@ import Section from '../Layout/Section';
 const About: FC = memo(() => {
   const { description, aboutItems } = aboutData;
 
-  const [profileImg, setProfileImg] = useState<SanityImage[]>([])
+  const [profileImg, setProfileImg] = useState<SanityImage[]>([]);
   useEffect(() => {
     const query = '*[_type == "profile"]';
     client.fetch(query).then((data) => {
@@ -44,7 +44,7 @@ const About: FC = memo(() => {
               </ul>
             </div>
           </div>
-        )
+        );
       })}
     </Section>
   );

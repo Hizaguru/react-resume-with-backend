@@ -17,7 +17,7 @@ import Modal from '../Modal/Modal';
 const Portfolio: FC = memo(() => {
 
 
-  const [portfolioItems, setPortfolioItems] = useState<PortfolioItem[]>([])
+  const [portfolioItems, setPortfolioItems] = useState<PortfolioItem[]>([]);
   useEffect(() => {
     const query = '*[_type == "portfolioItems"]';
     client.fetch(query).then((data) => {
@@ -39,7 +39,7 @@ const Portfolio: FC = memo(() => {
                   className={classNames(
                     'relative h-max w-full overflow-hidden rounded-lg shadow-lg shadow-black/30 lg:shadow-xl',
                   )}>
-                  <Image alt={title} layout="responsive" width={"600px"} height={"600px"} src={urlFor(imgUrl).url()} />
+                  <Image alt={title} layout="responsive" width={'600px'} height={'600px'} src={urlFor(imgUrl).url()} />
                   <ItemOverlay item={portfolioItems[index]} />
                 </div>
               </div>
@@ -58,7 +58,7 @@ export default Portfolio;
 const ItemOverlay: FC<{ item: PortfolioItem }> = memo(({ item: { title, description, modalTitle, modalDescription, modalImgUrl: modalImage, gitUrl, url } }) => {
   const [mobile, setMobile] = useState(false);
   const [showOverlay, setShowOverlay] = useState(false);
-  const [isOpen, setIsOpen] = useState(false)
+  const [isOpen, setIsOpen] = useState(false);
   const linkRef = useRef<HTMLAnchorElement>(null);
 
 
@@ -76,7 +76,7 @@ const ItemOverlay: FC<{ item: PortfolioItem }> = memo(({ item: { title, descript
     (event: MouseEvent<HTMLElement>) => {
       event.preventDefault();
       if (!isOpen) {
-        setIsOpen(true)
+        setIsOpen(true);
       }
     },
     [isOpen],

@@ -16,7 +16,7 @@ import { SanityImage } from '../../data/dataDef';
 const Hero: FC = memo(() => {
   const { name, description, actions } = heroData;
 
-  const [header, setHeader] = useState<SanityImage[]>([])
+  const [header, setHeader] = useState<SanityImage[]>([]);
   useEffect(() => {
     const query = '*[_type == "header"]';
     client.fetch(query).then((data) => {
@@ -38,7 +38,7 @@ const Hero: FC = memo(() => {
               priority
               src={urlFor(item.imgUrl).url()}
             />
-          )
+          );
         })}
         <div className="z-10  max-w-screen-lg px-4 lg:px-0">
           <div className="flex flex-col items-center gap-y-6 rounded-xl bg-gray-800/40 p-6 text-center shadow-lg backdrop-blur-sm">

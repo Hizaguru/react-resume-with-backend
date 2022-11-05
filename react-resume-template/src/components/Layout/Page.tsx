@@ -17,7 +17,7 @@ const Page: NextPage<HomepageMeta> = memo(({ children, title, description }) => 
         {/* several domains list the same content, make sure google knows we mean this one. */}
         <link href={`https://reactresume.com${pathname}`} key="canonical" rel="canonical" />
         <link rel="shortcut icon" href="/images/tabs.png" />
-        <link href="/site.webmanifest" rel="manifest" key={"siteManifest"} />
+        <link href="/site.webmanifest" rel="manifest" key={'siteManifest'} />
 
         {/* Open Graph : https://ogp.me/ */}
         <meta content={title} property="og:title" />
