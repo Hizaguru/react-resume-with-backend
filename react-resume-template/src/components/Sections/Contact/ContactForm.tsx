@@ -21,7 +21,7 @@ const ContactForm: FC = memo(() => {
     }),
     [],
   )
-  const { alert } = contact
+  const { alert, messageSent } = contact
   const [data, setData] = useState<FormData>(defaultData)
   const [isFormSubmitted, setIsFormSubmitted] = useState(false)
   const [error, setError] = useState(false)
@@ -38,21 +38,24 @@ const ContactForm: FC = memo(() => {
   )
   const handleSendMessage = useCallback(
     async (event: React.FormEvent<HTMLFormElement>) => {
+      setIsLoading(true)
       event.preventDefault()
       emailJs.sendForm(SERVICE_ID!, TEMPLATE_ID!, event.currentTarget, USER_ID).then(
         (result) => {
-          setIsLoading(true)
           console.log(result.text)
         },
         (error) => {
           setError(true)
           console.log(error.text)
-
         }
-      )
+      ).then()
       event.currentTarget.reset()
-      setIsFormSubmitted(true)
-      setIsLoading(false)
+      setTimeout(() => {
+        setIsFormSubmitted(true)
+        setIsLoading(false)
+      }, 3000)
+
+
     },
     [data],
   )
@@ -60,14 +63,23 @@ const ContactForm: FC = memo(() => {
   const inputClasses =
     'bg-neutral-700 border-0 focus:border-0 focus:outline-none focus:ring-1 focus:ring-orange-600 rounded-md placeholder:text-neutral-400 placeholder:text-sm text-neutral-200 text-sm'
 
-  if (isFormSubmitted) {
+
+  if (isLoading) {
+    return (
+      <div>
+        <LoadingSpinner />
+      </div>
+    )
+  }
+  else if (isFormSubmitted) {
     return (
       <div id="message-success">
         <i className="fa fa-check" />
-        {alert}
+        {messageSent}
       </div>
     )
-  } else {
+  }
+  else {
     return (
       <form className="grid min-h-[320px] grid-cols-1 gap-y-4" method="POST" onSubmit={handleSendMessage}>
         <input className={inputClasses} name="name" onChange={onChange} placeholder="Name" required type="text" />
@@ -89,7 +101,6 @@ const ContactForm: FC = memo(() => {
           required
           rows={6}
         />
-        {isLoading ?? <LoadingSpinner />}
         <button
           aria-label="Submit contact form"
           className="w-max rounded-full border-2 border-orange-600 bg-stone-900 px-4 py-2 text-sm font-medium text-white shadow-md outline-none hover:bg-stone-800 focus:ring-2 focus:ring-orange-600 focus:ring-offset-2 focus:ring-offset-stone-800"

@@ -229,6 +229,7 @@ export const testimonial: TestimonialSection = {
 export const contact: ContactSection = {
   headerText: 'Get in touch.',
   alert: 'Error occured, please try again later',
+  messageSent: 'Thank you for your message. I will get back to you!',
   items: [
     {
       type: ContactType.Email,
