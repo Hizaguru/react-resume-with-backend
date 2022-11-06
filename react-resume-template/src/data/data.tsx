@@ -142,8 +142,7 @@ export const portfolioItems: PortfolioItem[] = [
     imgUrl: porfolioImage1,
     modalTitle: 'Mixing',
     modalDescription: 'I\'ve got a burning passion for music and audio worlds. I\'ve been playing in dozens of bands with different genres. My latest act in the music scene was Endocrine which released two singles.',
-    modalImgUrl: mixingBoard,
-    gitUrl: 'https://github.com/Hizaguru/img-carousel-with-backend/tree/implement-the-backend'
+    modalImgUrl: mixingBoard
   },
   {
     title: 'Graphic Designing',
