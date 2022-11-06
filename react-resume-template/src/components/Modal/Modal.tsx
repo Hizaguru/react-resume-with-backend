@@ -10,7 +10,6 @@ type Props = {
 }
 
 
-
 const Modal: React.FC<Props> = (props: Props) => {
   const nodeRef = useRef(null);
 
