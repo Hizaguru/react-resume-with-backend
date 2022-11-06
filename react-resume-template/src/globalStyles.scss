@@ -79,7 +79,7 @@ th {
 .modal-content {
   width: 600px;
   height: 400px;
-  background-color: #282c34;
+  background-color: #e4e8f1;
   border-radius: 25px;
   color: #fff;
   align-items: center;
@@ -118,8 +118,12 @@ th {
   opacity: 0;
   transform: scale(0.4);
 }
+.modal-links {
+  color: rgb(0, 0, 0.6);
+}
 
 .modal-objects {
+  color: rgb(0, 0, 0.6);
   text-align: center;
   border-radius: 10px;
   overflow: hidden;
@@ -160,13 +164,13 @@ th {
 }
 
 .modal-link-left:hover {
-  text-decoration: underline 0.15em rgb(255, 255, 255);
+  text-decoration: underline 0.15em rgb(0, 0, 0.6);
   text-underline-offset: 0.3em;
   transition: text-decoration-color 300ms, text-underline-offset 300ms;
 }
 
 .modal-link-right:hover {
-  text-decoration: underline 0.15em rgb(255, 255, 255);
+  text-decoration: underline 0.15em rgb(0, 0, 0.6);
   text-underline-offset: 0.3em;
   transition: text-decoration-color 300ms, text-underline-offset 300ms;
 }
