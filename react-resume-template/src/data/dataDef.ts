@@ -17,7 +17,7 @@ export interface HomepageMeta {
   twitterImageUrl?: string;
   children?: any,
 }
-
+//Portfolio image section
 export interface SanityImage {
   _id: string;
   _createdAt: string;
