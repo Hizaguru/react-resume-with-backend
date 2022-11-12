@@ -39,7 +39,7 @@ const Portfolio: FC = memo(() => {
                   className={classNames(
                     'relative h-max w-full overflow-hidden rounded-lg shadow-lg shadow-black/30 lg:shadow-xl',
                   )}>
-                  <Image alt={title} layout="responsive" width={'600px'} height={'600px'} src={urlFor(imgUrl).url()} />
+                  <Image alt={title} loading='lazy' layout="responsive" width={'600px'} height={'600px'} src={urlFor(imgUrl).url()} />
                   <ItemOverlay item={portfolioItems[index]} />
                 </div>
               </div>
@@ -102,7 +102,7 @@ const ItemOverlay: FC<{ item: PortfolioItem }> = memo(({ item: { title, descript
         <Modal handleClose={() => setIsOpen(false)} isOpen={isOpen}>
           <div>
             <div className='modal-objects'>
-              <Image alt={title} height="150px" width="400px" layout="responsive" src={urlFor(modalImage!).url()} />
+              <Image alt={title} loading='lazy' height="150px" width="400px" layout="responsive" src={urlFor(modalImage!).url()} />
               <h1 className="modal-header"><b>{modalTitle}</b></h1>
               <p className='modal-description'>{modalDescription}</p>
             </div>
