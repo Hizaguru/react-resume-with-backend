@@ -18,7 +18,7 @@ import {
   ContactType,
   Hero,
   HomepageMeta,
-  PortfolioItem, Skills,
+  Skills,
   Social,
   TestimonialSection
 } from './dataDef';
