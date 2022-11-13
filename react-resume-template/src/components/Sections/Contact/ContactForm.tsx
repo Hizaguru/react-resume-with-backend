@@ -41,11 +41,11 @@ const ContactForm: FC = memo(() => {
       event.preventDefault();
       emailJs.sendForm(SERVICE_ID!, TEMPLATE_ID!, event.currentTarget, USER_ID).then(
         (result) => {
-          console.log(result.text);
+          return result.text;
         },
         (error) => {
           setError(true);
-          console.log(error.text);
+          return error.text;
         }
       ).then();
       event.currentTarget.reset();
