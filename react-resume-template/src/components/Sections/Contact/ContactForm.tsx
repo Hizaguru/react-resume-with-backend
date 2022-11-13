@@ -7,7 +7,6 @@ interface FormData {
   email: string;
   message: string;
 }
-
 const SERVICE_ID = process.env.NEXT_PUBLIC_SERVICE_ID;
 const TEMPLATE_ID = process.env.NEXT_PUBLIC_TEMPLATE_ID;
 const USER_ID = process.env.NEXT_PUBLIC_USER_ID;
