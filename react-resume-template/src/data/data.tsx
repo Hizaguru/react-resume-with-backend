@@ -28,7 +28,7 @@ import {
  */
 export const homePageMeta: HomepageMeta = {
   title: 'Jukkis\' portfolio',
-  description: 'Portfolio build with React typescript',
+  description: 'My Portfolio website that was build with React typescript.',
 };
 
 /**
