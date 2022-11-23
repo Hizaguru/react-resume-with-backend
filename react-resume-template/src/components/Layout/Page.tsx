@@ -12,7 +12,7 @@ const Page: NextPage<HomepageMeta> = memo(({ children, title, description, autho
         <title>{title}</title>
         <meta content={description} name="description" />
         <meta name="author" content={author}></meta>
-        <meta name="keywords" content={keywords}
+        <meta name="keywords" content={keywords}/>
         
         {/* several domains list the same content, make sure google knows we mean this one. */}
         <link rel="shortcut icon" href="/images/tabs.png" />
