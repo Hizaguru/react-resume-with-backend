@@ -6,6 +6,8 @@ import { IconProps } from '../components/Icon/Icon';
 export interface HomepageMeta {
   title: string;
   description: string;
+  author: string;
+  keywords: string;
   ogImageUrl?: string;
   children?: any,
 }
