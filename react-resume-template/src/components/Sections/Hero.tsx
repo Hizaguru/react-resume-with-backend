@@ -10,9 +10,6 @@ import Socials from '../Socials';
 
 import { SanityImage } from '../../data/dataDef';
 
-
-
-
 const Hero: FC = memo(() => {
   const { name, description, actions } = heroData;
 
