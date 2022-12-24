@@ -86,7 +86,7 @@ export const aboutData: About = {
     { label: 'Location', text: 'Helsinki', Icon: MapIcon },
     { label: 'Age', text: getAge('05/25/1988'), Icon: CalendarIcon },
     { label: 'Study', text: 'Applied University of Metropolia', Icon: AcademicCapIcon },
-    { label: 'Employment', text: 'Sanoma Media Finland', Icon: OfficeBuildingIcon },
+    { label: 'Employment', text: 'Fullstack Developer', Icon: OfficeBuildingIcon },
   ],
 };
 
