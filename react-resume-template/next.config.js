@@ -15,6 +15,9 @@ const nextConfig = {
 
     return config;
   },
+  sentry: {
+    hideSourceMaps: true,
+  },
   compress: true,
   generateEtags: true,
   pageExtensions: ['tsx', 'mdx', 'ts'],

@@ -28,7 +28,9 @@ import {
  */
 export const homePageMeta: HomepageMeta = {
   title: 'Jukkis\' portfolio',
-  description: 'Portfolio build with React typescript',
+  description: 'My Portfolio website that was build with React typescript.',
+  author: 'Jukka - Pekka Lappalainen',
+  keywords: 'Portfolio, typescript, reat, Jukka-Pekka Lappalainen',
 };
 
 /**
@@ -84,7 +86,7 @@ export const aboutData: About = {
     { label: 'Location', text: 'Helsinki', Icon: MapIcon },
     { label: 'Age', text: getAge('05/25/1988'), Icon: CalendarIcon },
     { label: 'Study', text: 'Applied University of Metropolia', Icon: AcademicCapIcon },
-    { label: 'Employment', text: 'Sanoma Media Finland', Icon: OfficeBuildingIcon },
+    { label: 'Employment', text: 'Fullstack Developer', Icon: OfficeBuildingIcon },
   ],
 };
 
