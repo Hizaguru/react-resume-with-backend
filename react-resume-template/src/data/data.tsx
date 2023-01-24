@@ -94,7 +94,7 @@ export const aboutData: About = {
 export const skills: Skills[] = [
   {
     // eslint-disable-next-line
-    skillname: "Coding (React, Typescript, Python)",
+    skillname: "Coding (React, Typescript, Python, Java)",
   },
   {
     skillname: 'Game Development (Unity, Unreal Engine)',
