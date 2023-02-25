@@ -29,7 +29,7 @@ const Modal: React.FC<Props> = (props: Props) => {
       <div className='modals-background'>
         <CSSTransition
           in={props.isOpen}
-          timeout={{ enter: 0, exit: 300 }}
+          timeout={{ enter: 2, exit: 300 }}
           unmountOnExit
           classNames="modal"
           nodeRef={nodeRef}
