@@ -1,7 +1,7 @@
 import { ChevronDownIcon } from '@heroicons/react/outline';
 import classNames from 'classnames';
 import Image from 'next/image';
-import { FC, memo, useState } from 'react';
+import { FC, memo, useEffect, useState } from 'react';
 
 import { heroData, SectionId } from '../../data/data';
 import { client, urlFor } from '../../client';
@@ -13,14 +13,13 @@ import { SanityImage } from '../../data/dataDef';
 const Hero: FC = memo(() => {
   const { name, description, actions } = heroData;
   const [header, setHeader] = useState<SanityImage[]>([]);
-  const query = '*[_type == "header"]';
-  
-  client.fetch(query).then((data) => {
-    setHeader(data);
-  })
-  .catch((error) => {
-    console.error(error);
-  });
+
+  useEffect(() => {
+    const query = '*[_type == "header"]';
+    client.fetch(query).then((data) => {
+      setHeader(data);
+    });
+  }, []);
 
   return (
     <Section noPadding sectionId={SectionId.Hero}>
