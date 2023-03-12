@@ -1,3 +1,4 @@
+import ExternalLinkIcon from '@heroicons/react/outline/ExternalLinkIcon';
 import classNames from 'classnames';
 import Image from 'next/image';
 import { FC, memo, MouseEvent, useCallback, useEffect, useRef, useState } from 'react';
@@ -99,6 +100,7 @@ const ItemOverlay: FC<{ item: PortfolioItem }> = memo(({ item: { title, modalTit
                 <h2 className="text-3xl font-bold">{title}</h2>
                 <p className="py-24 text-xl lg:text-2xl ">{modalDescription}</p>
               </div>
+              <ExternalLinkIcon className="absolute bottom-1 right-1 h-4 w-4 shrink-0 text-white sm:bottom-2 sm:right-2" />
             </a>
       ) : (
       <div className="text-center flex h-full w-full flex-col gap-y-2 overflow-hidden text-white opacity-100">
