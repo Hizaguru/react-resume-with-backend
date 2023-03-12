@@ -74,7 +74,7 @@ const ContactForm: FC = memo(() => {
     return (
       <div className="message-success">
         <i className="fa fa-check" />
-        {messageSent}
+        <p className='font-bold text-white '>{messageSent}</p>
       </div>
     );
   }
