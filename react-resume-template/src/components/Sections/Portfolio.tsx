@@ -96,13 +96,13 @@ const ItemOverlay: FC<{ item: PortfolioItem }> = memo(({ item: { title, modalTit
           <h2 className="text-3xl font-bold ">{title}</h2>
           <p className="py-16 text-xl lg:text-2xl ">{modalDescription}</p>
           {gitUrl !== undefined ? (
-                <div className='text-3xl  relative lg:top-18 md:top-16 h-36 '>
-                  <a className='text-3xl pr-40' onClick={() => window.open(gitUrl)} href={gitUrl} target="_blank"><b>Code</b></a>
-                  <a className='text-3xl' onClick={() => window.open(url)} href={url} target="_blank"><b>Project</b></a>
+                <div className='text-3xl  relative lg:top-18 md:top-20 h-36 '>
+                  <a className='text-3xl pr-40 text-grey-400 hover:text-blue-600' onClick={() => window.open(gitUrl)} href={gitUrl} target="_blank"><b>Code</b></a>
+                  <a className='text-3xl text-grey-400 hover:text-blue-600' onClick={() => window.open(url)} href={url} target="_blank"><b>Project</b></a>
                 </div>
               ) : (
                 <div className='text-3xl relative h-36 w-72'>
-                  <a className='absolute bottom-0 right-0 h-18 pb-2 w-8 font-bold' onClick={() => window.open(url)} href={url} target="_blank">Project</a>
+                  <a className='absolute bottom-0 right-0 h-18 pb-2 w-8 font-bold text-grey-400 hover:text-blue-600' onClick={() => window.open(url)} href={url} target="_blank">Project</a>
                 </div>
               )}
             </div>
