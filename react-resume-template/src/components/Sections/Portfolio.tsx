@@ -101,7 +101,7 @@ const ItemOverlay: FC<{ item: PortfolioItem }> = memo(({ item: { title, modalTit
               </div>
             </a>
       ) : (
-        <div className="text-center flex h-full w-full flex-col gap-y-2 overflow-hidden text-white opacity-100">
+      <div className="text-center flex h-full w-full flex-col gap-y-2 overflow-hidden text-white opacity-100">
         <h2 className="text-3xl font-bold ">{title}</h2>
         <p className="py-24 text-xl lg:text-2xl ">{modalDescription}</p>
       </div>
