@@ -89,35 +89,50 @@ const ItemOverlay: FC<{ item: PortfolioItem }> = memo(({ item: { title, descript
         { 'opacity-0 hover:opacity-80': !mobile },
         showOverlay ? 'opacity-80' : 'opacity-0',
       )}
-
       onClick={handleItemClick}
       ref={linkRef}
       target="_blank">
       <div className="relative h-full w-full p-4">
-        <div className="text-center flex h-full w-full flex-col gap-y-2 overflow-hidden">
-          <h2 className="text-3xl lg:text-2xl font-bold text-white opacity-100">{title}</h2>
-          <p className="sm:py-72 text-2xl lg:text-2xl lg:py-48 py-36 text-white opacity-100">{description}</p>
-        </div>
-        <ExternalLinkIcon className="absolute bottom-1 right-1 h-4 w-4 shrink-0 text-white sm:bottom-2 sm:right-2" />
-        <Modal handleClose={() => setIsOpen(false)} isOpen={isOpen}>
-          <div>
-            <div className='modal-objects'>
-              <Image alt={title} height="150px" width="400px" layout="responsive" src={urlFor(modalImage!).url()} />
-              <h1 className="modal-header"><b>{modalTitle}</b></h1>
-              <p className='modal-description'>{modalDescription}</p>
+
+        <div className="text-center flex h-full w-full flex-col gap-y-2 overflow-hidden text-white opacity-100">
+          <h2 className="text-3xl font-bold ">{title}</h2>
+          <p className="py-16 text-xl lg:text-2xl ">{modalDescription}</p>
+          {gitUrl !== undefined ? (
+                <div className='my-6 static'>
+                  <a className='text-3xl mr-40' onClick={() => window.open(gitUrl)} href={gitUrl} target="_blank"><b>Code</b></a>
+                  <a className='text-3xl' onClick={() => window.open(url)} href={url} target="_blank"><b>Project</b></a>
+                </div>
+              ) : (
+                <div className=' text-3xl relative h-36 w-72'>
+                  <a className='absolute bottom-0 right-0 h-16 w-10 font-bold' onClick={() => window.open(url)} href={url} target="_blank">Project</a>
+                </div>
+              )}
             </div>
-            {gitUrl !== undefined ? (
-              <div className='modal-links'>
-                <a className='modal-link-left' onClick={() => window.open(gitUrl)} href={gitUrl} target="_blank"><b>Code</b></a>
-                <a className='modal-link-right' onClick={() => window.open(url)} href={url} target="_blank"><b>Project</b></a>
-              </div>
-            ) : (
-              <div className='modal-links'>
-                <a className='modal-link-right' onClick={() => window.open(url)} href={url} target="_blank">Project</a>
-              </div>
-            )}
           </div>
-        </Modal>
+
+        <div>
+        {isMobile &&
+          <Modal handleClose={() => setIsOpen(false)} isOpen={isOpen}>
+            <div>
+              <div className='modal-objects'>
+                <Image alt={title} height="150px" width="400px" layout="responsive" src={urlFor(modalImage!).url()} />
+                <h1 className="modal-header"><b>{modalTitle}</b></h1>
+                <p className='modal-description'>{modalDescription}</p>
+              </div>
+              {gitUrl !== undefined ? (
+                <div className='modal-links'>
+                  <a className='modal-link-left' onClick={() => window.open(gitUrl)} href={gitUrl} target="_blank"><b>Code</b></a>
+                  <a className='modal-link-right' onClick={() => window.open(url)} href={url} target="_blank"><b>Project</b></a>
+                </div>
+              ) : (
+                <div className='modal-links'>
+                  <a className='modal-link-right' onClick={() => window.open(url)} href={url} target="_blank">Project</a>
+                </div>
+              )}
+            </div>
+          </Modal>
+        }
+
 
       </div >
     </a >
