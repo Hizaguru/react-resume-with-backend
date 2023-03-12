@@ -1,4 +1,3 @@
-import { ExternalLinkIcon } from '@heroicons/react/outline';
 import classNames from 'classnames';
 import Image from 'next/image';
 import { FC, memo, MouseEvent, useCallback, useEffect, useRef, useState } from 'react';
@@ -55,7 +54,7 @@ const Portfolio: FC = memo(() => {
 Portfolio.displayName = 'Portfolio';
 export default Portfolio;
 
-const ItemOverlay: FC<{ item: PortfolioItem }> = memo(({ item: { title, description, modalTitle, modalDescription, modalImgUrl: modalImage, gitUrl, url } }) => {
+const ItemOverlay: FC<{ item: PortfolioItem }> = memo(({ item: { title, modalTitle, modalDescription, modalImgUrl: modalImage, gitUrl, url } }) => {
   const [mobile, setMobile] = useState(false);
   const [showOverlay, setShowOverlay] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
@@ -93,18 +92,17 @@ const ItemOverlay: FC<{ item: PortfolioItem }> = memo(({ item: { title, descript
       ref={linkRef}
       target="_blank">
       <div className="relative h-full w-full p-4">
-
         <div className="text-center flex h-full w-full flex-col gap-y-2 overflow-hidden text-white opacity-100">
           <h2 className="text-3xl font-bold ">{title}</h2>
           <p className="py-16 text-xl lg:text-2xl ">{modalDescription}</p>
           {gitUrl !== undefined ? (
-                <div className='my-6 static'>
-                  <a className='text-3xl mr-40' onClick={() => window.open(gitUrl)} href={gitUrl} target="_blank"><b>Code</b></a>
+                <div className='text-3xl  relative lg:top-18 md:top-16 h-36 '>
+                  <a className='text-3xl pr-40' onClick={() => window.open(gitUrl)} href={gitUrl} target="_blank"><b>Code</b></a>
                   <a className='text-3xl' onClick={() => window.open(url)} href={url} target="_blank"><b>Project</b></a>
                 </div>
               ) : (
-                <div className=' text-3xl relative h-36 w-72'>
-                  <a className='absolute bottom-0 right-0 h-16 w-10 font-bold' onClick={() => window.open(url)} href={url} target="_blank">Project</a>
+                <div className='text-3xl relative h-36 w-72'>
+                  <a className='absolute bottom-0 right-0 h-18 pb-2 w-8 font-bold' onClick={() => window.open(url)} href={url} target="_blank">Project</a>
                 </div>
               )}
             </div>
