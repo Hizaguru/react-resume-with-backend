@@ -93,13 +93,26 @@ const ItemOverlay: FC<{ item: PortfolioItem }> = memo(({ item: { title, modalTit
       ref={linkRef}
       target="_blank">
       <div className="relative h-full w-full p-4">
+      {!isMobile ? (
+              <a onClick={() => window.open(url)} href={url} target="_blank">
+              <div className="text-center flex h-full w-full flex-col gap-y-2 overflow-hidden text-white opacity-100">
+                <h2 className="text-3xl font-bold ">{title}</h2>
+                <p className="py-24 text-xl lg:text-2xl ">{modalDescription}</p>
+              </div>
+            </a>
+      ) : (
+        <div className="text-center flex h-full w-full flex-col gap-y-2 overflow-hidden text-white opacity-100">
+        <h2 className="text-3xl font-bold ">{title}</h2>
+        <p className="py-24 text-xl lg:text-2xl ">{modalDescription}</p>
+      </div>
+      )}
       <a onClick={() => window.open(url)} href={url} target="_blank">
         <div className="text-center flex h-full w-full flex-col gap-y-2 overflow-hidden text-white opacity-100">
           <h2 className="text-3xl font-bold ">{title}</h2>
           <p className="py-24 text-xl lg:text-2xl ">{modalDescription}</p>
-            </div>
-            </a>
-          </div>
+        </div>
+      </a>
+        </div>
         <div>
         {isMobile &&
           <Modal handleClose={() => setIsOpen(false)} isOpen={isOpen}>
