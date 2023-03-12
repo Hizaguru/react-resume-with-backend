@@ -108,10 +108,10 @@ const ContactForm: FC = memo(() => {
           Send Message
         </button>
 
-        {error ?? (
+        {error && (
           <div className="message-warning">
             <i className="fa fa-check" />
-            {alert}
+            <p className='font-bold text-red'>{alert}</p>
           </div>
         )}
       </form>
