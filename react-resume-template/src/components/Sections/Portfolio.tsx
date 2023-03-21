@@ -1,4 +1,4 @@
-import { ExternalLinkIcon } from '@heroicons/react/outline';
+import ExternalLinkIcon from '@heroicons/react/outline/ExternalLinkIcon';
 import classNames from 'classnames';
 import Image from 'next/image';
 import { FC, memo, MouseEvent, useCallback, useEffect, useRef, useState } from 'react';
@@ -55,7 +55,7 @@ const Portfolio: FC = memo(() => {
 Portfolio.displayName = 'Portfolio';
 export default Portfolio;
 
-const ItemOverlay: FC<{ item: PortfolioItem }> = memo(({ item: { title, description, modalTitle, modalDescription, modalImgUrl: modalImage, gitUrl, url } }) => {
+const ItemOverlay: FC<{ item: PortfolioItem }> = memo(({ item: { title, modalTitle, modalDescription, modalImgUrl: modalImage, gitUrl, url } }) => {
   const [mobile, setMobile] = useState(false);
   const [showOverlay, setShowOverlay] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
@@ -75,12 +75,13 @@ const ItemOverlay: FC<{ item: PortfolioItem }> = memo(({ item: { title, descript
   const handleItemClick = useCallback(
     (event: MouseEvent<HTMLElement>) => {
       event.preventDefault();
-      if (!isOpen) {
+      if (!isOpen && isMobile) {
         setIsOpen(true);
       }
     },
     [isOpen],
   );
+
 
   return (
     <a
@@ -89,35 +90,48 @@ const ItemOverlay: FC<{ item: PortfolioItem }> = memo(({ item: { title, descript
         { 'opacity-0 hover:opacity-80': !mobile },
         showOverlay ? 'opacity-80' : 'opacity-0',
       )}
-
       onClick={handleItemClick}
       ref={linkRef}
       target="_blank">
       <div className="relative h-full w-full p-4">
-        <div className="text-center flex h-full w-full flex-col gap-y-2 overflow-hidden">
-          <h2 className="text-3xl lg:text-2xl font-bold text-white opacity-100">{title}</h2>
-          <p className="sm:py-72 text-2xl lg:text-2xl lg:py-48 py-36 text-white opacity-100">{description}</p>
+      {!isMobile ? (
+              <a onClick={() => window.open(url)} href={url} target="_blank">
+              <div className="text-center flex h-full w-full flex-col gap-y-2 overflow-hidden text-white opacity-100">
+                <h2 className="text-3xl font-bold">{title}</h2>
+                <p className="py-24 text-xl lg:text-2xl ">{modalDescription}</p>
+              </div>
+              <ExternalLinkIcon className="absolute bottom-1 right-1 h-4 w-4 shrink-0 text-white sm:bottom-2 sm:right-2" />
+            </a>
+      ) : (
+      <div className="text-center flex h-full w-full flex-col gap-y-2 overflow-hidden text-white opacity-100">
+        <h2 className="text-3xl font-bold ">{title}</h2>
+        <p className="py-24 text-xl lg:text-2xl ">{modalDescription}</p>
+      </div>
+      )}
         </div>
-        <ExternalLinkIcon className="absolute bottom-1 right-1 h-4 w-4 shrink-0 text-white sm:bottom-2 sm:right-2" />
-        <Modal handleClose={() => setIsOpen(false)} isOpen={isOpen}>
-          <div>
-            <div className='modal-objects'>
-              <Image alt={title} height="150px" width="400px" layout="responsive" src={urlFor(modalImage!).url()} />
-              <h1 className="modal-header"><b>{modalTitle}</b></h1>
-              <p className='modal-description'>{modalDescription}</p>
+        <div>
+        {isMobile &&
+          <Modal handleClose={() => setIsOpen(false)} isOpen={isOpen}>
+            <div>
+              <div className='modal-objects'>
+                <Image alt={title} height="150px" width="400px" layout="responsive" src={urlFor(modalImage!).url()} />
+                <h1 className="modal-header"><b>{modalTitle}</b></h1>
+                <p className='modal-description'>{modalDescription}</p>
+              </div>
+              {gitUrl !== undefined ? (
+                <div className='modal-links'>
+                  <a className='modal-link-left' onClick={() => window.open(gitUrl)} href={gitUrl} target="_blank"><b>Code</b></a>
+                  <a className='modal-link-right' onClick={() => window.open(url)} href={url} target="_blank"><b>Project</b></a>
+                </div>
+              ) : (
+                <div className='modal-links'>
+                  <a className='modal-link-right' onClick={() => window.open(url)} href={url} target="_blank">Project</a>
+                </div>
+              )}
             </div>
-            {gitUrl !== undefined ? (
-              <div className='modal-links'>
-                <a className='modal-link-left' onClick={() => window.open(gitUrl)} href={gitUrl} target="_blank"><b>Code</b></a>
-                <a className='modal-link-right' onClick={() => window.open(url)} href={url} target="_blank"><b>Project</b></a>
-              </div>
-            ) : (
-              <div className='modal-links'>
-                <a className='modal-link-right' onClick={() => window.open(url)} href={url} target="_blank">Project</a>
-              </div>
-            )}
-          </div>
-        </Modal>
+          </Modal>
+        }
+
 
       </div >
     </a >
