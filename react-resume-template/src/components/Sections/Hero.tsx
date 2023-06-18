@@ -1,6 +1,6 @@
 import { ChevronDownIcon } from '@heroicons/react/outline';
 import classNames from 'classnames';
-import Image from 'next/image';
+import Image from 'next/legacy/image';
 import { FC, memo, useEffect, useState } from 'react';
 
 import { heroData, SectionId } from '../../data/data';

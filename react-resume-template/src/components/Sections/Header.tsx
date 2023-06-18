@@ -126,9 +126,9 @@ const NavItem: FC<{
 }> = memo(({section, current, inactiveClass, activeClass, onClick}) => {
   return (
     <Link href={`/#${section}`} passHref>
-      <a className={classNames(current ? activeClass : inactiveClass)} key={section} onClick={onClick}>
+      <div className={classNames(current ? activeClass : inactiveClass)} key={section} onClick={onClick}>
         {section}
-      </a>
+      </div>
     </Link>
   );
 });
