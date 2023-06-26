@@ -58,7 +58,7 @@ export const heroData: Hero = {
   description: (
     <>
       <p className="prose-sm text-stone-200 sm:prose-base lg:prose-lg">
-        A Finland based <strong className="text-stone-100">Full Stack Software Engineer, audio </strong>and
+        A Finland based <strong className="text-stone-100">Full Stack Developer, audio </strong>and
         <strong className="text-stone-100"> graphic designer</strong> creating all kinds of projects that come to mind.
       </p>
     </>
@@ -79,8 +79,8 @@ export const aboutData: About = {
 
   description: `I am an enthusiastic and experienced full-stack developer with a passion for creating innovative solutions. With a solid educational background in ICT, I have cultivated a diverse skill set that spans programming languages, frameworks, and problem-solving techniques. My dedication to continuous learning and self-directed projects has equipped me with a versatile toolkit for software development.\n
   I dedicated my spare time to honing my programming skills and working on various personal projects. This self-directed approach allowed me to explore different programming languages, frameworks, and technologies, equipping me with a versatile toolkit for software development.\n
-  Beyond programming, I bring a unique perspective to my work, thanks to my extensive experience as a sound engineer. This background has exposed me to both software and hardware aspects, fostering a disciplined approach to troubleshooting and problem-solving. I firmly believe that this cross-disciplinary experience enhances my ability to tackle challenges creatively and efficiently.\n
-  I'm excited to collaborate with like-minded professionals and contribute to cutting-edge projects. Feel free to explore my portfolio and get in touch if you're interested in partnering on an exciting venture or if you have any inquiries. Let's create something extraordinary together!`,
+  Beyond programming, I bring a unique perspective to my work, thanks to my extensive experience as a sound engineer. This background has exposed me to both software and hardware aspects, fostering a disciplined approach to troubleshooting and problem-solving. I firmly believe that this cross-disciplinary experience enhances my ability to tackle challenges creatively and efficiently.
+  I'm excited to collaborate with like-minded professionals and contribute to cutting-edge projects.\n\n Feel free to explore my portfolio and get in touch if you're interested in partnering on an exciting venture or if you have any inquiries. Let's create something extraordinary together!`,
   aboutItems: [
     { label: 'Location', text: 'Helsinki', Icon: MapIcon },
     { label: 'Age', text: getAge('05/25/1988'), Icon: CalendarIcon },
