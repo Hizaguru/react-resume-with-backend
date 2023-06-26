@@ -156,8 +156,8 @@ export const contact: ContactSection = {
   items: [
     {
       type: ContactType.Email,
-      text: 'jukka-pekka.lappalainen@jukkis.org',
-      href: 'mailto:jukka-pekka.lappalainen@jukkis.org',
+      text: 'jukka-pekka.lappalainen@outlook.com',
+      href: 'mailto:jukka-pekka.lappalainen@outlook.com',
     },
     {
       type: ContactType.Location,
