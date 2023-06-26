@@ -29,7 +29,7 @@ const About: FC = memo(() => {
               </div>
             </div>
             <div className={classNames('col-span-1 flex flex-col gap-y-6', { 'md:col-span-3': !!image })}>
-              <div className="flex flex-col gap-y-2">
+              <div className="flex flex-col gap-y-2 pb-4">
                 <h2 className="text-2xl font-bold text-white">About me</h2>
                 <p className=" text-gray-300 sm:prose-base" style={{ whiteSpace: 'pre-line' }}>{description}</p>
               </div>
