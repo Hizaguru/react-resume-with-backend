@@ -77,11 +77,10 @@ export const heroData: Hero = {
  */
 export const aboutData: About = {
 
-  description: `I’m an Information and Communications Technology student at Metropolia University of Applied Science. 
-  To compliment my formal studies, I teach myself programming in my spare time by working on my own programming-related projects 
-  and keep up to date with what is happening in the world of technology. In addition to programming, I have been a sound engineer 
-  for many years which has given me different exposure to software and hardware, as well as a disciplined approach to troubleshooting 
-  and problem solving. `,
+  description: `I am an enthusiastic and experienced full-stack developer with a passion for creating innovative solutions. With a solid educational background in ICT, I have cultivated a diverse skill set that spans programming languages, frameworks, and problem-solving techniques. My dedication to continuous learning and self-directed projects has equipped me with a versatile toolkit for software development.\n
+  I dedicated my spare time to honing my programming skills and working on various personal projects. This self-directed approach allowed me to explore different programming languages, frameworks, and technologies, equipping me with a versatile toolkit for software development.\n
+  Beyond programming, I bring a unique perspective to my work, thanks to my extensive experience as a sound engineer. This background has exposed me to both software and hardware aspects, fostering a disciplined approach to troubleshooting and problem-solving. I firmly believe that this cross-disciplinary experience enhances my ability to tackle challenges creatively and efficiently.\n
+  I'm excited to collaborate with like-minded professionals and contribute to cutting-edge projects. Feel free to explore my portfolio and get in touch if you're interested in partnering on an exciting venture or if you have any inquiries. Let's create something extraordinary together!`,
   aboutItems: [
     { label: 'Location', text: 'Helsinki', Icon: MapIcon },
     { label: 'Age', text: getAge('05/25/1988'), Icon: CalendarIcon },
