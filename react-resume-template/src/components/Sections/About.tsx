@@ -24,8 +24,8 @@ const About: FC = memo(() => {
         return (
           <div key={image._id} className={classNames('grid grid-cols-1 gap-y-4', { 'md:grid-cols-4': !!image })}>
             <div className="col-span-1 flex justify-center md:justify-start">
-              <div className="relative h-24 w-24 overflow-hidden rounded-xl md:h-32 md:w-32">
-                <Image alt="about-me-image" layout="fill" objectFit="cover" src={urlFor(image.imgUrl).url()} />
+              <div className="pr-12 py-2 overflow-hidden">
+                <Image className='rounded-full' alt="about-me-image" height={300} width={300} objectFit="cover" src={urlFor(image.imgUrl).url()} />
               </div>
             </div>
             <div className={classNames('col-span-1 flex flex-col gap-y-6', { 'md:col-span-3': !!image })}>
