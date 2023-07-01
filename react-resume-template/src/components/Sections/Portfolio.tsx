@@ -12,19 +12,25 @@ import Section from '../Layout/Section';
 import Modal from '../Modal/Modal';
 
 
+const sortPortfolioItems = (items: PortfolioItem[]) => {
+  return [...items].sort((a, b) => {
+    const dateA = new Date(a._updatedAt);
+    const dateB = new Date(b._updatedAt);
 
+    return dateB.getTime() - dateA.getTime();
+  });
+}
 
 const Portfolio: FC = memo(() => {
-
-
-  const [portfolioItems, setPortfolioItems] = useState<PortfolioItem[]>([]);
+  const [portfolioItems, setPortfolioItems] = useState<PortfolioItem[]>([])
+  
   useEffect(() => {
     const query = '*[_type == "portfolioItems"]';
     client.fetch(query).then((data) => {
-      setPortfolioItems(data);
+      const sortedItems = sortPortfolioItems(data)
+      setPortfolioItems(sortedItems)
     });
   }, []);
-
 
   return (
     <Section className="bg-neutral-800" sectionId={SectionId.Portfolio}>
@@ -32,9 +38,9 @@ const Portfolio: FC = memo(() => {
         <h2 className="self-center text-xl font-bold text-white">Check out some of my work</h2>
         <div className="w-full sm:columns-1 md:columns-2 lg:columns-2">
           {portfolioItems.map((item, index) => {
-            const { title, imgUrl } = item;
+            const { title, imgUrl,_updatedAt } = item;
             return (
-              <div className="pb-6" key={`${title}-${index}`}>
+              <div className="pb-6" key={`${_updatedAt}`}>
                 <div
                   className={classNames(
                     'relative h-max w-full overflow-hidden rounded-lg shadow-lg shadow-black/30 lg:shadow-xl',
@@ -43,7 +49,6 @@ const Portfolio: FC = memo(() => {
                   <ItemOverlay item={portfolioItems[index]} />
                 </div>
               </div>
-
             );
           })}
         </div>
@@ -60,9 +65,6 @@ const ItemOverlay: FC<{ item: PortfolioItem }> = memo(({ item: { title, modalTit
   const [showOverlay, setShowOverlay] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const linkRef = useRef<HTMLAnchorElement>(null);
-
-
-
 
   useEffect(() => {
     // Avoid hydration styling errors by setting mobile in useEffect
@@ -81,7 +83,6 @@ const ItemOverlay: FC<{ item: PortfolioItem }> = memo(({ item: { title, modalTit
     },
     [isOpen],
   );
-
 
   return (
     <a
@@ -131,8 +132,6 @@ const ItemOverlay: FC<{ item: PortfolioItem }> = memo(({ item: { title, modalTit
             </div>
           </Modal>
         }
-
-
       </div >
     </a >
   );

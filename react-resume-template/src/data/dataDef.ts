@@ -29,7 +29,7 @@ export interface SanityImage {
 export interface Hero {
   imageSrc?: string | SanityImage[];
   name: string;
-  description: JSX.Element;
+  description: React.JSX.Element;
   actions: HeroActionItem[];
 }
 
@@ -37,7 +37,7 @@ interface HeroActionItem {
   href: string;
   text: string;
   primary?: boolean;
-  Icon?: (props: SVGProps<SVGSVGElement>) => JSX.Element;
+  Icon?: (props: SVGProps<SVGSVGElement>) => React.JSX.Element;
 }
 
 /**
@@ -52,7 +52,7 @@ export interface About {
 export interface AboutItem {
   label: string;
   text: string | number;
-  Icon?: (props: SVGProps<SVGSVGElement>) => JSX.Element;
+  Icon?: (props: SVGProps<SVGSVGElement>) => React.JSX.Element;
 }
 
 /**
@@ -61,7 +61,7 @@ export interface AboutItem {
 export interface Stat {
   title: string;
   value: number;
-  Icon?: (props: SVGProps<SVGSVGElement>) => JSX.Element;
+  Icon?: (props: SVGProps<SVGSVGElement>) => React.JSX.Element;
 }
 
 /**
@@ -91,6 +91,7 @@ export interface PortfolioItem {
   modalTitle: string;
   modalDescription?: string;
   modalImgUrl?: string | StaticImageData | SanityImage[];
+  _updatedAt: any
 }
 
 export interface Skills {
@@ -104,7 +105,7 @@ export interface TimelineItem {
   date: string;
   location: string;
   title: string;
-  content: JSX.Element;
+  content: React.JSX.Element;
 }
 
 /**
@@ -148,7 +149,7 @@ export interface ContactItem {
 }
 
 export interface ContactValue {
-  Icon: FC<IconProps> | ((props: SVGProps<SVGSVGElement>) => JSX.Element);
+  Icon: FC<IconProps> | ((props: SVGProps<SVGSVGElement>) => React.JSX.Element);
   srLabel: string;
 }
 
