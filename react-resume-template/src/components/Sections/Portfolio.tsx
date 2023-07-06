@@ -19,16 +19,16 @@ const sortPortfolioItems = (items: PortfolioItem[]) => {
 
     return dateB.getTime() - dateA.getTime();
   });
-}
+};
 
 const Portfolio: FC = memo(() => {
-  const [portfolioItems, setPortfolioItems] = useState<PortfolioItem[]>([])
+  const [portfolioItems, setPortfolioItems] = useState<PortfolioItem[]>([]);
   
   useEffect(() => {
     const query = '*[_type == "portfolioItems"]';
     client.fetch(query).then((data) => {
-      const sortedItems = sortPortfolioItems(data)
-      setPortfolioItems(sortedItems)
+      const sortedItems = sortPortfolioItems(data);
+      setPortfolioItems(sortedItems);
     });
   }, []);
 
