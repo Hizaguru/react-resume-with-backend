@@ -1,8 +1,9 @@
-import sanityClient from '@sanity/client';
+
 import imageUrlBuilder from '@sanity/image-url';
+import { createClient } from 'next-sanity';
 
 
-export const client = sanityClient({
+export const client = createClient({
   projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID,
   dataset: 'production',
   apiVersion: '2022-02-01',
@@ -10,8 +11,10 @@ export const client = sanityClient({
   ignoreBrowserTokenWarning: true,
   token: process.env.NEXT_PUBLIC_SANITY_TOKEN,
 });
+
 const builder = imageUrlBuilder(client);
 
 export const urlFor = (source: any) => {
+  
   return builder.image(source);
 };
