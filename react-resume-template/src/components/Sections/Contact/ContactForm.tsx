@@ -1,6 +1,6 @@
-import { FC, memo, useCallback, useMemo, useState } from 'react';
+import {FC, memo, useCallback, useMemo, useState} from 'react';
 import emailJs from 'emailjs-com';
-import { contact } from '../../../data/data';
+import {contact} from '../../../data/data';
 import LoadingSpinner from './LoadingSpinner';
 interface FormData {
   name: string;
@@ -20,18 +20,18 @@ const ContactForm: FC = memo(() => {
     }),
     [],
   );
-  const { alert, messageSent } = contact;
+  const {alert, messageSent} = contact;
   const [data, setData] = useState<FormData>(defaultData);
   const [isFormSubmitted, setIsFormSubmitted] = useState(false);
   const [error, setError] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const onChange = useCallback(
     <T extends HTMLInputElement | HTMLTextAreaElement>(event: React.ChangeEvent<T>): void => {
-      const { name, value } = event.target;
+      const {name, value} = event.target;
 
-      const fieldData: Partial<FormData> = { [name]: value };
+      const fieldData: Partial<FormData> = {[name]: value};
 
-      setData({ ...data, ...fieldData });
+      setData({...data, ...fieldData});
     },
     [data],
   );
@@ -39,22 +39,23 @@ const ContactForm: FC = memo(() => {
     async (event: React.FormEvent<HTMLFormElement>) => {
       setIsLoading(true);
       event.preventDefault();
-      emailJs.sendForm(SERVICE_ID!, TEMPLATE_ID!, event.currentTarget, USER_ID).then(
-        (result) => {
-          return result.text;
-        },
-        (error) => {
-          setError(true);
-          return error.text;
-        }
-      ).then();
+      emailJs
+        .sendForm(SERVICE_ID!, TEMPLATE_ID!, event.currentTarget, USER_ID)
+        .then(
+          result => {
+            return result.text;
+          },
+          error => {
+            setError(true);
+            return error.text;
+          },
+        )
+        .then();
       event.currentTarget.reset();
       setTimeout(() => {
         setIsFormSubmitted(true);
         setIsLoading(false);
       }, 3000);
-
-
     },
     [data],
   );
@@ -62,23 +63,20 @@ const ContactForm: FC = memo(() => {
   const inputClasses =
     'bg-neutral-700 border-0 focus:border-0 focus:outline-none focus:ring-1 focus:ring-orange-600 rounded-md placeholder:text-neutral-400 placeholder:text-sm text-neutral-200 text-sm';
 
-
   if (isLoading) {
     return (
       <div>
         <LoadingSpinner />
       </div>
     );
-  }
-  else if (isFormSubmitted) {
+  } else if (isFormSubmitted) {
     return (
       <div className="message-success">
         <i className="fa fa-check" />
-        <p className='font-bold text-white '>{messageSent}</p>
+        <p className="font-bold text-white ">{messageSent}</p>
       </div>
     );
-  }
-  else {
+  } else {
     return (
       <form className="grid min-h-[320px] grid-cols-1 gap-y-4" method="POST" onSubmit={handleSendMessage}>
         <input className={inputClasses} name="name" onChange={onChange} placeholder="Name" required type="text" />
@@ -111,7 +109,7 @@ const ContactForm: FC = memo(() => {
         {error && (
           <div className="message-warning">
             <i className="fa fa-check" />
-            <p className='font-bold text-red'>{alert}</p>
+            <p className="font-bold text-red">{alert}</p>
           </div>
         )}
       </form>

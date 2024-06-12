@@ -1,7 +1,7 @@
-import { StaticImageData } from 'next/legacy/image';
-import { FC, SVGProps } from 'react';
+import {StaticImageData} from 'next/legacy/image';
+import {FC, SVGProps} from 'react';
 
-import { IconProps } from '../components/Icon/Icon';
+import {IconProps} from '../components/Icon/Icon';
 
 export interface HomepageMeta {
   title: string;
@@ -9,7 +9,7 @@ export interface HomepageMeta {
   author: string;
   keywords: string;
   ogImageUrl?: string;
-  children?: any,
+  children?: any;
 }
 //Portfolio image section
 export interface SanityImage {
@@ -19,8 +19,8 @@ export interface SanityImage {
   imgUrl: {
     asset: {
       url: string;
-    }
-  }
+    };
+  };
 }
 
 /**
@@ -91,7 +91,7 @@ export interface PortfolioItem {
   modalTitle: string;
   modalDescription?: string;
   modalImgUrl?: string | StaticImageData | SanityImage[];
-  _updatedAt: any
+  _updatedAt: any;
 }
 
 export interface Skills {
@@ -137,10 +137,9 @@ export const ContactType = {
   Location: 'Location',
   Github: 'Github',
   LinkedIn: 'LinkedIn',
-
 } as const;
 
-export type ContactType = typeof ContactType[keyof typeof ContactType];
+export type ContactType = (typeof ContactType)[keyof typeof ContactType];
 
 export interface ContactItem {
   type: ContactType;
