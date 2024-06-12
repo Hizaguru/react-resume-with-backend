@@ -55,6 +55,5 @@ export const useNavObserver = (selectors: string, handler: (section: SectionId |
     return () => {
       observer.disconnect();
     };
-
   }, []); // Dependency here is the post content.
 };

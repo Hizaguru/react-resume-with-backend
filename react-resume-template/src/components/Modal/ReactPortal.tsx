@@ -1,16 +1,15 @@
-import React, { useLayoutEffect, useState } from 'react';
-import { createPortal } from 'react-dom';
+import React, {useLayoutEffect, useState} from 'react';
+import {createPortal} from 'react-dom';
 React.useLayoutEffect = React.useEffect;
 
 type Props = {
   wrapperId: string;
-  children: React.ReactNode
-}
+  children: React.ReactNode;
+};
 
 //Default value if element is not found
 interface WrapperProperty {
   wrapperIds: string;
-
 }
 
 const defaultProp: WrapperProperty = {
@@ -26,7 +25,7 @@ function createWrapperAndAppendToBody(wrapperId: string) {
 
 const ReactPortal: React.FC<Props> = (props: Props) => {
   const [wrapperElement, setWrapperElement] = useState(null);
-  const { wrapperIds } = defaultProp;
+  const {wrapperIds} = defaultProp;
   useLayoutEffect(() => {
     let element: any = document.getElementById(wrapperIds)!;
     let systemCreated = false;
@@ -50,6 +49,5 @@ const ReactPortal: React.FC<Props> = (props: Props) => {
   if (wrapperElement === null) return null;
 
   return createPortal(props.children, wrapperElement);
-
 };
 export default ReactPortal;

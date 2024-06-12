@@ -1,22 +1,22 @@
-import { ChevronDownIcon } from '@heroicons/react/outline';
+import {ChevronDownIcon} from '@heroicons/react/outline';
 import classNames from 'classnames';
 import Image from 'next/legacy/image';
-import { FC, memo, useEffect, useState } from 'react';
+import {FC, memo, useEffect, useState} from 'react';
 
-import { heroData, SectionId } from '../../data/data';
-import { client, urlFor } from '../../client';
+import {heroData, SectionId} from '../../data/data';
+import {client, urlFor} from '../../client';
 import Section from '../Layout/Section';
 import Socials from '../Socials';
 
-import { SanityImage } from '../../data/dataDef';
+import {SanityImage} from '../../data/dataDef';
 
 const Hero: FC = memo(() => {
-  const { name, description, actions } = heroData;
+  const {name, description, actions} = heroData;
   const [header, setHeader] = useState<SanityImage[]>([]);
 
   useEffect(() => {
     const query = '*[_type == "header"]';
-    client.fetch(query).then((data) => {
+    client.fetch(query).then(data => {
       setHeader(data);
     });
   }, []);
@@ -24,7 +24,7 @@ const Hero: FC = memo(() => {
   return (
     <Section noPadding sectionId={SectionId.Hero}>
       <div className="relative flex h-screen w-screen items-center justify-center">
-        {header.map((item) => {
+        {header.map(item => {
           return (
             <Image
               key={item._id}
@@ -45,7 +45,7 @@ const Hero: FC = memo(() => {
               <Socials />
             </div>
             <div className="flex w-full justify-center gap-x-4">
-              {actions.map(({ href, text, primary, Icon }) => (
+              {actions.map(({href, text, primary, Icon}) => (
                 <a
                   className={classNames(
                     'flex gap-x-2 rounded-full border-2 bg-none py-2 px-4 text-sm font-medium text-white ring-offset-gray-700/80 hover:bg-gray-700/80 focus:outline-none focus:ring-2 focus:ring-offset-2 sm:text-base',
