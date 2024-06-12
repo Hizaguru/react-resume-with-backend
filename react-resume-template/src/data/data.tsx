@@ -77,16 +77,13 @@ export const skills: Skills[] = [
     skillname: 'Coding (React, Typescript, Python, Java)',
   },
   {
-    skillname: 'Game Development (Unity, Unreal Engine)',
+    skillname: 'Ethical  Hacking (Web, System)',
   },
   {
     skillname: 'Operating Systems (Ubuntu, Kali, Windows)',
   },
   {
     skillname: 'Audio Designing & Mixing (Ableton live 10)',
-  },
-  {
-    skillname: 'Graphic Designing (Blender)',
   },
 ];
 
