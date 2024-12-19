@@ -14,7 +14,7 @@ export const homePageMeta: HomepageMeta = {
   title: "Jukkis' portfolio",
   description: 'My Portfolio website that was build with React typescript.',
   author: 'Jukka - Pekka Lappalainen',
-  keywords: 'Portfolio, typescript, reat, Jukka-Pekka Lappalainen',
+  keywords: 'Portfolio, typescript, recat, Jukka-Pekka Lappalainen',
 };
 
 /**
