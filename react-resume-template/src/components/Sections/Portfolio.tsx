@@ -118,6 +118,7 @@ const ItemOverlay: FC<{item: PortfolioItem}> = memo(
               <div>
                 <div className="modal-objects">
                   <Image alt={title} height={150} width={400} layout="responsive" src={urlFor(modalImage!).url()} />
+                  <p className="text-sm text-center mt-auto mx-4">Technologies used: {description}</p>
                   <h1 className="modal-header">
                     <b>{modalTitle}</b>
                   </h1>
