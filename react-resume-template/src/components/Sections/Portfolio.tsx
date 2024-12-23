@@ -60,11 +60,12 @@ Portfolio.displayName = 'Portfolio';
 export default Portfolio;
 
 const ItemOverlay: FC<{item: PortfolioItem}> = memo(
-  ({item: {title, modalTitle, modalDescription, modalImgUrl: modalImage, gitUrl, url}}) => {
+  ({item: {title, modalTitle, modalDescription, modalImgUrl: modalImage, gitUrl, url, description}}) => {
     const [mobile, setMobile] = useState(false);
     const [showOverlay, setShowOverlay] = useState(false);
     const [isOpen, setIsOpen] = useState(false);
     const linkRef = useRef<HTMLAnchorElement>(null);
+    console.log(description);
 
     useEffect(() => {
       // Avoid hydration styling errors by setting mobile in useEffect
@@ -98,9 +99,11 @@ const ItemOverlay: FC<{item: PortfolioItem}> = memo(
           {!isMobile ? (
             <a onClick={() => window.open(url)} href={url} target="_blank">
               <div className="text-center flex h-full w-full flex-col gap-y-2 overflow-hidden text-white opacity-100">
-                <h2 className="text-3xl font-bold">{title}</h2>
-                <p className="lg:py-24 sm:text-xl lg:text-2xl ">{modalDescription}</p>
+                <h2 className="text-lg sm:text-xl font-bold">{title}</h2>
+                <p className="py-16 text-base sm:text-lg">{modalDescription}</p>
+                <p className="text-sm text-center mt-auto mb-4">Technologies: {description}</p>
               </div>
+
               <ExternalLinkIcon className="absolute bottom-1 right-1 h-4 w-4 shrink-0 text-white sm:bottom-2 sm:right-2" />
             </a>
           ) : (
