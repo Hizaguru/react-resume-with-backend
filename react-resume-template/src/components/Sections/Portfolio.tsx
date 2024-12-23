@@ -98,12 +98,11 @@ const ItemOverlay: FC<{item: PortfolioItem}> = memo(
         <div className="relative h-full w-full p-4">
           {!isMobile ? (
             <a onClick={() => window.open(url)} href={url} target="_blank">
-              <div className="text-center flex h-full w-full flex-col gap-y-2 overflow-hidden text-white opacity-100">
-                <h2 className="text-lg sm:text-xl font-bold">{title}</h2>
-                <p className="py-16 text-base sm:text-lg">{modalDescription}</p>
-                <p className="text-sm text-center mt-auto mb-4">Technologies: {description}</p>
+              <div className="relative flex h-full w-full flex-col gap-y-2 text-white">
+                <h2 className="text-lg sm:text-4xl font-bold text-center">{title}</h2>
+                <p className="flex-grow py-8 text-base sm:text-3xl text-center">{modalDescription}</p>
+                <p className="text-lg text-center mt-auto mb-4">Technologies: {description}</p>
               </div>
-
               <ExternalLinkIcon className="absolute bottom-1 right-1 h-4 w-4 shrink-0 text-white sm:bottom-2 sm:right-2" />
             </a>
           ) : (
