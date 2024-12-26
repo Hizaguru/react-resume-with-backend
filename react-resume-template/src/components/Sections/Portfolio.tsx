@@ -100,7 +100,7 @@ const ItemOverlay: FC<{item: PortfolioItem}> = memo(
             <a onClick={() => window.open(url)} href={url} target="_blank">
               <div className="relative flex h-full w-full flex-col gap-y-2 text-white">
                 <h2 className="text-lg sm:text-4xl font-bold text-center">{title}</h2>
-                <p className="flex-grow py-8 text-base sm:text-3xl text-center">{modalDescription}</p>
+                <p className="flex-grow py-8 text-base sm:text-2xl text-center">{modalDescription}</p>
                 <p className="text-lg text-center mt-auto mb-4">Technologies: {description}</p>
               </div>
               <ExternalLinkIcon className="absolute bottom-1 right-1 h-4 w-4 shrink-0 text-white sm:bottom-2 sm:right-2" />
