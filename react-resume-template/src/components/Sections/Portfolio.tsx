@@ -65,7 +65,6 @@ const ItemOverlay: FC<{item: PortfolioItem}> = memo(
     const [showOverlay, setShowOverlay] = useState(false);
     const [isOpen, setIsOpen] = useState(false);
     const linkRef = useRef<HTMLAnchorElement>(null);
-    console.log(description);
 
     useEffect(() => {
       // Avoid hydration styling errors by setting mobile in useEffect
