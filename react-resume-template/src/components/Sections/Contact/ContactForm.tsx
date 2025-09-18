@@ -1,5 +1,5 @@
 import {FC, memo, useCallback, useMemo, useState} from 'react';
-import emailJs from 'emailjs-com';
+import emailJs from '@emailjs/browser';
 import {contact} from '../../../data/data';
 import LoadingSpinner from './LoadingSpinner';
 interface FormData {
@@ -42,10 +42,10 @@ const ContactForm: FC = memo(() => {
       emailJs
         .sendForm(SERVICE_ID!, TEMPLATE_ID!, event.currentTarget, USER_ID)
         .then(
-          result => {
+          (result: {text: string}) => {
             return result.text;
           },
-          error => {
+          (error: {text: string}) => {
             setError(true);
             return error.text;
           },
