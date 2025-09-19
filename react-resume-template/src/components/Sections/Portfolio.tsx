@@ -74,7 +74,7 @@ const Portfolio: FC = memo(() => {
         </div>
       </div>
 
-      {isMobile && selectedItem && (
+      {isMobile && selectedItem ? (
         <Modal isOpen={isOpen} handleClose={handleClose}>
           <div className="modal-objects">
             <div className="nextJsImage">
@@ -108,6 +108,8 @@ const Portfolio: FC = memo(() => {
             </div>
           </div>
         </Modal>
+      ) : (
+        <></>
       )}
     </Section>
   );
