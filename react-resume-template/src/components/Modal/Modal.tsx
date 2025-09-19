@@ -1,6 +1,6 @@
 import React, {useEffect, useRef} from 'react';
-import ReactPortal from './ReactPortal';
 import {CSSTransition} from 'react-transition-group';
+import ReactPortal from './ReactPortal';
 
 type Props = {
   isOpen: boolean;
@@ -20,6 +20,13 @@ const Modal: React.FC<Props> = (props: Props) => {
     };
   }, [props.handleClose]);
 
+  // Funktio joka sulkee modaalin kun klikkaat taustan
+  const handleBackdropClick = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (e.target === e.currentTarget) {
+      props.handleClose();
+    }
+  };
+
   return (
     <ReactPortal wrapperId="react-portal-container">
       <CSSTransition
@@ -28,13 +35,8 @@ const Modal: React.FC<Props> = (props: Props) => {
         unmountOnExit
         classNames="modal"
         nodeRef={nodeRef}>
-        <div className="modal" ref={nodeRef}>
-          <div className="modal-content">
-            <button onClick={props.handleClose} className="close-btn">
-              &times;
-            </button>
-            {props.children}
-          </div>
+        <div className="modal" ref={nodeRef} onClick={handleBackdropClick}>
+          <div className="modal-content">{props.children}</div>
         </div>
       </CSSTransition>
     </ReactPortal>

@@ -77,14 +77,14 @@ th {
   background-color: #2d343e;
   color: #fff;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  flex-direction: column; 
   font-size: 1.2rem;
   border-radius: 20px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
   position: relative;
   transform: scale(0.9);
   transition: all 0.3s ease-in-out;
+  overflow: hidden;
 }
 
 .modal-enter-done .modal-content {
@@ -93,7 +93,7 @@ th {
 
 .close-btn {
   position: absolute;
-  top: 10px;
+  top: 2px;
   right: 15px;
   font-size: 2rem;
   font-weight: bold;
@@ -101,6 +101,7 @@ th {
   background: transparent;
   border: none;
   cursor: pointer;
+  z-index: 1000; /* Korkea z-index varmistaa että se on kaiken päällä */
 }
 
 @media only screen and (max-width: 1400px) {
@@ -146,8 +147,10 @@ th {
   border-radius: 10px;
   overflow-y: auto;
   width: 100%;
-  height: 100%;
-  padding: 1rem;
+  flex: 1; /* Ottaa kaiken jäljellä olevan tilan */
+  padding: 3rem 1rem 1rem 1rem; /* Lisätään top padding X-painikkeelle tilaa */
+  position: relative;
+  z-index: 1; /* Pienempi z-index kuin X-painikkeella */
 }
 
 .modal-header {

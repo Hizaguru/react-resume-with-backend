@@ -77,6 +77,9 @@ const Portfolio: FC = memo(() => {
       {isMobile && selectedItem ? (
         <Modal isOpen={isOpen} handleClose={handleClose}>
           <div className="modal-objects">
+            <button onClick={handleClose} className="close-btn">
+              &times;
+            </button>
             <div className="nextJsImage relative z-0">
               <Image
                 src={buildModalImage(selectedItem.modalImgUrl!).url()}
@@ -91,6 +94,7 @@ const Portfolio: FC = memo(() => {
                 decoding="async"
               />
             </div>
+
             <div className="modal-header">{selectedItem.modalTitle}</div>
             <div className="modal-description">{selectedItem.modalDescription}</div>
             <div className="modal-links flex items-center justify-center gap-4 mt-4">
