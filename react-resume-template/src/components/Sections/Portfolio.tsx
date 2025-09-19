@@ -1,15 +1,16 @@
 import ExternalLinkIcon from '@heroicons/react/outline/ExternalLinkIcon';
 import classNames from 'classnames';
-import Image from 'next/legacy/image';
+import Image, {StaticImageData} from 'next/legacy/image';
 import {FC, memo, MouseEvent, useCallback, useEffect, useRef, useState} from 'react';
 import {client, urlFor} from '../../client';
 
 import {isMobile} from '../../config';
 import {SectionId} from '../../data/data';
-import {PortfolioItem} from '../../data/dataDef';
+import {PortfolioItem, SanityImage} from '../../data/dataDef';
 import useDetectOutsideClick from '../../hooks/useDetectOutsideClick';
 import Section from '../Layout/Section';
 import Modal from '../Modal/Modal';
+import {SanityImageSource} from '@sanity/image-url/lib/types/types';
 
 const sortPortfolioItems = (items: PortfolioItem[]) => {
   return [...items].sort((a, b) => {
@@ -19,6 +20,9 @@ const sortPortfolioItems = (items: PortfolioItem[]) => {
     return dateB.getTime() - dateA.getTime();
   });
 };
+const buildModalImage = (source: SanityImageSource) =>
+  urlFor(source).width(900).height(600).fit('crop').auto('format').quality(70);
+const buildBlur = (source: SanityImageSource) => urlFor(source).width(24).height(16).fit('crop').quality(20);
 
 const Portfolio: FC = memo(() => {
   const [portfolioItems, setPortfolioItems] = useState<PortfolioItem[]>([]);
@@ -41,8 +45,15 @@ const Portfolio: FC = memo(() => {
     setSelectedItem(null);
   };
 
+  const prefetchModalImage = (item: PortfolioItem) => {
+    const prefetch = buildModalImage(item.modalImgUrl!).url();
+    const img = new window.Image();
+    img.src = prefetch;
+  };
+
   const handleSelect = (item: PortfolioItem) => {
-    if (!isMobile) return; // do nothing on desktop
+    if (!isMobile) return;
+    prefetchModalImage(item);
     setSelectedItem(item);
     setIsOpen(true);
   };
@@ -78,10 +89,15 @@ const Portfolio: FC = memo(() => {
         <Modal isOpen={isOpen} handleClose={handleClose}>
           <div className="modal-objects">
             <div className="nextJsImage">
-              <img
+              <Image
+                src={buildModalImage(selectedItem.modalImgUrl!).url()}
                 alt={selectedItem.title}
-                className="h-full w-full object-cover"
-                src={urlFor(selectedItem.modalImgUrl!).url()}
+                layout="responsive"
+                width={900}
+                height={600}
+                placeholder="blur"
+                blurDataURL={buildBlur(selectedItem.modalImgUrl!).url()}
+                className="object-cover rounded-md"
               />
             </div>
             <div className="modal-header">{selectedItem.modalTitle}</div>
