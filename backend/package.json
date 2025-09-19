@@ -7,8 +7,8 @@
   "author": "Jukka-Pekka Lappalainen <jukka-pekka.lappalainen@outlook.com>",
   "license": "UNLICENSED",
   "scripts": {
-    "start": "sanity start",
-    "build": "sanity build"
+    "start": "npx sanity start",
+    "build": "npx sanity build"
   },
   "keywords": [
     "sanity"
@@ -27,5 +27,7 @@
     "react-dom": "^17.0",
     "styled-components": "^5.2.0"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "@sanity/cli": "^2.36.2"
+  }
 }
