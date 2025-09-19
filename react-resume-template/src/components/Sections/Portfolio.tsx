@@ -4,7 +4,6 @@ import Image from 'next/legacy/image';
 import {FC, memo, MouseEvent, useCallback, useEffect, useRef, useState} from 'react';
 import {client, urlFor} from '../../client';
 
-import {SanityImageSource} from '@sanity/image-url/lib/types/types';
 import {isMobile} from '../../config';
 import {SectionId} from '../../data/data';
 import {PortfolioItem} from '../../data/dataDef';
