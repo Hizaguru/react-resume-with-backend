@@ -9,7 +9,7 @@ type Props = {
 };
 
 // Modal.tsx
-const Modal: React.FC<Props> = (props: Props) => {
+export const Modal: React.FC<Props> = (props: Props) => {
   const nodeRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {

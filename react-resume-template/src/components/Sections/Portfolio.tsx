@@ -9,7 +9,8 @@ import {SectionId} from '../../data/data';
 import {PortfolioItem} from '../../data/dataDef';
 import useDetectOutsideClick from '../../hooks/useDetectOutsideClick';
 import Section from '../Layout/Section';
-import Modal from '../Modal/Modal';
+
+import {Modal} from '../Modal/Modal';
 import {buildBlur, buildModalImage} from './utils';
 
 const sortPortfolioItems = (items: PortfolioItem[]) => {
