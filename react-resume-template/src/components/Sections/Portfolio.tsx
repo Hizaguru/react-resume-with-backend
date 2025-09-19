@@ -119,7 +119,7 @@ Portfolio.displayName = 'Portfolio';
 export default Portfolio;
 
 const ItemOverlay: FC<{item: PortfolioItem; onItemSelect: () => void}> = memo(
-  ({item: {title, modalTitle, modalDescription, modalImgUrl: modalImage, gitUrl, url, description}, onItemSelect}) => {
+  ({item: {title, modalDescription, url, description}, onItemSelect}) => {
     const [mobile, setMobile] = useState(false);
     const [showOverlay, setShowOverlay] = useState(false);
     const linkRef = useRef<HTMLAnchorElement>(null);
