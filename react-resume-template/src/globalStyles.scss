@@ -60,31 +60,47 @@ th {
 .modal {
   position: fixed;
   inset: 0;
-  /* inset sets all 4 values (top right bottom left) much like how we set padding, margin etc., */
   background-color: rgba(0, 0, 0, 0.6);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  transition: all 2s ease-in;
-  transition: all 0.6s ease-out;
+  transition: all 0.3s ease-in-out;
   overflow: hidden;
   z-index: 999;
   padding: 40px 20px 20px;
-  opacity: 0;
-  pointer-events: none;
-  transform: scale(0.4);
 }
 
 .modal-content {
-  width: 600px;
-  height: 400px;
-  background-color: #e4e8f1;
-  border-radius: 25px;
+  width: 700px;
+  height: 500px;
+  background-color: #2d343e;
   color: #fff;
+  display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1rem;
+  font-size: 1.2rem;
+  border-radius: 20px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+  position: relative;
+  transform: scale(0.9);
+  transition: all 0.3s ease-in-out;
+}
+
+.modal-enter-done .modal-content {
+  transform: scale(1);
+}
+
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 2rem;
+  font-weight: bold;
+  color: #fff;
+  background: transparent;
+  border: none;
+  cursor: pointer;
 }
 
 @media only screen and (max-width: 1400px) {
@@ -96,81 +112,87 @@ th {
 
 @media only screen and (max-width: 600px) {
   .modal-content {
-    width: 450px;
-    height: 350px;
+    width: 90vw;
+    height: 70vh;
   }
 }
 
-@media only screen and (max-width: 400px) {
-  .modal-content {
-    width: 350px;
-    height: 350px;
-  }
-}
-
-.modal-enter-done {
-  opacity: 1;
-  pointer-events: auto;
-  transform: scale(1);
-}
-
-.modal-exit {
+.modal-enter {
   opacity: 0;
-  transform: scale(0.4);
+  transform: scale(0.9);
 }
+.modal-enter-active {
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity 300ms, transform 300ms;
+}
+.modal-exit {
+  opacity: 1;
+}
+.modal-exit-active {
+  opacity: 0;
+  transform: scale(0.9);
+  transition: opacity 300ms, transform 300ms;
+}
+
 .modal-links {
-  color: rgb(0, 0, 0.6);
+  color: #61dafb;
 }
+
 
 .modal-objects {
-  color: rgb(0, 0, 0.6);
+  color: #fff;
   text-align: center;
   border-radius: 10px;
-  overflow: hidden;
+  overflow-y: auto;
+  width: 100%;
+  height: 100%;
+  padding: 1rem;
 }
 
 .modal-header {
-  font-size: 1.2rem;
+  font-size: 1.5rem;
+  font-weight: bold;
   padding-top: 10px;
-  padding-bottom: 20px;
+  padding-bottom: 15px;
 }
 
 .modal-description {
-  font-size: 0.7rem;
+  font-size: 1rem;
+  line-height: 1.6;
   padding-left: 5%;
   padding-right: 5%;
+  white-space: pre-wrap; /* This will respect newlines and wrap text */
+  text-align: left;
+  margin-bottom: 20px;
 }
 
 @media only screen and (min-width: 1400px) {
   .modal-links {
-    padding-left: 70%;
     padding-top: 15px;
   }
 }
 
 @media only screen and (max-width: 1400px) {
   .modal-links {
-    padding-left: 70%;
     padding-top: 15px;
   }
 }
 
 @media only screen and (max-width: 600px) {
   .modal-links {
-    padding-left: 50%;
-    padding-top: 5px;
     padding-top: 5%;
   }
 }
 
 .modal-link-left:hover {
-  text-decoration: underline 0.15em rgb(0, 0, 0.6);
+  text-decoration: underline 0.15em #61dafb;
   text-underline-offset: 0.3em;
   transition: text-decoration-color 300ms, text-underline-offset 300ms;
 }
 
 .modal-link-right:hover {
-  text-decoration: underline 0.15em rgb(0, 0, 0.6);
+  text-decoration: underline 0.15em #61dafb;
   text-underline-offset: 0.3em;
   transition: text-decoration-color 300ms, text-underline-offset 300ms;
 }
@@ -184,7 +206,10 @@ a:hover {
 }
 
 .nextJsImage {
-  overflow-y: scroll;
+  max-height: 50%;
+  overflow: hidden;
+  border-radius: 10px;
+  margin-bottom: 1rem;
 }
 
 //Animation loading spinner
@@ -277,4 +302,57 @@ a:hover {
   to {
     filter: hue-rotate(360deg);
   }
+}
+
+/* Modern button design */
+.btn-modern {
+  --btn-bg1: #0d3b66;
+  --btn-bg2: #145288;
+  --btn-shadow: rgba(0,0,0,0.4);
+  --btn-glow: rgba(97,218,251,0.35);
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: .5rem;
+  padding: 0.75rem 1.35rem;
+  font-size: .95rem;
+  font-weight: 600;
+  letter-spacing: .4px;
+  line-height: 1.1;
+  color: #f3f9ff;
+  background: linear-gradient(135deg, var(--btn-bg1) 0%, var(--btn-bg2) 100%);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 14px;
+  text-decoration: none;
+  cursor: pointer;
+  box-shadow: 0 4px 10px -2px var(--btn-shadow), 0 2px 4px -1px rgba(0,0,0,.45);
+  transition: background 200ms ease, transform 160ms ease, box-shadow 220ms ease;
+  -webkit-tap-highlight-color: transparent;
+}
+.btn-modern:before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 28% 22%, rgba(255,255,255,.25), transparent 65%);
+  mix-blend-mode: overlay;
+  opacity: .25;
+  transition: opacity 250ms ease;
+  pointer-events: none;
+  border-radius: inherit;
+}
+.btn-modern:hover { transform: translateY(-2px); box-shadow:0 8px 20px -6px var(--btn-shadow), 0 4px 10px -2px rgba(0,0,0,.5);} 
+.btn-modern:hover:before {opacity:.4;}
+.btn-modern:active { transform: translateY(0); box-shadow:0 4px 10px -2px rgba(0,0,0,.55);} 
+.btn-modern:focus-visible {outline:2px solid #61dafb; outline-offset:2px;}
+.btn-modern.glow { box-shadow:0 0 0 0 var(--btn-glow), 0 4px 10px -2px var(--btn-shadow); animation: btnPulse 3.2s infinite ease-in-out; }
+@keyframes btnPulse { 0%,70% {box-shadow:0 0 0 0 var(--btn-glow);} 100% {box-shadow:0 0 0 18px rgba(97,218,251,0);} }
+
+.btn-modern.secondary { --btn-bg1:#233040; --btn-bg2:#30485e; }
+.btn-modern.danger { --btn-bg1:#6d1b1b; --btn-bg2:#b32121; }
+
+.btn-modern.full {width:100%; justify-content:center;}
+
+@media (max-width:640px){
+  .btn-modern {width:100%;}
 }

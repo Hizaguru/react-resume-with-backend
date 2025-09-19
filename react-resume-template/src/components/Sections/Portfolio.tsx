@@ -22,14 +22,30 @@ const sortPortfolioItems = (items: PortfolioItem[]) => {
 
 const Portfolio: FC = memo(() => {
   const [portfolioItems, setPortfolioItems] = useState<PortfolioItem[]>([]);
+  const [isOpen, setIsOpen] = useState<boolean>(isMobile); // open only by default on mobile
+  const [selectedItem, setSelectedItem] = useState<PortfolioItem | null>(null);
 
   useEffect(() => {
     const query = '*[_type == "portfolioItems"]';
     client.fetch(query).then(data => {
       const sortedItems = sortPortfolioItems(data);
       setPortfolioItems(sortedItems);
+      if (isMobile && sortedItems.length > 0) {
+        setSelectedItem(sortedItems[0]);
+      }
     });
   }, []);
+
+  const handleClose = () => {
+    setIsOpen(false);
+    setSelectedItem(null);
+  };
+
+  const handleSelect = (item: PortfolioItem) => {
+    if (!isMobile) return; // do nothing on desktop
+    setSelectedItem(item);
+    setIsOpen(true);
+  };
 
   return (
     <Section className="bg-neutral-800" sectionId={SectionId.Portfolio}>
@@ -45,13 +61,56 @@ const Portfolio: FC = memo(() => {
                     'relative h-max w-full overflow-hidden rounded-lg shadow-lg shadow-black/30 lg:shadow-xl',
                   )}>
                   <Image alt={title} layout="responsive" width={600} height={600} src={urlFor(imgUrl).url()} />
-                  <ItemOverlay item={portfolioItems[index]} />
+                  <ItemOverlay
+                    item={portfolioItems[index]}
+                    onItemSelect={() => {
+                      handleSelect(item);
+                    }}
+                  />
                 </div>
               </div>
             );
           })}
         </div>
       </div>
+
+      {isMobile && selectedItem ? (
+        <Modal isOpen={isOpen} handleClose={handleClose}>
+          <div className="modal-objects">
+            <div className="nextJsImage">
+              <img
+                alt={selectedItem.title}
+                className="h-full w-full object-cover"
+                src={urlFor(selectedItem.modalImgUrl!).url()}
+              />
+            </div>
+            <div className="modal-header">{selectedItem.modalTitle}</div>
+            <div className="modal-description">{selectedItem.modalDescription}</div>
+            <div className="modal-links flex items-center justify-center gap-4 mt-4">
+              {selectedItem.gitUrl && (
+                <a
+                  className="modal-link-left btn-modern secondary"
+                  href={selectedItem.gitUrl}
+                  target="_blank"
+                  rel="noopener noreferrer">
+                  Code
+                </a>
+              )}
+              {selectedItem.url && (
+                <a
+                  className="modal-link-right btn-modern glow"
+                  href={selectedItem.url}
+                  target="_blank"
+                  rel="noopener noreferrer">
+                  Project
+                </a>
+              )}
+            </div>
+          </div>
+        </Modal>
+      ) : (
+        <></>
+      )}
     </Section>
   );
 });
@@ -59,11 +118,10 @@ const Portfolio: FC = memo(() => {
 Portfolio.displayName = 'Portfolio';
 export default Portfolio;
 
-const ItemOverlay: FC<{item: PortfolioItem}> = memo(
-  ({item: {title, modalTitle, modalDescription, modalImgUrl: modalImage, gitUrl, url, description}}) => {
+const ItemOverlay: FC<{item: PortfolioItem; onItemSelect: () => void}> = memo(
+  ({item: {title, modalDescription, url, description}, onItemSelect}) => {
     const [mobile, setMobile] = useState(false);
     const [showOverlay, setShowOverlay] = useState(false);
-    const [isOpen, setIsOpen] = useState(false);
     const linkRef = useRef<HTMLAnchorElement>(null);
 
     useEffect(() => {
@@ -77,11 +135,11 @@ const ItemOverlay: FC<{item: PortfolioItem}> = memo(
     const handleItemClick = useCallback(
       (event: MouseEvent<HTMLElement>) => {
         event.preventDefault();
-        if (!isOpen && isMobile) {
-          setIsOpen(true);
+        if (isMobile) {
+          onItemSelect();
         }
       },
-      [isOpen],
+      [onItemSelect],
     );
 
     return (
@@ -109,38 +167,6 @@ const ItemOverlay: FC<{item: PortfolioItem}> = memo(
               <h2 className="text-3xl font-bold ">{title}</h2>
               <p className="py-24 text-xl lg:text-2xl ">{modalDescription}</p>
             </div>
-          )}
-        </div>
-        <div>
-          {isMobile && (
-            <Modal handleClose={() => setIsOpen(false)} isOpen={isOpen}>
-              <div>
-                <div className="modal-objects">
-                  <Image alt={title} height={150} width={400} layout="responsive" src={urlFor(modalImage!).url()} />
-                  <p className="text-sm text-center mt-auto mx-4">Technologies used: {description}</p>
-                  <h1 className="modal-header">
-                    <b>{modalTitle}</b>
-                  </h1>
-                  <p className="modal-description">{modalDescription}</p>
-                </div>
-                {gitUrl !== undefined ? (
-                  <div className="modal-links">
-                    <a className="modal-link-left" onClick={() => window.open(gitUrl)} href={gitUrl} target="_blank">
-                      <b>Code</b>
-                    </a>
-                    <a className="modal-link-right" onClick={() => window.open(url)} href={url} target="_blank">
-                      <b>Project</b>
-                    </a>
-                  </div>
-                ) : (
-                  <div className="modal-links">
-                    <a className="modal-link-right" onClick={() => window.open(url)} href={url} target="_blank">
-                      Project
-                    </a>
-                  </div>
-                )}
-              </div>
-            </Modal>
           )}
         </div>
       </a>
