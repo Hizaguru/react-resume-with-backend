@@ -10,6 +10,7 @@ import {PortfolioItem} from '../../data/dataDef';
 import useDetectOutsideClick from '../../hooks/useDetectOutsideClick';
 import Section from '../Layout/Section';
 import Modal from '../Modal/Modal';
+import {buildBlur, buildModalImage} from './utils';
 
 const sortPortfolioItems = (items: PortfolioItem[]) => {
   return [...items].sort((a, b) => {
@@ -41,8 +42,15 @@ const Portfolio: FC = memo(() => {
     setSelectedItem(null);
   };
 
+  const prefetchModalImage = (item: PortfolioItem) => {
+    const prefetch = buildModalImage(item.modalImgUrl!).url();
+    const img = new window.Image();
+    img.src = prefetch;
+  };
+
   const handleSelect = (item: PortfolioItem) => {
-    if (!isMobile) return; // do nothing on desktop
+    if (!isMobile) return;
+    prefetchModalImage(item);
     setSelectedItem(item);
     setIsOpen(true);
   };
@@ -78,10 +86,15 @@ const Portfolio: FC = memo(() => {
         <Modal isOpen={isOpen} handleClose={handleClose}>
           <div className="modal-objects">
             <div className="nextJsImage">
-              <img
+              <Image
+                src={buildModalImage(selectedItem.modalImgUrl!).url()}
                 alt={selectedItem.title}
-                className="h-full w-full object-cover"
-                src={urlFor(selectedItem.modalImgUrl!).url()}
+                layout="responsive"
+                width={900}
+                height={600}
+                placeholder="blur"
+                blurDataURL={buildBlur(selectedItem.modalImgUrl!).url()}
+                className="object-cover rounded-md"
               />
             </div>
             <div className="modal-header">{selectedItem.modalTitle}</div>
