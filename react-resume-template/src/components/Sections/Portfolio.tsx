@@ -22,7 +22,7 @@ const sortPortfolioItems = (items: PortfolioItem[]) => {
 
 const Portfolio: FC = memo(() => {
   const [portfolioItems, setPortfolioItems] = useState<PortfolioItem[]>([]);
-  const [isOpen, setIsOpen] = useState<boolean>(isMobile); // open only by default on mobile
+  const [isOpen, setIsOpen] = useState<boolean>(false); // open only by default on mobile
   const [selectedItem, setSelectedItem] = useState<PortfolioItem | null>(null);
 
   useEffect(() => {
