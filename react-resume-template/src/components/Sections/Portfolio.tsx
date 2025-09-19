@@ -11,6 +11,7 @@ import {PortfolioItem} from '../../data/dataDef';
 import useDetectOutsideClick from '../../hooks/useDetectOutsideClick';
 import Section from '../Layout/Section';
 import Modal from '../Modal/Modal';
+import {buildBlur, buildModalImage} from './utils';
 
 const sortPortfolioItems = (items: PortfolioItem[]) => {
   return [...items].sort((a, b) => {
@@ -20,10 +21,6 @@ const sortPortfolioItems = (items: PortfolioItem[]) => {
     return dateB.getTime() - dateA.getTime();
   });
 };
-
-const buildModalImage = (source: SanityImageSource) =>
-  urlFor(source).width(900).height(600).fit('crop').auto('format').quality(70);
-const buildBlur = (source: SanityImageSource) => urlFor(source).width(24).height(16).fit('crop').quality(20);
 
 const Portfolio: FC = memo(() => {
   const [portfolioItems, setPortfolioItems] = useState<PortfolioItem[]>([]);
