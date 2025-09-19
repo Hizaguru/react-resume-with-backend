@@ -1,5 +1,6 @@
 import {createClient} from '@sanity/client';
 import imageUrlBuilder from '@sanity/image-url';
+import {SanityImageSource} from '@sanity/image-url/lib/types/types';
 
 export const client = createClient({
   projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID,
@@ -11,6 +12,10 @@ export const client = createClient({
 });
 const builder = imageUrlBuilder(client);
 
-export const urlFor = (source: any) => {
-  return builder.image(source);
-};
+export const urlFor = (source: SanityImageSource) => builder.image(source);
+
+export const buildModalImage = (source: SanityImageSource) =>
+  urlFor(source).width(900).height(600).fit('crop').auto('format').quality(70);
+
+export const buildBlurPlaceholder = (source: SanityImageSource) =>
+  urlFor(source).width(24).height(16).fit('crop').quality(20);

@@ -2,7 +2,7 @@ import ExternalLinkIcon from '@heroicons/react/outline/ExternalLinkIcon';
 import classNames from 'classnames';
 import Image from 'next/legacy/image';
 import {FC, memo, MouseEvent, useCallback, useEffect, useRef, useState} from 'react';
-import {client, urlFor} from '../../client';
+import {buildBlurPlaceholder, buildModalImage, client, urlFor} from '../../client';
 
 import {isMobile} from '../../config';
 import {SectionId} from '../../data/data';
@@ -77,11 +77,18 @@ const Portfolio: FC = memo(() => {
       {isMobile && selectedItem ? (
         <Modal isOpen={isOpen} handleClose={handleClose}>
           <div className="modal-objects">
-            <div className="nextJsImage">
-              <img
+            <div className="nextJsImage relative z-0">
+              <Image
+                src={buildModalImage(selectedItem.modalImgUrl!).url()}
                 alt={selectedItem.title}
-                className="h-full w-full object-cover"
-                src={urlFor(selectedItem.modalImgUrl!).url()}
+                layout="responsive"
+                width={900}
+                height={600}
+                placeholder="blur"
+                blurDataURL={buildBlurPlaceholder(selectedItem.modalImgUrl!).url()}
+                className="object-cover rounded-md z-0" // kuva jää alle
+                priority
+                decoding="async"
               />
             </div>
             <div className="modal-header">{selectedItem.modalTitle}</div>
