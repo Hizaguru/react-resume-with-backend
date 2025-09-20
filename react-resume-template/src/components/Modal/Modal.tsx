@@ -6,6 +6,7 @@ type Props = {
   isOpen: boolean;
   children: React.ReactNode;
   handleClose: () => void;
+  showCloseButton?: boolean;
 };
 
 const Modal: React.FC<Props> = (props: Props) => {
@@ -36,7 +37,14 @@ const Modal: React.FC<Props> = (props: Props) => {
         classNames="modal"
         nodeRef={nodeRef}>
         <div className="modal" ref={nodeRef} onClick={handleBackdropClick}>
-          <div className="modal-content">{props.children}</div>
+          <div className="modal-content">
+            {props.showCloseButton !== false && (
+              <button type="button" aria-label="Close modal" className="close-btn" onClick={props.handleClose}>
+                &times;
+              </button>
+            )}
+            {props.children}
+          </div>
         </div>
       </CSSTransition>
     </ReactPortal>
