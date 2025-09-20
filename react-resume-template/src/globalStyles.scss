@@ -64,16 +64,17 @@ th {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start; /* allow content to start at top so it can scroll */
   transition: all 0.3s ease-in-out;
-  overflow: hidden;
+  overflow-y: auto; /* allow scrolling if content taller than viewport */
+  -webkit-overflow-scrolling: touch;
   z-index: 999;
   padding: 40px 20px 20px;
 }
 
 .modal-content {
   width: 700px;
-  height: 500px;
+  max-height: 90vh; /* allow almost full viewport height */
   background-color: #2d343e;
   color: #fff;
   display: flex;
@@ -84,7 +85,7 @@ th {
   position: relative;
   transform: scale(0.9);
   transition: all 0.3s ease-in-out;
-  overflow: hidden;
+  overflow: hidden; /* keep outer hidden, inner scroll area will handle */
 }
 
 .modal-enter-done .modal-content {
@@ -107,14 +108,13 @@ th {
 @media only screen and (max-width: 1400px) {
   .modal-content {
     width: 600px;
-    height: 400px;
   }
 }
 
 @media only screen and (max-width: 600px) {
   .modal-content {
     width: 90vw;
-    height: 70vh;
+    max-height: 85vh; /* little more space on very small screens */
   }
 }
 
@@ -145,12 +145,13 @@ th {
   color: #fff;
   text-align: center;
   border-radius: 10px;
-  overflow-y: auto;
+  overflow-y: auto; /* scrolling content */
+  -webkit-overflow-scrolling: touch;
   width: 100%;
-  flex: 1; /* Ottaa kaiken jäljellä olevan tilan */
-  padding: 3rem 1rem 1rem 1rem; /* Lisätään top padding X-painikkeelle tilaa */
+  flex: 1; /* take remaining height */
+  padding: 3rem 1rem 1rem 1rem; /* space for close button */
   position: relative;
-  z-index: 1; /* Pienempi z-index kuin X-painikkeella */
+  z-index: 1;
 }
 
 .modal-header {
