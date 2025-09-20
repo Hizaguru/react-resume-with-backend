@@ -4,7 +4,6 @@ import Image from 'next/legacy/image';
 import {FC, memo, MouseEvent, useCallback, useEffect, useRef, useState} from 'react';
 import {buildBlurPlaceholder, buildModalImage, client, urlFor} from '../../client';
 
-import {isMobile} from '../../config';
 import {SectionId} from '../../data/data';
 import {PortfolioItem} from '../../data/dataDef';
 import useDetectOutsideClick from '../../hooks/useDetectOutsideClick';
@@ -22,7 +21,7 @@ const sortPortfolioItems = (items: PortfolioItem[]) => {
 
 const Portfolio: FC = memo(() => {
   const [portfolioItems, setPortfolioItems] = useState<PortfolioItem[]>([]);
-  const [isOpen, setIsOpen] = useState<boolean>(false); // open only by default on mobile
+  const [isOpen, setIsOpen] = useState<boolean>(false);
   const [selectedItem, setSelectedItem] = useState<PortfolioItem | null>(null);
 
   useEffect(() => {
@@ -30,9 +29,7 @@ const Portfolio: FC = memo(() => {
     client.fetch(query).then(data => {
       const sortedItems = sortPortfolioItems(data);
       setPortfolioItems(sortedItems);
-      if (isMobile && sortedItems.length > 0) {
-        setSelectedItem(sortedItems[0]);
-      }
+      // Removed mobile-specific default selection.
     });
   }, []);
 
@@ -76,9 +73,6 @@ const Portfolio: FC = memo(() => {
       {selectedItem ? (
         <Modal isOpen={isOpen} handleClose={handleClose}>
           <div className="modal-objects">
-            <button onClick={handleClose} className="close-btn">
-              &times;
-            </button>
             <div className="nextJsImage relative z-0">
               <Image
                 src={buildModalImage(selectedItem.modalImgUrl!).url()}
@@ -129,56 +123,44 @@ Portfolio.displayName = 'Portfolio';
 export default Portfolio;
 
 const ItemOverlay: FC<{item: PortfolioItem; onItemSelect: () => void}> = memo(
-  ({item: {title, modalDescription, url, description}, onItemSelect}) => {
-    const [mobile, setMobile] = useState(false);
-    const [showOverlay, setShowOverlay] = useState(false);
-    const linkRef = useRef<HTMLAnchorElement>(null);
-
-    useEffect(() => {
-      // Avoid hydration styling errors by setting mobile in useEffect
-      if (isMobile) {
-        setMobile(true);
-      }
-    }, []);
-    useDetectOutsideClick(linkRef, () => setShowOverlay(false));
+  ({item: {title, modalDescription, description}, onItemSelect}) => {
+    const buttonRef = useRef<HTMLButtonElement>(null);
+    useDetectOutsideClick(buttonRef, () => {});
 
     const handleItemClick = useCallback(
       (event: MouseEvent<HTMLElement>) => {
         event.preventDefault();
-
         onItemSelect();
       },
       [onItemSelect],
     );
 
     return (
-      <a
-        className={classNames(
-          'absolute inset-0 h-full w-full  bg-gray-900 transition-all duration-300',
-          {'opacity-0 hover:opacity-80': !mobile},
-          showOverlay ? 'opacity-80' : 'opacity-0',
-        )}
+      <button
+        ref={buttonRef}
+        type="button"
+        aria-label={`Open details for ${title}`}
         onClick={handleItemClick}
-        ref={linkRef}
-        target="_blank">
+        className={classNames(
+          'group absolute inset-0 h-full w-full bg-gray-900/0 hover:bg-gray-900/80 transition-colors duration-300 text-left cursor-pointer',
+        )}>
         <div className="relative h-full w-full p-4">
-          {!isMobile ? (
-            <a target="_blank">
-              <div className="relative flex h-full w-full flex-col gap-y-2 text-white">
-                <h2 className="text-lg sm:text-4xl font-bold text-center">{title}</h2>
-                <p className="flex-grow py-8 text-base sm:text-2xl text-center">{modalDescription}</p>
-                <p className="text-lg text-center mt-auto mb-4">Technologies: {description}</p>
-              </div>
-              <ExternalLinkIcon className="absolute bottom-1 right-1 h-4 w-4 shrink-0 text-white sm:bottom-2 sm:right-2" />
-            </a>
-          ) : (
-            <div className="text-center flex h-full w-full flex-col gap-y-2 overflow-hidden text-white opacity-100">
-              <h2 className="text-3xl font-bold ">{title}</h2>
-              <p className="py-24 text-xl lg:text-2xl ">{modalDescription}</p>
-            </div>
-          )}
+          <div
+            className={classNames(
+              'relative flex h-full w-full flex-col gap-y-2 text-white',
+
+              'opacity-0 translate-y-2',
+
+              'group-hover:opacity-100 group-hover:translate-y-0 group-focus-visible:opacity-100 group-focus-visible:translate-y-0',
+              'transition-all duration-300 ease-out pointer-events-none',
+            )}>
+            <h2 className="text-lg sm:text-4xl font-bold text-center">{title}</h2>
+            <p className="flex-grow py-8 text-base sm:text-2xl text-center">{modalDescription}</p>
+            <p className="text-lg text-center mt-auto mb-4">Technologies: {description}</p>
+            <ExternalLinkIcon className="absolute bottom-1 right-1 h-4 w-4 shrink-0 text-white sm:bottom-2 sm:right-2" />
+          </div>
         </div>
-      </a>
+      </button>
     );
   },
 );
