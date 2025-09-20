@@ -42,7 +42,6 @@ const Portfolio: FC = memo(() => {
   };
 
   const handleSelect = (item: PortfolioItem) => {
-    if (!isMobile) return; // do nothing on desktop
     setSelectedItem(item);
     setIsOpen(true);
   };
@@ -74,7 +73,7 @@ const Portfolio: FC = memo(() => {
         </div>
       </div>
 
-      {isMobile && selectedItem ? (
+      {selectedItem ? (
         <Modal isOpen={isOpen} handleClose={handleClose}>
           <div className="modal-objects">
             <button onClick={handleClose} className="close-btn">
@@ -146,9 +145,8 @@ const ItemOverlay: FC<{item: PortfolioItem; onItemSelect: () => void}> = memo(
     const handleItemClick = useCallback(
       (event: MouseEvent<HTMLElement>) => {
         event.preventDefault();
-        if (isMobile) {
-          onItemSelect();
-        }
+
+        onItemSelect();
       },
       [onItemSelect],
     );
@@ -165,7 +163,7 @@ const ItemOverlay: FC<{item: PortfolioItem; onItemSelect: () => void}> = memo(
         target="_blank">
         <div className="relative h-full w-full p-4">
           {!isMobile ? (
-            <a onClick={() => window.open(url)} href={url} target="_blank">
+            <a target="_blank">
               <div className="relative flex h-full w-full flex-col gap-y-2 text-white">
                 <h2 className="text-lg sm:text-4xl font-bold text-center">{title}</h2>
                 <p className="flex-grow py-8 text-base sm:text-2xl text-center">{modalDescription}</p>
