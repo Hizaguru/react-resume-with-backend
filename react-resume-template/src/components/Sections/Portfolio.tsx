@@ -124,7 +124,7 @@ Portfolio.displayName = 'Portfolio';
 export default Portfolio;
 
 const ItemOverlay: FC<{item: PortfolioItem; onItemSelect: () => void}> = memo(
-  ({item: {title, modalDescription, description}, onItemSelect}) => {
+  ({item: {title, description}, onItemSelect}) => {
     const buttonRef = useRef<HTMLButtonElement>(null);
     useDetectOutsideClick(buttonRef, () => {});
 
