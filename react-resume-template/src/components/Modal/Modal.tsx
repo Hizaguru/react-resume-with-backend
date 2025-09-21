@@ -1,16 +1,15 @@
-import React, {useCallback, useEffect, useRef} from 'react';
-import {CSSTransition} from 'react-transition-group';
+import React, { useCallback, useEffect, useRef } from 'react';
+import { CSSTransition } from 'react-transition-group';
 import ReactPortal from './ReactPortal';
 
 type Props = {
   isOpen: boolean;
   children: React.ReactNode;
   handleClose: () => void;
-  showCloseButton?: boolean;
   ariaLabel?: string;
 };
 
-const Modal: React.FC<Props> = ({isOpen, children, handleClose, showCloseButton = true, ariaLabel}) => {
+const Modal: React.FC<Props> = ({isOpen, children, handleClose, ariaLabel}) => {
   const nodeRef = useRef<HTMLDivElement | null>(null);
   const dialogRef = useRef<HTMLDivElement | null>(null);
   const closeBtnRef = useRef<HTMLButtonElement | null>(null);
@@ -78,16 +77,14 @@ const Modal: React.FC<Props> = ({isOpen, children, handleClose, showCloseButton 
             aria-modal="true"
             aria-label={ariaLabel}
             onKeyDown={handleKeyDown}>
-            {showCloseButton && (
-              <button
-                ref={closeBtnRef}
-                type="button"
-                aria-label="Close modal"
-                className="close-btn "
-                onClick={handleClose}>
-                <span aria-hidden="true">&times;</span>
-              </button>
-            )}
+            <button
+              ref={closeBtnRef}
+              type="button"
+              aria-label="Close modal"
+              className="close-btn "
+              onClick={handleClose}>
+              <span aria-hidden="true">&times;</span>
+            </button>
             {children}
           </div>
         </div>
