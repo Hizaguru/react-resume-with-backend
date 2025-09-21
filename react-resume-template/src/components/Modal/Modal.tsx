@@ -1,5 +1,5 @@
-import React, { useCallback, useEffect, useRef } from 'react';
-import { CSSTransition } from 'react-transition-group';
+import React, {useCallback, useEffect, useRef} from 'react';
+import {CSSTransition} from 'react-transition-group';
 import ReactPortal from './ReactPortal';
 
 type Props = {
@@ -33,14 +33,14 @@ const Modal: React.FC<Props> = ({isOpen, children, handleClose, ariaLabel}) => {
     if (isOpen) {
       previousFocus.current = document.activeElement as HTMLElement;
       document.body.style.overflow = 'hidden';
-      // focus after paint
       requestAnimationFrame(() => {
         closeBtnRef.current?.focus();
       });
-    } else {
+    }
+    return () => {
       document.body.style.overflow = '';
       previousFocus.current?.focus?.();
-    }
+    };
   }, [isOpen]);
 
   // Simple focus trap
