@@ -121,29 +121,27 @@ const Portfolio: FC = memo(() => {
 Portfolio.displayName = 'Portfolio';
 export default Portfolio;
 
-const ItemOverlay: FC<{item: PortfolioItem; onItemSelect: () => void}> = memo(
-  ({item: {title, modalDescription, description}, onItemSelect}) => {
-    const buttonRef = useRef<HTMLButtonElement>(null);
-    useDetectOutsideClick(buttonRef, () => {});
+const ItemOverlay: FC<{item: PortfolioItem; onItemSelect: () => void}> = memo(({item: {title}, onItemSelect}) => {
+  const buttonRef = useRef<HTMLButtonElement>(null);
+  useDetectOutsideClick(buttonRef, () => {});
 
-    const handleItemClick = useCallback(
-      (event: MouseEvent<HTMLElement>) => {
-        event.preventDefault();
-        onItemSelect();
-      },
-      [onItemSelect],
-    );
+  const handleItemClick = useCallback(
+    (event: MouseEvent<HTMLElement>) => {
+      event.preventDefault();
+      onItemSelect();
+    },
+    [onItemSelect],
+  );
 
-    return (
-      <button
-        ref={buttonRef}
-        type="button"
-        aria-label={`Open details for ${title}`}
-        onClick={handleItemClick}
-        className={classNames(
-          'group absolute inset-0 h-full w-full bg-gray-900/0 hover:bg-gray-900/80 transition-colors duration-300 text-left cursor-pointer',
-        )}
-      />
-    );
-  },
-);
+  return (
+    <button
+      ref={buttonRef}
+      type="button"
+      aria-label={`Open details for ${title}`}
+      onClick={handleItemClick}
+      className={classNames(
+        'group absolute inset-0 h-full w-full bg-gray-900/0 hover:bg-gray-900/80 transition-colors duration-300 text-left cursor-pointer',
+      )}
+    />
+  );
+});
