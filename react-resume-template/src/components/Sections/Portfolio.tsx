@@ -1,10 +1,8 @@
-import ExternalLinkIcon from '@heroicons/react/outline/ExternalLinkIcon';
 import classNames from 'classnames';
 import Image from 'next/legacy/image';
 import {FC, memo, MouseEvent, useCallback, useEffect, useRef, useState} from 'react';
 import {buildBlurPlaceholder, buildModalImage, client, urlFor} from '../../client';
 
-import {isMobile} from '../../config';
 import {SectionId} from '../../data/data';
 import {PortfolioItem} from '../../data/dataDef';
 import useDetectOutsideClick from '../../hooks/useDetectOutsideClick';
@@ -144,26 +142,8 @@ const ItemOverlay: FC<{item: PortfolioItem; onItemSelect: () => void}> = memo(
         onClick={handleItemClick}
         className={classNames(
           'group absolute inset-0 h-full w-full bg-gray-900/0 hover:bg-gray-900/80 transition-colors duration-300 text-left cursor-pointer',
-        )}>
-        <div className="relative h-full w-full p-4">
-          {!isMobile && (
-            <div
-              className={classNames(
-                'relative flex h-full w-full flex-col gap-y-2 text-white',
-
-                'opacity-0 translate-y-2',
-
-                'group-hover:opacity-100 group-hover:translate-y-0 group-focus-visible:opacity-100 group-focus-visible:translate-y-0',
-                'transition-all duration-300 ease-out pointer-events-none',
-              )}>
-              <h2 className="text-lg sm:text-4xl font-bold text-center">{title}</h2>
-              <p className="flex-grow py-8 text-base sm:text-2xl text-center">{modalDescription}</p>
-              <p className="text-lg text-center mt-auto mb-4">Technologies: {description}</p>
-              <ExternalLinkIcon className="absolute bottom-1 right-1 h-4 w-4 shrink-0 text-white sm:bottom-2 sm:right-2" />
-            </div>
-          )}
-        </div>
-      </button>
+        )}
+      />
     );
   },
 );
