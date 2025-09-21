@@ -7,7 +7,7 @@ type Props = {
   children: React.ReactNode;
   handleClose: () => void;
   showCloseButton?: boolean;
-  ariaLabel?: string; // accessible label (if no heading inside)
+  ariaLabel?: string;
 };
 
 const Modal: React.FC<Props> = ({isOpen, children, handleClose, showCloseButton = true, ariaLabel}) => {
@@ -70,14 +70,10 @@ const Modal: React.FC<Props> = ({isOpen, children, handleClose, showCloseButton 
   return (
     <ReactPortal wrapperId="react-portal-container">
       <CSSTransition in={isOpen} timeout={{enter: 250, exit: 300}} unmountOnExit classNames="modal" nodeRef={nodeRef}>
-        <div
-          ref={nodeRef}
-          className="modal enhanced-modal" /* enhanced-modal gives newer styles hook */
-          onMouseDown={handleBackdropClick}
-          role="presentation">
+        <div ref={nodeRef} className="modal" onMouseDown={handleBackdropClick} role="presentation">
           <div
             ref={dialogRef}
-            className="modal-content enhanced-modal-content"
+            className="modal-content"
             role="dialog"
             aria-modal="true"
             aria-label={ariaLabel}
@@ -87,7 +83,7 @@ const Modal: React.FC<Props> = ({isOpen, children, handleClose, showCloseButton 
                 ref={closeBtnRef}
                 type="button"
                 aria-label="Close modal"
-                className="close-btn enhanced-close-btn"
+                className="close-btn "
                 onClick={handleClose}>
                 <span aria-hidden="true">&times;</span>
               </button>
