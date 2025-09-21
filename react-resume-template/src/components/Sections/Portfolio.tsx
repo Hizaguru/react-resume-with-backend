@@ -157,7 +157,6 @@ const ItemOverlay: FC<{item: PortfolioItem; onItemSelect: () => void}> = memo(
                 'transition-all duration-300 ease-out pointer-events-none',
               )}>
               <h2 className="text-lg sm:text-4xl font-bold text-center">{title}</h2>
-
               <p className="text-lg text-center mt-auto mb-4">Technologies: {description}</p>
               <ExternalLinkIcon className="absolute bottom-1 right-1 h-4 w-4 shrink-0 text-white sm:bottom-2 sm:right-2" />
             </div>
