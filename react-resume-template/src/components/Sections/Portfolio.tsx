@@ -30,7 +30,6 @@ const Portfolio: FC = memo(() => {
     client.fetch(query).then(data => {
       const sortedItems = sortPortfolioItems(data);
       setPortfolioItems(sortedItems);
-      // Removed mobile-specific default selection.
     });
   }, []);
 
