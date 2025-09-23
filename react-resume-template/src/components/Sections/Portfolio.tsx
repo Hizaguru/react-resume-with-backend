@@ -106,7 +106,7 @@ const Portfolio: FC = memo(() => {
                 </ul>
               </div>
             )}
-            <div className="modal-links flex items-center justify-center gap-4 mt-4">
+            <div className="modal-links flex items-center justify-center gap-3 mt-2">
               {selectedItem.gitUrl && (
                 <a
                   className="modal-link-left btn-modern secondary"
