@@ -165,9 +165,7 @@ const ItemOverlay: FC<{item: PortfolioItem; onItemSelect: () => void}> = memo(
             <div
               className={classNames(
                 'relative flex h-full w-full flex-col gap-y-2 text-white',
-
                 'opacity-0 translate-y-2',
-
                 'group-hover:opacity-100 group-hover:translate-y-0 group-focus-visible:opacity-100 group-focus-visible:translate-y-0',
                 'transition-all duration-300 ease-out pointer-events-none',
               )}>
