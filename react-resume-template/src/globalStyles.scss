@@ -155,7 +155,29 @@ th {
   padding-right: 5%;
   white-space: pre-wrap; /* This will respect newlines and wrap text */
   text-align: left;
-  margin-bottom: 20px;
+  margin-bottom: 12px;
+}
+
+.modal-tech {
+  font-size: .9rem;
+  line-height: 1.4;
+  padding: 0 5% 0.75rem 5%;
+  color: #cbd5e1; /* slate-300-ish */
+  text-align: left;
+  border-left: 3px solid rgba(255,255,255,0.15);
+  margin: 0 5% 0.75rem 5%;
+  background: linear-gradient(90deg, rgba(255,255,255,0.05), rgba(255,255,255,0));
+  border-radius: 4px;
+}
+
+.modal-tech-label {
+  font-weight: 600;
+  color: #f1f5f9; /* lighter */
+}
+
+@media (max-width: 640px) {
+  .modal-links { margin-top: .75rem !important; }
+  .modal-objects { padding-bottom: .75rem; }
 }
 
 @media only screen and (min-width: 1400px) {

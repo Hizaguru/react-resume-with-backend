@@ -91,6 +91,12 @@ const Portfolio: FC = memo(() => {
 
             <div className="modal-header">{selectedItem.modalTitle}</div>
             <div className="modal-description">{selectedItem.modalDescription}</div>
+            {selectedItem.description && (
+              <div className="modal-tech">
+                <span className="modal-tech-label">Technologies:&nbsp;</span>
+                {selectedItem.description}
+              </div>
+            )}
             <div className="modal-links flex items-center justify-center gap-4 mt-4">
               {selectedItem.gitUrl && (
                 <a
