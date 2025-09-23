@@ -92,9 +92,19 @@ const Portfolio: FC = memo(() => {
             <div className="modal-header">{selectedItem.modalTitle}</div>
             <div className="modal-description">{selectedItem.modalDescription}</div>
             {selectedItem.description && (
-              <div className="modal-tech">
-                <span className="modal-tech-label">Technologies:&nbsp;</span>
-                {selectedItem.description}
+              <div className="tech-tags-wrapper">
+                <div className="tech-tags-label">Technologies:</div>
+                <ul className="tech-tags" aria-label="Technologies used">
+                  {selectedItem.description
+                    .split(/[\n,|]/)
+                    .map(t => t.trim())
+                    .filter(Boolean)
+                    .map(tag => (
+                      <li key={tag} className="tech-tag">
+                        {tag}
+                      </li>
+                    ))}
+                </ul>
               </div>
             )}
             <div className="modal-links flex items-center justify-center gap-4 mt-4">
