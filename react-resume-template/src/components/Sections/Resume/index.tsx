@@ -9,14 +9,21 @@ const Resume: FC = memo(() => {
     <Section className="bg-neutral-100" sectionId={SectionId.Resume}>
       <div className="flex flex-col divide-y-2 divide-neutral-300">
         <ResumeSection title="Skills">
-          <ul className="lg:text-2xl sm:text-xl md:text-left text-center lg:text-left">
+          <ul style={{fontSize: '1.5rem', textAlign: 'left'}}>
             {skills &&
               skills.map(item => {
                 return (
-                  <li key={item.skillname} className="p-3">
+                  <li key={item.skillname} style={{padding: '0.75rem 0'}}>
                     <span className={item.skillname.toLowerCase()} />
                     <em>{item.skillname}</em>
-                    <hr className=" md:w-1/2 lg:w-3/5 mt-6" />
+                    <hr
+                      style={{
+                        width: '60%',
+                        marginTop: '1rem',
+                        border: 'none',
+                        borderTop: '1px solid #d4d4d4',
+                      }}
+                    />
                   </li>
                 );
               })}

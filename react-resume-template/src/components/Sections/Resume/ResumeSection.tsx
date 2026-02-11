@@ -2,14 +2,30 @@ import {FC, memo, PropsWithChildren} from 'react';
 
 const ResumeSection: FC<PropsWithChildren<{title: string}>> = memo(({title, children}) => {
   return (
-    <div className="grid grid-cols-1 gap-y-4 py-8 first:pt-0 last:pb-0  md:grid-cols-4">
-      <div className="col-span-1 flex justify-center md:justify-start">
-        <div className="relative h-max">
-          <h2 className="text-xl font-bold uppercase text-neutral-800">{title}</h2>
-          <span className="absolute inset-x-0 -bottom-1 border-b-2 border-orange-400" />
+    <div
+      style={{
+        display: 'grid',
+        gridTemplateColumns: '1fr',
+        gap: '1rem',
+        paddingTop: '2rem',
+        paddingBottom: '2rem',
+      }}
+      className="resume-section-grid">
+      <div style={{display: 'flex', justifyContent: 'flex-start', alignSelf: 'start'}}>
+        <div style={{position: 'relative', display: 'inline-block'}}>
+          <h2 style={{fontSize: '1.25rem', fontWeight: 700, textTransform: 'uppercase', color: '#262626'}}>{title}</h2>
+          <span
+            style={{
+              position: 'absolute',
+              left: 0,
+              right: 0,
+              bottom: '-4px',
+              borderBottom: '2px solid #f97316',
+            }}
+          />
         </div>
       </div>
-      <div className="col-span-1 flex flex-col md:col-span-3">{children}</div>
+      <div style={{display: 'flex', flexDirection: 'column'}}>{children}</div>
     </div>
   );
 });

@@ -1,7 +1,3 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
 @layer utilities {
   /* Chrome, Safari and Opera */
   .no-scrollbar::-webkit-scrollbar {
@@ -58,30 +54,36 @@ th {
 .modal {
   position: fixed;
   inset: 0;
-  background-color: rgba(0, 0, 0, 0.6);
+  background-color: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(8px) saturate(130%);
+  -webkit-backdrop-filter: blur(8px) saturate(130%);
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start; /* allow content to start at top so it can scroll */
+  justify-content: center;
   transition: all 0.3s ease-in-out;
-  overflow-y: auto; /* allow scrolling if content taller than viewport */
+  overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   z-index: 999;
-  padding: 40px 20px 20px;
+  padding: 20px;
 }
 
 .modal-content {
-  width: 700px;
-  max-height: 90vh; /* allow almost full viewport height */
-  background-color: #2d343e;
-  color: #fff;
+  width: 680px;
+  max-height: 90vh;
+  background: linear-gradient(168deg, #1e2433 0%, #181d27 40%, #141820 100%);
+  color: #f1f5f9;
   display: flex;
-  flex-direction: column; 
-  font-size: 1.2rem;
-  border-radius: 20px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+  flex-direction: column;
+  font-size: 1.1rem;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  box-shadow:
+    0 25px 60px -12px rgba(0, 0, 0, 0.7),
+    0 12px 24px -8px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.04);
   position: relative;
-  overflow: hidden; /* keep outer hidden, inner scroll area will handle */
+  overflow: hidden;
   will-change: transform, opacity, filter;
   backface-visibility: hidden;
   transform-style: preserve-3d;
@@ -135,31 +137,54 @@ th {
 
 .close-btn {
   position: absolute;
-  top: 2px;
-  right: 15px;
-  font-size: 2rem;
-  font-weight: bold;
-  color: #fff;
-  background: transparent;
-  border: none;
+  top: 12px;
+  right: 12px;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  font-weight: 400;
+  line-height: 1;
+  color: rgba(255, 255, 255, 0.7);
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px) saturate(140%);
+  -webkit-backdrop-filter: blur(12px) saturate(140%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
   cursor: pointer;
-  z-index: 1000; /* Korkea z-index varmistaa että se on kaiken päällä */
+  z-index: 1000;
+  transition: all 0.25s ease;
 }
 .close-btn:hover {
-  color: #fca5a5; /* pehmeä punainen */
-  transform: scale(1.1);
-  transition: all 0.2s ease;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.16);
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: scale(1.08);
+  box-shadow: 0 4px 16px -4px rgba(0, 0, 0, 0.4);
+}
+.close-btn:active {
+  transform: scale(0.95);
 }
 @media only screen and (max-width: 1400px) {
   .modal-content {
-    width: 600px;
+    width: 620px;
   }
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 700px) {
   .modal-content {
-    width: 90vw;
-    max-height: 85vh; /* little more space on very small screens */
+    width: 94vw;
+    max-height: 88vh;
+    border-radius: 12px;
+  }
+  .close-btn {
+    top: 8px;
+    right: 8px;
+    width: 32px;
+    height: 32px;
+    font-size: 1.1rem;
   }
 }
 
@@ -169,33 +194,61 @@ th {
 }
 
 .modal-objects {
-  color: #fff;
+  color: #f1f5f9;
   text-align: center;
-  border-radius: 10px;
-  overflow-y: auto; /* scrolling content */
+  overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   width: 100%;
-  flex: 1; /* take remaining height */
-  padding: 3rem 1rem 1rem 1rem; /* space for close button */
+  flex: 1;
+  padding: 0;
   position: relative;
   z-index: 1;
 }
 
+/* Hero image wrapper with gradient fade */
+.modal-objects .nextJsImage {
+  position: relative;
+  max-height: 300px;
+  overflow: hidden;
+  border-radius: 0;
+  margin-bottom: 0;
+}
+.modal-objects .nextJsImage img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.modal-objects .nextJsImage::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 80px;
+  background: linear-gradient(to top, #181d27, transparent);
+  pointer-events: none;
+}
+
 .modal-header {
-  font-size: 1.5rem;
-  font-weight: bold;
-  padding-top: 10px;
-  padding-bottom: 15px;
+  font-size: 1.35rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  padding: 1.25rem 1.75rem 0.25rem;
+  text-align: center;
+  background: linear-gradient(135deg, #f1f5f9, #cbd5e1);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .modal-description {
-  font-size: 1rem;
-  line-height: 1.6;
-  padding-left: 5%;
-  padding-right: 5%;
-  white-space: pre-wrap; /* This will respect newlines and wrap text */
+  font-size: 0.92rem;
+  line-height: 1.7;
+  padding: 0.5rem 1.5rem 0.75rem;
+  white-space: pre-wrap;
   text-align: left;
-  margin-bottom: 12px;
+  color: #94a3b8;
+  margin: 0.5rem 1.5rem 1rem;
 }
 
 /* (Removed legacy .modal-tech styles in favor of tag badges) */
@@ -304,6 +357,17 @@ a:hover {
   margin-bottom: 1rem;
 }
 
+/* Tech tags wrapper inside modal gets extra padding */
+.modal-objects .tech-tags-wrapper {
+  padding: 1.5rem 2.5rem 1.25rem;
+  margin: 0;
+}
+
+/* Modal links inside modal get bottom padding */
+.modal-objects .modal-links {
+  padding: 0.75rem 1.75rem 1.5rem;
+}
+
 //Animation loading spinner
 @keyframes spinner {
   0% {
@@ -390,4 +454,24 @@ a:hover {
 
 @media (max-width:640px){
   .btn-modern {width:100%;}
+  .modal-links .btn-modern {width:auto;}
+}
+
+/* Portfolio grid - 2 columns on larger screens */
+@media (min-width: 768px) {
+  .portfolio-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+  .resume-section-grid {
+    grid-template-columns: 1fr 3fr !important;
+  }
+}
+
+/* Portfolio hover overlay */
+.portfolio-overlay:hover {
+  background: rgba(17, 24, 39, 0.8) !important;
+}
+.portfolio-overlay:hover .portfolio-overlay-content {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
 }
