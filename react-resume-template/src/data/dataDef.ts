@@ -1,5 +1,5 @@
-import {StaticImageData} from 'next/legacy/image';
-import {FC, SVGProps} from 'react';
+import {StaticImageData} from 'next/image';
+import {ComponentType, FC, SVGProps} from 'react';
 
 import {IconProps} from '../components/Icon/Icon';
 
@@ -37,7 +37,7 @@ interface HeroActionItem {
   href: string;
   text: string;
   primary?: boolean;
-  Icon?: (props: SVGProps<SVGSVGElement>) => React.JSX.Element;
+  Icon?: ComponentType<SVGProps<SVGSVGElement>>;
 }
 
 /**
@@ -52,7 +52,7 @@ export interface About {
 export interface AboutItem {
   label: string;
   text: string | number;
-  Icon?: (props: SVGProps<SVGSVGElement>) => React.JSX.Element;
+  Icon?: ComponentType<SVGProps<SVGSVGElement>>;
 }
 
 /**
@@ -61,7 +61,7 @@ export interface AboutItem {
 export interface Stat {
   title: string;
   value: number;
-  Icon?: (props: SVGProps<SVGSVGElement>) => React.JSX.Element;
+  Icon?: ComponentType<SVGProps<SVGSVGElement>>;
 }
 
 /**

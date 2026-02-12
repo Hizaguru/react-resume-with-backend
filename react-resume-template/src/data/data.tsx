@@ -1,7 +1,7 @@
-import {AcademicCapIcon, CalendarIcon, MapIcon, OfficeBuildingIcon} from '@heroicons/react/outline';
-import getAge from '../functions/calculateMyAge';
+import {AcademicCapIcon, BuildingOfficeIcon, CalendarIcon, MapIcon} from '@heroicons/react/24/outline';
 import GithubIcon from '../components/Icon/GithubIcon';
 import LinkedInIcon from '../components/Icon/LinkedInIcon';
+import getAge from '../functions/calculateMyAge';
 
 import testimonialImage from '../images/testimonial.webp';
 
@@ -64,7 +64,7 @@ export const aboutData: About = {
     {label: 'Location', text: 'Helsinki', Icon: MapIcon},
     {label: 'Age', text: getAge('05/25/1988'), Icon: CalendarIcon},
     {label: 'Study', text: 'University of Jyväskylä', Icon: AcademicCapIcon},
-    {label: 'Employment', text: 'Fullstack Developer', Icon: OfficeBuildingIcon},
+    {label: 'Employment', text: 'Fullstack Developer', Icon: BuildingOfficeIcon},
   ],
 };
 

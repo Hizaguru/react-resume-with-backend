@@ -1,9 +1,8 @@
-import classNames from 'classnames';
-import Image from 'next/legacy/image';
+import Image from 'next/image';
 import {FC, memo, MouseEvent, useCallback, useEffect, useRef, useState} from 'react';
 import {buildBlurPlaceholder, buildModalImage, client, urlFor} from '../../client';
 
-import ExternalLinkIcon from '@heroicons/react/outline/ExternalLinkIcon';
+import {ArrowTopRightOnSquareIcon} from '@heroicons/react/24/outline';
 import {isMobile} from '../../config';
 import {SectionId} from '../../data/data';
 import {PortfolioItem} from '../../data/dataDef';
@@ -47,16 +46,33 @@ const Portfolio: FC = memo(() => {
     <Section className="bg-neutral-800" sectionId={SectionId.Portfolio}>
       <div className="flex flex-col gap-y-8">
         <h2 className="self-center text-xl font-bold text-white">Check out some of my work</h2>
-        <div className="w-full sm:columns-1 md:columns-2 lg:columns-2">
+        <div
+          style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(1, 1fr)',
+            gap: '1.5rem',
+          }}
+          className="portfolio-grid">
           {portfolioItems.map((item, index) => {
             const {title, imgUrl, _updatedAt} = item;
             return (
-              <div className="pb-6" key={`${_updatedAt}`}>
+              <div key={`${_updatedAt}`}>
                 <div
-                  className={classNames(
-                    'relative h-max w-full overflow-hidden rounded-lg shadow-lg shadow-black/30 lg:shadow-xl',
-                  )}>
-                  <Image alt={title} layout="responsive" width={600} height={600} src={urlFor(imgUrl).url()} />
+                  style={{
+                    position: 'relative',
+                    width: '100%',
+                    aspectRatio: '1 / 1',
+                    overflow: 'hidden',
+                    borderRadius: '0.5rem',
+                    boxShadow: '0 10px 15px -3px rgba(0,0,0,0.3)',
+                  }}>
+                  <Image
+                    alt={title}
+                    width={600}
+                    height={450}
+                    style={{width: '100%', height: '100%', objectFit: 'cover'}}
+                    src={urlFor(imgUrl).url()}
+                  />
                   <ItemOverlay
                     item={portfolioItems[index]}
                     onItemSelect={() => {
@@ -77,9 +93,9 @@ const Portfolio: FC = memo(() => {
               <Image
                 src={buildModalImage(selectedItem.modalImgUrl!).url()}
                 alt={selectedItem.title}
-                layout="responsive"
                 width={900}
                 height={600}
+                style={{width: '100%', height: 'auto'}}
                 placeholder="blur"
                 blurDataURL={buildBlurPlaceholder(selectedItem.modalImgUrl!).url()}
                 className="object-cover rounded-md z-0"
@@ -106,7 +122,15 @@ const Portfolio: FC = memo(() => {
                 </ul>
               </div>
             )}
-            <div className="modal-links flex items-center justify-center gap-3 mt-2">
+            <div
+              className="modal-links"
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                gap: '0.75rem',
+                padding: '0.75rem 1.75rem 1.5rem',
+              }}>
               {selectedItem.gitUrl && (
                 <a
                   className="modal-link-left btn-modern secondary"
@@ -140,8 +164,8 @@ export default Portfolio;
 
 const ItemOverlay: FC<{item: PortfolioItem; onItemSelect: () => void}> = memo(
   ({item: {title, description}, onItemSelect}) => {
-    const buttonRef = useRef<HTMLButtonElement>(null);
-    useDetectOutsideClick(buttonRef, () => {});
+    const buttonRef = useRef<HTMLButtonElement | null>(null);
+    useDetectOutsideClick(buttonRef as React.RefObject<HTMLElement>, () => {});
 
     const handleItemClick = useCallback(
       (event: MouseEvent<HTMLElement>) => {
@@ -157,21 +181,49 @@ const ItemOverlay: FC<{item: PortfolioItem; onItemSelect: () => void}> = memo(
         type="button"
         aria-label={`Open details for ${title}`}
         onClick={handleItemClick}
-        className={classNames(
-          'group absolute inset-0 h-full w-full bg-gray-900/0 hover:bg-gray-900/80 transition-colors duration-300 text-left cursor-pointer',
-        )}>
-        <div className="relative h-full w-full p-4">
+        className="portfolio-overlay"
+        style={{
+          position: 'absolute',
+          inset: 0,
+          width: '100%',
+          height: '100%',
+          background: 'transparent',
+          border: 'none',
+          textAlign: 'left',
+          cursor: 'pointer',
+          transition: 'background 0.3s ease',
+        }}>
+        <div style={{position: 'relative', height: '100%', width: '100%', padding: '1rem'}}>
           {!isMobile && (
             <div
-              className={classNames(
-                'relative flex h-full w-full flex-col gap-y-2 text-white',
-                'opacity-0 translate-y-2',
-                'group-hover:opacity-100 group-hover:translate-y-0 group-focus-visible:opacity-100 group-focus-visible:translate-y-0',
-                'transition-all duration-300 ease-out pointer-events-none',
-              )}>
-              <h2 className="text-lg sm:text-4xl font-bold text-center">{title}</h2>
-              <p className="text-lg text-center mt-auto mb-4">Technologies: {description}</p>
-              <ExternalLinkIcon className="absolute bottom-1 right-1 h-4 w-4 shrink-0 text-white sm:bottom-2 sm:right-2" />
+              className="portfolio-overlay-content"
+              style={{
+                position: 'relative',
+                display: 'flex',
+                height: '100%',
+                width: '100%',
+                flexDirection: 'column',
+                gap: '0.5rem',
+                color: 'white',
+                opacity: 0,
+                transform: 'translateY(8px)',
+                transition: 'opacity 0.3s ease, transform 0.3s ease',
+                pointerEvents: 'none',
+              }}>
+              <h2 style={{fontSize: '1.5rem', fontWeight: 700, textAlign: 'center'}}>{title}</h2>
+              <p style={{fontSize: '1.1rem', textAlign: 'center', marginTop: 'auto', marginBottom: '1rem'}}>
+                Technologies: {description}
+              </p>
+              <ArrowTopRightOnSquareIcon
+                style={{
+                  position: 'absolute',
+                  bottom: '0.5rem',
+                  right: '0.5rem',
+                  height: '1rem',
+                  width: '1rem',
+                  color: 'white',
+                }}
+              />
             </div>
           )}
         </div>

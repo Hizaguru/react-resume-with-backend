@@ -1,10 +1,10 @@
-import {ChevronDownIcon} from '@heroicons/react/outline';
+import {ChevronDownIcon} from '@heroicons/react/24/outline';
 import classNames from 'classnames';
-import Image from 'next/legacy/image';
+import Image from 'next/image';
 import {FC, memo, useEffect, useState} from 'react';
 
-import {heroData, SectionId} from '../../data/data';
 import {client, urlFor} from '../../client';
+import {heroData, SectionId} from '../../data/data';
 import Section from '../Layout/Section';
 import Socials from '../Socials';
 
@@ -29,15 +29,14 @@ const Hero: FC = memo(() => {
             <Image
               key={item._id}
               alt={`${name}-image`}
-              className="absolute z-0"
-              layout="fill"
-              objectFit="cover"
+              className="absolute z-0 object-cover"
+              fill
               priority
               src={urlFor(item.imgUrl).url()}
             />
           );
         })}
-        <div className="z-10  max-w-screen-lg px-4 lg:px-0">
+        <div className="z-10  max-w-(--breakpoint-lg) px-4 lg:px-0">
           <div className="flex flex-col items-center gap-y-6 rounded-xl bg-gray-800/40 p-6 text-center shadow-lg backdrop-blur-sm">
             <h1 className="text-4xl font-bold text-white sm:text-5xl lg:text-7xl">{name}</h1>
             {description}
