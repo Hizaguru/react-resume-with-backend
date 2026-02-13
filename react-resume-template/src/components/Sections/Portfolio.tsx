@@ -34,6 +34,9 @@ const Portfolio: FC = memo(() => {
 
   const handleClose = () => {
     setIsOpen(false);
+  };
+
+  const handleExited = () => {
     setSelectedItem(null);
   };
 
@@ -87,7 +90,7 @@ const Portfolio: FC = memo(() => {
       </div>
 
       {selectedItem ? (
-        <Modal isOpen={isOpen} handleClose={handleClose}>
+        <Modal isOpen={isOpen} handleClose={handleClose} onExited={handleExited}>
           <div className="modal-objects">
             <div className="nextJsImage relative z-0">
               <Image

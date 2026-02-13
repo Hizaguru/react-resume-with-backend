@@ -6,10 +6,11 @@ type Props = {
   isOpen: boolean;
   children: React.ReactNode;
   handleClose: () => void;
+  onExited?: () => void;
   ariaLabel?: string;
 };
 
-const Modal: React.FC<Props> = ({isOpen, children, handleClose, ariaLabel}) => {
+const Modal: React.FC<Props> = ({isOpen, children, handleClose, onExited, ariaLabel}) => {
   const nodeRef = useRef<HTMLDivElement | null>(null);
   const dialogRef = useRef<HTMLDialogElement | null>(null);
   const closeBtnRef = useRef<HTMLButtonElement | null>(null);
@@ -72,7 +73,8 @@ const Modal: React.FC<Props> = ({isOpen, children, handleClose, ariaLabel}) => {
         appear
         unmountOnExit
         classNames="modal"
-        nodeRef={nodeRef}>
+        nodeRef={nodeRef}
+        onExited={onExited}>
         <div ref={nodeRef} className="modal" onMouseDown={handleBackdropClick}>
           <span className="modal-spotlight" aria-hidden="true" />
           <dialog ref={dialogRef} className="modal-content" open aria-modal="true" aria-label={ariaLabel}>
