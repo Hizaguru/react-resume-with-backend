@@ -1,33 +1,31 @@
 {
   "name": "portfoliopage",
   "private": true,
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "",
   "main": "package.json",
   "author": "Jukka-Pekka Lappalainen <jukka-pekka.lappalainen@outlook.com>",
   "license": "UNLICENSED",
   "scripts": {
-    "start": "npx sanity start",
-    "build": "npx sanity build"
+    "dev": "sanity dev",
+    "start": "sanity start",
+    "build": "sanity build",
+    "deploy": "sanity deploy"
   },
   "keywords": [
     "sanity"
   ],
   "dependencies": {
-    "@sanity/base": "^2.34.0",
-    "@sanity/core": "^2.34.0",
-    "@sanity/default-layout": "^2.34.0",
-    "@sanity/default-login": "^2.34.0",
-    "@sanity/desk-tool": "^2.34.0",
-    "@sanity/eslint-config-studio": "^2.0.0",
-    "@sanity/vision": "^2.34.0",
-    "eslint": "^8.6.0",
-    "prop-types": "^15.7",
-    "react": "^17.0",
-    "react-dom": "^17.0",
-    "styled-components": "^5.2.0"
+    "@sanity/eslint-config-studio": "^6.0.0",
+    "@sanity/vision": "^5.9.0",
+    "eslint": "^9.0.0",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4",
+    "sanity": "^5.9.0",
+    "styled-components": "^6.3.9"
   },
   "devDependencies": {
-    "@sanity/cli": "^2.36.2"
+    "@sanity/cli": "^5.9.0",
+    "typescript": "^5.9.3"
   }
 }

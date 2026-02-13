@@ -2,3 +2,7 @@ backend/node_modules/
 react-resume-template/node_modules/
 react-resume-template/src/images/portfolio
 react-resume-template/public/*
+backend/dist/
+backend/.sanity/
+backend/.env
+backend/config/@sanity/default-login.json
