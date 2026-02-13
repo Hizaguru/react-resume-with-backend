@@ -54,18 +54,42 @@ th {
 .modal {
   position: fixed;
   inset: 0;
-  background-color: rgba(0, 0, 0, 0.7);
-  backdrop-filter: blur(8px) saturate(130%);
-  -webkit-backdrop-filter: blur(8px) saturate(130%);
+  background-color: rgba(0, 0, 0, 0);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  transition: all 0.3s ease-in-out;
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
+  overflow: hidden;
   z-index: 999;
   padding: 20px;
+}
+
+/* ── Spotlight on the wall ── */
+.modal-spotlight {
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(180, 200, 255, 0.18) 0%,
+    rgba(140, 170, 255, 0.10) 30%,
+    rgba(100, 140, 240, 0.04) 55%,
+    transparent 70%
+  );
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0;
+  filter: blur(20px);
+  animation: none;
+}
+
+@keyframes spotlight-drift {
+  0%   { transform: translate(-60vw, -30vh) scale(1); }
+  25%  { transform: translate(30vw, -40vh) scale(1.15); }
+  50%  { transform: translate(50vw, 20vh) scale(0.9); }
+  75%  { transform: translate(-20vw, 35vh) scale(1.1); }
+  100% { transform: translate(-60vw, -30vh) scale(1); }
 }
 
 .modal-content {
@@ -84,55 +108,139 @@ th {
     inset 0 1px 0 rgba(255, 255, 255, 0.04);
   position: relative;
   overflow: hidden;
-  will-change: transform, opacity, filter;
+  will-change: transform, opacity;
   backface-visibility: hidden;
-  transform-style: preserve-3d;
+  z-index: 1;
 }
 
-/* === Enhanced enter / exit animation states === */
-.modal-enter { opacity: 0; }
-.modal-enter .modal-content {
+/* ╔══════════════════════════════════════╗
+   ║     ENTER / APPEAR ANIMATIONS       ║
+   ╚══════════════════════════════════════╝ */
+
+.modal-enter,
+.modal-appear {
+  background-color: rgba(0, 0, 0, 0);
+}
+.modal-enter .modal-content,
+.modal-appear .modal-content {
   opacity: 0;
-  transform: translateY(32px) scale(.92) rotateX(6deg);
-  filter: blur(10px) saturate(80%);
+  transform: translateY(40px) scale(0.95);
+  filter: blur(8px);
 }
-.modal-enter-active { opacity: 1; transition: opacity 480ms ease; }
-.modal-enter-active .modal-content {
+.modal-enter .modal-spotlight,
+.modal-appear .modal-spotlight {
+  opacity: 0;
+}
+
+.modal-enter-active,
+.modal-appear-active {
+  background-color: rgba(0, 0, 0, 0.75);
+  transition: background-color 500ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+.modal-enter-active .modal-content,
+.modal-appear-active .modal-content {
   opacity: 1;
-  transform: translateY(0) scale(1) rotateX(0deg);
-  filter: blur(0) saturate(115%);
-  transition: transform 640ms cubic-bezier(.22,1.15,.24,1), opacity 420ms ease, filter 420ms ease;
+  transform: translateY(0) scale(1);
+  filter: blur(0px);
+  transition:
+    transform 700ms cubic-bezier(0.16, 1.11, 0.3, 1),
+    opacity 450ms cubic-bezier(0.22, 1, 0.36, 1),
+    filter 500ms ease;
 }
-.modal-exit { opacity: 1; }
-.modal-exit .modal-content { opacity: 1; transform: translateY(0) scale(1) rotateX(0); filter: blur(0); }
-.modal-exit-active { opacity: 0; transition: opacity 380ms ease; }
+.modal-enter-active .modal-spotlight,
+.modal-appear-active .modal-spotlight {
+  opacity: 1;
+  animation: spotlight-drift 12s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite;
+  transition: opacity 600ms ease 200ms;
+}
+
+/* ── Enter done (resting state) ── */
+.modal-enter-done,
+.modal-appear-done {
+  background-color: rgba(0, 0, 0, 0.75);
+}
+.modal-enter-done .modal-spotlight,
+.modal-appear-done .modal-spotlight {
+  opacity: 1;
+  animation: spotlight-drift 12s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite;
+}
+
+/* ╔══════════════════════════════════════╗
+   ║         EXIT ANIMATIONS             ║
+   ╚══════════════════════════════════════╝ */
+
+.modal-exit {
+  background-color: rgba(0, 0, 0, 0.75);
+}
+.modal-exit .modal-content {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  filter: blur(0px);
+}
+
+.modal-exit-active {
+  background-color: rgba(0, 0, 0, 0);
+  transition: background-color 400ms cubic-bezier(0.4, 0, 0.2, 1) 80ms;
+}
 .modal-exit-active .modal-content {
   opacity: 0;
-  transform: translateY(12px) scale(.94) rotateX(4deg);
-  filter: blur(6px) saturate(90%);
-  transition: transform 420ms cubic-bezier(.55,.06,.46,.99), opacity 360ms ease, filter 360ms ease;
+  transform: translateY(20px) scale(0.96);
+  filter: blur(6px);
+  transition:
+    transform 400ms cubic-bezier(0.4, 0, 0.7, 0.2),
+    opacity 350ms ease,
+    filter 350ms ease;
 }
+.modal-exit-active .modal-spotlight {
+  opacity: 0;
+  transition: opacity 250ms ease;
+}
+
+/* ── Glass highlight overlay ── */
 .modal-content::after {
   content: "";
   position: absolute;
   inset: 0;
   pointer-events: none;
   border-radius: inherit;
-  background: linear-gradient(145deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
+  background: linear-gradient(
+    145deg,
+    rgba(255, 255, 255, 0.07) 0%,
+    rgba(255, 255, 255, 0.02) 40%,
+    transparent 60%
+  );
   opacity: 0;
-  transform: scale(.96);
-  transition: opacity 900ms ease 120ms, transform 900ms cubic-bezier(.22,1.1,.25,1) 120ms;
+  transform: scale(0.96);
+  transition: opacity 800ms ease 100ms, transform 800ms cubic-bezier(0.22, 1.1, 0.25, 1) 100ms;
 }
 .modal-enter-active .modal-content::after,
-.modal-enter-done .modal-content::after { opacity: 1; transform: scale(1); }
-.modal-exit-active .modal-content::after { opacity: 0; transform: scale(.98); transition-duration: 300ms; }
+.modal-appear-active .modal-content::after,
+.modal-enter-done .modal-content::after,
+.modal-appear-done .modal-content::after {
+  opacity: 1;
+  transform: scale(1);
+}
+.modal-exit-active .modal-content::after {
+  opacity: 0;
+  transform: scale(0.98);
+  transition-duration: 250ms;
+}
 
+/* ── Reduced motion ── */
 @media (prefers-reduced-motion: reduce) {
   .modal-enter .modal-content,
   .modal-enter-active .modal-content,
   .modal-exit .modal-content,
-  .modal-exit-active .modal-content { transition: none !important; filter: none !important; transform: none !important; }
-  .modal-enter, .modal-exit-active { opacity: 1 !important; }
+  .modal-exit-active .modal-content {
+    transition: opacity 200ms ease !important;
+    filter: none !important;
+    transform: none !important;
+  }
+  .modal-enter,
+  .modal-exit-active {
+    transition: background-color 200ms ease !important;
+  }
+  .modal-spotlight { display: none !important; }
 }
 
 .close-btn {
