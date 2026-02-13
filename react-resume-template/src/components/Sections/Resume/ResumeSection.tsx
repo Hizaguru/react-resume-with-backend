@@ -11,7 +11,7 @@ const ResumeSection: FC<PropsWithChildren<{title: string}>> = memo(({title, chil
         paddingBottom: '2rem',
       }}
       className="resume-section-grid">
-      <div style={{display: 'flex', justifyContent: 'flex-start', alignSelf: 'start'}}>
+      <div className="resume-section-title" style={{display: 'flex', justifyContent: 'center', alignSelf: 'start'}}>
         <div style={{position: 'relative', display: 'inline-block'}}>
           <h2 style={{fontSize: '1.25rem', fontWeight: 700, textTransform: 'uppercase', color: '#262626'}}>{title}</h2>
           <span
