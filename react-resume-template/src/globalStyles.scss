@@ -90,14 +90,14 @@ th {
 }
 
 /* === Enhanced enter / exit animation states === */
-.modal-enter { opacity: 0; }
-.modal-enter .modal-content {
+.modal-enter, .modal-appear { opacity: 0; }
+.modal-enter .modal-content, .modal-appear .modal-content {
   opacity: 0;
   transform: translateY(32px) scale(.92) rotateX(6deg);
   filter: blur(10px) saturate(80%);
 }
-.modal-enter-active { opacity: 1; transition: opacity 480ms ease; }
-.modal-enter-active .modal-content {
+.modal-enter-active, .modal-appear-active { opacity: 1; transition: opacity 480ms ease; }
+.modal-enter-active .modal-content, .modal-appear-active .modal-content {
   opacity: 1;
   transform: translateY(0) scale(1) rotateX(0deg);
   filter: blur(0) saturate(115%);
@@ -124,7 +124,9 @@ th {
   transition: opacity 900ms ease 120ms, transform 900ms cubic-bezier(.22,1.1,.25,1) 120ms;
 }
 .modal-enter-active .modal-content::after,
-.modal-enter-done .modal-content::after { opacity: 1; transform: scale(1); }
+.modal-appear-active .modal-content::after,
+.modal-enter-done .modal-content::after,
+.modal-appear-done .modal-content::after { opacity: 1; transform: scale(1); }
 .modal-exit-active .modal-content::after { opacity: 0; transform: scale(.98); transition-duration: 300ms; }
 
 @media (prefers-reduced-motion: reduce) {

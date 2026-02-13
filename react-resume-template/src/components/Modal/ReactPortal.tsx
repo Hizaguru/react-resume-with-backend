@@ -1,19 +1,9 @@
-import React, {useLayoutEffect, useState} from 'react';
+import {useLayoutEffect, useState} from 'react';
 import {createPortal} from 'react-dom';
-React.useLayoutEffect = React.useEffect;
 
 type Props = {
   wrapperId: string;
   children: React.ReactNode;
-};
-
-//Default value if element is not found
-interface WrapperProperty {
-  wrapperIds: string;
-}
-
-const defaultProp: WrapperProperty = {
-  wrapperIds: 'react-portal-wrapper',
 };
 
 function createWrapperAndAppendToBody(wrapperId: string) {
@@ -23,31 +13,28 @@ function createWrapperAndAppendToBody(wrapperId: string) {
   return wrapperElement;
 }
 
-const ReactPortal: React.FC<Props> = (props: Props) => {
-  const [wrapperElement, setWrapperElement] = useState(null);
-  const {wrapperIds} = defaultProp;
+const ReactPortal: React.FC<Props> = ({wrapperId, children}) => {
+  const [wrapperElement, setWrapperElement] = useState<HTMLElement | null>(null);
+
   useLayoutEffect(() => {
-    let element: any = document.getElementById(wrapperIds)!;
+    let element = document.getElementById(wrapperId);
     let systemCreated = false;
-    // if element is not found with wrapperId or wrapperId is not provided,
-    // create and append to body
+
     if (!element) {
       systemCreated = true;
-      element = createWrapperAndAppendToBody(wrapperIds);
+      element = createWrapperAndAppendToBody(wrapperId);
     }
     setWrapperElement(element);
 
     return () => {
-      // delete the programatically created element
-      if (systemCreated && element.parentNode) {
+      if (systemCreated && element?.parentNode) {
         element.parentNode.removeChild(element);
       }
     };
-  }, [wrapperIds]);
+  }, [wrapperId]);
 
-  // wrapperElement state will be null on the very first render.
   if (wrapperElement === null) return null;
 
-  return createPortal(props.children, wrapperElement);
+  return createPortal(children, wrapperElement);
 };
 export default ReactPortal;
