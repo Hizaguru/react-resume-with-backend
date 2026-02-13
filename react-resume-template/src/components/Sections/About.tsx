@@ -21,10 +21,11 @@ const About: FC = memo(() => {
     <Section className="bg-neutral-800" sectionId={SectionId.About}>
       {profileImg.map(image => {
         return (
-          <div key={image._id} style={{display: 'flex', flexDirection: 'row', gap: '2rem', alignItems: 'flex-start'}}>
-            <div style={{flexShrink: 0}}>
+          <div key={image._id} className="flex flex-col items-center gap-8 md:flex-row md:items-start">
+            <div className="shrink-0">
               <Image
-                style={{borderRadius: '50%', objectFit: 'cover', width: '200px', height: '200px'}}
+                className="rounded-full object-cover"
+                style={{width: '200px', height: '200px'}}
                 alt="about-me-image"
                 height={200}
                 width={200}
