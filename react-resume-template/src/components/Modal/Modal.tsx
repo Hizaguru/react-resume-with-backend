@@ -68,12 +68,13 @@ const Modal: React.FC<Props> = ({isOpen, children, handleClose, ariaLabel}) => {
     <ReactPortal wrapperId="react-portal-container">
       <CSSTransition
         in={isOpen}
-        timeout={{enter: 640, exit: 420}}
+        timeout={{enter: 700, exit: 400}}
         appear
         unmountOnExit
         classNames="modal"
         nodeRef={nodeRef}>
         <div ref={nodeRef} className="modal" onMouseDown={handleBackdropClick}>
+          <span className="modal-spotlight" aria-hidden="true" />
           <dialog ref={dialogRef} className="modal-content" open aria-modal="true" aria-label={ariaLabel}>
             <button
               ref={closeBtnRef}
