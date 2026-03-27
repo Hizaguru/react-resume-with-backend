@@ -23,7 +23,7 @@ const Hero: FC = memo(() => {
 
   return (
     <Section noPadding sectionId={SectionId.Hero}>
-      <div className="relative flex h-screen w-screen items-center justify-center">
+      <div className="relative flex h-screen w-full items-center justify-center">
         {header.map(item => {
           return (
             <Image
@@ -36,14 +36,14 @@ const Hero: FC = memo(() => {
             />
           );
         })}
-        <div className="z-10  max-w-(--breakpoint-lg) px-4 lg:px-0">
-          <div className="flex flex-col items-center gap-y-6 rounded-xl bg-gray-800/40 p-6 text-center shadow-lg backdrop-blur-sm">
-            <h1 className="text-4xl font-bold text-white sm:text-5xl lg:text-7xl">{name}</h1>
+        <div className="z-10 w-full max-w-(--breakpoint-lg) px-2 sm:px-4 lg:px-0">
+          <div className="flex flex-col items-center gap-y-6 rounded-xl bg-gray-800/40 p-3 text-center shadow-lg backdrop-blur-sm sm:p-6">
+            <h1 className="break-words text-2xl font-bold text-white sm:text-4xl md:text-5xl lg:text-7xl">{name}</h1>
             {description}
             <div className="flex gap-x-4 text-neutral-100">
               <Socials />
             </div>
-            <div className="flex w-full justify-center gap-x-4">
+            <div className="flex w-full flex-wrap justify-center gap-x-4 gap-y-2">
               {actions.map(({href, text, primary, Icon}) => (
                 <a
                   className={classNames(
