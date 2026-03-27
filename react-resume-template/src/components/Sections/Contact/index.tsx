@@ -46,7 +46,7 @@ const Contact: FC = memo(() => {
                         href={href}
                         target="_blank">
                         <Icon aria-hidden="true" className="h-4 w-4 shrink-0 text-neutral-100 sm:h-5 sm:w-5" />
-                        <span className="ml-3 text-sm sm:text-base">{text}</span>
+                        <span className="ml-3 break-all text-sm sm:text-base">{text}</span>
                       </a>
                     </dd>
                   </div>

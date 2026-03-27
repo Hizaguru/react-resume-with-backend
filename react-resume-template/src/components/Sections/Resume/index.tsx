@@ -9,7 +9,7 @@ const Resume: FC = memo(() => {
     <Section className="bg-neutral-100" sectionId={SectionId.Resume}>
       <div className="flex flex-col divide-y-2 divide-neutral-300">
         <ResumeSection title="Skills">
-          <ul className="skills-list" style={{fontSize: '1.5rem'}}>
+          <ul className="skills-list text-lg sm:text-xl md:text-2xl">
             {skills?.map(item => {
               return (
                 <li key={item.skillname} style={{padding: '0.75rem 0'}}>
