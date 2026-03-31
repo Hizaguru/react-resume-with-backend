@@ -28,7 +28,7 @@ const Hero: FC = memo(() => {
           return (
             <Image
               key={item._id}
-              alt={`${name}-image`}
+              alt={`Background hero image for ${name}'s portfolio`}
               className="absolute z-0 object-cover"
               fill
               priority
@@ -51,9 +51,10 @@ const Hero: FC = memo(() => {
                     primary ? 'border-orange-500 ring-orange-500' : 'border-white ring-white',
                   )}
                   href={href}
-                  key={text}>
+                  key={text}
+                  aria-label={text}>
                   {text}
-                  {Icon && <Icon className="h-5 w-5 text-white sm:h-6 sm:w-6" />}
+                  {Icon && <Icon className="h-5 w-5 text-white sm:h-6 sm:w-6" aria-hidden="true" />}
                 </a>
               ))}
             </div>
@@ -62,8 +63,9 @@ const Hero: FC = memo(() => {
         <div className="absolute inset-x-0 bottom-6 flex justify-center">
           <a
             className="rounded-full bg-white p-1 ring-white ring-offset-2 ring-offset-gray-700/80 focus:outline-none focus:ring-2 sm:p-2"
-            href={`/#${SectionId.About}`}>
-            <ChevronDownIcon className="h-5 w-5 bg-transparent sm:h-6 sm:w-6" />
+            href={`/#${SectionId.About}`}
+            aria-label="Scroll down to About section">
+            <ChevronDownIcon className="h-5 w-5 bg-transparent sm:h-6 sm:w-6" aria-hidden="true" />
           </a>
         </div>
       </div>

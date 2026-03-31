@@ -17,6 +17,11 @@ export default function Document() {
         <meta content="notranslate" name="google" />
       </Head>
       <body className="bg-black">
+        <a
+          href="#hero"
+          className="sr-only focus:not-sr-only focus:absolute focus:z-[100] focus:m-4 focus:rounded-md focus:bg-orange-500 focus:px-4 focus:py-2 focus:text-white focus:outline-none focus:ring-2 focus:ring-white">
+          Skip to main content
+        </a>
         <Main />
         <NextScript />
       </body>

@@ -17,7 +17,7 @@ const Page: NextPage<HomepageMeta> = memo(({children, title, description, author
         <link rel="shortcut icon" href="/images/tabs.png" />
         <link href="/site.webmanifest" rel="manifest" key={'siteManifest'} />
       </Head>
-      {children}
+      <main>{children}</main>
     </>
   );
 });

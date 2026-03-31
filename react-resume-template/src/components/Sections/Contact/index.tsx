@@ -23,7 +23,7 @@ const Contact: FC = memo(() => {
     <Section className="bg-neutral-800" sectionId={SectionId.Contact}>
       <div className="flex flex-col gap-y-6">
         <div className="flex flex-col gap-6 md:flex-row md:items-center">
-          <EnvelopeIcon className="hidden h-16 w-16 text-white md:block" />
+          <EnvelopeIcon className="hidden h-16 w-16 text-white md:block" aria-hidden="true" />
           <h2 className="text-2xl font-bold text-white">{headerText}</h2>
         </div>
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
@@ -44,7 +44,9 @@ const Contact: FC = memo(() => {
                           {'hover:text-white': href},
                         )}
                         href={href}
-                        target="_blank">
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={`${srLabel}: ${text}`}>
                         <Icon aria-hidden="true" className="h-4 w-4 shrink-0 text-neutral-100 sm:h-5 sm:w-5" />
                         <span className="ml-3 break-all text-sm sm:text-base">{text}</span>
                       </a>
