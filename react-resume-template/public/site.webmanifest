@@ -1,6 +1,8 @@
 {
-  "name": "react-resume-template",
-  "short_name": "react-resume-template",
+  "name": "Jukka-Pekka Lappalainen | Full Stack Developer",
+  "short_name": "Jukkis Portfolio",
+  "description": "Portfolio of Jukka-Pekka Lappalainen — Full Stack Developer based in Helsinki, Finland.",
+  "start_url": "/",
   "icons": [
     {"src": "/icon-192.png", "type": "image/png", "sizes": "192x192"},
     {"src": "/icon-512.png", "type": "image/png", "sizes": "512x512"}

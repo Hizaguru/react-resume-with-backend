@@ -25,7 +25,7 @@ const About: FC = memo(() => {
             <div className="mx-auto w-full max-w-[200px] shrink-0 md:mx-0">
               <Image
                 className="aspect-square w-full rounded-full object-cover"
-                alt="about-me-image"
+                alt="Jukka-Pekka Lappalainen profile photo"
                 height={200}
                 width={200}
                 src={urlFor(image.imgUrl).url()}
