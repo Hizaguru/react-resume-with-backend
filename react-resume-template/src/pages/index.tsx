@@ -14,16 +14,18 @@ import {homePageMeta} from '../data/data';
 const Header = dynamic(() => import('../components/Sections/Header'), {ssr: false});
 
 const Home: FC = memo(() => {
-  const {title, description, author, keywords} = homePageMeta;
+  const {title, description, author, keywords, ogImageUrl} = homePageMeta;
   return (
-    <Page description={description} title={title} author={author} keywords={keywords}>
+    <Page description={description} title={title} author={author} keywords={keywords} ogImageUrl={ogImageUrl}>
       <Header />
-      <Hero />
-      <About />
-      <Resume />
-      <Portfolio />
-      <Testimonials />
-      <Contact />
+      <main>
+        <Hero />
+        <About />
+        <Resume />
+        <Portfolio />
+        <Testimonials />
+        <Contact />
+      </main>
       <Footer />
     </Page>
   );
