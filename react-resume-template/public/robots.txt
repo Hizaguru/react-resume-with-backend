@@ -1,11 +1,33 @@
-# *
+# Default - allow all
 User-agent: *
 Allow: /
-
-# *
-User-agent: *
 Disallow: /404
 Disallow: /500
+
+# AI Crawlers - explicitly welcomed
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Bytespider
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
 
 # Host
 Host: https://www.jukkis.eu/

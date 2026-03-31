@@ -11,10 +11,13 @@ import {About, ContactSection, ContactType, Hero, HomepageMeta, Skills, Social, 
  * Page meta data
  */
 export const homePageMeta: HomepageMeta = {
-  title: "Jukkis' portfolio",
-  description: 'My Portfolio website that was build with React typescript.',
-  author: 'Jukka - Pekka Lappalainen',
-  keywords: 'Portfolio, typescript, recat, Jukka-Pekka Lappalainen',
+  title: 'Jukka-Pekka Lappalainen | Full Stack Developer | Helsinki, Finland',
+  description:
+    'Jukka-Pekka Lappalainen — Full Stack Developer based in Helsinki, Finland. Experienced in React, TypeScript, Python, Java, AWS, and ethical hacking. Explore my portfolio and get in touch.',
+  author: 'Jukka-Pekka Lappalainen',
+  keywords:
+    'Jukka-Pekka Lappalainen, Full Stack Developer, React, TypeScript, Python, Java, AWS, Helsinki, Finland, portfolio, software engineer, web developer, ethical hacking',
+  ogImageUrl: 'https://www.jukkis.eu/api/og',
 };
 
 /**

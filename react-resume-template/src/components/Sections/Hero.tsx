@@ -28,7 +28,7 @@ const Hero: FC = memo(() => {
           return (
             <Image
               key={item._id}
-              alt={`${name}-image`}
+              alt="Jukka-Pekka Lappalainen portfolio hero background"
               className="absolute z-0 object-cover"
               fill
               priority
@@ -62,7 +62,8 @@ const Hero: FC = memo(() => {
         <div className="absolute inset-x-0 bottom-6 flex justify-center">
           <a
             className="rounded-full bg-white p-1 ring-white ring-offset-2 ring-offset-gray-700/80 focus:outline-none focus:ring-2 sm:p-2"
-            href={`/#${SectionId.About}`}>
+            href={`/#${SectionId.About}`}
+            aria-label="Scroll down to about section">
             <ChevronDownIcon className="h-5 w-5 bg-transparent sm:h-6 sm:w-6" />
           </a>
         </div>
