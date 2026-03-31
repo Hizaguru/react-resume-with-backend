@@ -125,10 +125,13 @@ const NavItem: FC<{
   onClick?: () => void;
 }> = memo(({section, current, inactiveClass, activeClass, onClick}) => {
   return (
-    <Link href={`/#${section}`} passHref>
-      <div className={classNames(current ? activeClass : inactiveClass)} key={section} onClick={onClick}>
-        {section}
-      </div>
+    <Link
+      href={`/#${section}`}
+      className={classNames(current ? activeClass : inactiveClass)}
+      onClick={onClick}
+      aria-current={current ? 'page' : undefined}
+      aria-label={`Navigate to ${section} section`}>
+      {section}
     </Link>
   );
 });

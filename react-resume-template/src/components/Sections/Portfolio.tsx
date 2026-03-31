@@ -90,7 +90,11 @@ const Portfolio: FC = memo(() => {
       </div>
 
       {selectedItem ? (
-        <Modal isOpen={isOpen} handleClose={handleClose} onExited={handleExited}>
+        <Modal
+          isOpen={isOpen}
+          handleClose={handleClose}
+          onExited={handleExited}
+          ariaLabel={`Portfolio details for ${selectedItem.title}`}>
           <div className="modal-objects">
             <div className="nextJsImage relative z-0">
               <Image
@@ -139,7 +143,8 @@ const Portfolio: FC = memo(() => {
                   className="modal-link-left btn-modern secondary"
                   href={selectedItem.gitUrl}
                   target="_blank"
-                  rel="noopener noreferrer">
+                  rel="noopener noreferrer"
+                  aria-label={`View source code for ${selectedItem.title} (opens in new tab)`}>
                   Code
                 </a>
               )}
@@ -148,7 +153,8 @@ const Portfolio: FC = memo(() => {
                   className="modal-link-right btn-modern glow"
                   href={selectedItem.url}
                   target="_blank"
-                  rel="noopener noreferrer">
+                  rel="noopener noreferrer"
+                  aria-label={`View live project ${selectedItem.title} (opens in new tab)`}>
                   Project
                 </a>
               )}
@@ -218,6 +224,7 @@ const ItemOverlay: FC<{item: PortfolioItem; onItemSelect: () => void}> = memo(
                 Technologies: {description}
               </p>
               <ArrowTopRightOnSquareIcon
+                aria-hidden="true"
                 style={{
                   position: 'absolute',
                   bottom: '0.5rem',

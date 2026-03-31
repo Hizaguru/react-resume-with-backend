@@ -91,7 +91,7 @@ const Testimonials: FC = memo(() => {
                 );
               })}
             </div>
-            <div className="flex gap-x-4">
+            <div className="flex gap-x-4" role="group" aria-label="Testimonial navigation">
               {[...Array(testimonials.length)].map((_, index) => {
                 const isActive = index === activeIndex;
                 return (
@@ -102,7 +102,9 @@ const Testimonials: FC = memo(() => {
                     )}
                     disabled={isActive}
                     key={`select-button-${index}`}
-                    onClick={setTestimonial(index)}></button>
+                    onClick={setTestimonial(index)}
+                    aria-label={`Go to testimonial ${index + 1}`}
+                    aria-current={isActive ? 'true' : 'false'}></button>
                 );
               })}
             </div>
@@ -119,7 +121,7 @@ const Testimonial: FC<{testimonial: Testimonial; isActive: boolean}> = memo(({te
       'flex w-full shrink-0 snap-start snap-always flex-col items-start gap-y-4 p-2 transition-opacity duration-1000 sm:flex-row sm:gap-x-6',
       isActive ? 'opacity-100' : 'opacity-0',
     )}>
-    <QuoteIcon className="h-5 w-5 shrink-0 text-white sm:h-8 sm:w-8" />
+    <QuoteIcon className="h-5 w-5 shrink-0 text-white sm:h-8 sm:w-8" aria-hidden="true" />
     <div className="flex flex-col gap-y-4">
       <p className="prose prose-sm font-medium italic text-white sm:prose-base">{text}</p>
       <p className="text-xs italic text-white sm:text-sm md:text-base lg:text-lg">-- {name}</p>

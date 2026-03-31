@@ -25,7 +25,7 @@ const About: FC = memo(() => {
             <div className="mx-auto w-full max-w-[200px] shrink-0 md:mx-0">
               <Image
                 className="aspect-square w-full rounded-full object-cover"
-                alt="about-me-image"
+                alt="Professional profile photo"
                 height={200}
                 width={200}
                 src={urlFor(image.imgUrl).url()}
@@ -41,7 +41,7 @@ const About: FC = memo(() => {
               <ul className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                 {aboutItems.map(({label, text, Icon}) => (
                   <li className="col-span-1 flex flex-wrap items-start gap-x-2" key={label + text}>
-                    {Icon && <Icon className="h-5 w-5 text-white" />}
+                    {Icon && <Icon className="h-5 w-5 text-white" aria-hidden="true" />}
                     <span className="text-sm font-bold text-white" key={label}>
                       {label}:
                     </span>

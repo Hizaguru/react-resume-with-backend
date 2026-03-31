@@ -61,7 +61,7 @@ const ContactForm: FC = memo(() => {
   );
 
   const inputClasses =
-    'bg-neutral-700 border-0 focus:border-0 focus:outline-none focus:ring-1 focus:ring-orange-600 rounded-md placeholder:text-neutral-400 placeholder:text-sm text-neutral-200 text-sm';
+    'bg-neutral-700 border-0 focus:border-0 focus:outline-none focus:ring-1 focus:ring-orange-600 rounded-md placeholder:text-neutral-400 placeholder:text-sm text-neutral-200 text-sm px-3 py-2';
 
   if (isLoading) {
     return (
@@ -71,16 +71,25 @@ const ContactForm: FC = memo(() => {
     );
   } else if (isFormSubmitted) {
     return (
-      <div className="message-success">
-        <i className="fa fa-check" />
+      <div className="message-success" role="status" aria-live="polite">
+        <i className="fa fa-check" aria-hidden="true" />
         <p className="font-bold text-white ">{messageSent}</p>
       </div>
     );
   } else {
     return (
       <form className="grid min-h-[320px] grid-cols-1 gap-y-4" method="POST" onSubmit={handleSendMessage}>
-        <input className={inputClasses} name="name" onChange={onChange} placeholder="Name" required type="text" />
         <input
+          aria-label="Name"
+          className={inputClasses}
+          name="name"
+          onChange={onChange}
+          placeholder="Name"
+          required
+          type="text"
+        />
+        <input
+          aria-label="Email"
           autoComplete="email"
           className={inputClasses}
           name="email"
@@ -90,6 +99,7 @@ const ContactForm: FC = memo(() => {
           type="email"
         />
         <textarea
+          aria-label="Message"
           className={inputClasses}
           maxLength={250}
           name="message"
@@ -107,8 +117,8 @@ const ContactForm: FC = memo(() => {
         </button>
 
         {error && (
-          <div className="message-warning">
-            <i className="fa fa-check" />
+          <div className="message-warning" role="alert">
+            <i className="fa fa-check" aria-hidden="true" />
             <p className="font-bold text-red">{alert}</p>
           </div>
         )}
