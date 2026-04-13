@@ -46,9 +46,14 @@ const Portfolio: FC = memo(() => {
   };
 
   return (
-    <Section className="bg-neutral-800" sectionId={SectionId.Portfolio}>
-      <div className="flex flex-col gap-y-8">
-        <h2 className="self-center text-xl font-bold text-white">Check out some of my work</h2>
+    <Section className="bg-primary-bg" sectionId={SectionId.Portfolio}>
+      <div className="mx-auto flex max-w-content flex-col gap-y-12">
+        <div className="flex flex-col gap-y-4">
+          <h2 className="font-sans text-3xl font-bold tracking-tight text-text-primary sm:text-4xl">Selected work.</h2>
+          <p className="max-w-2xl text-base leading-relaxed text-text-secondary sm:text-lg">
+            Recent projects and the problems they solved.
+          </p>
+        </div>
         <div
           style={{
             display: 'grid',

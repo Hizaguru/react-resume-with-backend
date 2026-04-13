@@ -11,6 +11,7 @@ export interface HomepageMeta {
   ogImageUrl?: string;
   children?: any;
 }
+
 //Portfolio image section
 export interface SanityImage {
   _id: string;
@@ -29,6 +30,8 @@ export interface SanityImage {
 export interface Hero {
   imageSrc?: string | SanityImage[];
   name: string;
+  headline: string;
+  subheadline: string;
   description: React.JSX.Element;
   actions: HeroActionItem[];
 }
@@ -46,13 +49,56 @@ interface HeroActionItem {
 export interface About {
   profileImageSrc?: string | SanityImage[];
   description: string;
-  aboutItems: AboutItem[];
 }
 
-export interface AboutItem {
+/**
+ * Service item
+ */
+export interface ServiceItem {
+  icon: ComponentType<SVGProps<SVGSVGElement>>;
+  title: string;
+  description: string;
+}
+
+/**
+ * Process step
+ */
+export interface ProcessStep {
+  number: number;
+  title: string;
+  description: string;
+}
+
+/**
+ * FAQ item
+ */
+export interface FAQItem {
+  question: string;
+  answer: string;
+}
+
+/**
+ * Trust signal
+ */
+export interface TrustSignal {
+  metric: string;
   label: string;
-  text: string | number;
-  Icon?: ComponentType<SVGProps<SVGSVGElement>>;
+}
+
+/**
+ * Value proposition
+ */
+export interface ValueProp {
+  title: string;
+  description: string;
+}
+
+/**
+ * Tech category
+ */
+export interface TechCategory {
+  category: string;
+  technologies: string[];
 }
 
 /**
@@ -79,6 +125,10 @@ export interface SkillGroup {
   skills: Skill[];
 }
 
+export interface Skills {
+  skillname: string;
+}
+
 /**
  * Portfolio section
  */
@@ -92,10 +142,6 @@ export interface PortfolioItem {
   modalDescription?: string;
   modalImgUrl?: string | StaticImageData | SanityImage[];
   _updatedAt: any;
-}
-
-export interface Skills {
-  skillname: string;
 }
 
 /**

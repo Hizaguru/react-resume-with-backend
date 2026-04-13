@@ -7,8 +7,8 @@ export const config = {
 
 export default function handler(req: NextRequest) {
   const {searchParams} = new URL(req.url);
-  const title = searchParams.get('title') || 'Jukka-Pekka Lappalainen';
-  const subtitle = searchParams.get('subtitle') || 'Full Stack Developer | Helsinki, Finland';
+  const title = searchParams.get('title') || 'Perttula Software';
+  const subtitle = searchParams.get('subtitle') || 'Fullstack Development for Startups & Businesses';
 
   return new ImageResponse(
     (
@@ -20,8 +20,8 @@ export default function handler(req: NextRequest) {
           flexDirection: 'column',
           alignItems: 'center',
           justifyContent: 'center',
-          backgroundColor: '#1a1a1a',
-          backgroundImage: 'linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 50%, #1a1a1a 100%)',
+          backgroundColor: '#0A0A0A',
+          backgroundImage: 'linear-gradient(135deg, #0A0A0A 0%, #1A1A1A 50%, #0A0A0A 100%)',
         }}>
         <div
           style={{
@@ -29,10 +29,10 @@ export default function handler(req: NextRequest) {
             flexDirection: 'column',
             alignItems: 'center',
             justifyContent: 'center',
-            border: '3px solid rgba(255,255,255,0.15)',
+            border: '3px solid rgba(255,255,255,0.12)',
             borderRadius: '24px',
             padding: '60px 80px',
-            backgroundColor: 'rgba(255,255,255,0.05)',
+            backgroundColor: 'rgba(255,255,255,0.04)',
           }}>
           <div
             style={{
@@ -48,7 +48,7 @@ export default function handler(req: NextRequest) {
           <div
             style={{
               fontSize: 32,
-              color: '#a3a3a3',
+              color: '#9CA3AF',
               textAlign: 'center',
               marginBottom: '32px',
             }}>
@@ -59,17 +59,17 @@ export default function handler(req: NextRequest) {
               display: 'flex',
               gap: '16px',
               fontSize: 22,
-              color: '#737373',
+              color: '#6B7280',
             }}>
             <span>React</span>
             <span>•</span>
             <span>TypeScript</span>
             <span>•</span>
-            <span>Python</span>
+            <span>Node.js</span>
             <span>•</span>
             <span>AWS</span>
             <span>•</span>
-            <span>Java</span>
+            <span>AI</span>
           </div>
         </div>
         <div
@@ -77,9 +77,9 @@ export default function handler(req: NextRequest) {
             position: 'absolute',
             bottom: '32px',
             fontSize: 24,
-            color: '#525252',
+            color: '#4B5563',
           }}>
-          jukkis.eu
+          perttulasoftware.fi
         </div>
       </div>
     ),

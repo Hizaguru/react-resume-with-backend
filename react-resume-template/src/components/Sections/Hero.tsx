@@ -1,71 +1,91 @@
-import {ChevronDownIcon} from '@heroicons/react/24/outline';
-import classNames from 'classnames';
 import Image from 'next/image';
-import {FC, memo, useEffect, useState} from 'react';
+import {FC, memo} from 'react';
 
-import {client, urlFor} from '../../client';
 import {heroData, SectionId} from '../../data/data';
 import Section from '../Layout/Section';
-import Socials from '../Socials';
-
-import {SanityImage} from '../../data/dataDef';
 
 const Hero: FC = memo(() => {
-  const {name, description, actions} = heroData;
-  const [header, setHeader] = useState<SanityImage[]>([]);
-
-  useEffect(() => {
-    const query = '*[_type == "header"]';
-    client.fetch(query).then(data => {
-      setHeader(data);
-    });
-  }, []);
+  const {headline, subheadline, actions} = heroData;
 
   return (
     <Section noPadding sectionId={SectionId.Hero}>
-      <div className="relative flex h-screen w-full items-center justify-center">
-        {header.map(item => {
-          return (
-            <Image
-              key={item._id}
-              alt="Jukka-Pekka Lappalainen portfolio hero background"
-              className="absolute z-0 object-cover"
-              fill
-              priority
-              src={urlFor(item.imgUrl).url()}
-            />
-          );
-        })}
-        <div className="z-10 w-full max-w-(--breakpoint-lg) px-2 sm:px-4 lg:px-0">
-          <div className="flex flex-col items-center gap-y-6 rounded-xl bg-gray-800/40 p-3 text-center shadow-lg backdrop-blur-sm sm:p-6">
-            <h1 className="break-words text-2xl font-bold text-white sm:text-4xl md:text-5xl lg:text-7xl">{name}</h1>
-            {description}
-            <div className="flex gap-x-4 text-neutral-100">
-              <Socials />
-            </div>
-            <div className="flex w-full flex-wrap justify-center gap-x-4 gap-y-2">
-              {actions.map(({href, text, primary, Icon}) => (
+      <div className="relative flex min-h-screen w-full items-center overflow-hidden">
+        {/* Background image */}
+        <Image
+          alt="Programmer workstation in misty forest"
+          className="object-cover object-center"
+          fill
+          priority
+          quality={90}
+          sizes="100vw"
+          src="/images/hero-bg.png"
+        />
+
+        {/* Dark overlay for text readability */}
+        <div className="pointer-events-none absolute inset-0 bg-black/50" />
+
+        {/* Fog layer 1 — slow, bottom-heavy */}
+        <div
+          className="pointer-events-none absolute inset-x-0 bottom-0 h-2/3 animate-fog-1"
+          style={{
+            background: 'radial-gradient(ellipse 120% 60% at 20% 90%, rgba(200,210,220,0.4) 0%, transparent 70%)',
+          }}
+        />
+
+        {/* Fog layer 2 — mid, drifts opposite */}
+        <div
+          className="pointer-events-none absolute inset-x-0 bottom-0 h-1/2 animate-fog-2"
+          style={{
+            background: 'radial-gradient(ellipse 100% 50% at 70% 85%, rgba(180,195,210,0.3) 0%, transparent 65%)',
+          }}
+        />
+
+        {/* Fog layer 3 — wispy top layer */}
+        <div
+          className="pointer-events-none absolute inset-x-0 bottom-1/4 h-1/3 animate-fog-3"
+          style={{
+            background: 'radial-gradient(ellipse 80% 40% at 50% 80%, rgba(220,225,230,0.2) 0%, transparent 60%)',
+          }}
+        />
+
+        {/* Bottom gradient fade to primary-bg */}
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-primary-bg to-transparent" />
+
+        {/* Content */}
+        <div className="relative z-10 mx-auto w-full max-w-content px-6 py-32 sm:px-8 lg:px-12">
+          <div className="flex flex-col gap-y-8">
+            {/* Animated accent line */}
+            <div className="h-px w-0 animate-line-expand bg-gradient-to-r from-accent to-accent-hover" />
+
+            <h1 className="max-w-3xl animate-fade-up font-sans text-4xl font-bold leading-tight tracking-tight text-white opacity-0 drop-shadow-lg sm:text-5xl md:text-6xl lg:text-7xl">
+              {headline}
+            </h1>
+            <p className="max-w-2xl animate-fade-up-delay-1 text-lg leading-relaxed text-neutral-200 opacity-0 drop-shadow-md sm:text-xl">
+              {subheadline}
+            </p>
+            <div className="flex animate-fade-up-delay-2 flex-wrap gap-4 pt-4 opacity-0">
+              {actions.map(({href, text, primary}) => (
                 <a
-                  className={classNames(
-                    'flex gap-x-2 rounded-full border-2 bg-none py-2 px-4 text-sm font-medium text-white ring-offset-gray-700/80 hover:bg-gray-700/80 focus:outline-none focus:ring-2 focus:ring-offset-2 sm:text-base',
-                    primary ? 'border-orange-500 ring-orange-500' : 'border-white ring-white',
-                  )}
+                  className={
+                    primary
+                      ? 'inline-flex rounded-md bg-accent px-8 py-3.5 text-base font-medium text-white shadow-lg shadow-accent/25 transition-all duration-300 hover:bg-accent-hover hover:shadow-xl hover:shadow-accent/30 focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 focus:ring-offset-black/50'
+                      : 'inline-flex rounded-md border border-white/40 bg-white/10 px-8 py-3.5 text-base font-medium text-white backdrop-blur-sm transition-all duration-300 hover:border-white/70 hover:bg-white/20 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-black/50'
+                  }
                   href={href}
                   key={text}>
                   {text}
-                  {Icon && <Icon className="h-5 w-5 text-white sm:h-6 sm:w-6" />}
                 </a>
               ))}
             </div>
+
+            {/* Scroll indicator */}
+            <div className="animate-fade-up-delay-3 pt-8 opacity-0">
+              <div className="flex flex-col items-start gap-2">
+                <span className="text-xs font-medium uppercase tracking-widest text-neutral-300 drop-shadow">Scroll</span>
+                <div className="h-12 w-px bg-gradient-to-b from-white/60 to-transparent" />
+              </div>
+            </div>
           </div>
-        </div>
-        <div className="absolute inset-x-0 bottom-6 flex justify-center">
-          <a
-            className="rounded-full bg-white p-1 ring-white ring-offset-2 ring-offset-gray-700/80 focus:outline-none focus:ring-2 sm:p-2"
-            href={`/#${SectionId.About}`}
-            aria-label="Scroll down to about section">
-            <ChevronDownIcon className="h-5 w-5 bg-transparent sm:h-6 sm:w-6" />
-          </a>
         </div>
       </div>
     </Section>

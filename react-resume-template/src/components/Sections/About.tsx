@@ -7,7 +7,7 @@ import {SanityImage} from '../../data/dataDef';
 import Section from '../Layout/Section';
 
 const About: FC = memo(() => {
-  const {description, aboutItems} = aboutData;
+  const {description} = aboutData;
 
   const [profileImg, setProfileImg] = useState<SanityImage[]>([]);
   useEffect(() => {
@@ -38,19 +38,6 @@ const About: FC = memo(() => {
                   {description}
                 </p>
               </div>
-              <ul className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-                {aboutItems.map(({label, text, Icon}) => (
-                  <li className="col-span-1 flex flex-wrap items-start gap-x-2" key={label + text}>
-                    {Icon && <Icon className="h-5 w-5 text-white" />}
-                    <span className="text-sm font-bold text-white" key={label}>
-                      {label}:
-                    </span>
-                    <span className="break-words text-sm text-gray-300" key={text}>
-                      {text}
-                    </span>
-                  </li>
-                ))}
-              </ul>
             </div>
           </div>
         );

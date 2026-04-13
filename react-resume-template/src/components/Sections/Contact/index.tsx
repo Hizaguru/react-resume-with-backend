@@ -1,5 +1,4 @@
 import {DevicePhoneMobileIcon, EnvelopeIcon, MapPinIcon} from '@heroicons/react/24/outline';
-import classNames from 'classnames';
 import {FC, memo} from 'react';
 
 import {contact, SectionId} from '../../../data/data';
@@ -20,39 +19,41 @@ const ContactValueMap: Record<ContactType, ContactValue> = {
 const Contact: FC = memo(() => {
   const {headerText, items} = contact;
   return (
-    <Section className="bg-neutral-800" sectionId={SectionId.Contact}>
-      <div className="flex flex-col gap-y-6">
-        <div className="flex flex-col gap-6 md:flex-row md:items-center">
-          <EnvelopeIcon className="hidden h-16 w-16 text-white md:block" />
-          <h2 className="text-2xl font-bold text-white">{headerText}</h2>
-        </div>
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-          <div className="order-2 col-span-1 md:order-1 ">
-            <ContactForm />
+    <Section className="bg-primary-bg" sectionId={SectionId.Contact}>
+      <div className="mx-auto max-w-content">
+        <div className="flex flex-col gap-y-12">
+          <div className="flex flex-col gap-y-4">
+            <h2 className="font-sans text-3xl font-bold tracking-tight text-text-primary sm:text-4xl">{headerText}</h2>
+            <p className="max-w-2xl text-base leading-relaxed text-text-secondary sm:text-lg">
+              Tell me about your project. I&apos;ll get back to you within one business day.
+            </p>
           </div>
-          <div className="order-1 col-span-1 flex flex-col gap-y-4 md:order-2">
-            <dl className="flex flex-col space-y-4 text-base text-neutral-500 sm:space-y-2">
-              {items.map(({type, text, href}) => {
-                const {Icon, srLabel} = ContactValueMap[type];
-                return (
-                  <div key={srLabel}>
-                    <dt className="sr-only">{srLabel}</dt>
-                    <dd className="flex items-center">
-                      <a
-                        className={classNames(
-                          '-m-2 flex rounded-md p-2 text-neutral-300 hover:text-orange-500 focus:outline-none focus:ring-2 focus:ring-orange-500',
-                          {'hover:text-white': href},
-                        )}
-                        href={href}
-                        target="_blank">
-                        <Icon aria-hidden="true" className="h-4 w-4 shrink-0 text-neutral-100 sm:h-5 sm:w-5" />
-                        <span className="ml-3 break-all text-sm sm:text-base">{text}</span>
-                      </a>
-                    </dd>
-                  </div>
-                );
-              })}
-            </dl>
+          <div className="grid grid-cols-1 gap-12 lg:grid-cols-2">
+            <div className="order-2 lg:order-1">
+              <ContactForm />
+            </div>
+            <div className="order-1 flex flex-col gap-y-6 lg:order-2">
+              <dl className="flex flex-col gap-y-4">
+                {items.map(({type, text, href}) => {
+                  const {Icon, srLabel} = ContactValueMap[type];
+                  return (
+                    <div key={srLabel}>
+                      <dt className="sr-only">{srLabel}</dt>
+                      <dd className="flex items-center">
+                        <a
+                          className="flex items-center gap-x-3 text-text-secondary transition-colors hover:text-text-primary focus:outline-none focus:ring-2 focus:ring-accent"
+                          href={href}
+                          target="_blank"
+                          rel="noopener noreferrer">
+                          <Icon aria-hidden="true" className="h-5 w-5 shrink-0 text-text-secondary" />
+                          <span className="break-all text-sm sm:text-base">{text}</span>
+                        </a>
+                      </dd>
+                    </div>
+                  );
+                })}
+              </dl>
+            </div>
           </div>
         </div>
       </div>
@@ -60,5 +61,5 @@ const Contact: FC = memo(() => {
   );
 });
 
-Contact.displayName = 'About';
+Contact.displayName = 'Contact';
 export default Contact;

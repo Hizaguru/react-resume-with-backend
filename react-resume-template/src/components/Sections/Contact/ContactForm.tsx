@@ -61,7 +61,7 @@ const ContactForm: FC = memo(() => {
   );
 
   const inputClasses =
-    'bg-neutral-700 border-0 focus:border-0 focus:outline-none focus:ring-1 focus:ring-orange-600 rounded-md placeholder:text-neutral-400 placeholder:text-sm text-neutral-200 text-sm';
+    'bg-secondary-bg border border-neutral-700 focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent rounded-md placeholder:text-text-secondary placeholder:text-sm text-text-primary text-sm';
 
   if (isLoading) {
     return (
@@ -73,7 +73,7 @@ const ContactForm: FC = memo(() => {
     return (
       <div className="message-success">
         <i className="fa fa-check" />
-        <p className="font-bold text-white ">{messageSent}</p>
+        <p className="font-bold text-text-primary">{messageSent}</p>
       </div>
     );
   } else {
@@ -94,13 +94,13 @@ const ContactForm: FC = memo(() => {
           maxLength={250}
           name="message"
           onChange={onChange}
-          placeholder="Message"
+          placeholder="Tell me about your project"
           required
           rows={6}
         />
         <button
           aria-label="Submit contact form"
-          className="w-max rounded-full border-2 border-orange-600 bg-stone-900 px-4 py-2 text-sm font-medium text-white shadow-md outline-none hover:bg-stone-800 focus:ring-2 focus:ring-orange-600 focus:ring-offset-2 focus:ring-offset-stone-800"
+          className="w-max rounded-md bg-accent px-6 py-2.5 text-sm font-medium text-white transition-colors hover:bg-accent-hover focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 focus:ring-offset-primary-bg"
           type="submit"
           disabled={isLoading}>
           Send Message
@@ -109,7 +109,7 @@ const ContactForm: FC = memo(() => {
         {error && (
           <div className="message-warning">
             <i className="fa fa-check" />
-            <p className="font-bold text-red">{alert}</p>
+            <p className="font-bold text-red-400">{alert}</p>
           </div>
         )}
       </form>

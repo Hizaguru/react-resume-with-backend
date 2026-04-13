@@ -12,21 +12,71 @@ const Page: NextPage<HomepageMeta> = memo(({children, title, description, author
     '@type': 'Person',
     name: 'Jukka-Pekka Lappalainen',
     url: SITE_URL,
-    jobTitle: 'Full Stack Developer',
+    jobTitle: 'Fullstack Developer & Founder',
     worksFor: {
       '@type': 'Organization',
-      name: 'Self-employed',
+      name: 'Perttula Software',
     },
     address: {
       '@type': 'PostalAddress',
-      addressLocality: 'Helsinki',
+      addressLocality: 'Nurmijärvi',
       addressCountry: 'FI',
     },
     alumniOf: {
       '@type': 'CollegeOrUniversity',
       name: 'University of Jyväskylä',
     },
-    knowsAbout: ['React', 'TypeScript', 'Python', 'Java', 'AWS', 'Full Stack Development', 'Ethical Hacking', 'Audio Engineering'],
+    knowsAbout: [
+      'React',
+      'Next.js',
+      'TypeScript',
+      'Node.js',
+      'Java',
+      'AWS',
+      'Docker',
+      'AI Agents',
+      'LLM Integrations',
+      'Fullstack Development',
+      'GraphQL',
+      'REST APIs',
+      'C++',
+      'Playwright',
+    ],
+    sameAs: [
+      'https://github.com/Hizaguru',
+      'https://www.linkedin.com/in/jukka-pekka-lappalainen-0365001a7/',
+    ],
+  };
+
+  const organizationJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'ProfessionalService',
+    name: 'Perttula Software',
+    url: SITE_URL,
+    description:
+      'Fullstack development consultancy based in Nurmijärvi, Finland. Custom web applications, backend systems, AI integrations, and ongoing maintenance for startups, agencies, and local businesses.',
+    founder: {
+      '@type': 'Person',
+      name: 'Jukka-Pekka Lappalainen',
+    },
+    address: {
+      '@type': 'PostalAddress',
+      addressLocality: 'Nurmijärvi',
+      addressCountry: 'FI',
+    },
+    areaServed: {
+      '@type': 'Country',
+      name: 'Finland',
+    },
+    knowsAbout: [
+      'Web Application Development',
+      'Backend & API Development',
+      'AI Integrations',
+      'MVP Development',
+      'Infrastructure & DevOps',
+      'Testing & Quality Assurance',
+      'Application Maintenance',
+    ],
     sameAs: [
       'https://github.com/Hizaguru',
       'https://www.linkedin.com/in/jukka-pekka-lappalainen-0365001a7/',
@@ -36,7 +86,7 @@ const Page: NextPage<HomepageMeta> = memo(({children, title, description, author
   const websiteJsonLd = {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
-    name: title,
+    name: 'Perttula Software',
     url: SITE_URL,
     description,
     author: {
@@ -61,14 +111,14 @@ const Page: NextPage<HomepageMeta> = memo(({children, title, description, author
         <meta property="og:url" content={SITE_URL} />
         <meta property="og:title" content={title} />
         <meta property="og:description" content={description} />
-        <meta property="og:site_name" content="Jukka-Pekka Lappalainen | Portfolio" />
+        <meta property="og:site_name" content="Perttula Software" />
         <meta property="og:locale" content="en_US" />
         {ogImageUrl && (
           <>
             <meta property="og:image" content={ogImageUrl} />
             <meta property="og:image:width" content="1200" />
             <meta property="og:image:height" content="630" />
-            <meta property="og:image:alt" content="Jukka-Pekka Lappalainen — Full Stack Developer" />
+            <meta property="og:image:alt" content="Perttula Software — Fullstack Development for Startups & Businesses" />
           </>
         )}
 
@@ -80,7 +130,7 @@ const Page: NextPage<HomepageMeta> = memo(({children, title, description, author
 
         {/* Additional SEO */}
         <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
-        <meta name="theme-color" content="#515455" />
+        <meta name="theme-color" content="#0A0A0A" />
 
         {/* Favicon & Manifest */}
         <link rel="shortcut icon" href="/images/tabs.png" />
@@ -90,6 +140,7 @@ const Page: NextPage<HomepageMeta> = memo(({children, title, description, author
 
         {/* JSON-LD Structured Data */}
         <script type="application/ld+json" dangerouslySetInnerHTML={{__html: JSON.stringify(personJsonLd)}} />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{__html: JSON.stringify(organizationJsonLd)}} />
         <script type="application/ld+json" dangerouslySetInnerHTML={{__html: JSON.stringify(websiteJsonLd)}} />
       </Head>
       {children}

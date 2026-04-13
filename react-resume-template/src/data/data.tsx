@@ -1,22 +1,41 @@
-import {AcademicCapIcon, BuildingOfficeIcon, CalendarIcon, MapIcon} from '@heroicons/react/24/outline';
+import {
+  ChatBubbleLeftRightIcon,
+  CloudIcon,
+  CodeBracketIcon,
+  CommandLineIcon,
+  CpuChipIcon,
+  ShieldCheckIcon,
+  WrenchScrewdriverIcon,
+} from '@heroicons/react/24/outline';
 import GithubIcon from '../components/Icon/GithubIcon';
 import LinkedInIcon from '../components/Icon/LinkedInIcon';
-import getAge from '../functions/calculateMyAge';
 
-import testimonialImage from '../images/testimonial.webp';
-
-import {About, ContactSection, ContactType, Hero, HomepageMeta, Skills, Social, TestimonialSection} from './dataDef';
+import {
+  About,
+  ContactSection,
+  ContactType,
+  FAQItem,
+  Hero,
+  HomepageMeta,
+  ProcessStep,
+  ServiceItem,
+  Social,
+  TechCategory,
+  TestimonialSection,
+  TrustSignal,
+  ValueProp,
+} from './dataDef';
 
 /**
  * Page meta data
  */
 export const homePageMeta: HomepageMeta = {
-  title: 'Jukka-Pekka Lappalainen | Full Stack Developer | Helsinki, Finland',
+  title: 'Perttula Software — Fullstack Development for Startups & Businesses | Nurmijärvi, Finland',
   description:
-    'Jukka-Pekka Lappalainen — Full Stack Developer based in Helsinki, Finland. Experienced in React, TypeScript, Python, Java, AWS, and ethical hacking. Explore my portfolio and get in touch.',
+    'Perttula Software is a fullstack development consultancy based in Nurmijärvi, Finland. Custom web applications, backend systems, AI integrations, and ongoing maintenance for startups, agencies, and local businesses.',
   author: 'Jukka-Pekka Lappalainen',
   keywords:
-    'Jukka-Pekka Lappalainen, Full Stack Developer, React, TypeScript, Python, Java, AWS, Helsinki, Finland, portfolio, software engineer, web developer, ethical hacking',
+    'Perttula Software, Jukka-Pekka Lappalainen, fullstack developer, web development Finland, software consultant Nurmijärvi, React developer, TypeScript, Node.js, AI development, startup developer, freelance developer Finland',
   ogImageUrl: 'https://www.jukkis.eu/api/og',
 };
 
@@ -31,6 +50,9 @@ export const SectionId = {
   Resume: 'skills',
   Stats: 'stats',
   Testimonials: 'testimonials',
+  Services: 'services',
+  Process: 'process',
+  FAQ: 'faq',
 } as const;
 
 export type SectionId = (typeof SectionId)[keyof typeof SectionId];
@@ -39,20 +61,23 @@ export type SectionId = (typeof SectionId)[keyof typeof SectionId];
  * Hero section
  */
 export const heroData: Hero = {
-  name: "I'm Jukka - Pekka Lappalainen.",
+  name: 'Perttula Software',
+  headline: 'I build the software your business runs on.',
+  subheadline:
+    'Fullstack development for startups, agencies, and local businesses. One senior developer. Architecture to deployment. No overhead.',
   description: (
     <>
       <p className="prose-sm text-stone-200 sm:prose-base lg:prose-lg">
-        A Finland based <strong className="text-stone-100">Full Stack Developer </strong>creating all kinds of projects
-        that come to mind.
+        Fullstack development for startups, agencies, and local businesses. One senior developer. Architecture to
+        deployment. No overhead.
       </p>
     </>
   ),
   actions: [
     {
       href: `#${SectionId.Contact}`,
-      text: 'Contact',
-      primary: false,
+      text: "Let's discuss your project",
+      primary: true,
     },
   ],
 };
@@ -61,72 +86,189 @@ export const heroData: Hero = {
  * About section
  */
 export const aboutData: About = {
-  description: `I am an enthusiastic and experienced full-stack developer with a passion for creating innovative solutions. With a solid educational background in ICT, I have cultivated a diverse skill set that spans programming languages, frameworks, and problem-solving techniques.\n
-  I dedicate my spare time to honing my programming skills and working on various personal projects. Beyond programming, I bring a unique perspective to my work, thanks to my extensive experience as a sound engineer. This background has exposed me to both software and hardware aspects, fostering a disciplined approach to troubleshooting and problem-solving.\n\n Feel free to explore my portfolio and get in touch if you're interested in partnering on an exciting venture or if you have any inquiries. Let's create something extraordinary together!`,
-  aboutItems: [
-    {label: 'Location', text: 'Helsinki', Icon: MapIcon},
-    {label: 'Age', text: getAge('05/25/1988'), Icon: CalendarIcon},
-    {label: 'Study', text: 'University of Jyväskylä', Icon: AcademicCapIcon},
-    {label: 'Employment', text: 'Fullstack Developer', Icon: BuildingOfficeIcon},
-  ],
+  description:
+    'Jukka-Pekka Lappalainen is the developer behind Perttula Software — a fullstack development consultancy based in Nurmijärvi, Finland. With a background spanning web development, systems programming, infrastructure, and AI, he builds and maintains production software for startups, agencies, and local businesses. He works across the entire stack — frontend to backend to deployment — so clients get one point of contact who understands their whole system.',
 };
 
 /**
- * Skills section
+ * Services section
  */
-export const skills: Skills[] = [
+export const services: ServiceItem[] = [
   {
-    // eslint-disable-next-line
-    skillname: 'Coding (React, Typescript, Python, Java)',
+    icon: CodeBracketIcon,
+    title: 'Web Applications',
+    description: 'Custom web apps built with React, Next.js, and TypeScript. Responsive, fast, accessible.',
   },
   {
-    skillname: 'Ethical  Hacking (Web, System)',
+    icon: CommandLineIcon,
+    title: 'Backend & API Development',
+    description:
+      'Server-side systems, REST and GraphQL APIs, database design. Node.js, Java, or whatever the problem requires.',
   },
   {
-    skillname: 'Amazon Web Services',
+    icon: CpuChipIcon,
+    title: 'AI Integrations & Agents',
+    description: 'Custom AI agent workflows, LLM integrations, and automation built into your existing systems.',
   },
   {
-    skillname: 'Audio Designing & Mixing (Ableton live 10)',
+    icon: ChatBubbleLeftRightIcon,
+    title: 'MVP Development',
+    description:
+      "Get from idea to working product fast. Architecture that scales when you need it to, lean when you don't.",
+  },
+  {
+    icon: CloudIcon,
+    title: 'Infrastructure & DevOps',
+    description:
+      'AWS deployment, Docker containerization, CI/CD pipelines, monitoring. Your code runs reliably in production.',
+  },
+  {
+    icon: ShieldCheckIcon,
+    title: 'Testing & Quality',
+    description: 'Automated testing with Playwright, Vitest, and Jest. Code that works and keeps working.',
+  },
+  {
+    icon: WrenchScrewdriverIcon,
+    title: 'Maintenance & Support',
+    description:
+      'Ongoing development, bug fixes, performance optimization, and technical support for existing applications.',
   },
 ];
 
 /**
- * Portfolio section
+ * Process steps
  */
+export const processSteps: ProcessStep[] = [
+  {
+    number: 1,
+    title: 'Conversation',
+    description:
+      'You tell me what you need. I ask the right questions. We figure out if it\'s a good fit — no obligation, no sales pitch.',
+  },
+  {
+    number: 2,
+    title: 'Scope & estimate',
+    description:
+      "I break the project into concrete deliverables with clear timelines and honest estimates. You know what you're getting and when.",
+  },
+  {
+    number: 3,
+    title: 'Build',
+    description:
+      'I design, develop, and test the solution. You get regular updates and working demos — not status reports about status reports.',
+  },
+  {
+    number: 4,
+    title: 'Ship',
+    description:
+      'Deployment to production with proper infrastructure, monitoring, and documentation. It works on day one.',
+  },
+  {
+    number: 5,
+    title: 'Support',
+    description:
+      "Bug fixes, iterations, and ongoing maintenance. The project doesn't end at launch.",
+  },
+];
 
 /**
- * Testimonial section
+ * FAQ items
+ */
+export const faqItems: FAQItem[] = [
+  {
+    question: 'What types of projects do you take on?',
+    answer:
+      'Web applications, backend systems, APIs, AI integrations, MVPs, and ongoing maintenance. If it involves code and a business need, we should talk.',
+  },
+  {
+    question: 'How do you handle projects that are too large for one person?',
+    answer:
+      "Most projects aren't. But when they are, I'm upfront about it. I'll tell you if a project needs more people and help you find the right team — I won't take on work I can't deliver.",
+  },
+  {
+    question: 'What does a typical engagement look like?',
+    answer:
+      'It starts with a conversation. I scope the work, give you an honest estimate, and build in milestones so you see progress throughout. No disappearing for three months.',
+  },
+  {
+    question: 'Do you work on-site or remotely?',
+    answer:
+      'Primarily remote, but available for on-site meetings in the Nurmijärvi / Helsinki metropolitan area.',
+  },
+  {
+    question: 'How do you charge?',
+    answer:
+      "Project-based or hourly, depending on the work. We'll figure out what makes sense after the initial conversation. No surprises.",
+  },
+  {
+    question: 'Can you work with my existing codebase?',
+    answer:
+      'Yes. I regularly work with existing systems — debugging, refactoring, adding features, or migrating to better infrastructure.',
+  },
+  {
+    question: 'What if I need ongoing support after the project?',
+    answer:
+      "I offer maintenance agreements. Your software doesn't stop needing attention after launch.",
+  },
+];
+
+/**
+ * Trust signals
+ */
+export const trustSignals: TrustSignal[] = [
+  {metric: '4+', label: 'Years in production development'},
+  {metric: '10+', label: 'Projects shipped'},
+  {metric: '7', label: 'Technology categories'},
+  {metric: '100%', label: 'Direct client access'},
+];
+
+/**
+ * Value propositions
+ */
+export const valueProps: ValueProp[] = [
+  {
+    title: 'Direct access',
+    description: 'You talk to the developer. Every question gets a technical answer, not a filtered status update.',
+  },
+  {
+    title: 'Full-stack ownership',
+    description:
+      'One person builds your frontend, API, database, CI/CD, and deployment. No gaps between layers.',
+  },
+  {
+    title: 'Lean and fast',
+    description: 'No standups about standups. No process overhead. Requirements in, working software out.',
+  },
+];
+
+/**
+ * Tech stack organized by category
+ */
+export const techStack: TechCategory[] = [
+  {category: 'Frontend', technologies: ['React', 'Next.js', 'TypeScript', 'Tailwind CSS']},
+  {category: 'Backend', technologies: ['Node.js', 'Java', 'Express', 'REST', 'GraphQL']},
+  {category: 'Systems & Performance', technologies: ['C++', 'Unreal Engine']},
+  {category: 'AI & Automation', technologies: ['AI Agents', 'LLM integrations']},
+  {category: 'Infrastructure', technologies: ['AWS', 'Docker', 'Linux', 'Bash', 'CI/CD']},
+  {category: 'Databases', technologies: ['MySQL', 'NoSQL (MongoDB, DynamoDB)']},
+  {category: 'Testing', technologies: ['Playwright', 'Vitest', 'Jest', 'JUnit']},
+];
+
+/**
+ * Testimonial section — intentionally empty until real client testimonials are available.
+ * The Testimonials component renders nothing when this array is empty.
  */
 export const testimonial: TestimonialSection = {
-  imageSrc: testimonialImage,
-  testimonials: [
-    {
-      name: 'Steve Jobs',
-      text: "Your work is going to fill a large part of your life, and the only way to be truly satisfied is to do what you believe is great work. And the only way to do great work is to love what you do. If you haven't found it yet, keep looking. Don't settle. As with all matters of the heart, you'll know when you find it.",
-    },
-    {
-      name: 'Emo Philips',
-      text: 'A computer once beat me at chess, but it was no match for me at kick boxing.',
-    },
-    {
-      name: 'Craig Bruce',
-      text: 'It’s hardware that makes a machine fast. It’s software that makes a fast machine slow.',
-    },
-    {
-      name: 'Homer Simpson, in response to the message, “Press any key”',
-      text: 'Where is the ‘any’ key?',
-    },
-  ],
+  testimonials: [],
 };
 
 /**
  * Contact section
  */
-
 export const contact: ContactSection = {
-  headerText: 'Get in touch.',
-  alert: 'Error occured, please try again later',
-  messageSent: 'Thank you for your message. I will get back to you!',
+  headerText: "Let's build something.",
+  alert: 'Error occurred, please try again later',
+  messageSent: "Thank you for your message. I'll get back to you within one business day.",
   items: [
     {
       type: ContactType.Email,
@@ -135,8 +277,8 @@ export const contact: ContactSection = {
     },
     {
       type: ContactType.Location,
-      text: 'Helsinki, Finland',
-      href: 'https://goo.gl/maps/9quNchR878t73zDN9',
+      text: 'Nurmijärvi, Finland',
+      href: 'https://goo.gl/maps/Nurmijarvi',
     },
     {
       type: ContactType.Github,
