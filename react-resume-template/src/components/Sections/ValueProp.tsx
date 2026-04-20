@@ -9,7 +9,8 @@ const ValueProp: FC = memo(() => {
       <div className="mx-auto max-w-content">
         <div className="flex flex-col gap-y-12">
           <div className="flex flex-col gap-y-4">
-            <h2 className="font-sans text-3xl font-bold tracking-tight text-text-primary-on-light sm:text-4xl">
+            <span className="font-mono text-sm font-semibold uppercase tracking-widest text-accent-muted">Why Perttula</span>
+            <h2 className="font-sans text-3xl font-bold tracking-tight text-text-primary-on-light sm:text-4xl md:text-5xl">
               One developer. Full ownership. Zero overhead.
             </h2>
             <p className="max-w-2xl text-base leading-relaxed text-neutral-600 sm:text-lg">
@@ -21,7 +22,7 @@ const ValueProp: FC = memo(() => {
             {valueProps.map(({title, description}) => (
               <div
                 key={title}
-                className="flex flex-col gap-y-3 rounded-lg border border-neutral-200 bg-white p-6 shadow-sm">
+                className="flex flex-col gap-y-3 rounded-xl border border-neutral-200 bg-white p-8 shadow-sm hover:shadow-md transition-shadow">
                 <h3 className="font-sans text-lg font-semibold text-text-primary-on-light">{title}</h3>
                 <p className="text-sm leading-relaxed text-neutral-600">{description}</p>
               </div>

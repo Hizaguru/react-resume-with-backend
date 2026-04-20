@@ -23,7 +23,8 @@ const Contact: FC = memo(() => {
       <div className="mx-auto max-w-content">
         <div className="flex flex-col gap-y-12">
           <div className="flex flex-col gap-y-4">
-            <h2 className="font-sans text-3xl font-bold tracking-tight text-text-primary sm:text-4xl">{headerText}</h2>
+            <span className="font-mono text-sm font-semibold uppercase tracking-widest text-accent">Contact</span>
+            <h2 className="font-sans text-3xl font-bold tracking-tight text-text-primary sm:text-4xl md:text-5xl">{headerText}</h2>
             <p className="max-w-2xl text-base leading-relaxed text-text-secondary sm:text-lg">
               Tell me about your project. I&apos;ll get back to you within one business day.
             </p>

@@ -41,9 +41,9 @@ body {
   overflow-x: hidden;
   overflow-wrap: break-word;
   width: 100%;
-  color: #FFFFFF;
+  color: #F4F4F5;
   font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  background-color: #0A0A0A;
+  background-color: #09090B;
   line-height: 1.6;
 }
 
@@ -520,10 +520,10 @@ a:hover {
 
 /* Modern button design */
 .btn-modern {
-  --btn-bg1: #0d3b66;
-  --btn-bg2: #145288;
+  --btn-bg: #3B82F6;
+  --btn-bg-hover: #60A5FA;
   --btn-shadow: rgba(0,0,0,0.4);
-  --btn-glow: rgba(97,218,251,0.35);
+  --btn-glow: rgba(59,130,246,0.35);
   position: relative;
   display: inline-flex;
   align-items: center;
@@ -534,10 +534,10 @@ a:hover {
   font-weight: 600;
   letter-spacing: .4px;
   line-height: 1.1;
-  color: #f3f9ff;
-  background: linear-gradient(135deg, var(--btn-bg1) 0%, var(--btn-bg2) 100%);
+  color: #fff;
+  background: var(--btn-bg);
   border: 1px solid rgba(255,255,255,0.12);
-  border-radius: 14px;
+  border-radius: 8px;
   text-decoration: none;
   cursor: pointer;
   box-shadow: 0 4px 10px -2px var(--btn-shadow), 0 2px 4px -1px rgba(0,0,0,.45);
@@ -548,22 +548,18 @@ a:hover {
   content: "";
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at 28% 22%, rgba(255,255,255,.25), transparent 65%);
-  mix-blend-mode: overlay;
-  opacity: .25;
-  transition: opacity 250ms ease;
+  background: transparent;
   pointer-events: none;
   border-radius: inherit;
 }
-.btn-modern:hover { transform: translateY(-2px); box-shadow:0 8px 20px -6px var(--btn-shadow), 0 4px 10px -2px rgba(0,0,0,.5);} 
-.btn-modern:hover:before {opacity:.4;}
+.btn-modern:hover { transform: translateY(-2px); background: var(--btn-bg-hover); box-shadow:0 8px 20px -6px var(--btn-shadow), 0 4px 10px -2px rgba(0,0,0,.5);}
 .btn-modern:active { transform: translateY(0); box-shadow:0 4px 10px -2px rgba(0,0,0,.55);} 
 .btn-modern:focus-visible {outline:2px solid #61dafb; outline-offset:2px;}
 .btn-modern.glow { box-shadow:0 0 0 0 var(--btn-glow), 0 4px 10px -2px var(--btn-shadow); animation: btnPulse 3.2s infinite ease-in-out; }
 @keyframes btnPulse { 0%,70% {box-shadow:0 0 0 0 var(--btn-glow);} 100% {box-shadow:0 0 0 18px rgba(97,218,251,0);} }
 
-.btn-modern.secondary { --btn-bg1:#233040; --btn-bg2:#30485e; }
-.btn-modern.danger { --btn-bg1:#6d1b1b; --btn-bg2:#b32121; }
+.btn-modern.secondary { --btn-bg:#233040; --btn-bg-hover:#30485e; }
+.btn-modern.danger { --btn-bg:#6d1b1b; --btn-bg-hover:#b32121; }
 
 .btn-modern.full {width:100%; justify-content:center;}
 
@@ -610,7 +606,7 @@ a:hover {
 
 /* Portfolio hover overlay */
 .portfolio-overlay:hover {
-  background: rgba(17, 24, 39, 0.8) !important;
+  background: rgba(0, 0, 0, 0.7) !important;
 }
 .portfolio-overlay:hover .portfolio-overlay-content {
   opacity: 1 !important;

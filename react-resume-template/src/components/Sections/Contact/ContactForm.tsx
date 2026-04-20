@@ -61,7 +61,7 @@ const ContactForm: FC = memo(() => {
   );
 
   const inputClasses =
-    'bg-secondary-bg border border-neutral-700 focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent rounded-md placeholder:text-text-secondary placeholder:text-sm text-text-primary text-sm';
+    'px-4 py-3 rounded-lg bg-surface border border-neutral-700 focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent placeholder:text-text-secondary placeholder:text-sm text-text-primary text-sm';
 
   if (isLoading) {
     return (
@@ -100,7 +100,7 @@ const ContactForm: FC = memo(() => {
         />
         <button
           aria-label="Submit contact form"
-          className="w-max rounded-md bg-accent px-6 py-2.5 text-sm font-medium text-white transition-colors hover:bg-accent-hover focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 focus:ring-offset-primary-bg"
+          className="inline-flex items-center justify-center gap-2 rounded-lg bg-accent px-7 py-3.5 text-sm font-semibold text-white shadow-md shadow-accent/20 transition-all duration-200 hover:-translate-y-0.5 hover:bg-accent-hover hover:shadow-lg hover:shadow-accent/25 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-primary-bg active:translate-y-0"
           type="submit"
           disabled={isLoading}>
           Send Message

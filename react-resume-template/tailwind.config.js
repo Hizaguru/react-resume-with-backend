@@ -5,25 +5,37 @@ module.exports = {
     extend: {
       colors: {
         primary: {
-          bg: '#0A0A0A',
-          DEFAULT: '#0A0A0A',
+          bg: '#09090B',
+          DEFAULT: '#09090B',
         },
         secondary: {
-          bg: '#1A1A1A',
-          DEFAULT: '#1A1A1A',
+          bg: '#18181B',
+          DEFAULT: '#18181B',
         },
         light: {
-          bg: '#F5F5F5',
-          DEFAULT: '#F5F5F5',
+          bg: '#FAFAFA',
+          DEFAULT: '#FAFAFA',
+        },
+        surface: {
+          DEFAULT: '#1E1E22',
+          light: '#FFFFFF',
         },
         accent: {
-          DEFAULT: '#2563EB',
-          hover: '#3B82F6',
+          DEFAULT: '#3B82F6',
+          hover: '#60A5FA',
+          muted: '#2563EB',
         },
         text: {
-          primary: '#FFFFFF',
-          'primary-on-light': '#111111',
-          secondary: '#9CA3AF',
+          primary: '#F4F4F5',
+          'primary-on-light': '#18181B',
+          secondary: '#A1A1AA',
+          'secondary-on-light': '#52525B',
+          tertiary: '#71717A',
+        },
+        border: {
+          primary: '#27272A',
+          subtle: 'rgba(255,255,255,0.06)',
+          light: '#E4E4E7',
         },
       },
       fontFamily: {
@@ -59,7 +71,7 @@ module.exports = {
           },
         },
         'fade-up': {
-          '0%': {opacity: '0', transform: 'translateY(30px)'},
+          '0%': {opacity: '0', transform: 'translateY(20px)'},
           '100%': {opacity: '1', transform: 'translateY(0)'},
         },
         'fade-in': {
@@ -95,10 +107,10 @@ module.exports = {
         },
       },
       animation: {
-        'fade-up': 'fade-up 0.8s ease-out forwards',
-        'fade-up-delay-1': 'fade-up 0.8s ease-out 0.2s forwards',
-        'fade-up-delay-2': 'fade-up 0.8s ease-out 0.4s forwards',
-        'fade-up-delay-3': 'fade-up 0.8s ease-out 0.6s forwards',
+        'fade-up': 'fade-up 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+        'fade-up-delay-1': 'fade-up 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.15s forwards',
+        'fade-up-delay-2': 'fade-up 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards',
+        'fade-up-delay-3': 'fade-up 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.45s forwards',
         'fade-in': 'fade-in 0.6s ease-out forwards',
         'slide-down': 'slide-down 0.5s ease-out forwards',
         'gradient-x': 'gradient-x 3s ease infinite',

@@ -11,7 +11,8 @@ const FAQ: FC = memo(() => {
     <Section className="bg-light-bg" sectionId={SectionId.FAQ}>
       <div className="mx-auto max-w-content">
         <div className="flex flex-col gap-y-12">
-          <h2 className="font-sans text-3xl font-bold tracking-tight text-text-primary-on-light sm:text-4xl">
+          <span className="font-mono text-sm font-semibold uppercase tracking-widest text-accent-muted">FAQ</span>
+          <h2 className="font-sans text-3xl font-bold tracking-tight text-text-primary-on-light sm:text-4xl md:text-5xl">
             Questions.
           </h2>
           <div className="mx-auto w-full max-w-3xl">
@@ -20,7 +21,7 @@ const FAQ: FC = memo(() => {
                 <Disclosure key={question} as="div">
                   {({open}) => (
                     <>
-                      <DisclosureButton className="flex w-full items-center justify-between py-5 text-left">
+                      <DisclosureButton className="flex w-full items-center justify-between py-5 text-left hover:bg-zinc-100 rounded-md">
                         <span className="font-sans text-base font-medium text-text-primary-on-light sm:text-lg">
                           {question}
                         </span>

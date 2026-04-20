@@ -62,7 +62,7 @@ const DesktopNav: FC<{navSections: SectionId[]; currentSection: SectionId | null
         )}
         id={headerID}>
         <nav className="mx-auto flex max-w-content items-center justify-between">
-          <Link href={`/#${SectionId.Hero}`} className="group flex items-center gap-2 font-sans text-sm font-bold text-text-primary">
+          <Link href={`/#${SectionId.Hero}`} className="group flex items-center gap-2 font-mono text-sm font-bold text-text-primary">
             <span className="inline-block h-2 w-2 rounded-full bg-accent transition-transform duration-300 group-hover:scale-125" />
             Perttula Software
           </Link>
@@ -127,7 +127,7 @@ const MobileNav: FC<{navSections: SectionId[]; currentSection: SectionId | null}
               leaveTo="-translate-x-full">
               <div className="relative w-4/5 bg-primary-bg">
                 <div className="flex items-center justify-between border-b border-neutral-800 px-4 py-4">
-                  <span className="font-sans text-sm font-bold text-text-primary">Perttula Software</span>
+                  <span className="font-mono text-sm font-bold text-text-primary">Perttula Software</span>
                   <button onClick={toggleOpen} className="text-text-secondary hover:text-text-primary">
                     <XMarkIcon className="h-6 w-6" />
                   </button>

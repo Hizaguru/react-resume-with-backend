@@ -49,7 +49,8 @@ const Portfolio: FC = memo(() => {
     <Section className="bg-primary-bg" sectionId={SectionId.Portfolio}>
       <div className="mx-auto flex max-w-content flex-col gap-y-12">
         <div className="flex flex-col gap-y-4">
-          <h2 className="font-sans text-3xl font-bold tracking-tight text-text-primary sm:text-4xl">Selected work.</h2>
+          <span className="font-mono text-sm font-semibold uppercase tracking-widest text-accent">Portfolio</span>
+          <h2 className="font-sans text-3xl font-bold tracking-tight text-text-primary sm:text-4xl md:text-5xl">Selected work.</h2>
           <p className="max-w-2xl text-base leading-relaxed text-text-secondary sm:text-lg">
             Recent projects and the problems they solved.
           </p>
@@ -71,7 +72,7 @@ const Portfolio: FC = memo(() => {
                     width: '100%',
                     aspectRatio: '1 / 1',
                     overflow: 'hidden',
-                    borderRadius: '0.5rem',
+                    borderRadius: '0.75rem',
                     boxShadow: '0 10px 15px -3px rgba(0,0,0,0.3)',
                   }}>
                   <Image

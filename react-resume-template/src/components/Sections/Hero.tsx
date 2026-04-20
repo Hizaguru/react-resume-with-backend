@@ -22,7 +22,7 @@ const Hero: FC = memo(() => {
         />
 
         {/* Dark overlay for text readability */}
-        <div className="pointer-events-none absolute inset-0 bg-black/50" />
+        <div className="pointer-events-none absolute inset-0 bg-black/55" />
 
         {/* Fog layer 1 — slow, bottom-heavy */}
         <div
@@ -57,7 +57,7 @@ const Hero: FC = memo(() => {
             {/* Animated accent line */}
             <div className="h-px w-0 animate-line-expand bg-gradient-to-r from-accent to-accent-hover" />
 
-            <h1 className="max-w-3xl animate-fade-up font-sans text-4xl font-bold leading-tight tracking-tight text-white opacity-0 drop-shadow-lg sm:text-5xl md:text-6xl lg:text-7xl">
+            <h1 className="max-w-3xl animate-fade-up font-sans text-4xl font-extrabold leading-tight tracking-tight text-white opacity-0 drop-shadow-lg sm:text-5xl md:text-6xl lg:text-7xl">
               {headline}
             </h1>
             <p className="max-w-2xl animate-fade-up-delay-1 text-lg leading-relaxed text-neutral-200 opacity-0 drop-shadow-md sm:text-xl">
@@ -68,8 +68,8 @@ const Hero: FC = memo(() => {
                 <a
                   className={
                     primary
-                      ? 'inline-flex rounded-md bg-accent px-8 py-3.5 text-base font-medium text-white shadow-lg shadow-accent/25 transition-all duration-300 hover:bg-accent-hover hover:shadow-xl hover:shadow-accent/30 focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 focus:ring-offset-black/50'
-                      : 'inline-flex rounded-md border border-white/40 bg-white/10 px-8 py-3.5 text-base font-medium text-white backdrop-blur-sm transition-all duration-300 hover:border-white/70 hover:bg-white/20 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-black/50'
+                      ? 'inline-flex items-center justify-center gap-2 rounded-lg bg-accent px-7 py-3.5 text-sm font-semibold text-white shadow-md shadow-accent/20 transition-all duration-200 hover:-translate-y-0.5 hover:bg-accent-hover hover:shadow-lg hover:shadow-accent/25 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-primary-bg active:translate-y-0'
+                      : 'inline-flex items-center justify-center gap-2 rounded-lg border border-zinc-700 bg-transparent px-7 py-3.5 text-sm font-semibold text-text-primary transition-all duration-200 hover:-translate-y-0.5 hover:border-zinc-500 hover:bg-white/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-primary-bg active:translate-y-0'
                   }
                   href={href}
                   key={text}>

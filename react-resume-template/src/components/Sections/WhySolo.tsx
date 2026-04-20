@@ -8,7 +8,8 @@ const WhySolo: FC = memo(() => {
     <Section className="bg-secondary-bg" sectionId={SectionId.Stats}>
       <div className="mx-auto max-w-content">
         <div className="flex flex-col gap-y-12">
-          <h2 className="font-sans text-3xl font-bold tracking-tight text-text-primary sm:text-4xl">
+          <span className="font-mono text-sm font-semibold uppercase tracking-widest text-accent">Solo Advantage</span>
+          <h2 className="font-sans text-3xl font-bold tracking-tight text-text-primary sm:text-4xl md:text-5xl">
             Why hire one developer instead of an agency?
           </h2>
           <div className="grid grid-cols-1 gap-12 lg:grid-cols-2">

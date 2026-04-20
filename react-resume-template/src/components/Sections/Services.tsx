@@ -10,7 +10,7 @@ const Services: FC = memo(() => {
         <div className="flex flex-col gap-y-16">
           {/* Section header */}
           <div className="flex flex-col gap-y-4">
-            <span className="font-mono text-sm font-medium uppercase tracking-widest text-accent">Services</span>
+            <span className="font-mono text-sm font-semibold uppercase tracking-widest text-accent">Services</span>
             <h2 className="font-sans text-3xl font-bold tracking-tight text-text-primary sm:text-4xl md:text-5xl">
               What I build.
             </h2>
@@ -24,7 +24,7 @@ const Services: FC = memo(() => {
             {services.map(({icon: Icon, title, description}, index) => (
               <div
                 key={title}
-                className="group relative flex flex-col gap-y-4 bg-secondary-bg p-8 transition-all duration-500 hover:bg-[#1f1f1f]">
+                className="group relative flex flex-col gap-y-4 bg-secondary-bg p-8 transition-all duration-500 hover:bg-surface"
                 {/* Accent glow on hover */}
                 <div className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
                   style={{
@@ -47,7 +47,7 @@ const Services: FC = memo(() => {
                 <div className="absolute inset-x-8 bottom-0 h-px scale-x-0 bg-gradient-to-r from-transparent via-accent/40 to-transparent transition-transform duration-500 group-hover:scale-x-100" />
 
                 {/* Number index */}
-                <span className="absolute top-6 right-6 font-mono text-xs text-neutral-700 transition-colors duration-300 group-hover:text-neutral-500">
+                <span className="absolute top-6 right-6 font-mono text-xs text-text-tertiary transition-colors duration-300 group-hover:text-text-secondary">
                   {String(index + 1).padStart(2, '0')}
                 </span>
               </div>

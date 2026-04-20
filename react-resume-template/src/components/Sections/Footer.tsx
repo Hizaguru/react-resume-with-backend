@@ -18,7 +18,7 @@ const Footer: FC = memo(() => (
       <div className="flex gap-x-4 text-text-secondary">
         <Socials />
       </div>
-      <p className="text-sm text-text-secondary">Perttula Software</p>
+      <p className="text-sm text-text-tertiary">Perttula Software</p>
     </div>
   </footer>
 ));
