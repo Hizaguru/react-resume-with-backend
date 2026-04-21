@@ -1,11 +1,11 @@
-import { AcademicCapIcon, BuildingOfficeIcon, CalendarIcon, MapIcon } from '@heroicons/react/24/outline';
+import {AcademicCapIcon, BuildingOfficeIcon, CalendarIcon, MapIcon} from '@heroicons/react/24/outline';
 import GithubIcon from '../components/Icon/GithubIcon';
 import LinkedInIcon from '../components/Icon/LinkedInIcon';
 import getAge from '../functions/calculateMyAge';
 
 import testimonialImage from '../images/testimonial.webp';
 
-import { About, ContactSection, ContactType, Hero, HomepageMeta, Social, TestimonialSection } from './dataDef';
+import {About, ContactSection, ContactType, Hero, HomepageMeta, Social, TestimonialSection} from './dataDef';
 
 /**
  * Page meta data
@@ -116,8 +116,8 @@ export const contact: ContactSection = {
     },
     {
       type: ContactType.Location,
-      text: 'Perttula, Nurmijärvi',
-      href: 'https://maps.app.goo.gl/xKm26hLL2FBkiTX67',
+      text: 'Helsinki, Finland',
+      href: 'https://goo.gl/maps/9quNchR878t73zDN9',
     },
     {
       type: ContactType.Github,
