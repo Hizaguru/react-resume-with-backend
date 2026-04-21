@@ -1,0 +1,39 @@
+# Jukka-Pekka Lappalainen
+
+> Full Stack Developer based in Helsinki, Finland
+
+## About
+
+Jukka-Pekka Lappalainen is an enthusiastic and experienced full-stack developer with a passion for creating innovative solutions. With a solid educational background in ICT from the University of Jyvaskyla, he has cultivated a diverse skill set spanning programming languages, frameworks, and problem-solving techniques.
+
+Beyond programming, he brings a unique perspective to his work from extensive experience as a sound engineer, which has exposed him to both software and hardware aspects, fostering a disciplined approach to troubleshooting and problem-solving.
+
+## Skills
+
+- Programming: React, TypeScript, Python, Java
+- Cloud: Amazon Web Services (AWS)
+- Security: Ethical Hacking (Web, System)
+- Audio: Audio Designing & Mixing (Ableton Live 10)
+
+## Location
+
+Helsinki, Finland
+
+## Education
+
+University of Jyvaskyla — ICT
+
+## Employment
+
+Full Stack Developer
+
+## Contact
+
+- Email: jukka-pekka.lappalainen@outlook.com
+- GitHub: https://github.com/Hizaguru
+- LinkedIn: https://www.linkedin.com/in/jukka-pekka-lappalainen-0365001a7/
+- Website: https://www.jukkis.eu/
+
+## Portfolio
+
+Visit https://www.jukkis.eu/ to see projects and portfolio items.

@@ -2,6 +2,10 @@ backend/node_modules/
 react-resume-template/node_modules/
 react-resume-template/src/images/portfolio
 react-resume-template/public/*
+!react-resume-template/public/images/
+!react-resume-template/public/llms.txt
+!react-resume-template/public/robots.txt
+!react-resume-template/public/site.webmanifest
 backend/dist/
 backend/.sanity/
 backend/.env
