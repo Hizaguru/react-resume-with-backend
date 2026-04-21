@@ -111,6 +111,32 @@ const TypewriterText: FC<TypewriterTextProps> = ({
   const totalChars = fullText.length;
   const flow = useMemo(() => buildFlow(segments), [segments]);
 
+  // Single caret driven by JS state — reliable across mobile browsers.
+  // caretIndex is the char index the caret sits *before* (0..totalChars).
+  const [caretIndex, setCaretIndex] = useState(0);
+  useEffect(() => {
+    if (!typing || shouldReduceMotion) return;
+    setCaretIndex(0);
+    const timeouts: ReturnType<typeof setTimeout>[] = [];
+    for (let i = 1; i <= totalChars; i += 1) {
+      timeouts.push(
+        setTimeout(() => setCaretIndex(i), startDelay + i * charDelay),
+      );
+    }
+    return () => timeouts.forEach(clearTimeout);
+  }, [typing, shouldReduceMotion, totalChars, charDelay, startDelay]);
+
+  const caretIsFinal = caretIndex >= totalChars;
+  const renderCaret = (key: string) =>
+    showCaret ? (
+      <span
+        aria-hidden="true"
+        className={cn('typewriter-caret', caretClassName)}
+        data-final={caretIsFinal ? 'true' : 'false'}
+        key={key}
+      />
+    ) : null;
+
   if (shouldReduceMotion) {
     return (
       <span aria-label={ariaLabel ?? fullText} className={className}>
@@ -123,47 +149,17 @@ const TypewriterText: FC<TypewriterTextProps> = ({
     );
   }
 
-  const renderCharWithCaret = (tok: Token) => {
+  const renderChar = (tok: Token) => {
     const charAppearDelay = startDelay + tok.charIndex * charDelay;
-    const isFinal = tok.charIndex === totalChars - 1;
     return (
       <Fragment key={`c-${tok.charIndex}`}>
+        {caretIndex === tok.charIndex ? renderCaret(`caret-${tok.charIndex}`) : null}
         <span
           className="typewriter-char"
           style={{'--typewriter-delay': `${charAppearDelay}ms`} as CSSProperties}>
           {tok.char}
         </span>
-        {showCaret ? (
-          <span
-            aria-hidden="true"
-            className={cn('typewriter-caret', caretClassName)}
-            data-final={isFinal ? 'true' : 'false'}
-            style={
-              {
-                '--typewriter-caret-delay': `${charAppearDelay}ms`,
-                '--typewriter-caret-duration': `${charDelay}ms`,
-              } as CSSProperties
-            }
-          />
-        ) : null}
       </Fragment>
-    );
-  };
-
-  const renderLeadingCaret = () => {
-    if (!showCaret) return null;
-    return (
-      <span
-        aria-hidden="true"
-        className={cn('typewriter-caret', caretClassName)}
-        data-final="false"
-        style={
-          {
-            '--typewriter-caret-delay': `0ms`,
-            '--typewriter-caret-duration': `${startDelay + charDelay}ms`,
-          } as CSSProperties
-        }
-      />
     );
   };
 
@@ -173,14 +169,13 @@ const TypewriterText: FC<TypewriterTextProps> = ({
       className={className}
       data-typing={typing ? 'true' : 'false'}
       ref={ref}>
-      {renderLeadingCaret()}
       {flow.map((item, idx) => {
         if (item.kind === 'ws') {
           return (
             <Fragment key={`ws-${idx}`}>
               {item.chars.map(tok => (
                 <span aria-hidden="true" className={segments[tok.segmentIndex].className} key={`wswrap-${tok.charIndex}`}>
-                  {renderCharWithCaret(tok)}
+                  {renderChar(tok)}
                 </span>
               ))}
             </Fragment>
@@ -189,10 +184,11 @@ const TypewriterText: FC<TypewriterTextProps> = ({
         const seg = segments[item.word.segmentIndex];
         return (
           <span aria-hidden="true" className={cn('typewriter-word', seg.className)} key={`w-${idx}`}>
-            {item.word.chars.map(tok => renderCharWithCaret(tok))}
+            {item.word.chars.map(tok => renderChar(tok))}
           </span>
         );
       })}
+      {caretIsFinal ? renderCaret('caret-final') : null}
     </span>
   );
 };
