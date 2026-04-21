@@ -14,7 +14,7 @@ const AnimatedGradientBg: FC = () => {
         fill
         priority
         sizes="100vw"
-        src="/images/header_img.png"
+        src="/images/hero-bg.png"
       />
 
       {/* Dark gradient overlay — improves text legibility */}
