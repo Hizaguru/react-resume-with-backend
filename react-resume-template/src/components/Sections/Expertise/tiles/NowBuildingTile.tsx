@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import {FC} from 'react';
 
 import ExpertiseTile from '../ExpertiseTile';
 
@@ -11,7 +11,7 @@ const NowBuildingTile: FC = () => {
           <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-emerald-500" />
         </span>
         <p className="text-base text-foreground">
-          An indie horror game in Unreal Engine, along with automation-focused side projects.
+          A horror game in Unreal Engine, plus automation side-projects.
         </p>
       </div>
     </ExpertiseTile>
