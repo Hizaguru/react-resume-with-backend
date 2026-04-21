@@ -1,5 +1,5 @@
-import {animate, motion, useInView, useMotionValue, useReducedMotion, useTransform} from 'framer-motion';
-import {FC, useEffect, useRef} from 'react';
+import { animate, motion, useInView, useMotionValue, useReducedMotion, useTransform } from 'framer-motion';
+import { FC, useEffect, useRef } from 'react';
 
 import ExpertiseTile from '../ExpertiseTile';
 
@@ -32,7 +32,7 @@ interface CountProps {
 const Count: FC<CountProps> = ({target, suffix}) => {
   const shouldReduceMotion = useReducedMotion();
   const ref = useRef<HTMLSpanElement>(null);
-  const inView = useInView(ref, {once: true, margin: '-80px'});
+  const inView = useInView(ref, {once: true, amount: 0.2});
   const mv = useMotionValue(shouldReduceMotion ? target : 0);
   const rounded = useTransform(mv, latest => Math.round(latest).toString());
 
@@ -45,6 +45,20 @@ const Count: FC<CountProps> = ({target, suffix}) => {
     const controls = animate(mv, target, {duration: 1.4, ease: [0.22, 1, 0.36, 1]});
     return () => controls.stop();
   }, [inView, mv, shouldReduceMotion, target]);
+
+  // Fallback: jos IntersectionObserver ei syystä tai toisesta laukea
+  // (esim. pienet viewport-ongelmat mobiililla), aseta arvo viiveellä.
+  useEffect(() => {
+    if (shouldReduceMotion) return;
+    const timeout = window.setTimeout(() => {
+      if (mv.get() === 0 && target !== 0) {
+        const controls = animate(mv, target, {duration: 1.4, ease: [0.22, 1, 0.36, 1]});
+        return () => controls.stop();
+      }
+      return undefined;
+    }, 2000);
+    return () => window.clearTimeout(timeout);
+  }, [mv, shouldReduceMotion, target]);
 
   return (
     <span className="inline-flex items-baseline tabular-nums">
