@@ -1,8 +1,8 @@
 import classNames from 'classnames';
-import { FC, memo, UIEventHandler, useCallback, useEffect, useRef, useState } from 'react';
+import {FC, memo, UIEventHandler, useCallback, useEffect, useRef, useState} from 'react';
 
-import { SectionId, testimonial } from '../../data/data';
-import type { Testimonial } from '../../data/dataDef';
+import {SectionId, testimonial} from '../../data/data';
+import type {Testimonial} from '../../data/dataDef';
 import useInterval from '../../hooks/useInterval';
 import useWindow from '../../hooks/useWindow';
 import QuoteIcon from '../Icon/QuoteIcon';
@@ -85,14 +85,14 @@ const Testimonials: FC = memo(() => {
               const isActive = index === activeIndex;
               return (
                 <button
-                  aria-current={isActive ? 'true' : undefined}
                   aria-label={`Go to testimonial ${index + 1}`}
                   className={classNames(
                     'h-2 w-2 rounded-full transition-colors',
                     isActive ? 'bg-primary' : 'bg-border hover:bg-muted-foreground',
                   )}
+                  disabled={isActive}
                   key={`dot-${t.name}-${index}`}
-                  onClick={isActive ? undefined : setTestimonial(index)}
+                  onClick={setTestimonial(index)}
                   type="button"
                 />
               );
