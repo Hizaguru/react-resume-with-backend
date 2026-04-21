@@ -64,11 +64,11 @@ const Testimonials: FC = memo(() => {
       className="bg-muted/40 py-24 sm:py-32 lg:py-40 border-y border-border"
       id={SectionId.Testimonials}>
       <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 text-center">
-        <p className="text-xs font-medium uppercase tracking-[0.18em] text-primary">Kind words</p>
+        <p className="text-xs font-medium uppercase tracking-[0.18em] text-primary">Words to live by</p>
         <h2
           className="mt-3 text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight text-foreground"
           id={HEADING_ID}>
-          What collaborators say.
+          Thoughts I steal often.
         </h2>
 
         <div className="mt-16 flex flex-col items-center gap-y-8">
