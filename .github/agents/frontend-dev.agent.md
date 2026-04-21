@@ -50,7 +50,7 @@ export default function UserProfile${ id }$ {
 
 
 GOOD (Production-ready, Typed, Safe):
-
+git c
 "use client";
 
 import { useQuery } from "@tanstack/react-query";
