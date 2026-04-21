@@ -1,5 +1,5 @@
-import { animate, motion, useMotionValue, useReducedMotion, useTransform } from 'framer-motion';
-import { FC, useEffect, useRef, useState } from 'react';
+import {animate, motion, useInView, useMotionValue, useReducedMotion, useTransform} from 'framer-motion';
+import {FC, useEffect, useRef} from 'react';
 
 import ExpertiseTile from '../ExpertiseTile';
 
@@ -27,11 +27,12 @@ const METRICS: readonly Metric[] = [
 interface CountProps {
   target: number;
   suffix: string;
-  active: boolean;
 }
 
-const Count: FC<CountProps> = ({target, suffix, active}) => {
+const Count: FC<CountProps> = ({target, suffix}) => {
   const shouldReduceMotion = useReducedMotion();
+  const ref = useRef<HTMLSpanElement>(null);
+  const inView = useInView(ref, {once: true, margin: '-80px'});
   const mv = useMotionValue(shouldReduceMotion ? target : 0);
   const rounded = useTransform(mv, latest => Math.round(latest).toString());
 
@@ -40,54 +41,28 @@ const Count: FC<CountProps> = ({target, suffix, active}) => {
       mv.set(target);
       return;
     }
-    if (!active) return;
+    if (!inView) return;
     const controls = animate(mv, target, {duration: 1.4, ease: [0.22, 1, 0.36, 1]});
     return () => controls.stop();
-  }, [active, mv, shouldReduceMotion, target]);
+  }, [inView, mv, shouldReduceMotion, target]);
 
   return (
     <span className="inline-flex items-baseline tabular-nums">
-      <motion.span>{rounded}</motion.span>
+      <motion.span ref={ref}>{rounded}</motion.span>
       <span>{suffix}</span>
     </span>
   );
 };
 
 const ImpactMetricsTile: FC = () => {
-  const listRef = useRef<HTMLDListElement>(null);
-  const [inView, setInView] = useState(false);
-
-  useEffect(() => {
-    const el = listRef.current;
-    if (!el) return;
-    // Fallback for environments without IntersectionObserver: trigger immediately.
-    if (typeof IntersectionObserver === 'undefined') {
-      setInView(true);
-      return;
-    }
-    const io = new IntersectionObserver(
-      entries => {
-        entries.forEach(e => {
-          if (e.isIntersecting) {
-            setInView(true);
-            io.disconnect();
-          }
-        });
-      },
-      {threshold: 0, rootMargin: '0px 0px -10% 0px'},
-    );
-    io.observe(el);
-    return () => io.disconnect();
-  }, []);
-
   return (
     <ExpertiseTile eyebrow="Impact" title="Numbers that matter.">
-      <dl className="grid grid-cols-1 gap-6 sm:grid-cols-3" ref={listRef}>
+      <dl className="grid grid-cols-1 gap-6 sm:grid-cols-3">
         {METRICS.map(m => (
           <div className="flex flex-col" key={m.label}>
             <dt className="sr-only">{m.label}</dt>
             <dd className="text-4xl font-semibold tabular-nums text-violet-600 bg-gradient-to-br from-violet-600 via-violet-500 to-violet-400 bg-clip-text text-transparent sm:text-5xl">
-              <Count active={inView} suffix={m.suffix} target={m.value} />
+              <Count suffix={m.suffix} target={m.value} />
             </dd>
             <span className="mt-1 text-sm text-muted-foreground">{m.label}</span>
           </div>
