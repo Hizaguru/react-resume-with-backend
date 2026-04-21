@@ -5,7 +5,7 @@ import getAge from '../functions/calculateMyAge';
 
 import testimonialImage from '../images/testimonial.webp';
 
-import {About, ContactSection, ContactType, Hero, HomepageMeta, Skills, Social, TestimonialSection} from './dataDef';
+import {About, ContactSection, ContactType, Hero, HomepageMeta, Social, TestimonialSection} from './dataDef';
 
 /**
  * Page meta data
@@ -27,8 +27,8 @@ export const SectionId = {
   Hero: 'hero',
   About: 'about',
   Contact: 'contact',
-  Portfolio: 'portfolio',
-  Resume: 'skills',
+  Expertise: 'expertise',
+  Projects: 'projects',
   Stats: 'stats',
   Testimonials: 'testimonials',
 } as const;
@@ -70,25 +70,6 @@ export const aboutData: About = {
     {label: 'Employment', text: 'Fullstack Developer', Icon: BuildingOfficeIcon},
   ],
 };
-
-/**
- * Skills section
- */
-export const skills: Skills[] = [
-  {
-    // eslint-disable-next-line
-    skillname: 'Coding (React, Typescript, Python, Java)',
-  },
-  {
-    skillname: 'Ethical  Hacking (Web, System)',
-  },
-  {
-    skillname: 'Amazon Web Services',
-  },
-  {
-    skillname: 'Audio Designing & Mixing (Ableton live 10)',
-  },
-];
 
 /**
  * Portfolio section

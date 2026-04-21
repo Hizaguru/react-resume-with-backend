@@ -1,121 +1,137 @@
-import {FC, memo, useCallback, useMemo, useState} from 'react';
+import {zodResolver} from '@hookform/resolvers/zod';
 import emailJs from '@emailjs/browser';
-import {contact} from '../../../data/data';
-import LoadingSpinner from './LoadingSpinner';
-interface FormData {
-  name: string;
-  email: string;
-  message: string;
-}
+import {Loader2} from 'lucide-react';
+import {FC, memo, useCallback} from 'react';
+import {useForm} from 'react-hook-form';
+import {toast} from 'sonner';
+import * as z from 'zod';
+
+import {Button} from '@/components/ui/button';
+import {Input} from '@/components/ui/input';
+import {Label} from '@/components/ui/label';
+import {Textarea} from '@/components/ui/textarea';
+
 const SERVICE_ID = process.env.NEXT_PUBLIC_SERVICE_ID;
 const TEMPLATE_ID = process.env.NEXT_PUBLIC_TEMPLATE_ID;
 const USER_ID = process.env.NEXT_PUBLIC_USER_ID;
 
+const contactSchema = z.object({
+  name: z.string().min(2, 'Name must be at least 2 characters.'),
+  email: z.email('Please enter a valid email address.'),
+  message: z.string().min(10, 'Message must be at least 10 characters.').max(1000, 'Message is too long.'),
+});
+
+type ContactFormValues = z.infer<typeof contactSchema>;
+
 const ContactForm: FC = memo(() => {
-  const defaultData = useMemo(
-    () => ({
-      name: '',
-      email: '',
-      message: '',
-    }),
-    [],
-  );
-  const {alert, messageSent} = contact;
-  const [data, setData] = useState<FormData>(defaultData);
-  const [isFormSubmitted, setIsFormSubmitted] = useState(false);
-  const [error, setError] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
-  const onChange = useCallback(
-    <T extends HTMLInputElement | HTMLTextAreaElement>(event: React.ChangeEvent<T>): void => {
-      const {name, value} = event.target;
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: {errors, isSubmitting},
+  } = useForm<ContactFormValues>({
+    resolver: zodResolver(contactSchema),
+    defaultValues: {name: '', email: '', message: ''},
+  });
 
-      const fieldData: Partial<FormData> = {[name]: value};
-
-      setData({...data, ...fieldData});
+  const onSubmit = useCallback(
+    async (values: ContactFormValues): Promise<void> => {
+      if (!SERVICE_ID || !TEMPLATE_ID) {
+        toast.error("Contact isn't configured right now — try again later.");
+        return;
+      }
+      try {
+        await emailJs.send(
+          SERVICE_ID,
+          TEMPLATE_ID,
+          {name: values.name, email: values.email, message: values.message},
+          USER_ID,
+        );
+        toast.success("Thanks — I'll reply within 24h.");
+        reset();
+      } catch (err) {
+        toast.error('Something went wrong sending your message. Please retry.', {
+          description: err instanceof Error ? err.message : undefined,
+        });
+      }
     },
-    [data],
-  );
-  const handleSendMessage = useCallback(
-    async (event: React.FormEvent<HTMLFormElement>) => {
-      setIsLoading(true);
-      event.preventDefault();
-      emailJs
-        .sendForm(SERVICE_ID!, TEMPLATE_ID!, event.currentTarget, USER_ID)
-        .then(
-          (result: {text: string}) => {
-            return result.text;
-          },
-          (error: {text: string}) => {
-            setError(true);
-            return error.text;
-          },
-        )
-        .then();
-      event.currentTarget.reset();
-      setTimeout(() => {
-        setIsFormSubmitted(true);
-        setIsLoading(false);
-      }, 3000);
-    },
-    [data],
+    [reset],
   );
 
-  const inputClasses =
-    'bg-neutral-700 border-0 focus:border-0 focus:outline-none focus:ring-1 focus:ring-orange-600 rounded-md placeholder:text-neutral-400 placeholder:text-sm text-neutral-200 text-sm';
+  return (
+    <form className="flex flex-col gap-4" noValidate onSubmit={handleSubmit(onSubmit)}>
+      <div className="flex flex-col gap-1.5">
+        <Label htmlFor="contact-name">Name</Label>
+        <Input
+          aria-describedby={errors.name ? 'contact-name-error' : undefined}
+          aria-invalid={errors.name ? true : undefined}
+          autoComplete="name"
+          id="contact-name"
+          placeholder="Your name"
+          type="text"
+          {...register('name')}
+        />
+        {errors.name ? (
+          <p className="mt-1 text-xs text-destructive" id="contact-name-error">
+            {errors.name.message}
+          </p>
+        ) : null}
+      </div>
 
-  if (isLoading) {
-    return (
-      <div>
-        <LoadingSpinner />
-      </div>
-    );
-  } else if (isFormSubmitted) {
-    return (
-      <div className="message-success">
-        <i className="fa fa-check" />
-        <p className="font-bold text-white ">{messageSent}</p>
-      </div>
-    );
-  } else {
-    return (
-      <form className="grid min-h-[320px] grid-cols-1 gap-y-4" method="POST" onSubmit={handleSendMessage}>
-        <input className={inputClasses} name="name" onChange={onChange} placeholder="Name" required type="text" />
-        <input
+      <div className="flex flex-col gap-1.5">
+        <Label htmlFor="contact-email">Email</Label>
+        <Input
+          aria-describedby={errors.email ? 'contact-email-error' : undefined}
+          aria-invalid={errors.email ? true : undefined}
           autoComplete="email"
-          className={inputClasses}
-          name="email"
-          onChange={onChange}
-          placeholder="Email"
-          required
+          id="contact-email"
+          placeholder="you@example.com"
           type="email"
+          {...register('email')}
         />
-        <textarea
-          className={inputClasses}
-          maxLength={250}
-          name="message"
-          onChange={onChange}
-          placeholder="Message"
-          required
-          rows={6}
-        />
-        <button
-          aria-label="Submit contact form"
-          className="w-max rounded-full border-2 border-orange-600 bg-stone-900 px-4 py-2 text-sm font-medium text-white shadow-md outline-none hover:bg-stone-800 focus:ring-2 focus:ring-orange-600 focus:ring-offset-2 focus:ring-offset-stone-800"
-          type="submit"
-          disabled={isLoading}>
-          Send Message
-        </button>
+        {errors.email ? (
+          <p className="mt-1 text-xs text-destructive" id="contact-email-error">
+            {errors.email.message}
+          </p>
+        ) : null}
+      </div>
 
-        {error && (
-          <div className="message-warning">
-            <i className="fa fa-check" />
-            <p className="font-bold text-red">{alert}</p>
-          </div>
+      <div className="flex flex-col gap-1.5">
+        <Label htmlFor="contact-message">Message</Label>
+        <Textarea
+          aria-describedby={errors.message ? 'contact-message-error' : undefined}
+          aria-invalid={errors.message ? true : undefined}
+          id="contact-message"
+          maxLength={1000}
+          placeholder="How can I help?"
+          rows={6}
+          {...register('message')}
+        />
+        {errors.message ? (
+          <p className="mt-1 text-xs text-destructive" id="contact-message-error">
+            {errors.message.message}
+          </p>
+        ) : null}
+      </div>
+
+      <Button
+        className="w-full sm:w-auto sm:self-start focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+        disabled={isSubmitting}
+        size="lg"
+        type="submit">
+        {isSubmitting ? (
+          <>
+            <Loader2 aria-hidden="true" className="animate-spin" />
+            Sending…
+          </>
+        ) : (
+          'Send message'
         )}
-      </form>
-    );
-  }
+      </Button>
+    </form>
+  );
 });
 
 ContactForm.displayName = 'ContactForm';
+
 export default ContactForm;
