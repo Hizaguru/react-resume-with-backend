@@ -97,6 +97,17 @@
   }
 }
 
+/* Inline caret that shows for a single char-slot then disappears, so the
+   next caret takes over — creates a caret that "follows" the typing. */
+@keyframes typewriter-caret-step {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
 .typewriter-word {
   display: inline-block;
   white-space: nowrap;
@@ -122,12 +133,19 @@
   vertical-align: -0.1em;
   background-color: currentColor;
   border-radius: 1px;
-  opacity: 1;
+  opacity: 0;
 }
 
-/* Final caret blinks forever once typing is complete. */
+/* Intermediate carets: visible for exactly one char slot, then hidden. */
+[data-typing='true'] .typewriter-caret[data-final='false'] {
+  animation: typewriter-caret-step var(--typewriter-caret-duration, 45ms) steps(1, end) forwards;
+  animation-delay: var(--typewriter-caret-delay, 0ms);
+}
+
+/* Final caret: blinks forever once reached. */
 [data-typing='true'] .typewriter-caret[data-final='true'] {
   animation: typewriter-caret-blink 0.9s steps(1, end) infinite;
+  animation-delay: var(--typewriter-caret-delay, 0ms);
 }
 
 @media (prefers-reduced-motion: reduce) {
