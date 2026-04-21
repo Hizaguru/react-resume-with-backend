@@ -1,6 +1,6 @@
-import {AnimatePresence, motion, useReducedMotion} from 'framer-motion';
-import {FC, useEffect, useState} from 'react';
-
+import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
+import { FC, useEffect, useState } from 'react';
+import TypewriterText from '../../motion/TypewriterText';
 const ROLES: readonly string[] = ['ships products', 'writes clean TS', 'obsesses over UX'] as const;
 
 const HeroHeadline: FC = () => {
@@ -20,13 +20,24 @@ const HeroHeadline: FC = () => {
   return (
     <>
       <p className="text-xs font-medium uppercase tracking-[0.18em] text-violet-300 drop-shadow-[0_1px_8px_rgba(0,0,0,0.5)]">
-        Full-stack engineer · Helsinki
+        Full-stack engineer · Perttula, Nurmijärvi
       </p>
       <h1 className="mt-4 text-5xl sm:text-6xl lg:text-7xl font-semibold tracking-tight leading-[1.05] text-white drop-shadow-[0_2px_16px_rgba(0,0,0,0.45)]">
-        <span className="text-zinc-200">Hi, I&apos;m</span>{' '}
-        <span className="text-violet-300 bg-gradient-to-br from-violet-300 via-violet-200 to-white bg-clip-text text-transparent">
-          Jukka-Pekka
-        </span>.
+        <TypewriterText
+          ariaLabel="Hi, I'm Jukka-Pekka."
+          caretClassName="text-violet-300"
+          charDelay={55}
+          segments={[
+            {text: "Hi, I'm ", className: 'text-zinc-200'},
+            {
+              text: 'Jukka-Pekka',
+              className:
+                'text-violet-300 bg-gradient-to-br from-violet-300 via-violet-200 to-white bg-clip-text text-transparent',
+            },
+            {text: '.', className: 'text-zinc-200'},
+          ]}
+          startDelay={200}
+        />
       </h1>
       <p className="mt-6 text-lg text-zinc-200/90 max-w-xl mx-auto drop-shadow-[0_1px_10px_rgba(0,0,0,0.5)]">
         A full-stack engineer who{' '}
