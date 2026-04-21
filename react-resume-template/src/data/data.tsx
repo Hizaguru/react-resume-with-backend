@@ -140,8 +140,8 @@ export const contact: ContactSection = {
     },
     {
       type: ContactType.Github,
-      text: 'Hizaguru',
-      href: 'https://github.com/Hizaguru',
+      text: 'JucksonFive',
+      href: 'https://github.com/JucksonFive',
     },
   ],
 };
@@ -150,6 +150,6 @@ export const contact: ContactSection = {
  * Social items
  */
 export const socialLinks: Social[] = [
-  {label: 'Github', Icon: GithubIcon, href: 'https://github.com/Hizaguru'},
+  {label: 'Github', Icon: GithubIcon, href: 'https://github.com/JucksonFive'},
   {label: 'LinkedIn', Icon: LinkedInIcon, href: 'https://www.linkedin.com/in/jukka-pekka-lappalainen-0365001a7/'},
 ];
