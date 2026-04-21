@@ -1,10 +1,11 @@
 import Image from 'next/image';
-import {FC, memo} from 'react';
+import { FC, memo } from 'react';
 
-import {urlFor} from '../../client';
-import {aboutData, SectionId} from '../../data/data';
+import { urlFor } from '../../client';
+import { aboutData, SectionId } from '../../data/data';
 import useProfileImage from '../../hooks/useProfileImage';
 import MotionFadeIn from '../motion/MotionFadeIn';
+import TypewriterText from '../motion/TypewriterText';
 
 const HEADING_ID = 'about-heading';
 
@@ -68,7 +69,12 @@ const About: FC = memo(() => {
           <h2
             className="mt-3 text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight text-foreground"
             id={HEADING_ID}>
-            A developer who ships, listens, and iterates.
+            <TypewriterText
+              ariaLabel="A developer who ships, listens, and iterates."
+              caretClassName="text-primary"
+              charDelay={35}
+              segments={[{text: 'A developer who ships, listens, and iterates.'}]}
+            />
           </h2>
         </MotionFadeIn>
 
