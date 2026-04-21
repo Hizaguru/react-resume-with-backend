@@ -10,8 +10,9 @@ const NowBuildingTile: FC = () => {
           <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
           <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-emerald-500" />
         </span>
-        {/* MOCK — replace with real data source */}
-        <p className="text-base text-foreground">An AI-assisted resume editor in Next.js 16, shipping weekly.</p>
+        <p className="text-base text-foreground">
+          A horror game in Unreal Engine, plus automation side-projects.
+        </p>
       </div>
     </ExpertiseTile>
   );

@@ -3,7 +3,15 @@ import {FC, useEffect, useRef} from 'react';
 
 import ExpertiseTile from '../ExpertiseTile';
 
-// MOCK — replace with real data source
+const SHIPPING_SINCE = new Date('2022-05-01T00:00:00Z');
+
+const yearsSince = (from: Date): number => {
+  const now = new Date();
+  const diffMs = now.getTime() - from.getTime();
+  const years = diffMs / (1000 * 60 * 60 * 24 * 365.25);
+  return Math.max(0, Math.round(years));
+};
+
 interface Metric {
   value: number;
   suffix: string;
@@ -11,9 +19,9 @@ interface Metric {
 }
 
 const METRICS: readonly Metric[] = [
-  {value: 9, suffix: '', label: 'Years shipping software'},
-  {value: 40, suffix: '+', label: 'Features in production'},
-  {value: 1, suffix: 'M+', label: 'Users reached'},
+  {value: yearsSince(SHIPPING_SINCE), suffix: '', label: 'Years shipping software'},
+  {value: 3, suffix: '', label: 'Features in production'},
+  {value: 10000, suffix: '+', label: 'Users reached monthly'},
 ] as const;
 
 interface CountProps {

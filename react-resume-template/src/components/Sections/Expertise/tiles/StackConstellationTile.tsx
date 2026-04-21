@@ -7,7 +7,7 @@ import ExpertiseTile from '../ExpertiseTile';
 
 interface StackItem {
   name: string;
-  years: number;
+  since: Date;
 }
 
 interface CapabilityGroup {
@@ -15,35 +15,44 @@ interface CapabilityGroup {
   items: StackItem[];
 }
 
-// MOCK — replace with real data source
+const SHIPPING_SINCE = new Date('2022-05-01T00:00:00Z');
+
+const yearsSince = (from: Date): number => {
+  const diffMs = Date.now() - from.getTime();
+  const years = diffMs / (1000 * 60 * 60 * 24 * 365.25);
+  return Math.max(0, Math.round(years));
+};
+
 const GROUPS: readonly CapabilityGroup[] = [
   {
     capability: 'Ship UIs fast',
     items: [
-      {name: 'React', years: 9},
-      {name: 'Next.js', years: 6},
-      {name: 'Tailwind', years: 4},
-      {name: 'Shadcn', years: 2},
-      {name: 'Framer Motion', years: 3},
+      {name: 'React', since: SHIPPING_SINCE},
+      {name: 'Electron', since: SHIPPING_SINCE},
+      {name: 'Unreal Engine', since: SHIPPING_SINCE},
+      {name: 'Next.js', since: SHIPPING_SINCE},
+      {name: 'Tailwind', since: SHIPPING_SINCE},
     ],
   },
   {
     capability: 'Move data safely',
     items: [
-      {name: 'TypeScript', years: 8},
-      {name: 'Zod', years: 3},
-      {name: 'tRPC', years: 2},
-      {name: 'Sanity', years: 3},
-      {name: 'PostgreSQL', years: 6},
+      {name: 'TypeScript', since: SHIPPING_SINCE},
+      {name: 'MongoDB', since: SHIPPING_SINCE},
+      {name: 'GraphQL', since: SHIPPING_SINCE},
+      {name: 'Sanity', since: SHIPPING_SINCE},
+      {name: 'PostgreSQL', since: SHIPPING_SINCE},
     ],
   },
   {
     capability: 'Operate in production',
     items: [
-      {name: 'Vercel', years: 5},
-      {name: 'AWS Lambda', years: 4},
-      {name: 'Playwright', years: 3},
-      {name: 'GitHub Actions', years: 5},
+      {name: 'Vercel', since: SHIPPING_SINCE},
+      {name: 'AWS Lambda', since: SHIPPING_SINCE},
+      {name: 'Playwright', since: SHIPPING_SINCE},
+      {name: 'Vitest', since: SHIPPING_SINCE},
+      {name: 'Docker', since: SHIPPING_SINCE},
+      {name: 'GitHub Actions', since: SHIPPING_SINCE},
     ],
   },
 ] as const;
@@ -59,20 +68,23 @@ const StackConstellationTile: FC = () => {
           <div key={group.capability}>
             <p className="text-xs uppercase tracking-wider text-muted-foreground">{group.capability}</p>
             <ul className="mt-2 flex flex-wrap gap-2">
-              {group.items.map(item => (
-                <li key={item.name}>
-                  <Tooltip>
-                    <TooltipTrigger asChild>
-                      <Badge className={CHIP_CLASSES} variant="secondary">
-                        {item.name}
-                      </Badge>
-                    </TooltipTrigger>
-                    <TooltipContent>
-                      {item.years} {item.years === 1 ? 'year' : 'years'}
-                    </TooltipContent>
-                  </Tooltip>
-                </li>
-              ))}
+              {group.items.map(item => {
+                const years = yearsSince(item.since);
+                return (
+                  <li key={item.name}>
+                    <Tooltip>
+                      <TooltipTrigger asChild>
+                        <Badge className={CHIP_CLASSES} variant="secondary">
+                          {item.name}
+                        </Badge>
+                      </TooltipTrigger>
+                      <TooltipContent>
+                        {years} {years === 1 ? 'year' : 'years'}
+                      </TooltipContent>
+                    </Tooltip>
+                  </li>
+                );
+              })}
             </ul>
           </div>
         ))}

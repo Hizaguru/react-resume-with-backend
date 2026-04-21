@@ -19,25 +19,25 @@ const HeroHeadline: FC = () => {
 
   return (
     <>
-      <p className="text-xs font-medium uppercase tracking-[0.18em] text-primary">
+      <p className="text-xs font-medium uppercase tracking-[0.18em] text-violet-300 drop-shadow-[0_1px_8px_rgba(0,0,0,0.5)]">
         Full-stack engineer · Helsinki
       </p>
-      <h1 className="mt-4 text-5xl sm:text-6xl lg:text-7xl font-semibold tracking-tight leading-[1.05] text-foreground">
-        Hi, I&apos;m{' '}
-        <span className="text-violet-600 bg-gradient-to-br from-violet-600 via-violet-500 to-violet-400 bg-clip-text text-transparent">
+      <h1 className="mt-4 text-5xl sm:text-6xl lg:text-7xl font-semibold tracking-tight leading-[1.05] text-white drop-shadow-[0_2px_16px_rgba(0,0,0,0.45)]">
+        <span className="text-zinc-200">Hi, I&apos;m</span>{' '}
+        <span className="text-violet-300 bg-gradient-to-br from-violet-300 via-violet-200 to-white bg-clip-text text-transparent">
           Jukka-Pekka
         </span>.
       </h1>
-      <p className="mt-6 text-lg text-muted-foreground max-w-xl mx-auto">
+      <p className="mt-6 text-lg text-zinc-200/90 max-w-xl mx-auto drop-shadow-[0_1px_10px_rgba(0,0,0,0.5)]">
         A full-stack engineer who{' '}
         {shouldReduceMotion ? (
-          <span className="font-medium text-foreground">{ROLES[0]}</span>
+          <span className="font-medium text-white">{ROLES[0]}</span>
         ) : (
           <span className="inline-block min-w-[10ch] text-left align-baseline">
             <AnimatePresence mode="wait">
               <motion.span
                 animate={{opacity: 1, y: 0}}
-                className="inline-block font-medium text-foreground"
+                className="inline-block font-medium text-white"
                 exit={{opacity: 0, y: -8}}
                 initial={{opacity: 0, y: 8}}
                 key={currentRole}

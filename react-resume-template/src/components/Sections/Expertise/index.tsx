@@ -5,7 +5,6 @@ import MotionFadeIn from '../../motion/MotionFadeIn';
 import ImpactMetricsTile from './tiles/ImpactMetricsTile';
 import NowBuildingTile from './tiles/NowBuildingTile';
 import PhilosophyTile from './tiles/PhilosophyTile';
-import ProjectLinkTile from './tiles/ProjectLinkTile';
 import StackConstellationTile from './tiles/StackConstellationTile';
 
 interface CellProps {
@@ -45,9 +44,6 @@ const Expertise: FC = memo(() => {
           </Cell>
           <Cell className="md:col-span-3 lg:col-span-3 flex" delay={0.24}>
             <StackConstellationTile />
-          </Cell>
-          <Cell className="md:col-span-3 lg:col-span-4 flex" delay={0.32}>
-            <ProjectLinkTile />
           </Cell>
         </div>
       </div>
