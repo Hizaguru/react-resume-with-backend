@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import {FC, memo} from 'react';
+import React, {FC, memo} from 'react';
 
 import {Badge} from '@/components/ui/badge';
 import {Card, CardContent} from '@/components/ui/card';
@@ -35,10 +35,24 @@ const ProjectCard: FC<ProjectCardProps> = memo(({item, onSelect}) => {
     onSelect?.(item);
   };
 
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLDivElement>): void => {
+    if (!onSelect) return;
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      onSelect(item);
+    }
+  };
+
+  const interactive = Boolean(onSelect);
+
   return (
     <Card
-      className="group relative overflow-hidden rounded-2xl border-border bg-card p-0 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_1px_2px_rgba(15,23,42,0.04),0_12px_32px_-16px_rgba(79,70,229,0.35)] focus-within:ring-2 focus-within:ring-ring focus-within:ring-offset-2"
-      onClick={onSelect ? handleClick : undefined}>
+      aria-label={interactive ? `Open details for ${title}` : undefined}
+      className={`group relative overflow-hidden rounded-2xl border-border bg-card p-0 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_1px_2px_rgba(15,23,42,0.04),0_12px_32px_-16px_rgba(124,58,237,0.35)] focus-within:ring-2 focus-within:ring-ring focus-within:ring-offset-2${interactive ? ' cursor-pointer' : ''}`}
+      onClick={interactive ? handleClick : undefined}
+      onKeyDown={interactive ? handleKeyDown : undefined}
+      role={interactive ? 'button' : undefined}
+      tabIndex={interactive ? 0 : undefined}>
       <div className="relative aspect-[16/10] w-full overflow-hidden">
         <Image
           alt={title}

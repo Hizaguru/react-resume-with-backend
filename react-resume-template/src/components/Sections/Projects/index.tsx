@@ -1,5 +1,5 @@
 import {SearchX} from 'lucide-react';
-import {FC, memo, useMemo, useState} from 'react';
+import {FC, memo, useCallback, useMemo, useState} from 'react';
 
 import {Tabs, TabsList, TabsTrigger} from '@/components/ui/tabs';
 
@@ -8,6 +8,7 @@ import usePortfolioItems from '../../../hooks/usePortfolioItems';
 import MotionFadeIn from '../../motion/MotionFadeIn';
 
 import ProjectCard from './ProjectCard';
+import ProjectModal from './ProjectModal';
 
 type Category = 'all' | 'web' | 'backend' | 'audio';
 
@@ -37,6 +38,10 @@ const Skeleton: FC = () => (
 const Projects: FC = memo(() => {
   const {data, isLoading, error, refetch} = usePortfolioItems();
   const [filter, setFilter] = useState<Category>('all');
+  const [selected, setSelected] = useState<PortfolioItem | null>(null);
+
+  const handleSelect = useCallback((item: PortfolioItem) => setSelected(item), []);
+  const handleClose = useCallback(() => setSelected(null), []);
 
   const filtered = useMemo(() => {
     if (filter === 'all') return data;
@@ -92,13 +97,14 @@ const Projects: FC = memo(() => {
             <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
               {filtered.map((item, i) => (
                 <MotionFadeIn delay={Math.min(i * 0.05, 0.3)} key={`${item.title}-${i}`}>
-                  <ProjectCard item={item} />
+                  <ProjectCard item={item} onSelect={handleSelect} />
                 </MotionFadeIn>
               ))}
             </div>
           )}
         </div>
       </div>
+      <ProjectModal item={selected} onClose={handleClose} />
     </section>
   );
 });
