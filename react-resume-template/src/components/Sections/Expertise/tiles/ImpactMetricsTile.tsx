@@ -1,5 +1,5 @@
-import { animate, motion, useInView, useMotionValue, useReducedMotion, useTransform } from 'framer-motion';
-import { FC, useEffect, useRef } from 'react';
+import { animate, motion, useMotionValue, useReducedMotion, useTransform } from 'framer-motion';
+import { FC, useEffect, useRef, useState } from 'react';
 
 import ExpertiseTile from '../ExpertiseTile';
 
@@ -55,7 +55,30 @@ const Count: FC<CountProps> = ({target, suffix, active}) => {
 
 const ImpactMetricsTile: FC = () => {
   const listRef = useRef<HTMLDListElement>(null);
-  const inView = useInView(listRef, {once: true, amount: 0.2});
+  const [inView, setInView] = useState(false);
+
+  useEffect(() => {
+    const el = listRef.current;
+    if (!el) return;
+    // Fallback for environments without IntersectionObserver: trigger immediately.
+    if (typeof IntersectionObserver === 'undefined') {
+      setInView(true);
+      return;
+    }
+    const io = new IntersectionObserver(
+      entries => {
+        entries.forEach(e => {
+          if (e.isIntersecting) {
+            setInView(true);
+            io.disconnect();
+          }
+        });
+      },
+      {threshold: 0, rootMargin: '0px 0px -10% 0px'},
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
 
   return (
     <ExpertiseTile eyebrow="Impact" title="Numbers that matter.">
