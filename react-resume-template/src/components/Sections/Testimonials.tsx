@@ -1,35 +1,25 @@
 import classNames from 'classnames';
-import {FC, memo, UIEventHandler, useCallback, useEffect, useMemo, useRef, useState} from 'react';
+import {FC, memo, UIEventHandler, useCallback, useEffect, useRef, useState} from 'react';
 
-import {isApple, isMobile} from '../../config';
 import {SectionId, testimonial} from '../../data/data';
 import type {Testimonial} from '../../data/dataDef';
 import useInterval from '../../hooks/useInterval';
 import useWindow from '../../hooks/useWindow';
 import QuoteIcon from '../Icon/QuoteIcon';
-import Section from '../Layout/Section';
+
+const HEADING_ID = 'testimonials-heading';
 
 const Testimonials: FC = memo(() => {
   const [activeIndex, setActiveIndex] = useState<number>(0);
   const [scrollValue, setScrollValue] = useState(0);
-  const [parallaxEnabled, setParallaxEnabled] = useState(false);
 
   const itemWidth = useRef(0);
   const scrollContainer = useRef<HTMLDivElement>(null);
 
   const {width} = useWindow();
 
-  const {imageSrc, testimonials} = testimonial;
-
-  const resolveSrc = useMemo(() => {
-    if (!imageSrc) return undefined;
-    return typeof imageSrc === 'string' ? imageSrc : imageSrc.src;
-  }, [imageSrc]);
-
-  // Mobile iOS doesn't allow background-fixed elements
-  useEffect(() => {
-    setParallaxEnabled(!(isMobile && isApple));
-  }, []);
+  // NOTE: `imageSrc` from testimonial data is intentionally unused in the new editorial layout.
+  const {testimonials} = testimonial;
 
   useEffect(() => {
     itemWidth.current = scrollContainer.current ? scrollContainer.current.offsetWidth : 0;
@@ -64,67 +54,72 @@ const Testimonials: FC = memo(() => {
 
   useInterval(next, 10000);
 
-  // If no testimonials, don't render the section
   if (!testimonials.length) {
     return null;
   }
 
   return (
-    <Section noPadding sectionId={SectionId.Testimonials}>
-      <div
-        className={classNames(
-          'flex w-full items-center justify-center bg-cover bg-center px-4 py-16 md:py-24 lg:px-8',
-          parallaxEnabled && 'bg-fixed',
-          {'bg-neutral-700': !imageSrc},
-        )}
-        style={imageSrc ? {backgroundImage: `url(${resolveSrc}`} : undefined}>
-        <div className="z-10 w-full max-w-(--breakpoint-md) px-4 lg:px-0">
-          <div className="flex flex-col items-center gap-y-6 rounded-xl bg-gray-800/60 p-6 shadow-lg">
-            <div
-              className="no-scrollbar flex w-full touch-pan-x snap-x snap-mandatory gap-x-6 overflow-x-auto scroll-smooth"
-              onScroll={handleScroll}
-              ref={scrollContainer}>
-              {testimonials.map((testimonial, index) => {
-                const isActive = index === activeIndex;
-                return (
-                  <Testimonial isActive={isActive} key={`${testimonial.name}-${index}`} testimonial={testimonial} />
-                );
-              })}
-            </div>
-            <div className="flex gap-x-4">
-              {[...Array(testimonials.length)].map((_, index) => {
-                const isActive = index === activeIndex;
-                return (
-                  <button
-                    className={classNames(
-                      'h-3 w-3 rounded-full bg-gray-300 transition-all duration-500 sm:h-4 sm:w-4',
-                      isActive ? 'scale-100 opacity-100' : 'scale-75 opacity-60',
-                    )}
-                    disabled={isActive}
-                    key={`select-button-${index}`}
-                    onClick={setTestimonial(index)}></button>
-                );
-              })}
-            </div>
+    <section
+      aria-labelledby={HEADING_ID}
+      className="bg-muted/40 py-24 sm:py-32 lg:py-40 border-y border-border"
+      id={SectionId.Testimonials}>
+      <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 text-center">
+        <p className="text-xs font-medium uppercase tracking-[0.18em] text-primary">Words to live by</p>
+        <h2
+          className="mt-3 text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight text-foreground"
+          id={HEADING_ID}>
+          Thoughts I steal often.
+        </h2>
+
+        <div className="mt-16 flex flex-col items-center gap-y-8">
+          <div
+            className="no-scrollbar flex w-full touch-pan-x snap-x snap-mandatory gap-x-6 overflow-x-auto scroll-smooth"
+            onScroll={handleScroll}
+            ref={scrollContainer}>
+            {testimonials.map((t, index) => (
+              <TestimonialCard isActive={index === activeIndex} key={`${t.name}-${index}`} testimonial={t} />
+            ))}
+          </div>
+          <div className="flex gap-x-3">
+            {testimonials.map((t, index) => {
+              const isActive = index === activeIndex;
+              return (
+                <button
+                  aria-label={`Go to testimonial ${index + 1}`}
+                  className={classNames(
+                    'h-2 w-2 rounded-full transition-colors',
+                    isActive ? 'bg-primary' : 'bg-border hover:bg-muted-foreground',
+                  )}
+                  disabled={isActive}
+                  key={`dot-${t.name}-${index}`}
+                  onClick={setTestimonial(index)}
+                  type="button"
+                />
+              );
+            })}
           </div>
         </div>
       </div>
-    </Section>
+    </section>
   );
 });
 
-const Testimonial: FC<{testimonial: Testimonial; isActive: boolean}> = memo(({testimonial: {text, name}, isActive}) => (
-  <div
-    className={classNames(
-      'flex w-full shrink-0 snap-start snap-always flex-col items-start gap-y-4 p-2 transition-opacity duration-1000 sm:flex-row sm:gap-x-6',
-      isActive ? 'opacity-100' : 'opacity-0',
-    )}>
-    <QuoteIcon className="h-5 w-5 shrink-0 text-white sm:h-8 sm:w-8" />
-    <div className="flex flex-col gap-y-4">
-      <p className="prose prose-sm font-medium italic text-white sm:prose-base">{text}</p>
-      <p className="text-xs italic text-white sm:text-sm md:text-base lg:text-lg">-- {name}</p>
+const TestimonialCard: FC<{testimonial: Testimonial; isActive: boolean}> = memo(
+  ({testimonial: {text, name}, isActive}) => (
+    <div
+      className={classNames(
+        'flex w-full shrink-0 snap-start snap-always flex-col items-start gap-6 rounded-2xl border border-border bg-card p-8 sm:p-10 shadow-sm transition-opacity duration-700 text-left',
+        isActive ? 'opacity-100' : 'opacity-0',
+      )}>
+      <QuoteIcon className="h-8 w-8 shrink-0 text-primary/70" />
+      <p className="text-lg sm:text-xl leading-relaxed text-foreground font-medium italic">{text}</p>
+      <p className="mt-2 text-sm font-medium text-foreground not-italic">{name}</p>
     </div>
-  </div>
-));
+  ),
+);
+
+TestimonialCard.displayName = 'TestimonialCard';
+Testimonials.displayName = 'Testimonials';
 
 export default Testimonials;
+

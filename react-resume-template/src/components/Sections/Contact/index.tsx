@@ -1,13 +1,13 @@
 import {DevicePhoneMobileIcon, EnvelopeIcon, MapPinIcon} from '@heroicons/react/24/outline';
-import classNames from 'classnames';
 import {FC, memo} from 'react';
 
 import {contact, SectionId} from '../../../data/data';
 import {ContactType, ContactValue} from '../../../data/dataDef';
 import GithubIcon from '../../Icon/GithubIcon';
 import LinkedInIcon from '../../Icon/LinkedInIcon';
-import Section from '../../Layout/Section';
 import ContactForm from './ContactForm';
+
+const HEADING_ID = 'contact-heading';
 
 const ContactValueMap: Record<ContactType, ContactValue> = {
   [ContactType.Email]: {Icon: EnvelopeIcon, srLabel: 'Email'},
@@ -20,33 +20,39 @@ const ContactValueMap: Record<ContactType, ContactValue> = {
 const Contact: FC = memo(() => {
   const {headerText, items} = contact;
   return (
-    <Section className="bg-neutral-800" sectionId={SectionId.Contact}>
-      <div className="flex flex-col gap-y-6">
-        <div className="flex flex-col gap-6 md:flex-row md:items-center">
-          <EnvelopeIcon className="hidden h-16 w-16 text-white md:block" />
-          <h2 className="text-2xl font-bold text-white">{headerText}</h2>
-        </div>
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-          <div className="order-2 col-span-1 md:order-1 ">
+    <section
+      aria-labelledby={HEADING_ID}
+      className="bg-background py-24 sm:py-32 lg:py-40"
+      id={SectionId.Contact}>
+      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+        <p className="text-xs font-medium uppercase tracking-[0.18em] text-primary">Get in touch</p>
+        <h2
+          className="mt-3 text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight text-foreground"
+          id={HEADING_ID}>
+          {headerText ?? "Let's build something together."}
+        </h2>
+
+        <div className="mt-16 grid grid-cols-1 gap-12 lg:grid-cols-5 lg:gap-16 items-start">
+          <div className="lg:col-span-3">
             <ContactForm />
           </div>
-          <div className="order-1 col-span-1 flex flex-col gap-y-4 md:order-2">
-            <dl className="flex flex-col space-y-4 text-base text-neutral-500 sm:space-y-2">
+          <div className="lg:col-span-2">
+            <dl className="flex flex-col gap-6 border-t border-border pt-6">
               {items.map(({type, text, href}) => {
                 const {Icon, srLabel} = ContactValueMap[type];
                 return (
-                  <div key={srLabel}>
-                    <dt className="sr-only">{srLabel}</dt>
-                    <dd className="flex items-center">
+                  <div className="flex flex-col gap-1" key={srLabel}>
+                    <dt className="text-xs font-medium uppercase tracking-[0.14em] text-muted-foreground">
+                      {srLabel}
+                    </dt>
+                    <dd>
                       <a
-                        className={classNames(
-                          '-m-2 flex rounded-md p-2 text-neutral-300 hover:text-orange-500 focus:outline-none focus:ring-2 focus:ring-orange-500',
-                          {'hover:text-white': href},
-                        )}
+                        className="inline-flex items-center gap-2 text-sm text-foreground hover:text-primary transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-sm"
                         href={href}
+                        rel="noreferrer"
                         target="_blank">
-                        <Icon aria-hidden="true" className="h-4 w-4 shrink-0 text-neutral-100 sm:h-5 sm:w-5" />
-                        <span className="ml-3 break-all text-sm sm:text-base">{text}</span>
+                        <Icon aria-hidden="true" className="h-4 w-4 shrink-0 text-primary" />
+                        <span className="break-all">{text}</span>
                       </a>
                     </dd>
                   </div>
@@ -56,9 +62,10 @@ const Contact: FC = memo(() => {
           </div>
         </div>
       </div>
-    </Section>
+    </section>
   );
 });
 
-Contact.displayName = 'About';
+Contact.displayName = 'Contact';
 export default Contact;
+
