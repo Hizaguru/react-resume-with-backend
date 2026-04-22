@@ -91,7 +91,7 @@ export interface PortfolioItem {
   modalTitle: string;
   modalDescription?: string;
   modalImgUrl?: string | StaticImageData | SanityImage[];
-  category?: 'fullstack' | 'audio' | 'game';
+  category?: 'audio' | 'fullstack' | 'game';
   _updatedAt: any;
 }
 
