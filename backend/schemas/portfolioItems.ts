@@ -6,6 +6,21 @@ export default defineType({
   type: "document",
   fields: [
     defineField({
+      name: "category",
+      title: "Category",
+      description: "Determines which tab this item appears under on the Projects section.",
+      type: "string",
+      options: {
+        list: [
+          { title: "Audio", value: "audio" },
+          { title: "Fullstack", value: "fullstack" },
+          { title: "Game", value: "game" },
+        ],
+        layout: "radio",
+      },
+      validation: (Rule) => Rule.required(),
+    }),
+    defineField({
       name: "title",
       title: "Title",
       type: "string",
@@ -46,4 +61,28 @@ export default defineType({
       type: "string",
     }),
   ],
+  orderings: [
+    {
+      title: "Category",
+      name: "categoryAsc",
+      by: [
+        { field: "category", direction: "asc" },
+        { field: "title", direction: "asc" },
+      ],
+    },
+  ],
+  preview: {
+    select: {
+      title: "title",
+      subtitle: "category",
+      media: "imgUrl",
+    },
+    prepare({ title, subtitle, media }) {
+      return {
+        title,
+        subtitle: subtitle ?? "No category",
+        media,
+      };
+    },
+  },
 });

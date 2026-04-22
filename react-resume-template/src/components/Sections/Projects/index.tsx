@@ -10,22 +10,14 @@ import MotionFadeIn from '../../motion/MotionFadeIn';
 import ProjectCard from './ProjectCard';
 import ProjectModal from './ProjectModal';
 
-type Category = 'all' | 'web' | 'backend' | 'audio';
+type Category = 'all' | 'audio' | 'fullstack' | 'game';
 
 const CATEGORIES: readonly {value: Category; label: string}[] = [
   {value: 'all', label: 'All'},
-  {value: 'web', label: 'Web'},
-  {value: 'backend', label: 'Backend'},
   {value: 'audio', label: 'Audio'},
+  {value: 'fullstack', label: 'Fullstack'},
+  {value: 'game', label: 'Game'},
 ] as const;
-
-// MOCK — Sanity schema has no `category` field yet; infer heuristically.
-const categorize = (item: PortfolioItem): Category => {
-  const haystack = `${item.title ?? ''} ${item.description ?? ''}`.toLowerCase();
-  if (/audio|ableton|sound|mix/.test(haystack)) return 'audio';
-  if (/api|server|backend|node|python|java|aws|lambda/.test(haystack)) return 'backend';
-  return 'web';
-};
 
 const Skeleton: FC = () => (
   <div className="flex flex-col gap-3">
@@ -45,7 +37,7 @@ const Projects: FC = memo(() => {
 
   const filtered = useMemo(() => {
     if (filter === 'all') return data;
-    return data.filter(item => categorize(item) === filter);
+    return data.filter(item => item.category === filter);
   }, [data, filter]);
 
   return (
