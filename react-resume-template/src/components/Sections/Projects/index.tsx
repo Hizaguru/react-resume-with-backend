@@ -10,12 +10,12 @@ import MotionFadeIn from '../../motion/MotionFadeIn';
 import ProjectCard from './ProjectCard';
 import ProjectModal from './ProjectModal';
 
-type Category = 'all' | 'fullstack' | 'audio' | 'game';
+type Category = 'all' | 'audio' | 'fullstack' | 'game';
 
 const CATEGORIES: readonly {value: Category; label: string}[] = [
   {value: 'all', label: 'All'},
-  {value: 'fullstack', label: 'Fullstack'},
   {value: 'audio', label: 'Audio'},
+  {value: 'fullstack', label: 'Fullstack'},
   {value: 'game', label: 'Game'},
 ] as const;
 

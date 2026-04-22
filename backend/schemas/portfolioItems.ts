@@ -12,8 +12,8 @@ export default defineType({
       type: "string",
       options: {
         list: [
-          { title: "Fullstack", value: "fullstack" },
           { title: "Audio", value: "audio" },
+          { title: "Fullstack", value: "fullstack" },
           { title: "Game", value: "game" },
         ],
         layout: "radio",
