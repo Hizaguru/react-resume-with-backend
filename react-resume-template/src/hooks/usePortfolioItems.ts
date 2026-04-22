@@ -11,7 +11,9 @@ interface UsePortfolioItemsResult {
 }
 
 const sortPortfolioItems = (items: PortfolioItem[]): PortfolioItem[] =>
-  [...items].sort((a, b) => new Date(b._updatedAt).getTime() - new Date(a._updatedAt).getTime());
+  [...items].sort(
+    (a, b) => new Date(b._updatedAt).getTime() - new Date(a._updatedAt).getTime(),
+  );
 
 const usePortfolioItems = (): UsePortfolioItemsResult => {
   const [data, setData] = useState<PortfolioItem[]>([]);
@@ -25,7 +27,7 @@ const usePortfolioItems = (): UsePortfolioItemsResult => {
     setError(null);
 
     client
-      .fetch<PortfolioItem[]>('*[_type == "portfolioItems"]')
+      .fetch<PortfolioItem[]>('*[_type == "portfolioItems"] | order(_updatedAt desc)')
       .then(result => {
         if (cancelled) return;
         setData(sortPortfolioItems(result));
