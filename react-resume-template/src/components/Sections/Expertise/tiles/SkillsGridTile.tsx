@@ -1,9 +1,10 @@
 import {FC} from 'react';
 import {BsAnthropic, BsOpenai} from 'react-icons/bs';
-import {FaAws, FaGithub, FaJava, FaNodeJs, FaReact} from 'react-icons/fa6';
+import {FaAws, FaFilm, FaGithub, FaJava, FaNodeJs, FaReact} from 'react-icons/fa6';
 import {GoCopilot} from 'react-icons/go';
 import {GrGraphQl} from 'react-icons/gr';
 import {
+  SiArduino,
   SiConfluence,
   SiContentful,
   SiCplusplus,
@@ -12,6 +13,7 @@ import {
   SiJest,
   SiJira,
   SiLangchain,
+  SiPlatformio,
   SiPython,
   SiSanity,
   SiSpringboot,
@@ -75,6 +77,19 @@ const CATEGORIES: readonly SkillCategory[] = [
     skills: [
       {name: 'Unreal Engine', Icon: SiUnrealengine, color: 'text-foreground'},
       {name: 'Unity', Icon: SiUnity, color: 'text-foreground'},
+    ],
+  },
+  {
+    title: 'Embedded / Hardware',
+    skills: [
+      {name: 'C++ (Arduino Framework)', Icon: SiArduino, color: 'text-[#00878F]'},
+      {name: 'PlatformIO', Icon: SiPlatformio, color: 'text-[#F5822A]'},
+    ],
+  },
+  {
+    title: 'Creative / Media',
+    skills: [
+      {name: 'Adobe Premiere', Icon: FaFilm, color: 'text-[#9999FF]'},
     ],
   },
   {
