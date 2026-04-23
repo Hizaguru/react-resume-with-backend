@@ -8,6 +8,7 @@ import {
   SiConfluence,
   SiContentful,
   SiCplusplus,
+  SiElectron,
   SiGithubactions,
   SiGnubash,
   SiJest,
@@ -17,6 +18,7 @@ import {
   SiPython,
   SiSanity,
   SiSpringboot,
+  SiSqlite,
   SiTailwindcss,
   SiTypescript,
   SiUbuntu,
@@ -52,6 +54,7 @@ const CATEGORIES: readonly SkillCategory[] = [
       {name: 'Vite', Icon: SiVite, color: 'text-[#646CFF]'},
       {name: 'Tailwind CSS', Icon: SiTailwindcss, color: 'text-[#06B6D4]'},
       {name: 'GraphQL', Icon: GrGraphQl, color: 'text-[#E10098]'},
+      {name: 'Electron', Icon: SiElectron, color: 'text-[#47848F]'},
     ],
   },
   {
@@ -61,6 +64,7 @@ const CATEGORIES: readonly SkillCategory[] = [
       {name: 'Spring Boot', Icon: SiSpringboot, color: 'text-[#6DB33F]'},
       {name: 'Python', Icon: SiPython, color: 'text-[#3776AB]'},
       {name: 'C++', Icon: SiCplusplus, color: 'text-[#00599C]'},
+      {name: 'SQLite', Icon: SiSqlite, color: 'text-[#003B57]'},
     ],
   },
   {
