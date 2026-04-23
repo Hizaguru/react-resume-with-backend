@@ -5,7 +5,8 @@ import {Tabs, TabsList, TabsTrigger} from '@/components/ui/tabs';
 
 import {PortfolioItem} from '../../../data/dataDef';
 import usePortfolioItems from '../../../hooks/usePortfolioItems';
-import MotionFadeIn from '../../motion/MotionFadeIn';
+import Reveal from '../../motion/Reveal';
+import {StaggerGroup, StaggerItem} from '../../motion/Stagger';
 
 import ProjectCard from './ProjectCard';
 import ProjectModal from './ProjectModal';
@@ -43,18 +44,21 @@ const Projects: FC = memo(() => {
   return (
     <section className="bg-background py-24 sm:py-32 lg:py-40" id="projects">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <MotionFadeIn>
+        <Reveal>
           <p className="text-xs font-medium uppercase tracking-[0.18em] text-primary">Selected work</p>
           <h2 className="mt-3 text-3xl sm:text-4xl font-semibold tracking-tight text-foreground">
             Things I&apos;ve actually shipped.
           </h2>
-        </MotionFadeIn>
+        </Reveal>
 
         <div className="sticky top-16 z-20 mt-10 -mx-4 bg-background/80 px-4 py-3 backdrop-blur supports-[backdrop-filter]:bg-background/60 lg:sticky lg:mx-0 lg:rounded-full lg:border lg:border-border lg:px-4">
           <Tabs onValueChange={v => setFilter(v as Category)} value={filter}>
             <TabsList className="flex w-full flex-wrap justify-start gap-1 bg-transparent p-0">
               {CATEGORIES.map(c => (
-                <TabsTrigger className="rounded-full px-4" key={c.value} value={c.value}>
+                <TabsTrigger
+                  className="cursor-pointer rounded-full px-4 transition-all duration-200 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-0.5 hover:shadow-[0_6px_18px_-10px_rgba(124,58,237,0.5)] active:translate-y-0 active:scale-[0.98] data-[state=active]:shadow-[0_8px_22px_-12px_rgba(124,58,237,0.55)] motion-reduce:transition-none motion-reduce:hover:transform-none"
+                  key={c.value}
+                  value={c.value}>
                   {c.label}
                 </TabsTrigger>
               ))}
@@ -86,13 +90,16 @@ const Projects: FC = memo(() => {
               </p>
             </div>
           ) : (
-            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            <StaggerGroup
+              className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3"
+              key={filter}
+              stagger={0.06}>
               {filtered.map((item, i) => (
-                <MotionFadeIn delay={Math.min(i * 0.05, 0.3)} key={`${item.title}-${i}`}>
+                <StaggerItem direction="up" key={`${item.title}-${i}`}>
                   <ProjectCard item={item} onSelect={handleSelect} />
-                </MotionFadeIn>
+                </StaggerItem>
               ))}
-            </div>
+            </StaggerGroup>
           )}
         </div>
       </div>

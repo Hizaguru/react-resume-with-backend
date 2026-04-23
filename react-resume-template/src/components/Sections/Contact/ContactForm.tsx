@@ -11,6 +11,8 @@ import {Input} from '@/components/ui/input';
 import {Label} from '@/components/ui/label';
 import {Textarea} from '@/components/ui/textarea';
 
+import {StaggerGroup, StaggerItem} from '../../motion/Stagger';
+
 const SERVICE_ID = process.env.NEXT_PUBLIC_SERVICE_ID;
 const TEMPLATE_ID = process.env.NEXT_PUBLIC_TEMPLATE_ID;
 const USER_ID = process.env.NEXT_PUBLIC_USER_ID;
@@ -60,74 +62,87 @@ const ContactForm: FC = memo(() => {
 
   return (
     <form className="flex flex-col gap-4" noValidate onSubmit={handleSubmit(onSubmit)}>
-      <div className="flex flex-col gap-1.5">
-        <Label htmlFor="contact-name">Name</Label>
-        <Input
-          aria-describedby={errors.name ? 'contact-name-error' : undefined}
-          aria-invalid={errors.name ? true : undefined}
-          autoComplete="name"
-          id="contact-name"
-          placeholder="Your name"
-          type="text"
-          {...register('name')}
-        />
-        {errors.name ? (
-          <p className="mt-1 text-xs text-destructive" id="contact-name-error">
-            {errors.name.message}
-          </p>
-        ) : null}
-      </div>
+      <StaggerGroup className="flex flex-col gap-4" stagger={0.06}>
+        <StaggerItem>
+          <div className="flex flex-col gap-1.5">
+            <Label htmlFor="contact-name">Name</Label>
+            <Input
+              aria-describedby={errors.name ? 'contact-name-error' : undefined}
+              aria-invalid={errors.name ? true : undefined}
+              autoComplete="name"
+              className="transition-shadow duration-200 focus-visible:shadow-[0_0_0_4px_rgba(124,58,237,0.12)]"
+              id="contact-name"
+              placeholder="Your name"
+              type="text"
+              {...register('name')}
+            />
+            {errors.name ? (
+              <p className="mt-1 text-xs text-destructive" id="contact-name-error">
+                {errors.name.message}
+              </p>
+            ) : null}
+          </div>
+        </StaggerItem>
 
-      <div className="flex flex-col gap-1.5">
-        <Label htmlFor="contact-email">Email</Label>
-        <Input
-          aria-describedby={errors.email ? 'contact-email-error' : undefined}
-          aria-invalid={errors.email ? true : undefined}
-          autoComplete="email"
-          id="contact-email"
-          placeholder="you@example.com"
-          type="email"
-          {...register('email')}
-        />
-        {errors.email ? (
-          <p className="mt-1 text-xs text-destructive" id="contact-email-error">
-            {errors.email.message}
-          </p>
-        ) : null}
-      </div>
+        <StaggerItem>
+          <div className="flex flex-col gap-1.5">
+            <Label htmlFor="contact-email">Email</Label>
+            <Input
+              aria-describedby={errors.email ? 'contact-email-error' : undefined}
+              aria-invalid={errors.email ? true : undefined}
+              autoComplete="email"
+              className="transition-shadow duration-200 focus-visible:shadow-[0_0_0_4px_rgba(124,58,237,0.12)]"
+              id="contact-email"
+              placeholder="you@example.com"
+              type="email"
+              {...register('email')}
+            />
+            {errors.email ? (
+              <p className="mt-1 text-xs text-destructive" id="contact-email-error">
+                {errors.email.message}
+              </p>
+            ) : null}
+          </div>
+        </StaggerItem>
 
-      <div className="flex flex-col gap-1.5">
-        <Label htmlFor="contact-message">Message</Label>
-        <Textarea
-          aria-describedby={errors.message ? 'contact-message-error' : undefined}
-          aria-invalid={errors.message ? true : undefined}
-          id="contact-message"
-          maxLength={1000}
-          placeholder="How can I help?"
-          rows={6}
-          {...register('message')}
-        />
-        {errors.message ? (
-          <p className="mt-1 text-xs text-destructive" id="contact-message-error">
-            {errors.message.message}
-          </p>
-        ) : null}
-      </div>
+        <StaggerItem>
+          <div className="flex flex-col gap-1.5">
+            <Label htmlFor="contact-message">Message</Label>
+            <Textarea
+              aria-describedby={errors.message ? 'contact-message-error' : undefined}
+              aria-invalid={errors.message ? true : undefined}
+              className="transition-shadow duration-200 focus-visible:shadow-[0_0_0_4px_rgba(124,58,237,0.12)]"
+              id="contact-message"
+              maxLength={1000}
+              placeholder="How can I help?"
+              rows={6}
+              {...register('message')}
+            />
+            {errors.message ? (
+              <p className="mt-1 text-xs text-destructive" id="contact-message-error">
+                {errors.message.message}
+              </p>
+            ) : null}
+          </div>
+        </StaggerItem>
 
-      <Button
-        className="w-full sm:w-auto sm:self-start focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
-        disabled={isSubmitting}
-        size="lg"
-        type="submit">
-        {isSubmitting ? (
-          <>
-            <Loader2 aria-hidden="true" className="animate-spin" />
-            Sending…
-          </>
-        ) : (
-          'Send message'
-        )}
-      </Button>
+        <StaggerItem>
+          <Button
+            className="w-full sm:w-auto sm:self-start transition-all duration-200 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-0.5 hover:shadow-[0_8px_24px_-12px_rgba(124,58,237,0.6)] focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+            disabled={isSubmitting}
+            size="lg"
+            type="submit">
+            {isSubmitting ? (
+              <>
+                <Loader2 aria-hidden="true" className="animate-spin" />
+                Sending…
+              </>
+            ) : (
+              'Send message'
+            )}
+          </Button>
+        </StaggerItem>
+      </StaggerGroup>
     </form>
   );
 });

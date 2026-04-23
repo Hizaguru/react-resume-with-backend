@@ -4,7 +4,8 @@ import {FC, memo} from 'react';
 import {urlFor} from '../../client';
 import {aboutData, SectionId} from '../../data/data';
 import useProfileImage from '../../hooks/useProfileImage';
-import MotionFadeIn from '../motion/MotionFadeIn';
+import Reveal from '../motion/Reveal';
+import {StaggerGroup, StaggerItem} from '../motion/Stagger';
 
 const HEADING_ID = 'about-heading';
 
@@ -63,43 +64,46 @@ const About: FC = memo(() => {
       className="relative bg-background py-24 sm:py-32 lg:py-40"
       id={SectionId.About}>
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-        <MotionFadeIn>
+        <Reveal>
           <p className="text-xs font-medium uppercase tracking-[0.18em] text-primary">About</p>
           <h2
             className="mt-3 text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight text-foreground"
             id={HEADING_ID}>
             A developer who ships, listens, and iterates.
           </h2>
-        </MotionFadeIn>
+        </Reveal>
 
         <div className="mt-16 grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-16 items-start">
           <div className="lg:col-span-5 lg:sticky lg:top-24">
-            <MotionFadeIn>
+            <Reveal direction="scale" fromScale={0.94}>
               <Portrait error={error} imageUrl={imageUrl} isLoading={isLoading} />
-            </MotionFadeIn>
+            </Reveal>
           </div>
 
           <div className="lg:col-span-7">
-            <MotionFadeIn delay={0.05}>
+            <Reveal delay={0.05}>
               <p
                 className="text-xl sm:text-2xl leading-relaxed text-foreground font-medium"
                 style={{whiteSpace: 'pre-line'}}>
                 {lead}
               </p>
-            </MotionFadeIn>
+            </Reveal>
             {rest ? (
-              <MotionFadeIn delay={0.1}>
+              <Reveal delay={0.1}>
                 <p
                   className="mt-6 text-base leading-relaxed text-muted-foreground"
                   style={{whiteSpace: 'pre-line'}}>
                   {rest}
                 </p>
-              </MotionFadeIn>
+              </Reveal>
             ) : null}
 
-            <dl className="mt-10 grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-6 border-t border-border pt-10">
-              {aboutItems.map(({label, text, Icon}, i) => (
-                <MotionFadeIn delay={i * 0.05} key={label + text}>
+            <StaggerGroup
+              as="dl"
+              className="mt-10 grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-6 border-t border-border pt-10"
+              stagger={0.06}>
+              {aboutItems.map(({label, text, Icon}) => (
+                <StaggerItem key={label + text}>
                   <div className="flex flex-col gap-1">
                     <dt className="text-xs font-medium uppercase tracking-[0.14em] text-muted-foreground">
                       {label}
@@ -109,9 +113,9 @@ const About: FC = memo(() => {
                       <span className="break-words">{text}</span>
                     </dd>
                   </div>
-                </MotionFadeIn>
+                </StaggerItem>
               ))}
-            </dl>
+            </StaggerGroup>
           </div>
         </div>
       </div>

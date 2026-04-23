@@ -1,10 +1,12 @@
 import {Bars3Icon, XMarkIcon} from '@heroicons/react/24/outline';
 import classNames from 'classnames';
+import {AnimatePresence, motion, useReducedMotion, useScroll, useSpring} from 'framer-motion';
 import Link from 'next/link';
 import {FC, memo, useCallback, useEffect, useMemo, useState} from 'react';
 
 import {SectionId} from '../../data/data';
 import {useNavObserver} from '../../hooks/useNavObserver';
+import {EASE_OUT} from '../motion/tokens';
 import ThemeToggle from '../theme/ThemeToggle';
 
 export const headerID = 'headerNav';
@@ -56,15 +58,26 @@ interface NavProps {
 }
 
 const DesktopNav: FC<NavProps & {scrolled: boolean}> = memo(({navSections, currentSection, scrolled}) => {
+  const shouldReduceMotion = useReducedMotion();
+  // Page-scroll progress — 0–1 across the whole document. Used as a thin top
+  // accent line that fills as the user reads.
+  const {scrollYProgress} = useScroll();
+  const progress = useSpring(scrollYProgress, {stiffness: 120, damping: 24, mass: 0.6});
+
   const headerClasses = classNames(
-    'fixed top-0 z-50 hidden w-full transition-colors duration-200 sm:block',
+    'fixed top-0 z-50 hidden w-full transition-colors duration-300 sm:block',
     scrolled
       ? 'bg-background/80 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b border-border'
       : 'bg-transparent',
   );
 
   return (
-    <header className={headerClasses} id={headerID}>
+    <motion.header
+      animate={{y: 0, opacity: 1}}
+      className={headerClasses}
+      id={headerID}
+      initial={shouldReduceMotion ? false : {y: -32, opacity: 0}}
+      transition={{duration: 0.5, ease: EASE_OUT, delay: 0.1}}>
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-3">
         <Link
           className="rounded-md text-sm font-semibold tracking-tight text-foreground transition-colors hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
@@ -82,7 +95,13 @@ const DesktopNav: FC<NavProps & {scrolled: boolean}> = memo(({navSections, curre
           </li>
         </ul>
       </nav>
-    </header>
+      {/* Scroll progress accent — visual cue of how far through the page the user is */}
+      <motion.div
+        aria-hidden="true"
+        className="absolute bottom-0 left-0 right-0 h-px origin-left bg-gradient-to-r from-primary/0 via-primary to-primary/0"
+        style={shouldReduceMotion ? {transform: 'scaleX(0)'} : {scaleX: progress}}
+      />
+    </motion.header>
   );
 });
 
@@ -104,23 +123,34 @@ const MobileNav: FC<NavProps> = memo(({navSections, currentSection}) => {
           {isOpen ? <XMarkIcon className="h-6 w-6" /> : <Bars3Icon className="h-6 w-6" />}
         </button>
       </div>
-      {isOpen ? (
-        <div className="fixed inset-0 z-30 flex sm:hidden">
-          <button
-            aria-label="Close menu"
-            className="absolute inset-0 bg-background/80 backdrop-blur"
-            onClick={close}
-            type="button"
-          />
-          <nav
-            aria-label="Primary"
-            className="relative ml-auto flex h-full w-4/5 max-w-xs flex-col gap-2 border-l border-border bg-card p-6 pt-20 shadow-xl">
-            {navSections.map(s => (
-              <NavItem current={s.id === currentSection} entry={s} key={s.id} mobile onClick={close} />
-            ))}
-          </nav>
-        </div>
-      ) : null}
+      <AnimatePresence>
+        {isOpen ? (
+          <motion.div
+            animate={{opacity: 1}}
+            className="fixed inset-0 z-30 flex sm:hidden"
+            exit={{opacity: 0}}
+            initial={{opacity: 0}}
+            transition={{duration: 0.2, ease: EASE_OUT}}>
+            <button
+              aria-label="Close menu"
+              className="absolute inset-0 bg-background/80 backdrop-blur"
+              onClick={close}
+              type="button"
+            />
+            <motion.nav
+              animate={{x: 0}}
+              aria-label="Primary"
+              className="relative ml-auto flex h-full w-4/5 max-w-xs flex-col gap-2 border-l border-border bg-card p-6 pt-20 shadow-xl"
+              exit={{x: '100%'}}
+              initial={{x: '100%'}}
+              transition={{type: 'spring', stiffness: 320, damping: 32, mass: 0.8}}>
+              {navSections.map(s => (
+                <NavItem current={s.id === currentSection} entry={s} key={s.id} mobile onClick={close} />
+              ))}
+            </motion.nav>
+          </motion.div>
+        ) : null}
+      </AnimatePresence>
     </>
   );
 });
@@ -137,13 +167,12 @@ const NavItem: FC<NavItemProps> = memo(({entry, current, onClick, mobile}) => {
     'relative rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2';
   const desktop = 'px-1.5 py-1';
   const mob = 'px-3 py-2 text-base hover:bg-muted';
-  const desktopActive =
-    'text-primary after:content-[""] after:absolute after:inset-x-1.5 after:-bottom-1 after:h-0.5 after:bg-primary after:rounded-full';
   const desktopInactive = 'text-muted-foreground hover:text-foreground';
+  const desktopActiveText = 'text-primary';
   const mobileActive = 'text-primary';
   const mobileInactive = 'text-foreground';
 
-  const desktopStateClasses = current ? desktopActive : desktopInactive;
+  const desktopStateClasses = current ? desktopActiveText : desktopInactive;
   const mobileStateClasses = current ? mobileActive : mobileInactive;
   const stateClasses = mobile ? mobileStateClasses : desktopStateClasses;
 
@@ -154,6 +183,16 @@ const NavItem: FC<NavItemProps> = memo(({entry, current, onClick, mobile}) => {
       href={`/#${entry.id}`}
       onClick={onClick}>
       {entry.label}
+      {/* Animated underline — only on desktop. Uses layoutId so it slides between */}
+      {/* the active nav item rather than fading in/out per item. */}
+      {!mobile && current ? (
+        <motion.span
+          aria-hidden="true"
+          className="absolute inset-x-1.5 -bottom-1 h-0.5 rounded-full bg-primary"
+          layoutId="nav-underline"
+          transition={{type: 'spring', stiffness: 380, damping: 30}}
+        />
+      ) : null}
     </Link>
   );
 });

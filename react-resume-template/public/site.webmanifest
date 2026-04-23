@@ -3,10 +3,7 @@
   "short_name": "Jukkis Portfolio",
   "description": "Portfolio of Jukka-Pekka Lappalainen — Full Stack Developer based in Helsinki, Finland.",
   "start_url": "/",
-  "icons": [
-    {"src": "/icon-192.png", "type": "image/png", "sizes": "192x192"},
-    {"src": "/icon-512.png", "type": "image/png", "sizes": "512x512"}
-  ],
+  "icons": [],
   "theme_color": "#515455",
   "background_color": "#515455",
   "display": "standalone"

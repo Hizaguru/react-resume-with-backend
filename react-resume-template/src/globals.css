@@ -5,6 +5,7 @@
 @config '../tailwind.config.js';
 
 @custom-variant dark (&:is(.dark *));
+@custom-variant touch (@media (pointer: coarse));
 
 @theme {
   --color-background: oklch(0.985 0.003 85);
@@ -76,5 +77,46 @@
   .bg-noise {
     background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)' opacity='0.5'/></svg>");
     background-size: 160px 160px;
+  }
+}
+
+/* ─── Motion system: CSS-only fallback ─────────────────────────────────────
+ * Used when JS hasn't booted yet (SSR flash) or as a no-framer-motion option.
+ * Apply via `data-anim` attributes — they trigger the keyframes below. The
+ * framer-motion components above produce a strictly superior result on the
+ * client, so these are mainly a graceful baseline.
+ *
+ * Usage:
+ *   <div data-anim="fade-up">…</div>
+ *   <div data-anim="fade-up" style="animation-delay:120ms">…</div>
+ *   <div data-anim="scale-in">…</div>
+ */
+@media (prefers-reduced-motion: no-preference) {
+  @keyframes anim-fade-up {
+    from { opacity: 0; transform: translate3d(0, 16px, 0); }
+    to   { opacity: 1; transform: translate3d(0, 0, 0); }
+  }
+  @keyframes anim-fade-down {
+    from { opacity: 0; transform: translate3d(0, -8px, 0); }
+    to   { opacity: 1; transform: translate3d(0, 0, 0); }
+  }
+  @keyframes anim-scale-in {
+    from { opacity: 0; transform: scale(0.96); }
+    to   { opacity: 1; transform: scale(1); }
+  }
+  [data-anim="fade-up"]   { animation: anim-fade-up   .45s cubic-bezier(0.22,1,0.36,1) both; }
+  [data-anim="fade-down"] { animation: anim-fade-down .45s cubic-bezier(0.22,1,0.36,1) both; }
+  [data-anim="scale-in"]  { animation: anim-scale-in  .45s cubic-bezier(0.22,1,0.36,1) both; }
+}
+
+/* Hard kill for users who request reduced motion: cancel ALL animation/transition. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
   }
 }
