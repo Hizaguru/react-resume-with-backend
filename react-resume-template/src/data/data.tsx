@@ -11,12 +11,12 @@ import { About, ContactSection, ContactType, Hero, HomepageMeta, Social, Testimo
  * Page meta data
  */
 export const homePageMeta: HomepageMeta = {
-  title: 'Jukka-Pekka Lappalainen | Full Stack Developer | Helsinki, Finland',
+  title: 'Jukka-Pekka Lappalainen | Full Stack Developer | Nurmijärvi, Finland',
   description:
-    'Jukka-Pekka Lappalainen — Full Stack Developer based in Helsinki, Finland. Experienced in React, TypeScript, Python, Java, AWS, and ethical hacking. Explore my portfolio and get in touch.',
+    'Jukka-Pekka Lappalainen — Full Stack Developer based in Nurmijärvi, Finland. Experienced in React, TypeScript, Python, Java, AWS, and ethical hacking. Explore my portfolio and get in touch.',
   author: 'Jukka-Pekka Lappalainen',
   keywords:
-    'Jukka-Pekka Lappalainen, Full Stack Developer, React, TypeScript, Python, Java, AWS, Helsinki, Finland, portfolio, software engineer, web developer, ethical hacking',
+    'Jukka-Pekka Lappalainen, Full Stack Developer, React, TypeScript, Python, Java, AWS, Nurmijärvi, Finland, portfolio, software engineer, web developer, ethical hacking',
   ogImageUrl: 'https://www.jukkis.eu/api/og',
 };
 
@@ -26,7 +26,6 @@ export const homePageMeta: HomepageMeta = {
 export const SectionId = {
   Hero: 'hero',
   About: 'about',
-  Contact: 'contact',
   Expertise: 'expertise',
   Projects: 'projects',
   Stats: 'stats',
@@ -50,8 +49,8 @@ export const heroData: Hero = {
   ),
   actions: [
     {
-      href: `#${SectionId.Contact}`,
-      text: 'Contact',
+      href: `#${SectionId.About}`,
+      text: 'About',
       primary: false,
     },
   ],
@@ -64,7 +63,7 @@ export const aboutData: About = {
   description: `I am an enthusiastic and experienced full-stack developer with a passion for creating innovative solutions. With a solid educational background in ICT, I have cultivated a diverse skill set that spans programming languages, frameworks, and problem-solving techniques.\n
   I dedicate my spare time to honing my programming skills and working on various personal projects. Beyond programming, I bring a unique perspective to my work, thanks to my extensive experience as a sound engineer. This background has exposed me to both software and hardware aspects, fostering a disciplined approach to troubleshooting and problem-solving.\n\n Feel free to explore my portfolio and get in touch if you're interested in partnering on an exciting venture or if you have any inquiries. Let's create something extraordinary together!`,
   aboutItems: [
-    {label: 'Location', text: 'Helsinki', Icon: MapIcon},
+    {label: 'Location', text: 'Nurmijärvi', Icon: MapIcon},
     {label: 'Age', text: getAge('05/25/1988'), Icon: CalendarIcon},
     {label: 'Study', text: 'University of Jyväskylä', Icon: AcademicCapIcon},
     {label: 'Employment', text: 'Fullstack Developer', Icon: BuildingOfficeIcon},

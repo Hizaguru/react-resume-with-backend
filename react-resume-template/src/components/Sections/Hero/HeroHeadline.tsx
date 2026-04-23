@@ -20,7 +20,7 @@ const HeroHeadline: FC = () => {
   return (
     <>
       <p className="text-xs font-medium uppercase tracking-[0.18em] text-violet-300 drop-shadow-[0_1px_8px_rgba(0,0,0,0.5)]">
-        Full-stack engineer · Helsinki
+        Full-stack engineer · Nurmijärvi
       </p>
       <h1 className="mt-4 text-5xl sm:text-6xl lg:text-7xl font-semibold tracking-tight leading-[1.05] text-white drop-shadow-[0_2px_16px_rgba(0,0,0,0.45)]">
         <span className="text-zinc-200">Hi, I&apos;m</span>{' '}
