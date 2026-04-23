@@ -25,34 +25,63 @@ const yearsSince = (from: Date): number => {
 
 const GROUPS: readonly CapabilityGroup[] = [
   {
-    capability: 'Ship UIs fast',
-    items: [
-      {name: 'React', since: SHIPPING_SINCE},
-      {name: 'Electron', since: SHIPPING_SINCE},
-      {name: 'Unreal Engine', since: SHIPPING_SINCE},
-      {name: 'Next.js', since: SHIPPING_SINCE},
-      {name: 'Tailwind', since: SHIPPING_SINCE},
-    ],
-  },
-  {
-    capability: 'Move data safely',
+    capability: 'Frontend',
     items: [
       {name: 'TypeScript', since: SHIPPING_SINCE},
-      {name: 'MongoDB', since: SHIPPING_SINCE},
+      {name: 'JavaScript', since: SHIPPING_SINCE},
+      {name: 'React', since: SHIPPING_SINCE},
+      {name: 'Vite', since: SHIPPING_SINCE},
+      {name: 'Tailwind CSS', since: SHIPPING_SINCE},
+      {name: 'TanStack Query', since: SHIPPING_SINCE},
+      {name: 'React Aria', since: SHIPPING_SINCE},
+      {name: 'React Hook Form', since: SHIPPING_SINCE},
+      {name: 'React Router', since: SHIPPING_SINCE},
       {name: 'GraphQL', since: SHIPPING_SINCE},
-      {name: 'Sanity', since: SHIPPING_SINCE},
-      {name: 'PostgreSQL', since: SHIPPING_SINCE},
+      {name: 'Contentful', since: SHIPPING_SINCE},
+      {name: 'markdown-to-jsx', since: SHIPPING_SINCE},
     ],
   },
   {
-    capability: 'Operate in production',
+    capability: 'Backend',
     items: [
-      {name: 'Vercel', since: SHIPPING_SINCE},
-      {name: 'AWS Lambda', since: SHIPPING_SINCE},
-      {name: 'Playwright', since: SHIPPING_SINCE},
-      {name: 'Vitest', since: SHIPPING_SINCE},
-      {name: 'Docker', since: SHIPPING_SINCE},
+      {name: 'Java', since: SHIPPING_SINCE},
+      {name: 'Spring Boot', since: SHIPPING_SINCE},
+    ],
+  },
+  {
+    capability: 'Infra / Cloud / DevOps',
+    items: [
+      {name: 'AWS', since: SHIPPING_SINCE},
       {name: 'GitHub Actions', since: SHIPPING_SINCE},
+      {name: 'CI/CD pipelines', since: SHIPPING_SINCE},
+      {name: 'OIDC / IAM roles (GitHub Actions ↔ AWS)', since: SHIPPING_SINCE},
+    ],
+  },
+  {
+    capability: 'Testing / Quality',
+    items: [
+      {name: 'Playwright', since: SHIPPING_SINCE},
+      {name: 'E2E testing', since: SHIPPING_SINCE},
+      {name: 'Visual snapshot testing', since: SHIPPING_SINCE},
+      {name: 'HTML / structural snapshots', since: SHIPPING_SINCE},
+      {name: 'Test automation development', since: SHIPPING_SINCE},
+    ],
+  },
+  {
+    capability: 'CMS / Data / Integrations',
+    items: [
+      {name: 'Contentful SDK', since: SHIPPING_SINCE},
+      {name: 'Rich-text rendering', since: SHIPPING_SINCE},
+      {name: 'Headless CMS content models & typing', since: SHIPPING_SINCE},
+    ],
+  },
+  {
+    capability: 'Tools & Ecosystem',
+    items: [
+      {name: 'Jira', since: SHIPPING_SINCE},
+      {name: 'Confluence', since: SHIPPING_SINCE},
+      {name: 'GitHub', since: SHIPPING_SINCE},
+      {name: 'Node.js / npm', since: SHIPPING_SINCE},
     ],
   },
 ] as const;

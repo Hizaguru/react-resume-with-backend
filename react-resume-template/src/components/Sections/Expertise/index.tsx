@@ -5,8 +5,7 @@ import {StaggerGroup, StaggerItem} from '../../motion/Stagger';
 
 import ImpactMetricsTile from './tiles/ImpactMetricsTile';
 import NowBuildingTile from './tiles/NowBuildingTile';
-import PhilosophyTile from './tiles/PhilosophyTile';
-import StackConstellationTile from './tiles/StackConstellationTile';
+import SkillsGridTile from './tiles/SkillsGridTile';
 
 const Expertise: FC = memo(() => {
   return (
@@ -22,19 +21,16 @@ const Expertise: FC = memo(() => {
           </p>
         </Reveal>
         <StaggerGroup
-          className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 auto-rows-[minmax(180px,auto)] mt-12"
+          className="grid grid-cols-1 md:grid-cols-3 gap-4 auto-rows-[minmax(180px,auto)] mt-12"
           stagger={0.1}>
-          <StaggerItem className="md:col-span-2 lg:col-span-2 lg:row-span-1 flex">
+          <StaggerItem className="md:col-span-2 flex">
             <ImpactMetricsTile />
           </StaggerItem>
-          <StaggerItem className="md:col-span-1 lg:col-span-1 flex">
+          <StaggerItem className="md:col-span-1 flex">
             <NowBuildingTile />
           </StaggerItem>
-          <StaggerItem className="md:col-span-3 lg:col-span-1 lg:row-span-2 flex">
-            <PhilosophyTile />
-          </StaggerItem>
-          <StaggerItem className="md:col-span-3 lg:col-span-3 flex">
-            <StackConstellationTile />
+          <StaggerItem className="md:col-span-3 flex">
+            <SkillsGridTile />
           </StaggerItem>
         </StaggerGroup>
       </div>
