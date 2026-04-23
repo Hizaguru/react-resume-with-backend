@@ -1,5 +1,7 @@
 import {FC} from 'react';
+import {BsAnthropic, BsOpenai} from 'react-icons/bs';
 import {FaAws, FaGithub, FaJava, FaNodeJs, FaReact} from 'react-icons/fa6';
+import {GoCopilot} from 'react-icons/go';
 import {GrGraphQl} from 'react-icons/gr';
 import {
   SiConfluence,
@@ -9,6 +11,8 @@ import {
   SiGnubash,
   SiJest,
   SiJira,
+  SiLangchain,
+  SiPython,
   SiSanity,
   SiSpringboot,
   SiTailwindcss,
@@ -53,7 +57,17 @@ const CATEGORIES: readonly SkillCategory[] = [
     skills: [
       {name: 'Java', Icon: FaJava, color: 'text-[#E76F00]'},
       {name: 'Spring Boot', Icon: SiSpringboot, color: 'text-[#6DB33F]'},
+      {name: 'Python', Icon: SiPython, color: 'text-[#3776AB]'},
       {name: 'C++', Icon: SiCplusplus, color: 'text-[#00599C]'},
+    ],
+  },
+  {
+    title: 'AI / LLM',
+    skills: [
+      {name: 'LangChain', Icon: SiLangchain, color: 'text-[#1C3C3C]'},
+      {name: 'Claude Code', Icon: BsAnthropic, color: 'text-[#D97757]'},
+      {name: 'GitHub Copilot', Icon: GoCopilot, color: 'text-foreground'},
+      {name: 'AI APIs', Icon: BsOpenai, color: 'text-[#10A37F]'},
     ],
   },
   {
