@@ -24,9 +24,11 @@ module.exports = {
           },
         },
       },
-      screens: {
-        touch: {raw: 'only screen and (pointer: coarse)'},
-      },
+      // NOTE: The previous `screens.touch: {raw: '...'}` entry was removed.
+      // Tailwind v4 misinterprets legacy `raw` screens as breakpoint widths
+      // (producing invalid `@media (width >= only screen ...)` output).
+      // The `touch:` variant is now declared via `@custom-variant` in
+      // `src/globals.css`, which is the v4-native way.
     },
   },
 };
