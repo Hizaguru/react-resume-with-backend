@@ -25,7 +25,7 @@ const HeroHeadline: FC = () => {
       <h1 className="mt-4 text-5xl sm:text-6xl lg:text-7xl font-semibold tracking-tight leading-[1.05] text-white drop-shadow-[0_2px_16px_rgba(0,0,0,0.45)]">
         <span className="text-zinc-200">Hi, I&apos;m</span>{' '}
         <span className="text-violet-300 bg-gradient-to-br from-violet-300 via-violet-200 to-white bg-clip-text text-transparent">
-          Jukka-Pekka
+          Jukkis
         </span>.
       </h1>
       <p className="mt-6 text-lg text-zinc-200/90 max-w-xl mx-auto drop-shadow-[0_1px_10px_rgba(0,0,0,0.5)]">
