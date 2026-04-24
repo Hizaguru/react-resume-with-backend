@@ -79,14 +79,19 @@ const DesktopNav: FC<NavProps & {scrolled: boolean}> = memo(({navSections, curre
       transition={{duration: 0.5, ease: EASE_OUT, delay: 0.1}}>
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-3">
         <Link
-          className="rounded-md text-sm font-semibold tracking-tight text-foreground transition-colors hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+          className={classNames(
+            'rounded-md text-sm font-semibold tracking-tight transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2',
+            scrolled
+              ? 'text-foreground hover:text-primary'
+              : 'text-white/90 hover:text-white drop-shadow-[0_1px_8px_rgba(0,0,0,0.45)]',
+          )}
           href="/#hero">
           JP
         </Link>
         <ul className="flex items-center gap-6">
           {navSections.map(s => (
             <li key={s.id}>
-              <NavItem current={s.id === currentSection} entry={s} />
+              <NavItem current={s.id === currentSection} entry={s} scrolled={scrolled} />
             </li>
           ))}
           <li>
@@ -157,17 +162,22 @@ const MobileNav: FC<NavProps> = memo(({navSections, currentSection}) => {
 interface NavItemProps {
   entry: NavEntry;
   current: boolean;
+  scrolled?: boolean;
   onClick?: () => void;
   mobile?: boolean;
 }
 
-const NavItem: FC<NavItemProps> = memo(({entry, current, onClick, mobile}) => {
+const NavItem: FC<NavItemProps> = memo(({entry, current, scrolled = true, onClick, mobile}) => {
   const base =
     'relative rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2';
   const desktop = 'px-1.5 py-1';
   const mob = 'px-3 py-2 text-base hover:bg-muted';
-  const desktopInactive = 'text-muted-foreground hover:text-foreground';
-  const desktopActiveText = 'text-primary';
+  const desktopInactive = scrolled
+    ? 'text-muted-foreground hover:text-foreground'
+    : 'text-white/75 hover:text-white drop-shadow-[0_1px_8px_rgba(0,0,0,0.45)]';
+  const desktopActiveText = scrolled
+    ? 'text-primary'
+    : 'text-white drop-shadow-[0_1px_10px_rgba(0,0,0,0.5)]';
   const mobileActive = 'text-primary';
   const mobileInactive = 'text-foreground';
 
