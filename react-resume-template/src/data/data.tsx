@@ -17,7 +17,7 @@ export const homePageMeta: HomepageMeta = {
   author: 'Jukka-Pekka Lappalainen',
   keywords:
     'Jukka-Pekka Lappalainen, Full Stack Developer, React, TypeScript, Python, Java, AWS, Nurmijärvi, Finland, portfolio, software engineer, web developer, ethical hacking',
-  ogImageUrl: 'https://www.jukkis.eu/api/og',
+  ogImageUrl: 'https://www.jukkis.eu/api/og?v=2',
 };
 
 /**
