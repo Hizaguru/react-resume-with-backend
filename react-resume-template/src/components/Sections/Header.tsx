@@ -26,7 +26,6 @@ const Header: FC = memo(() => {
       {id: SectionId.Expertise, label: 'Expertise'},
       {id: SectionId.Projects, label: 'Projects'},
       {id: SectionId.Testimonials, label: 'Testimonials'},
-      {id: SectionId.Contact, label: 'Contact'},
     ],
     [],
   );
