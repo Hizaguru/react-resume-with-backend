@@ -1,6 +1,6 @@
 # Jukka-Pekka Lappalainen
 
-> Full Stack Developer based in Helsinki, Finland
+> Full Stack Developer based in Perttula, Finland
 
 ## About
 
@@ -17,7 +17,7 @@ Beyond programming, he brings a unique perspective to his work from extensive ex
 
 ## Location
 
-Helsinki, Finland
+Perttula, Finland
 
 ## Education
 

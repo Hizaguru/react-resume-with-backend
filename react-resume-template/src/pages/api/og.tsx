@@ -8,7 +8,7 @@ export const config = {
 export default function handler(req: NextRequest) {
   const {searchParams} = new URL(req.url);
   const title = searchParams.get('title') || 'Jukka-Pekka Lappalainen';
-  const subtitle = searchParams.get('subtitle') || 'Full Stack Developer | Helsinki, Finland';
+  const subtitle = searchParams.get('subtitle') || 'Full Stack Developer | Perttula, Finland';
 
   return new ImageResponse(
     (

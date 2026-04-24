@@ -19,7 +19,7 @@ const Page: NextPage<HomepageMeta> = memo(({children, title, description, author
     },
     address: {
       '@type': 'PostalAddress',
-      addressLocality: 'Helsinki',
+      addressLocality: 'Perttula',
       addressCountry: 'FI',
     },
     alumniOf: {
