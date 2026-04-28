@@ -30,11 +30,17 @@ export default function Document() {
 
         {/* Noscript fallback for crawlers and users without JS */}
         <noscript>
-          <div style={{padding: '2rem', color: '#e5e5e5', backgroundColor: '#1a1a1a', fontFamily: 'system-ui, sans-serif'}}>
+          <div
+            style={{
+              padding: '2rem',
+              color: '#e5e5e5',
+              backgroundColor: '#1a1a1a',
+              fontFamily: 'system-ui, sans-serif',
+            }}>
             <h1>Jukka-Pekka Lappalainen — Full Stack Developer</h1>
             <p>
-              Full Stack Developer based in Nurmijärvi, Finland. Experienced in React, TypeScript, Python, Java, AWS, and
-              ethical hacking.
+              Full Stack Developer based in Nurmijärvi, Finland. Experienced in React, TypeScript, Python, Java, AWS,
+              and ethical hacking.
             </p>
             <h2>About</h2>
             <p>

@@ -10,9 +10,7 @@ const Footer: FC = memo(() => {
   const shouldReduceMotion = useReducedMotion();
   const year = new Date().getFullYear();
   return (
-    <footer
-      className="relative border-t border-border bg-background px-4 pb-10 pt-16 sm:px-8"
-      role="contentinfo">
+    <footer className="relative border-t border-border bg-background px-4 pb-10 pt-16 sm:px-8" role="contentinfo">
       <div className="absolute inset-x-0 -top-5 flex justify-center">
         <motion.a
           aria-label="Back to top"
@@ -40,4 +38,3 @@ const Footer: FC = memo(() => {
 
 Footer.displayName = 'Footer';
 export default Footer;
-

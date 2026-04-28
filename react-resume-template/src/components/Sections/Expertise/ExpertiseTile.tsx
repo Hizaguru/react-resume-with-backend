@@ -18,9 +18,7 @@ const BASE_CLASSES =
 
 const Inner: FC<{eyebrow?: string; title: string; children: ReactNode}> = ({eyebrow, title, children}) => (
   <>
-    {eyebrow ? (
-      <p className="text-xs font-medium uppercase tracking-[0.18em] text-primary">{eyebrow}</p>
-    ) : null}
+    {eyebrow ? <p className="text-xs font-medium uppercase tracking-[0.18em] text-primary">{eyebrow}</p> : null}
     <h3 className="mt-2 text-xl font-semibold tracking-tight text-foreground">{title}</h3>
     <div className="mt-4 flex-1">{children}</div>
   </>

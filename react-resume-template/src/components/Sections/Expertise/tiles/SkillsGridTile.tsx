@@ -1,7 +1,7 @@
-import { FC } from 'react';
-import { BsAnthropic, BsOpenai } from 'react-icons/bs';
-import { FaAws, FaFilm, FaJava, FaNodeJs, FaReact } from 'react-icons/fa6';
-import { GoCopilot } from 'react-icons/go';
+import {FC} from 'react';
+import {BsAnthropic, BsOpenai} from 'react-icons/bs';
+import {FaAws, FaFilm, FaJava, FaNodeJs, FaReact} from 'react-icons/fa6';
+import {GoCopilot} from 'react-icons/go';
 import {
   SiGithubactions,
   SiJest,
@@ -13,10 +13,10 @@ import {
   SiUnity,
   SiUnrealengine,
   SiVite,
-  SiVitest
+  SiVitest,
 } from 'react-icons/si';
-import { TbShieldLock } from 'react-icons/tb';
-import { VscBeaker, VscGitPullRequest } from 'react-icons/vsc';
+import {TbShieldLock} from 'react-icons/tb';
+import {VscBeaker, VscGitPullRequest} from 'react-icons/vsc';
 
 import ExpertiseTile from '../ExpertiseTile';
 
@@ -107,9 +107,7 @@ const SkillsGridTile: FC = () => {
       <div className="flex flex-col gap-8">
         {CATEGORIES.map(category => (
           <div key={category.title}>
-            <p className="text-xs font-medium uppercase tracking-[0.18em] text-muted-foreground">
-              {category.title}
-            </p>
+            <p className="text-xs font-medium uppercase tracking-[0.18em] text-muted-foreground">{category.title}</p>
             <div className="mt-3 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
               {category.skills.map(skill => (
                 <SkillCard key={skill.name} skill={skill} />

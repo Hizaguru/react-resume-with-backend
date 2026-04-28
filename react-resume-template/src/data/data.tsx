@@ -1,11 +1,11 @@
-import { AcademicCapIcon, BuildingOfficeIcon, CalendarIcon, MapIcon } from '@heroicons/react/24/outline';
+import {AcademicCapIcon, BuildingOfficeIcon, CalendarIcon, MapIcon} from '@heroicons/react/24/outline';
 import GithubIcon from '../components/Icon/GithubIcon';
 import LinkedInIcon from '../components/Icon/LinkedInIcon';
 import getAge from '../functions/calculateMyAge';
 
 import testimonialImage from '../images/testimonial.webp';
 
-import { About, ContactSection, ContactType, Hero, HomepageMeta, Social, TestimonialSection } from './dataDef';
+import {About, ContactSection, ContactType, Hero, HomepageMeta, Social, TestimonialSection} from './dataDef';
 
 /**
  * Page meta data

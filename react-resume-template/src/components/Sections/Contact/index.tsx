@@ -22,10 +22,7 @@ const ContactValueMap: Record<ContactType, ContactValue> = {
 const Contact: FC = memo(() => {
   const {headerText, items} = contact;
   return (
-    <section
-      aria-labelledby={HEADING_ID}
-      className="bg-background py-24 sm:py-32 lg:py-40"
-      id={SectionId.Contact}>
+    <section aria-labelledby={HEADING_ID} className="bg-background py-24 sm:py-32 lg:py-40" id={SectionId.Contact}>
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <Reveal>
           <p className="text-xs font-medium uppercase tracking-[0.18em] text-primary">Get in touch</p>
@@ -81,4 +78,3 @@ const Contact: FC = memo(() => {
 
 Contact.displayName = 'Contact';
 export default Contact;
-
