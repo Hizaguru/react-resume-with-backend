@@ -41,3 +41,4 @@ react-resume-template/.github/prompts/**
 .github/prompts/ui-ux-pro-max/scripts/design_system.py
 .github/prompts/ui-ux-pro-max/scripts/*
 .github/prompts/ui-ux-pro-max/scripts/__pycache__/*
+.claude/scheduled_tasks.lock
