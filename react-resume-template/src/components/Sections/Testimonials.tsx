@@ -1,8 +1,8 @@
 import classNames from 'classnames';
-import {FC, memo, UIEventHandler, useCallback, useEffect, useRef, useState} from 'react';
+import { FC, memo, UIEventHandler, useCallback, useEffect, useRef, useState } from 'react';
 
-import {SectionId, testimonial} from '../../data/data';
-import type {Testimonial} from '../../data/dataDef';
+import { SectionId, testimonial } from '../../data/data';
+import type { Testimonial } from '../../data/dataDef';
 import useInterval from '../../hooks/useInterval';
 import useWindow from '../../hooks/useWindow';
 import QuoteIcon from '../Icon/QuoteIcon';
@@ -96,7 +96,6 @@ const Testimonials: FC = memo(() => {
                         ? 'h-2 w-6 bg-primary shadow-[0_0_12px_rgba(124,58,237,0.6)]'
                         : 'h-2 w-2 bg-border hover:bg-muted-foreground hover:scale-110',
                     )}
-                    disabled={isActive}
                     key={`dot-${t.name}-${index}`}
                     onClick={setTestimonial(index)}
                     type="button"
