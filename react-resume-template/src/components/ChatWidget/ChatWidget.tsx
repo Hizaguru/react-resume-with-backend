@@ -1,15 +1,15 @@
-import {zodResolver} from '@hookform/resolvers/zod';
-import {AnimatePresence, motion} from 'framer-motion';
-import {Loader2, MessageCircle, Send, X} from 'lucide-react';
-import {FC, memo, useCallback, useEffect, useRef, useState} from 'react';
-import {useForm} from 'react-hook-form';
-import {toast} from 'sonner';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { AnimatePresence, motion } from 'framer-motion';
+import { Loader2, MessageCircle, Send, X } from 'lucide-react';
+import { FC, memo, useCallback, useEffect, useRef, useState } from 'react';
+import { useForm } from 'react-hook-form';
+import { toast } from 'sonner';
 import * as z from 'zod';
 
-import {Button} from '@/components/ui/button';
-import {Input} from '@/components/ui/input';
-import {Label} from '@/components/ui/label';
-import {Textarea} from '@/components/ui/textarea';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { Textarea } from '@/components/ui/textarea';
 
 const chatSchema = z.object({
   name: z.string().trim().min(1, 'Please enter your name.').max(80),
@@ -94,7 +94,7 @@ const ChatWidget: FC = memo(() => {
   return (
     <div
       aria-live="polite"
-      className="fixed bottom-4 right-4 z-50 flex flex-col items-end gap-3 sm:bottom-6 sm:right-6">
+      className="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-3 sm:bottom-8 sm:right-8">
       <AnimatePresence initial={false}>
         {open ? (
           <motion.div

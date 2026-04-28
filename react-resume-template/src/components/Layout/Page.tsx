@@ -1,8 +1,8 @@
-import {NextPage} from 'next';
+import { NextPage } from 'next';
 import Head from 'next/head';
-import {memo} from 'react';
+import { memo } from 'react';
 
-import {HomepageMeta} from '../../data/dataDef';
+import { HomepageMeta } from '../../data/dataDef';
 
 const SITE_URL = 'https://www.jukkis.eu';
 
@@ -56,6 +56,7 @@ const Page: NextPage<HomepageMeta> = memo(({children, title, description, author
       <Head>
         <title>{title}</title>
         <meta content={description} name="description" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
         <meta name="author" content={author} />
         <meta name="keywords" content={keywords} />
 
