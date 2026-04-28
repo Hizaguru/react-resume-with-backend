@@ -1,15 +1,15 @@
 'use client';
 
-import {useInView} from 'framer-motion';
-import {FC, memo, useMemo, useRef} from 'react';
+import { useInView } from 'framer-motion';
+import { FC, memo, useMemo, useRef } from 'react';
 
-import {urlFor} from '../../client';
-import {aboutData, homePageMeta, SectionId} from '../../data/data';
+import { urlFor } from '../../client';
+import { aboutData, homePageMeta, SectionId } from '../../data/data';
 import useProfileImage from '../../hooks/useProfileImage';
 import Reveal from '../motion/Reveal';
-import {CrtTv} from './About/CrtTv';
-import {ProfileSticker} from './About/ProfileSticker';
-import {TypingTerminal, type TerminalLine} from './About/TypingTerminal';
+import { CrtTv } from './About/CrtTv';
+import { ProfileSticker } from './About/ProfileSticker';
+import { TypingTerminal, type TerminalLine } from './About/TypingTerminal';
 
 const HEADING_ID = 'about-heading';
 const PROFILE_ALT = 'Jukka-Pekka Lappalainen';
