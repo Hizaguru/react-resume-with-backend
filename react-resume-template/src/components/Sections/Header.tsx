@@ -116,7 +116,7 @@ const MobileNav: FC<NavProps> = memo(({navSections, currentSection}) => {
 
   return (
     <>
-      <div className="fixed right-4 top-4 z-40 flex items-center gap-2 sm:hidden">
+      <div className="fixed right-6 top-4 z-40 flex items-center gap-2 sm:hidden">
         <ThemeToggle />
         <button
           aria-expanded={isOpen}
