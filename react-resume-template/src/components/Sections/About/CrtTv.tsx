@@ -89,12 +89,25 @@ export const CrtTv: FC<CrtTvProps> = ({
                 'inset 0 2px 3px rgba(255,255,255,0.07)',
               ].join(', '),
             }}>
-            {/* Content layer — slight violet phosphor tint + subtle CRT curvature */}
-            <div
-              className="absolute inset-0 flex items-center justify-center p-6 sm:p-10 md:p-14"
+            {/* Content layer — slight violet phosphor tint + subtle CRT curvature.
+                textShadow prepends a soft red/cyan RGB-split for a VHS chroma-smear
+                on all typed content; augmented only when motion is allowed. */}
+            <motion.div
+              animate={
+                shouldReduceMotion
+                  ? undefined
+                  : {
+                      // Rare 1px tape-tracking jitter — long flat hold then a quick step.
+                      x: [0, 0, 0, 0, 1, 0, 0, 0, 0, -1, 0],
+                      y: [0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0],
+                    }
+              }
+              className="absolute inset-0 flex items-stretch justify-stretch p-6 sm:p-10 md:p-14"
               style={{
                 color: '#e9d7ff',
-                textShadow: '0 0 6px rgba(167,139,250,0.55), 0 0 14px rgba(124,58,237,0.35)',
+                textShadow: shouldReduceMotion
+                  ? '0 0 6px rgba(167,139,250,0.55), 0 0 14px rgba(124,58,237,0.35)'
+                  : '-0.5px 0 0 rgba(244,63,94,0.4), 0.5px 0 0 rgba(56,189,248,0.4), 0 0 6px rgba(167,139,250,0.55), 0 0 14px rgba(124,58,237,0.35)',
                 transform: 'perspective(1600px) rotateX(0.3deg)',
                 transformOrigin: 'center center',
                 // Subtle corner mask — darkens the very edges to suggest tube curvature.
@@ -102,9 +115,19 @@ export const CrtTv: FC<CrtTvProps> = ({
                   'radial-gradient(ellipse 105% 105% at 50% 50%, #000 72%, rgba(0,0,0,0.85) 90%, rgba(0,0,0,0.6) 100%)',
                 maskImage:
                   'radial-gradient(ellipse 105% 105% at 50% 50%, #000 72%, rgba(0,0,0,0.85) 90%, rgba(0,0,0,0.6) 100%)',
-              }}>
+              }}
+              transition={
+                shouldReduceMotion
+                  ? undefined
+                  : {
+                      duration: 6,
+                      times: [0, 0.35, 0.36, 0.5, 0.51, 0.52, 0.7, 0.71, 0.85, 0.86, 1],
+                      repeat: Infinity,
+                      ease: 'linear',
+                    }
+              }>
               {children}
-            </div>
+            </motion.div>
 
             {/* Scanlines overlay — tuned for larger scale (2px/5px repeat) */}
             <div
@@ -150,6 +173,29 @@ export const CrtTv: FC<CrtTvProps> = ({
                 mixBlendMode: 'screen',
               }}
             />
+
+            {/* VHS grain — animated fractal noise layered as overlay. Subtle
+                shimmer from stepped background-position moves; low opacity so it
+                reads as tape texture, not dead-channel static. */}
+            {!shouldReduceMotion && (
+              <motion.div
+                animate={{
+                  backgroundPositionX: ['0%', '37%', '14%', '88%', '0%'],
+                  backgroundPositionY: ['0%', '15%', '62%', '23%', '0%'],
+                }}
+                aria-hidden="true"
+                className="pointer-events-none absolute inset-0"
+                style={{
+                  backgroundImage:
+                    "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix type='saturate' values='0'/></filter><rect width='100%' height='100%' filter='url(%23n)' opacity='0.85'/></svg>\")",
+                  backgroundSize: '180px 180px',
+                  backgroundRepeat: 'repeat',
+                  mixBlendMode: 'soft-light',
+                  opacity: 0.12,
+                }}
+                transition={{duration: 0.6, repeat: Infinity, ease: 'linear'}}
+              />
+            )}
 
             {/* Flicker layer — very low amplitude opacity oscillation */}
             {!shouldReduceMotion && (

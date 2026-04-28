@@ -56,14 +56,40 @@ const buildTerminalLines = (items: Item[], name: string): TerminalLine[] => {
   return lines;
 };
 
-const PHOSPHOR_TEXT_SHADOW = '0 0 6px rgba(167,139,250,0.45), 0 0 14px rgba(124,58,237,0.25)';
+const buildDescriptionLines = (lead: string, rest: string): TerminalLine[] => {
+  const normalizeParagraph = (p: string): string => p.replace(/\s+/g, ' ').trim();
+  const paragraphs: string[] = [];
+  const leadClean = normalizeParagraph(lead);
+  if (leadClean) paragraphs.push(leadClean);
+  if (rest) {
+    rest
+      .split(/\n{2,}/)
+      .map(normalizeParagraph)
+      .filter(Boolean)
+      .forEach(p => paragraphs.push(p));
+  }
+  // Insert a blank line between paragraphs for visual breathing room.
+  const lines: TerminalLine[] = [];
+  paragraphs.forEach((p, i) => {
+    if (i > 0) lines.push({text: ''});
+    lines.push({text: p});
+  });
+  return lines;
+};
 
 const About: FC = memo(() => {
   const {description, aboutItems} = aboutData;
   const {lead, rest} = splitDescription(description);
   const tvWrapperRef = useRef<HTMLDivElement | null>(null);
-  const inView = useInView(tvWrapperRef, {once: true, margin: '-10% 0px -10% 0px'});
-  const terminalLines = useMemo(() => buildTerminalLines(aboutItems, homePageMeta.author), [aboutItems]);
+  const inView = useInView(tvWrapperRef, {margin: '-10% 0px -10% 0px'});
+  const unifiedLines = useMemo<TerminalLine[]>(() => {
+    const info = buildTerminalLines(aboutItems, homePageMeta.author);
+    const body = buildDescriptionLines(lead, rest);
+    // Blank separator gives visual breathing room between the info block and
+    // the prose. It renders as an empty row (zero-width-space in TypingTerminal
+    // keeps its height).
+    return [...info, {text: ''}, ...body];
+  }, [aboutItems, lead, rest]);
 
   const {image: profileImage, isLoading: profileLoading, error: profileError} = useProfileImage();
   const profileImageUrl = profileImage
@@ -96,32 +122,15 @@ const About: FC = memo(() => {
                   isLoading={profileLoading}
                 />
               }>
-              <div className="grid h-full w-full grid-cols-1 gap-6 lg:grid-cols-2 lg:gap-10">
-                <div className="order-1 flex flex-col justify-center lg:order-1">
-                  <p
-                    className="text-base sm:text-lg lg:text-xl leading-relaxed font-medium"
-                    style={{
-                      color: '#f5f3ff',
-                      textShadow: PHOSPHOR_TEXT_SHADOW,
-                      whiteSpace: 'pre-line',
-                    }}>
-                    {lead}
-                  </p>
-                  {rest ? (
-                    <p
-                      className="mt-4 text-sm sm:text-base leading-relaxed"
-                      style={{
-                        color: '#e9d7ff',
-                        textShadow: PHOSPHOR_TEXT_SHADOW,
-                        whiteSpace: 'pre-line',
-                      }}>
-                      {rest}
-                    </p>
-                  ) : null}
-                </div>
-                <div className="order-2 flex items-start justify-start overflow-hidden text-left font-mono text-xs sm:text-sm lg:order-2">
-                  <TypingTerminal className="w-full" lines={terminalLines} start={inView} />
-                </div>
+              <div className="h-full w-full overflow-hidden text-left">
+                <TypingTerminal
+                  autoScroll
+                  charsPerSecond={45}
+                  className="h-full w-full"
+                  lineDelay={0.5}
+                  lines={unifiedLines}
+                  start={inView}
+                />
               </div>
             </CrtTv>
           </Reveal>

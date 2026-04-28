@@ -1,7 +1,7 @@
 'use client';
 
 import {useReducedMotion} from 'framer-motion';
-import {FC, useEffect, useMemo, useRef, useState} from 'react';
+import {FC, useEffect, useLayoutEffect, useMemo, useRef, useState} from 'react';
 
 export type TerminalLine = string | {prefix?: string; text: string};
 
@@ -15,6 +15,10 @@ export interface TypingTerminalProps {
   lineDelay?: number;
   /** Gate start until parent decides (e.g. in-view). */
   start?: boolean;
+  /** When true, renders the output inside a bounded, overflow-hidden container
+   * and pins the scroll position to the bottom as text is typed so the current
+   * line stays in view. Parent must give the terminal a bounded height. */
+  autoScroll?: boolean;
   onComplete?: () => void;
   className?: string;
 }
@@ -31,6 +35,7 @@ const TypingTerminal: FC<TypingTerminalProps> = ({
   startDelay = 0.2,
   lineDelay = 0.25,
   start = true,
+  autoScroll = false,
   onComplete,
   className,
 }) => {
@@ -116,14 +121,41 @@ const TypingTerminal: FC<TypingTerminalProps> = ({
 
   const showPlaceholderCursor = !instant && !typing;
 
-  return (
-    <div className={['font-mono text-[13px] sm:text-sm leading-relaxed', className].filter(Boolean).join(' ')}>
+  const scrollContainerRef = useRef<HTMLDivElement | null>(null);
+  const contentRef = useRef<HTMLDivElement | null>(null);
+
+  // Pin-to-bottom as lines are typed. Runs when autoScroll is on and content
+  // overflows; no-ops otherwise. Skipped in reduced-motion mode so users can
+  // read at their own pace (outer container becomes scrollable instead).
+  useLayoutEffect(() => {
+    if (!autoScroll) return;
+    if (instant) return;
+    const container = scrollContainerRef.current;
+    const content = contentRef.current;
+    if (!container || !content) return;
+    if (content.scrollHeight <= container.clientHeight) return;
+    container.scrollTop = content.scrollHeight - container.clientHeight;
+  }, [autoScroll, instant, charIndex, lineIndex, typing, normalized]);
+
+  // When typing is off (e.g. component scrolled out), reset to the top so the
+  // re-entry on next in-view begins from the start.
+  useEffect(() => {
+    if (!autoScroll) return;
+    if (typing) return;
+    const container = scrollContainerRef.current;
+    if (!container) return;
+    container.scrollTop = 0;
+  }, [autoScroll, typing]);
+
+  const body = (
+    <>
       <span className="sr-only">{screenReaderText}</span>
-      <div aria-hidden="true" className="whitespace-pre-wrap break-words">
+      <div aria-hidden="true" className="whitespace-pre-wrap break-words" ref={contentRef}>
         {visibleLines.map((line, i) => {
           const showCursor = instant
             ? i === visibleLines.length - 1
             : line.isCurrent || (done && i === visibleLines.length - 1);
+          const isBlank = !line.prefix && line.text === '';
           return (
             <div className="flex" key={i}>
               {line.prefix ? (
@@ -133,6 +165,8 @@ const TypingTerminal: FC<TypingTerminalProps> = ({
               ) : null}
               <span style={{color: PHOSPHOR_FG, textShadow: '0 0 6px rgba(168, 85, 247, 0.55)'}}>
                 {line.typed}
+                {/* Zero-width space keeps blank lines from collapsing to 0 height. */}
+                {isBlank && !showCursor ? '​' : null}
                 {showCursor ? <span className="terminal-cursor">▌</span> : null}
               </span>
             </div>
@@ -146,6 +180,22 @@ const TypingTerminal: FC<TypingTerminalProps> = ({
           </div>
         ) : null}
       </div>
+    </>
+  );
+
+  const baseClasses = 'font-mono text-sm sm:text-base md:text-lg leading-relaxed';
+
+  return (
+    <div className={[baseClasses, className].filter(Boolean).join(' ')}>
+      {autoScroll ? (
+        <div
+          className={['h-full w-full', instant ? 'overflow-y-auto' : 'overflow-hidden'].join(' ')}
+          ref={scrollContainerRef}>
+          {body}
+        </div>
+      ) : (
+        body
+      )}
       <style jsx>{`
         .terminal-cursor {
           display: inline-block;
