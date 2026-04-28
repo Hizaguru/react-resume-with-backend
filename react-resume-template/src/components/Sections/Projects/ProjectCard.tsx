@@ -66,9 +66,7 @@ const ProjectCard: FC<ProjectCardProps> = memo(({item, onSelect}) => {
         </div>
         <CardContent className="flex flex-col gap-3 p-5">
           <h3 className="text-lg font-semibold tracking-tight text-foreground">{title}</h3>
-          {outcome ? (
-            <p className="line-clamp-2 text-sm text-muted-foreground">{outcome}</p>
-          ) : null}
+          {outcome ? <p className="line-clamp-2 text-sm text-muted-foreground">{outcome}</p> : null}
           {tags.length > 0 ? (
             <ul className="mt-1 flex flex-wrap gap-2">
               {tags.map(tag => (

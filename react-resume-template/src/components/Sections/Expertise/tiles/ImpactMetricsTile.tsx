@@ -1,5 +1,5 @@
-import { animate, motion, useInView, useMotionValue, useReducedMotion, useTransform } from 'framer-motion';
-import { FC, useEffect, useRef } from 'react';
+import {animate, motion, useInView, useMotionValue, useReducedMotion, useTransform} from 'framer-motion';
+import {FC, useEffect, useRef} from 'react';
 
 import ExpertiseTile from '../ExpertiseTile';
 

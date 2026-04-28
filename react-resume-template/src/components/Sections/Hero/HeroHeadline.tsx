@@ -26,7 +26,8 @@ const HeroHeadline: FC = () => {
         <span className="text-zinc-200">Hi, I&apos;m</span>{' '}
         <span className="text-violet-300 bg-gradient-to-br from-violet-300 via-violet-200 to-white bg-clip-text text-transparent">
           Jukkis
-        </span>.
+        </span>
+        .
       </h1>
       <p className="mt-6 text-lg text-zinc-200/90 max-w-xl mx-auto drop-shadow-[0_1px_10px_rgba(0,0,0,0.5)]">
         A full-stack engineer who{' '}

@@ -86,10 +86,7 @@ export const buildScale = (from: number = 0.96): Variants => ({
 });
 
 /** Parent variant that triggers staggered reveal of children. */
-export const buildStagger = (
-  staggerChildren: number = STAGGER.base,
-  delayChildren: number = 0,
-): Variants => ({
+export const buildStagger = (staggerChildren: number = STAGGER.base, delayChildren: number = 0): Variants => ({
   hidden: {},
   visible: {
     transition: {staggerChildren, delayChildren} as Transition,
