@@ -1,12 +1,12 @@
-import {Bars3Icon, XMarkIcon} from '@heroicons/react/24/outline';
+import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 import classNames from 'classnames';
-import {AnimatePresence, motion, useReducedMotion, useScroll, useSpring} from 'framer-motion';
+import { AnimatePresence, motion, useReducedMotion, useScroll, useSpring } from 'framer-motion';
 import Link from 'next/link';
-import {FC, memo, useCallback, useEffect, useMemo, useState} from 'react';
+import { FC, memo, useCallback, useEffect, useMemo, useState } from 'react';
 
-import {SectionId} from '../../data/data';
-import {useNavObserver} from '../../hooks/useNavObserver';
-import {EASE_OUT} from '../motion/tokens';
+import { SectionId } from '../../data/data';
+import { useNavObserver } from '../../hooks/useNavObserver';
+import { EASE_OUT } from '../motion/tokens';
 import ThemeToggle from '../theme/ThemeToggle';
 
 export const headerID = 'headerNav';
@@ -116,7 +116,7 @@ const MobileNav: FC<NavProps> = memo(({navSections, currentSection}) => {
 
   return (
     <>
-      <div className="fixed right-2 top-2 z-40 flex items-center gap-2 sm:hidden">
+      <div className="fixed right-4 top-4 z-40 flex items-center gap-2 sm:hidden">
         <ThemeToggle />
         <button
           aria-expanded={isOpen}

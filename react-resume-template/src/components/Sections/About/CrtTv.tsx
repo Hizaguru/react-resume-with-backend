@@ -4,12 +4,6 @@ import {FC, ReactNode} from 'react';
 type CrtTvProps = {
   children: ReactNode;
   className?: string;
-  /** Text on the top brand strip. Default: "JUKKIS". */
-  brand?: string;
-  /** Model label printed on the bottom-left. */
-  model?: string;
-  /** Serial printed on the bottom-right. */
-  serial?: string;
   /**
    * Optional decoration (e.g. polaroid photo) rendered on the bezel,
    * absolute-positioned in the top-right, overlapping the screen edge slightly
@@ -26,9 +20,6 @@ type CrtTvProps = {
 export const CrtTv: FC<CrtTvProps> = ({
   children,
   className,
-  brand = 'JUKKIS',
-  model = 'CRT-3000  PHOSPHOR  VLT-827',
-  serial = 'SN 827-A77F-2026',
   sticker,
 }) => {
   const shouldReduceMotion = useReducedMotion();
@@ -43,7 +34,7 @@ export const CrtTv: FC<CrtTvProps> = ({
 
       {/* Outer bezel — dark plastic, subtly beveled */}
       <div
-        className="relative rounded-[32px] p-8 sm:p-10 md:p-12"
+        className="relative rounded-[28px] p-5 sm:rounded-[32px] sm:p-10 md:p-12"
         style={{
           background: 'linear-gradient(155deg, #2a2a2e 0%, #1a1a1d 35%, #121214 70%, #0e0e10 100%)',
           boxShadow: [
@@ -54,22 +45,9 @@ export const CrtTv: FC<CrtTvProps> = ({
             '0 20px 50px -20px rgba(124,58,237,0.22)',
           ].join(', '),
         }}>
-        {/* Top brand strip */}
-        <div aria-hidden="true" className="mb-5 flex items-center justify-between px-3">
-          <div
-            className="flex-1 text-center text-sm font-bold uppercase tracking-[0.75em] text-zinc-200 sm:text-base md:text-lg"
-            style={{
-              textShadow: '0 1px 0 rgba(0,0,0,0.85), 0 0 2px rgba(255,255,255,0.18)',
-              fontFamily:
-                'ui-monospace, SFMono-Regular, Menlo, Monaco, "Cascadia Mono", "Liberation Mono", Consolas, monospace',
-            }}>
-            {brand}
-          </div>
-        </div>
-
         {/* Picture tube wrapper — inset frame around the glass (the "CRT front mask") */}
         <div
-          className="relative rounded-[24px] p-4 sm:p-5 md:p-6"
+          className="relative rounded-[20px] p-2.5 sm:rounded-[24px] sm:p-5 md:p-6"
           style={{
             background: 'linear-gradient(175deg, #0a0a0b 0%, #050506 60%, #000 100%)',
             boxShadow: [
@@ -235,28 +213,6 @@ export const CrtTv: FC<CrtTvProps> = ({
           </div>
         </div>
 
-        {/* Bottom label strip — model + serial */}
-        <div aria-hidden="true" className="mt-5 flex items-center justify-between px-3">
-          <span
-            className="text-[10px] font-semibold uppercase tracking-[0.32em] text-zinc-400 sm:text-[11px]"
-            style={{
-              textShadow: '0 1px 0 rgba(0,0,0,0.8)',
-              fontFamily:
-                'ui-monospace, SFMono-Regular, Menlo, Monaco, "Cascadia Mono", "Liberation Mono", Consolas, monospace',
-            }}>
-            {model}
-          </span>
-          <span
-            className="text-[10px] font-semibold uppercase tracking-[0.32em] text-zinc-500 sm:text-[11px]"
-            style={{
-              textShadow: '0 1px 0 rgba(0,0,0,0.8)',
-              fontFamily:
-                'ui-monospace, SFMono-Regular, Menlo, Monaco, "Cascadia Mono", "Liberation Mono", Consolas, monospace',
-            }}>
-            {serial}
-          </span>
-        </div>
-
         {/* Corner screws — top-left, top-right, bottom-left, bottom-right */}
         <Screw className="left-3 top-3" />
         <Screw className="right-3 top-3" />
@@ -266,7 +222,7 @@ export const CrtTv: FC<CrtTvProps> = ({
         {/* Power LED — lower-right of bezel */}
         <div
           aria-hidden="true"
-          className="absolute bottom-[44px] right-[34px] h-2 w-2 rounded-full"
+          className="absolute bottom-3 right-10 h-1.5 w-1.5 rounded-full sm:h-2 sm:w-2"
           style={{
             background: '#a78bfa',
             boxShadow: '0 0 8px rgba(167,139,250,0.95), 0 0 16px rgba(124,58,237,0.65)',
