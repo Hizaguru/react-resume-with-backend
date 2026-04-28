@@ -7,7 +7,6 @@ import { FC, memo, useCallback, useEffect, useMemo, useState } from 'react';
 import { SectionId } from '../../data/data';
 import { useNavObserver } from '../../hooks/useNavObserver';
 import { EASE_OUT } from '../motion/tokens';
-import ThemeToggle from '../theme/ThemeToggle';
 
 export const headerID = 'headerNav';
 
@@ -94,9 +93,6 @@ const DesktopNav: FC<NavProps & {scrolled: boolean}> = memo(({navSections, curre
               <NavItem current={s.id === currentSection} entry={s} scrolled={scrolled} />
             </li>
           ))}
-          <li>
-            <ThemeToggle />
-          </li>
         </ul>
       </nav>
       {/* Scroll progress accent — visual cue of how far through the page the user is */}
@@ -116,8 +112,7 @@ const MobileNav: FC<NavProps> = memo(({navSections, currentSection}) => {
 
   return (
     <>
-      <div className="fixed right-6 top-4 z-40 flex items-center gap-2 sm:hidden">
-        <ThemeToggle />
+      <div className="fixed right-6 top-4 z-50 flex items-center sm:hidden">
         <button
           aria-expanded={isOpen}
           aria-label={isOpen ? 'Close menu' : 'Open menu'}
