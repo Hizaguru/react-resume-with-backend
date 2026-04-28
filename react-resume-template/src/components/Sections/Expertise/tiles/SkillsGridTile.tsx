@@ -1,32 +1,22 @@
-import {FC} from 'react';
-import {BsAnthropic, BsOpenai} from 'react-icons/bs';
-import {FaAws, FaFilm, FaGithub, FaJava, FaNodeJs, FaReact} from 'react-icons/fa6';
-import {GoCopilot} from 'react-icons/go';
-import {GrGraphQl} from 'react-icons/gr';
+import { FC } from 'react';
+import { BsAnthropic, BsOpenai } from 'react-icons/bs';
+import { FaAws, FaFilm, FaJava, FaNodeJs, FaReact } from 'react-icons/fa6';
+import { GoCopilot } from 'react-icons/go';
 import {
-  SiArduino,
-  SiConfluence,
-  SiContentful,
-  SiCplusplus,
   SiGithubactions,
-  SiGnubash,
   SiJest,
-  SiJira,
   SiLangchain,
-  SiPlatformio,
   SiPython,
-  SiSanity,
   SiSpringboot,
   SiTailwindcss,
   SiTypescript,
-  SiUbuntu,
   SiUnity,
   SiUnrealengine,
   SiVite,
-  SiVitest,
+  SiVitest
 } from 'react-icons/si';
-import {TbShieldLock} from 'react-icons/tb';
-import {VscBeaker, VscGitPullRequest, VscTerminalPowershell} from 'react-icons/vsc';
+import { TbShieldLock } from 'react-icons/tb';
+import { VscBeaker, VscGitPullRequest } from 'react-icons/vsc';
 
 import ExpertiseTile from '../ExpertiseTile';
 
@@ -42,7 +32,6 @@ interface SkillCategory {
   title: string;
   skills: readonly Skill[];
 }
-
 const CATEGORIES: readonly SkillCategory[] = [
   {
     title: 'Frontend',
@@ -51,7 +40,6 @@ const CATEGORIES: readonly SkillCategory[] = [
       {name: 'React', Icon: FaReact, color: 'text-[#61DAFB]'},
       {name: 'Vite', Icon: SiVite, color: 'text-[#646CFF]'},
       {name: 'Tailwind CSS', Icon: SiTailwindcss, color: 'text-[#06B6D4]'},
-      {name: 'GraphQL', Icon: GrGraphQl, color: 'text-[#E10098]'},
     ],
   },
   {
@@ -60,49 +48,20 @@ const CATEGORIES: readonly SkillCategory[] = [
       {name: 'Java', Icon: FaJava, color: 'text-[#E76F00]'},
       {name: 'Spring Boot', Icon: SiSpringboot, color: 'text-[#6DB33F]'},
       {name: 'Python', Icon: SiPython, color: 'text-[#3776AB]'},
-      {name: 'C++', Icon: SiCplusplus, color: 'text-[#00599C]'},
+      {name: 'Node.js', Icon: FaNodeJs, color: 'text-[#339933]'},
     ],
   },
   {
-    title: 'AI / LLM',
-    skills: [
-      {name: 'LangChain', Icon: SiLangchain, color: 'text-[#1C3C3C]'},
-      {name: 'Claude Code', Icon: BsAnthropic, color: 'text-[#D97757]'},
-      {name: 'GitHub Copilot', Icon: GoCopilot, color: 'text-foreground'},
-      {name: 'AI APIs', Icon: BsOpenai, color: 'text-[#10A37F]'},
-    ],
-  },
-  {
-    title: 'Game Development',
-    skills: [
-      {name: 'Unreal Engine', Icon: SiUnrealengine, color: 'text-foreground'},
-      {name: 'Unity', Icon: SiUnity, color: 'text-foreground'},
-    ],
-  },
-  {
-    title: 'Embedded / Hardware',
-    skills: [
-      {name: 'C++ (Arduino Framework)', Icon: SiArduino, color: 'text-[#00878F]'},
-      {name: 'PlatformIO', Icon: SiPlatformio, color: 'text-[#F5822A]'},
-    ],
-  },
-  {
-    title: 'Creative / Media',
-    skills: [
-      {name: 'Adobe Premiere', Icon: FaFilm, color: 'text-[#9999FF]'},
-    ],
-  },
-  {
-    title: 'Infra / Cloud / DevOps',
+    title: 'Cloud & DevOps',
     skills: [
       {name: 'AWS', Icon: FaAws, color: 'text-[#FF9900]'},
       {name: 'GitHub Actions', Icon: SiGithubactions, color: 'text-[#2088FF]'},
-      {name: 'CI/CD Pipelines', Icon: VscGitPullRequest, color: 'text-primary'},
-      {name: 'OIDC / IAM (GitHub ↔ AWS)', Icon: TbShieldLock, color: 'text-[#FF9900]'},
+      {name: 'CI/CD', Icon: VscGitPullRequest, color: 'text-primary'},
+      {name: 'OIDC / IAM', Icon: TbShieldLock, color: 'text-[#FF9900]'},
     ],
   },
   {
-    title: 'Testing / Quality',
+    title: 'Testing & Quality',
     skills: [
       {name: 'Playwright', Icon: VscBeaker, color: 'text-[#2EAD33]'},
       {name: 'Vitest', Icon: SiVitest, color: 'text-[#6E9F18]'},
@@ -110,22 +69,20 @@ const CATEGORIES: readonly SkillCategory[] = [
     ],
   },
   {
-    title: 'CMS',
+    title: 'AI & Automation',
     skills: [
-      {name: 'Contentful', Icon: SiContentful, color: 'text-[#2478CC]'},
-      {name: 'Sanity.io', Icon: SiSanity, color: 'text-[#F03E2F]'},
+      {name: 'LLM APIs', Icon: BsOpenai, color: 'text-[#10A37F]'},
+      {name: 'LangChain', Icon: SiLangchain, color: 'text-[#1C3C3C]'},
+      {name: 'GitHub Copilot', Icon: GoCopilot, color: 'text-foreground'},
+      {name: 'Claude Code', Icon: BsAnthropic, color: 'text-[#D97757]'},
     ],
   },
   {
-    title: 'Tools & Ecosystem',
+    title: 'Creative & Game Projects',
     skills: [
-      {name: 'Jira', Icon: SiJira, color: 'text-[#0052CC]'},
-      {name: 'Confluence', Icon: SiConfluence, color: 'text-[#172B4D]'},
-      {name: 'GitHub', Icon: FaGithub, color: 'text-foreground'},
-      {name: 'Node.js', Icon: FaNodeJs, color: 'text-[#339933]'},
-      {name: 'Ubuntu', Icon: SiUbuntu, color: 'text-[#E95420]'},
-      {name: 'Bash', Icon: SiGnubash, color: 'text-foreground'},
-      {name: 'PowerShell', Icon: VscTerminalPowershell, color: 'text-[#5391FE]'},
+      {name: 'Unreal Engine', Icon: SiUnrealengine, color: 'text-foreground'},
+      {name: 'Unity', Icon: SiUnity, color: 'text-foreground'},
+      {name: 'Adobe Premiere', Icon: FaFilm, color: 'text-[#9999FF]'},
     ],
   },
 ] as const;
