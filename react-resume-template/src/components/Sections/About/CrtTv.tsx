@@ -1,5 +1,5 @@
-import {motion, useReducedMotion} from 'framer-motion';
-import {FC, ReactNode} from 'react';
+import { motion, useReducedMotion } from 'framer-motion';
+import { FC, ReactNode } from 'react';
 
 type CrtTvProps = {
   children: ReactNode;
