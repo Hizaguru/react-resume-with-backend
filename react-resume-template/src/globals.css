@@ -4,7 +4,6 @@
 @source "./**/*.{js,ts,jsx,tsx}";
 @config '../tailwind.config.js';
 
-@custom-variant dark (&:is(.dark *));
 @custom-variant touch (@media (pointer: coarse));
 
 @theme {
@@ -32,28 +31,6 @@
   --radius-md: calc(var(--radius) - 4px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
-}
-
-.dark {
-  --color-background: oklch(0.145 0.008 260);
-  --color-foreground: oklch(0.96 0.008 85);
-  --color-card: oklch(0.19 0.012 260);
-  --color-card-foreground: oklch(0.96 0.008 85);
-  --color-popover: oklch(0.19 0.012 260);
-  --color-popover-foreground: oklch(0.96 0.008 85);
-  --color-border: oklch(0.26 0.012 260);
-  --color-input: oklch(0.26 0.012 260);
-  --color-muted: oklch(0.20 0.01 260);
-  --color-muted-foreground: #a1a1aa;
-  --color-primary: #a78bfa;
-  --color-primary-foreground: oklch(0.145 0.008 260);
-  --color-secondary: oklch(0.22 0.012 260);
-  --color-secondary-foreground: oklch(0.96 0.008 85);
-  --color-accent: oklch(0.24 0.02 280);
-  --color-accent-foreground: #c4b5fd;
-  --color-destructive: #ef4444;
-  --color-destructive-foreground: oklch(0.145 0.008 260);
-  --color-ring: #c4b5fd;
 }
 
 @layer base {

@@ -1,5 +1,5 @@
-import {motion, useReducedMotion} from 'framer-motion';
-import {FC, memo} from 'react';
+import { motion, useReducedMotion } from 'framer-motion';
+import { FC, memo } from 'react';
 
 // NOTE: The previous Hero pulled a `header` image from Sanity via `client.fetch`.
 // The new design uses a generated animated gradient background instead, so that
@@ -7,8 +7,8 @@ import {FC, memo} from 'react';
 // until we decide whether to reuse it elsewhere.
 // import {client, urlFor} from '../../../client';
 
-import {SectionId} from '../../../data/data';
-import {EASE_OUT, STAGGER} from '../../motion/tokens';
+import { SectionId } from '../../../data/data';
+import { EASE_OUT, STAGGER } from '../../motion/tokens';
 
 import AnimatedGradientBg from './AnimatedGradientBg';
 import HeroCTA from './HeroCTA';
@@ -32,7 +32,7 @@ const Hero: FC = memo(() => {
   return (
     <section
       aria-labelledby="hero-heading"
-      className="relative flex min-h-[100svh] items-center justify-center overflow-hidden bg-background"
+      className="relative flex min-h-[100svh] w-full max-w-none items-center justify-center overflow-hidden bg-background"
       id={SectionId.Hero}>
       <AnimatedGradientBg />
       <motion.div
