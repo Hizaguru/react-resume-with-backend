@@ -24,7 +24,7 @@ export const ProfileSticker: FC<ProfileStickerProps> = ({
 
   return (
     <div
-      className={['relative w-20 sm:w-24 lg:w-[140px]', className].filter(Boolean).join(' ')}
+      className={['relative w-20 sm:w-24 lg:w-28', className].filter(Boolean).join(' ')}
       style={{
         transform: `rotate(${rotateDeg}deg)`,
         filter: 'drop-shadow(0 18px 22px rgba(0,0,0,0.45)) drop-shadow(0 6px 8px rgba(0,0,0,0.35))',
@@ -54,7 +54,7 @@ export const ProfileSticker: FC<ProfileStickerProps> = ({
               alt={alt}
               className="object-cover"
               fill
-              sizes="(min-width: 1024px) 140px, (min-width: 640px) 96px, 80px"
+              sizes="(min-width: 1024px) 112px, (min-width: 640px) 96px, 80px"
               src={imageUrl as string}
             />
           ) : showPulse ? (
