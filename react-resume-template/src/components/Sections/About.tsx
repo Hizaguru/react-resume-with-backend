@@ -99,7 +99,7 @@ const About: FC = memo(() => {
   return (
     <section
       aria-labelledby={HEADING_ID}
-      className="relative bg-background py-24 sm:py-32 lg:py-40"
+      className="relative overflow-x-clip bg-background py-24 sm:py-32 lg:py-40"
       id={SectionId.About}>
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <Reveal>
