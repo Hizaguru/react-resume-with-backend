@@ -6,6 +6,7 @@ import { FC, memo, useCallback, useEffect, useMemo, useState } from 'react';
 
 import { SectionId } from '../../data/data';
 import { useNavObserver } from '../../hooks/useNavObserver';
+import ReactPortal from '../Modal/ReactPortal';
 import { EASE_OUT } from '../motion/tokens';
 
 export const headerID = 'headerNav';
@@ -111,8 +112,8 @@ const MobileNav: FC<NavProps> = memo(({navSections, currentSection}) => {
   const close = useCallback(() => setIsOpen(false), []);
 
   return (
-    <>
-      <div className="fixed right-6 top-4 z-50 flex items-center sm:hidden">
+    <ReactPortal wrapperId="mobile-nav-root">
+      <div className="fixed right-6 top-4 z-[1000] flex items-center sm:hidden">
         <button
           aria-expanded={isOpen}
           aria-label={isOpen ? 'Close menu' : 'Open menu'}
@@ -126,7 +127,7 @@ const MobileNav: FC<NavProps> = memo(({navSections, currentSection}) => {
         {isOpen ? (
           <motion.div
             animate={{opacity: 1}}
-            className="fixed inset-0 z-30 flex sm:hidden"
+            className="fixed inset-0 z-[990] flex sm:hidden"
             exit={{opacity: 0}}
             initial={{opacity: 0}}
             transition={{duration: 0.2, ease: EASE_OUT}}>
@@ -150,7 +151,7 @@ const MobileNav: FC<NavProps> = memo(({navSections, currentSection}) => {
           </motion.div>
         ) : null}
       </AnimatePresence>
-    </>
+    </ReactPortal>
   );
 });
 
