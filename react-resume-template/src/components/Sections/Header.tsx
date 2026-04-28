@@ -175,9 +175,7 @@ const NavItem: FC<NavItemProps> = memo(({entry, current, scrolled = true, onClic
   const desktopInactive = scrolled
     ? 'text-muted-foreground hover:text-foreground'
     : 'text-white/75 hover:text-white drop-shadow-[0_1px_8px_rgba(0,0,0,0.45)]';
-  const desktopActiveText = scrolled
-    ? 'text-primary'
-    : 'text-white drop-shadow-[0_1px_10px_rgba(0,0,0,0.5)]';
+  const desktopActiveText = scrolled ? 'text-primary' : 'text-white drop-shadow-[0_1px_10px_rgba(0,0,0,0.5)]';
   const mobileActive = 'text-primary';
   const mobileInactive = 'text-foreground';
 

@@ -76,35 +76,35 @@ const Testimonials: FC = memo(() => {
 
         <Reveal delay={0.1}>
           <div className="mt-16 flex flex-col items-center gap-y-8">
-          <div
-            className="no-scrollbar flex w-full touch-pan-x snap-x snap-mandatory gap-x-6 overflow-x-auto scroll-smooth"
-            onScroll={handleScroll}
-            ref={scrollContainer}>
-            {testimonials.map((t, index) => (
-              <TestimonialCard isActive={index === activeIndex} key={`${t.name}-${index}`} testimonial={t} />
-            ))}
+            <div
+              className="no-scrollbar flex w-full touch-pan-x snap-x snap-mandatory gap-x-6 overflow-x-auto scroll-smooth"
+              onScroll={handleScroll}
+              ref={scrollContainer}>
+              {testimonials.map((t, index) => (
+                <TestimonialCard isActive={index === activeIndex} key={`${t.name}-${index}`} testimonial={t} />
+              ))}
+            </div>
+            <div className="flex gap-x-3">
+              {testimonials.map((t, index) => {
+                const isActive = index === activeIndex;
+                return (
+                  <button
+                    aria-label={`Go to testimonial ${index + 1}`}
+                    className={classNames(
+                      'rounded-full transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)]',
+                      isActive
+                        ? 'h-2 w-6 bg-primary shadow-[0_0_12px_rgba(124,58,237,0.6)]'
+                        : 'h-2 w-2 bg-border hover:bg-muted-foreground hover:scale-110',
+                    )}
+                    disabled={isActive}
+                    key={`dot-${t.name}-${index}`}
+                    onClick={setTestimonial(index)}
+                    type="button"
+                  />
+                );
+              })}
+            </div>
           </div>
-          <div className="flex gap-x-3">
-            {testimonials.map((t, index) => {
-              const isActive = index === activeIndex;
-              return (
-                <button
-                  aria-label={`Go to testimonial ${index + 1}`}
-                  className={classNames(
-                    'rounded-full transition-all duration-300 ease-[cubic-bezier(0.22,1,0.36,1)]',
-                    isActive
-                      ? 'h-2 w-6 bg-primary shadow-[0_0_12px_rgba(124,58,237,0.6)]'
-                      : 'h-2 w-2 bg-border hover:bg-muted-foreground hover:scale-110',
-                  )}
-                  disabled={isActive}
-                  key={`dot-${t.name}-${index}`}
-                  onClick={setTestimonial(index)}
-                  type="button"
-                />
-              );
-            })}
-          </div>
-        </div>
         </Reveal>
       </div>
     </section>
@@ -129,4 +129,3 @@ TestimonialCard.displayName = 'TestimonialCard';
 Testimonials.displayName = 'Testimonials';
 
 export default Testimonials;
-

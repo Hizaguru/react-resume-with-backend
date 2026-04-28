@@ -44,10 +44,7 @@ const escapeHtml = (value: string): string =>
     .replaceAll('"', '&quot;')
     .replaceAll("'", '&#39;');
 
-export default async function handler(
-  req: NextApiRequest,
-  res: NextApiResponse<ChatResponse>,
-): Promise<void> {
+export default async function handler(req: NextApiRequest, res: NextApiResponse<ChatResponse>): Promise<void> {
   if (req.method !== 'POST') {
     res.setHeader('Allow', 'POST');
     res.status(405).json({ok: false, error: 'Method not allowed.'});

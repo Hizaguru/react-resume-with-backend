@@ -15,17 +15,8 @@ const AnimatedGradientBg: FC = () => {
   return (
     <div aria-hidden="true" className="absolute inset-0 -z-0 overflow-hidden" ref={ref}>
       {/* Photo background (parallax) */}
-      <motion.div
-        className="absolute inset-0"
-        style={shouldReduceMotion ? undefined : {y: photoY, scale: photoScale}}>
-        <Image
-          alt=""
-          className="object-cover"
-          fill
-          priority
-          sizes="100vw"
-          src="/images/hero-bg.png"
-        />
+      <motion.div className="absolute inset-0" style={shouldReduceMotion ? undefined : {y: photoY, scale: photoScale}}>
+        <Image alt="" className="object-cover" fill priority sizes="100vw" src="/images/hero-bg.png" />
       </motion.div>
 
       {/* Dark gradient overlay — improves text legibility */}

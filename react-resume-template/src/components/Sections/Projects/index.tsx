@@ -85,15 +85,10 @@ const Projects: FC = memo(() => {
           ) : filtered.length === 0 ? (
             <div className="flex flex-col items-center gap-3 py-16 text-center">
               <SearchX aria-hidden="true" className="size-10 text-muted-foreground" />
-              <p className="text-muted-foreground">
-                No projects in this category yet — check back soon.
-              </p>
+              <p className="text-muted-foreground">No projects in this category yet — check back soon.</p>
             </div>
           ) : (
-            <StaggerGroup
-              className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3"
-              key={filter}
-              stagger={0.06}>
+            <StaggerGroup className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3" key={filter} stagger={0.06}>
               {filtered.map((item, i) => (
                 <StaggerItem direction="up" key={`${item.title}-${i}`}>
                   <ProjectCard item={item} onSelect={handleSelect} />

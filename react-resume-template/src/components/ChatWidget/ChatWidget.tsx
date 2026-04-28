@@ -92,7 +92,9 @@ const ChatWidget: FC = memo(() => {
   }, [open]);
 
   return (
-    <div aria-live="polite" className="fixed bottom-4 right-4 z-50 flex flex-col items-end gap-3 sm:bottom-6 sm:right-6">
+    <div
+      aria-live="polite"
+      className="fixed bottom-4 right-4 z-50 flex flex-col items-end gap-3 sm:bottom-6 sm:right-6">
       <AnimatePresence initial={false}>
         {open ? (
           <motion.div
@@ -111,20 +113,13 @@ const ChatWidget: FC = memo(() => {
                 <span className="text-sm font-semibold">Send me a message</span>
                 <span className="text-xs text-muted-foreground">Delivered to my phone</span>
               </div>
-              <Button
-                aria-label="Close chat"
-                onClick={close}
-                size="icon-sm"
-                type="button"
-                variant="ghost">
+              <Button aria-label="Close chat" onClick={close} size="icon-sm" type="button" variant="ghost">
                 <X />
               </Button>
             </div>
 
             <form className="flex flex-col gap-3 px-4 py-4" noValidate onSubmit={handleSubmit(onSubmit)}>
-              <p className="text-xs text-muted-foreground">
-                {"Send me a message and I'll get back to you."}
-              </p>
+              <p className="text-xs text-muted-foreground">{"Send me a message and I'll get back to you."}</p>
               <div className="flex flex-col gap-1.5">
                 <Label htmlFor="chat-name">Name</Label>
                 <Input
@@ -134,14 +129,12 @@ const ChatWidget: FC = memo(() => {
                   placeholder="Your name"
                   type="text"
                   {...nameFieldRest}
-                  ref={(el) => {
+                  ref={el => {
                     nameFieldRef(el);
                     firstFieldRef.current = el;
                   }}
                 />
-                {errors.name ? (
-                  <p className="text-xs text-destructive">{errors.name.message}</p>
-                ) : null}
+                {errors.name ? <p className="text-xs text-destructive">{errors.name.message}</p> : null}
               </div>
 
               <div className="flex flex-col gap-1.5">
@@ -164,9 +157,7 @@ const ChatWidget: FC = memo(() => {
                   rows={4}
                   {...register('message')}
                 />
-                {errors.message ? (
-                  <p className="text-xs text-destructive">{errors.message.message}</p>
-                ) : null}
+                {errors.message ? <p className="text-xs text-destructive">{errors.message.message}</p> : null}
               </div>
 
               {/* Honeypot — hidden from users, visible to bots. */}
@@ -197,7 +188,7 @@ const ChatWidget: FC = memo(() => {
         aria-expanded={open}
         aria-label={open ? 'Close chat' : 'Open chat'}
         className="inline-flex size-14 items-center justify-center rounded-full bg-primary text-primary-foreground shadow-lg transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-[3px] focus-visible:ring-ring/50"
-        onClick={() => setOpen((v) => !v)}
+        onClick={() => setOpen(v => !v)}
         type="button"
         whileHover={{scale: 1.05}}
         whileTap={{scale: 0.95}}>

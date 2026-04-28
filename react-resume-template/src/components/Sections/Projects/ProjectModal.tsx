@@ -12,8 +12,7 @@ interface ProjectModalProps {
   onClose: () => void;
 }
 
-const CHIP_CLASSES =
-  'font-mono text-xs px-2.5 py-1 rounded-full bg-zinc-100 text-zinc-700 border border-zinc-200';
+const CHIP_CLASSES = 'font-mono text-xs px-2.5 py-1 rounded-full bg-zinc-100 text-zinc-700 border border-zinc-200';
 
 const extractTags = (description: string | undefined): string[] => {
   if (!description) return [];
@@ -28,7 +27,10 @@ const resolveImage = (img: PortfolioItem['imgUrl'] | undefined): string => {
   if (!img) return '';
   if (typeof img === 'string') return img;
   if ('src' in img) return (img as {src: string}).src;
-  return urlFor(img as Parameters<typeof urlFor>[0]).width(1600).height(900).url();
+  return urlFor(img as Parameters<typeof urlFor>[0])
+    .width(1600)
+    .height(900)
+    .url();
 };
 
 const ProjectModal: FC<ProjectModalProps> = ({item, onClose}) => {
@@ -36,7 +38,8 @@ const ProjectModal: FC<ProjectModalProps> = ({item, onClose}) => {
   const title = item?.modalTitle || item?.title || '';
   const description = item?.modalDescription || item?.description || '';
   const imgSrc = item ? resolveImage(item.modalImgUrl ?? item.imgUrl) : '';
-  const tags = extractTags(item?.description);  return (
+  const tags = extractTags(item?.description);
+  return (
     <Modal ariaLabel={title} handleClose={onClose} isOpen={isOpen}>
       {item ? (
         <div className="flex h-full max-h-[inherit] w-full flex-col overflow-hidden">

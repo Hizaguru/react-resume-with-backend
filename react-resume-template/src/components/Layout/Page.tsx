@@ -26,11 +26,17 @@ const Page: NextPage<HomepageMeta> = memo(({children, title, description, author
       '@type': 'CollegeOrUniversity',
       name: 'University of Jyväskylä',
     },
-    knowsAbout: ['React', 'TypeScript', 'Python', 'Java', 'AWS', 'Full Stack Development', 'Ethical Hacking', 'Audio Engineering'],
-    sameAs: [
-      'https://github.com/Hizaguru',
-      'https://www.linkedin.com/in/jukka-pekka-lappalainen-0365001a7/',
+    knowsAbout: [
+      'React',
+      'TypeScript',
+      'Python',
+      'Java',
+      'AWS',
+      'Full Stack Development',
+      'Ethical Hacking',
+      'Audio Engineering',
     ],
+    sameAs: ['https://github.com/Hizaguru', 'https://www.linkedin.com/in/jukka-pekka-lappalainen-0365001a7/'],
   };
 
   const websiteJsonLd = {
